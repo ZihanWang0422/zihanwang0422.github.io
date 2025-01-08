@@ -11,7 +11,7 @@ I'm a final year undergraduate student from School of Automation Science and Ele
 
 I am very fortunate to be advised by [Prof. Jiangyun Wang](https://www.XXX.com/), 
 
-You can find my CV here: [Zihan's Curriculum Vitae](../assets/Curriculum_Vitae.pdf).
+You can find my CV here: [Zihan's Curriculum Vitae](../assets/Resume_WZH.pdf).
 
 A data-driven personal website
 ======

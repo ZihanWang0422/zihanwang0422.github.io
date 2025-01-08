@@ -9,13 +9,13 @@ redirect_from:
 
 {% include base_path %}
 
-[CV link](https://drive.google.com/file/d/1TVICDeU7h7Yt41Kc6_QY82SWTJT4jmdc/view?usp=sharing)
+[CV available in PDF format.](https://drive.google.com/file/d/1TVICDeU7h7Yt41Kc6_QY82SWTJT4jmdc/view?usp=sharing)
 
 Education
 ======
 * Ph.D in Version Control Theory, GitHub University, 2018 (expected)
 * M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* B.S. in Automation, GitHub University, 2012
 
 Work experience
 ======

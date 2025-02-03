@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Academic Pages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: "Zihan Wang"
 author_profile: true
 redirect_from: 
   - /about/
@@ -9,7 +9,6 @@ redirect_from:
 
 I'm a final year undergraduate student from School of Automation Science and Electrical Engineering, Beihang University. My research interest includes 
 
-I am very fortunate to be advised by [Prof. Jiangyun Wang](https://www.XXX.com/), 
 
 You can find my CV here: [Zihan's Curriculum Vitae](../assets/Resume_WZH.pdf).
 

@@ -372,7 +372,7 @@ During my undergraduate career, I hold a strong interest in the discipline of ro
 <div style="padding-left: 20px; width: auto;">
   <div class="image-container2">
     <img src="assets/competition/zhixingmini.png" alt="Image 0" class="half-width" />
-    <img src="assets/competition/power.jpg" alt="Image 1" class="half-width" />
+    <img src="assets/competition/zhixing_video.jpg" alt="Image 1" class="half-width" />
   </div>
   <!-- <div class="image-container2">
     <img src="assets/competition/uav3_small.jpeg" alt="Image 0" class="half-width" />

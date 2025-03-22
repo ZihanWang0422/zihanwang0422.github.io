@@ -170,7 +170,7 @@ During my undergraduate career, I hold a strong interest in robotics. My researc
         </div>
         <div style="padding-left: 4%; width: 83%; display: inline-block;">
             <span>
-                <b style="font-size: 18px;">Research Intern (Remote)</b>
+                <b style="font-size: 18px;">Research Assistant (Remote)</b>
                 <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
             </span><br>
             <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering</a></span><br>
@@ -181,15 +181,16 @@ During my undergraduate career, I hold a strong interest in robotics. My researc
     <br>
     <div style="display: flex; align-items: center;">
         <div style="width: 15%; display: inline-block;">
-            <img src="assets/images/sasee.jpg" style="border-square: 50%;" width="100%">
+            <img src="assets/images/THBI.jpg" style="border-square: 50%;" width="100%">
         </div>
         <div style="padding-left: 4%; width: 83%; display: inline-block;">
             <span>
-                <b style="font-size: 18px;">Undergraduate Research Assistant</b>
-                <span style="font-size: 15px; float: right">Jun. 2023 - Jun. 2024</span>
+                <b style="font-size: 18px;">Research Assistant</b>
+                <span style="font-size: 15px; float: right">Mar. 2025 - Now</span>
             </span><br>
-            <span style="font-size: 15px;">Advisor: <a href="https://shi.buaa.edu.cn/wangshaoping/en/index.htm" target="_blank">Prof. Shaoping Wang</a></span><br>
-           <span style="font-size: 15px;">Topic: Plasma-propelled Ultra-quiet Flying Robot</span><br>
+            <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
+            <span style="font-size: 15px;">Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof.Jia Liu </a></span><br>
+           <span style="font-size: 15px;">Topic: VLA Navigation Car</span><br>
         </div>
     </div>
     <!-- <br>
@@ -363,15 +364,13 @@ During my undergraduate career, I hold a strong interest in robotics. My researc
 
 ---
 
-<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="blog">Blog</h2>
+<!-- <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="blog">Blog</h2>
 <div style="margin: 12px 0;">
   <a href="https://yourbloglink.com" style="color: #6495ED; text-decoration: none; margin-right: 12px;">[Robot Learning Note]</a>
 </div>
 <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
   在我的博客中，我分享了关于机器人技术、自动驾驶、SLAM算法以及其他前沿技术的见解和项目经验。欢迎访问并交流！
-</div>
-
----
+</div> -->
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="awards">Awards </h2>
   <span class="icon-award" aria-hidden="true"></span> China University Innovation and Entrepreneurship Competition(National Level Award)
@@ -393,7 +392,7 @@ During my undergraduate career, I hold a strong interest in robotics. My researc
   <font size=3 face="微软雅黑" color=gray>Python, C++, Matlab.</font>
 
 - <font size=4 face="微软雅黑" >Tools & Pakages<br></font>
-  <font size=3 face="微软雅黑" color=gray> Pytorch, OpenCV, ROS, Mujoco, IsaacGym, Pybullet, PCL.</font>
+  <font size=3 face="微软雅黑" color=gray> Pytorch, OpenCV, ROS/ROS2, IsaacGym, Pybullet, PCL.</font>
 
 ---
 

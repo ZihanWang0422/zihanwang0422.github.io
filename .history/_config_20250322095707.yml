@@ -44,7 +44,7 @@ author:
   name:                Zihan Wang
   email:               <zihanw600@gmail.com>
   # Used by `jekyll-seo-tag`:
-  #twitter:             Yuanhang__Zhang
+  #twitter:             ZihanWang
 
 # Add links to the sidebar.
 # menu:
@@ -57,28 +57,25 @@ author:
 menu:
   - title:             BIOGRAPHY
     url:               /#biography
-  - title:             NEWS
-    url:               /#news
-  - title:             PUBLICATION
-    url:               /#publication
+  # - title:             NEWS
+  #   url:               /#news
+  # - title:             REASEARCH
+  #   url:               /#reaearch
   - title:             PROJECTS
     url:               /#projects
+  - title:             BLOG
+    url:               /#blog  
   - title:             AWARDS
     url:               /#awards
-  - title:             SERVICE
-    url:               /#service
-  - title:             MISCELLANEOUS
-    url:               /#miscellaneous
-  # - title:             SKILLS
-  #   url:               /#skills
-  # - title:             INTERESTS
-  #   url:               /#interests
+  # - title:             SERVICE
+  #   url:               /#service
+  - title:             SKILLS
+    url:               /#skills
+  # - title:             MISCELLANEOUS
+  #   url:               /#misc.
   - title:             RESUME
     url:               /assets/files/resume.pdf
-  # - title:             PORTFOLIO
-  #   url:               /assets/files/Portfolio-Saha-Abir.pdf
-  # - title:             Blog
-  #   url:               /blog
+
 
 # Add links to the footer.
 # Typically you'll want to link to your cookie- or privacy policy (if appliable), etc..
@@ -91,7 +88,7 @@ legal:
   #   url:               /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             © 2025. All rights reserved.
+copyright:             Template from github@hang0610
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
@@ -119,7 +116,7 @@ remote_theme: hydecorp/hydejack
 
 # Sidebar image and theme color of the site.
 # accent_image:          /assets/images/sidebar-bg.jpg
-accent_image:          /assets/images/sidebar.jpeg
+accent_image:          /assets/images/sidebar.jpg
 accent_color:          rgb(0, 87, 156)
 
 # This is used for the `theme-color` meta tag,
@@ -321,7 +318,7 @@ hydejack:
     always:            false
 
     # Set to `true` to use the dark theme based on visitors' preference (OS setting).
-    dynamic:           true
+    dynamic:           false
 
     # Set to `true` to allow visitors to switch between light and dark mode.
     icon:              true

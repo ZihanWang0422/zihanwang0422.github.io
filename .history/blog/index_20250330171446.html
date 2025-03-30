@@ -1,0 +1,22 @@
+---
+layout: blog
+title: 博客文章
+description: >
+  这里是我的博客文章列表
+---
+
+<div class="posts">
+  {% raw %}{% for post in site.posts %}
+    {% if post.categories contains 'blog' %}
+    <article class="post">
+      <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+      <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+        {{ post.date | date: "%Y-%m-%d" }}
+      </time>
+      {% if post.description %}
+        {{ post.description }}
+      {% endif %}
+    </article>
+    {% endif %}
+  {% endfor %}{% endraw %}
+</div> 

@@ -7,7 +7,7 @@ description: >
 
 <div class="posts">
   {% raw %}{% for post in site.pages %}
-    {% unless post.path contains 'blog/_posts' %}
+    {% if post.path contains 'blog/_posts' %}
     <article class="post">
       <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
       <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
@@ -17,6 +17,6 @@ description: >
         {{ post.description }}
       {% endif %}
     </article>
-    {% endunless %}
+    {% endif %}
   {% endfor %}{% endraw %}
 </div> 

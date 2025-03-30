@@ -220,6 +220,13 @@ defaults:
       seo:
         type:          WebPage
 
+  # 添加这个设置
+  - scope:
+      path: ""      # 应用到所有页面
+    values:
+      no_posts: true
+      hide_posts: true
+
   - scope:
       path: "blog/_posts"
     values:

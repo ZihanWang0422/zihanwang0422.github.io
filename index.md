@@ -331,7 +331,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- 论文条目1 -->
   <div class="pub-item">
     <div class="pub-image">
-      <a href="#" target="_blank">
+       <a href="https://github.com/ZihanWang0422/PointCloud_Reconstruction" target="_blank" rel="noopener noreferrer">
         <img src="assets/research/slam.png" alt="手持激光扫描仪">
       </a>
     </div>

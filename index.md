@@ -209,22 +209,75 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
            <span style="font-size: 15px;">Topic: VLA Navigation Car</span><br>
         </div>
     </div>
-    <!-- <br>
-    <div style="display: flex; align-items: center;">
-        <div style="width: 15%; display: inline-block;">
-            <img src="assets/images/nls.svg" style="border-square: 50%;" width="90%">
-        </div>
-        <div style="padding-left: 4%; width: 83%; display: inline-block;">
-            <span>
-                <b style="font-size: 18px;">Undergraduate Research Assistant</b>
-                <span style="font-size: 15px; float: right">Sep. 2022 - Feb. 2023</span>
-            </span><br>
-            <span style="font-size: 15px;"><a href="https://isn.sjtu.edu.cn/web/index" target="_blank">Institute for Sensing and Navigation at SJTU</a></span><br>
-            <span style="font-size: 15px;">Advisor: <a href="https://drone.sjtu.edu.cn/dpzou/" target="_blank">Prof. Danping Zou</a></span><br>
-            <span style="font-size: 15px;">Topic: </span><span style="font-size: 15px; font-weight: bold">Autonomous Drone Racing</span>
-        </div>
-    </div> -->
     <br>
+</div>
+
+<hr style="height:2px; background:#ccc; margin:2em 0">
+
+<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
+
+<style>
+  .pub-item {
+    margin: 1.5em 0;
+    padding-left: 20px;
+    border-left: 3px solid rgba(1,92,171,0.2);
+  }
+  .pub-title {
+    font-family: sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+  }
+  .pub-authors {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 5px 0;
+  }
+  .pub-venue {
+    font-size: 0.9rem;
+    color: #888;
+    font-style: italic;
+  }
+  .pub-links a {
+    color: rgb(1,92,171);
+    text-decoration: none;
+    margin-right: 15px;
+    font-size: 0.9rem;
+  }
+</style>
+
+<h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
+<div class="pub-item">
+  <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
+  <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
+  <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
+  <div class="pub-links">
+    <a href="#">[paper]</a>
+    <a href="#">[webpage]</a>
+    <a href="#">[code]</a>
+  </div>
+</div>
+
+<div class="pub-item">
+  <div class="pub-title">Hyper-Decision Transformer for Efficient Online Policy Adaptation</div>
+  <div class="pub-authors">Mengdi Xu, Yuchen Lu, Yikang Shen, Shun Zhang, Ding Zhao, Chuang Gan</div>
+  <div class="pub-venue">ICLR 2023</div>
+  <div class="pub-links">
+    <a href="#">[paper]</a>
+    <a href="#">[webpage]</a>
+  </div>
+</div>
+
+<h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
+<div class="pub-item">
+  <div class="pub-title">Continual Vision-based Reinforcement Learning with Group Symmetries</div>
+  <div class="pub-authors">Shiqi Liu*, Mengdi Xu*, Peide Huang, Yongkang Liu, Kentaro Oguchi, Ding Zhao</div>
+  <div class="pub-venue">CoRL 2023 (oral, 6.6%)</div>
+  <div class="pub-links">
+    <a href="#">[paper]</a>
+    <a href="#">[webpage]</a>
+    <a href="#">[code]</a>
+  </div>
 </div>
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
@@ -384,7 +437,7 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
               <div style="margin-top: 4px;">
                 <span class="icon-star-full" aria-hidden="true"></span>
                 <span style="font-family: 'Comic Sans MS'; color: #6495ED; font-weight:bold; font-size:1.0rem">
-                 LiDar Mapping, Navigation
+                 LiDAR Mapping, Navigation
                 </span>
               </div>
             </div>

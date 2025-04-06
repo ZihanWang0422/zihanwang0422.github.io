@@ -60,7 +60,7 @@ menu:
   # - title:             NEWS
   #   url:               /#news
   - title:             RESEARCH
-    url:               /#resarch
+    url:               /#research
   - title:             PROJECTS
     url:               /#projects 
   - title:             AWARDS

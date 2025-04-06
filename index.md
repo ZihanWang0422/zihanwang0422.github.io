@@ -127,7 +127,7 @@ no_posts: true
 During my undergraduate career, I hold a strong interest in robotics. My research interests lie in:  
 🌟**Robot Control**: How to design and intergrate efficient control methods to enable robots to tackle some tasks with robustness and adaptability.  
 🌟**Robot Learning**: Use some learning based methods(e.g. reinforcement learning, diffusion policy, VLA model etc) to achieve perception and interaction with human and environments.  
-🌟**Physical AI simulator**: Develope a high-fidelity physics-AI simulator which can deliver adaptive and precise virtual environments for complex systems (e.g. robotics, autonomous vehicles) to accelerate AI training and real-world deployment.
+<!-- 🌟**Physical AI simulator**: Develope a high-fidelity physics-AI simulator which can deliver adaptive and precise virtual environments for complex systems (e.g. robotics, autonomous vehicles) to accelerate AI training and real-world deployment. -->
 
 <!-- I'm interested in **Robotics**, **Machine Learning** and **Optimal Control**. Currently, I'm working on **Humanoid** and **Aerial Manipulation**. -->
 

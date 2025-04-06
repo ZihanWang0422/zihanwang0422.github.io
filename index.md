@@ -410,6 +410,10 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 
 <br>
 
+  <span class="icon-award" aria-hidden="true"></span> BUAA Academic Excellence Award, 2024
+
+<br>
+
   <span class="icon-award" aria-hidden="true"></span> BUAA Academic Excellence Award, 2023
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
@@ -417,12 +421,12 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="skills">Skills </h2>
 
 - <font size=4 face="微软雅黑" >Programming Languages<br></font>
-  <font size=3 face="微软雅黑" color=gray>Python, C/C++, Matlab.</font>
+  <font size=3 face="微软雅黑" color=gray>Python, C/C++, Pytorch, Matlab.</font>
 
 <br>
 
-- <font size=4 face="微软雅黑" >Tools & Pakages<br></font>
-  <font size=3 face="微软雅黑" color=gray> Pytorch, OpenCV, PCL, ROS/ROS2, IsaacSim, Gazebo.</font>
+- <font size=4 face="微软雅黑" >Robotics Tools<br></font>
+  <font size=3 face="微软雅黑" color=gray>OpenCV, PCL, ROS/ROS2, IsaacSim, Gazebo.</font>
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
 

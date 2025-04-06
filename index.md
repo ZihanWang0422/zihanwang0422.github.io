@@ -122,14 +122,10 @@ no_posts: true
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="biography">Biography </h2>
 
-**I'm a Senior undergraduated student at [Beihang University(BUAA)](https://ev.buaa.edu.cn/) My current work focus on how to achieve highly accurate and efficient [3D point cloud reconstruction](https://github.com/ZihanWang0422/PointCloud_Reconstruction)**
+Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang University(BUAA)](https://ev.buaa.edu.cn/)**
 
-During my undergraduate career, I hold a strong interest in robotics. My research interests lie in:  
-🌟**Robot Control**: How to design and intergrate efficient control methods to enable robots to tackle some tasks with robustness and adaptability.  
-🌟**Robot Learning**: Use some learning based methods(e.g. reinforcement learning, diffusion policy, VLA model etc) to achieve perception and interaction with human and environments.  
-<!-- 🌟**Physical AI simulator**: Develope a high-fidelity physics-AI simulator which can deliver adaptive and precise virtual environments for complex systems (e.g. robotics, autonomous vehicles) to accelerate AI training and real-world deployment. -->
+🤖 My research interests lie in harnessing the method of **learning** and **control** to enable robots to interact with environments and tackle tasks with robustness and adaptability. Especially, I am interested in using some generative models and sim-to-real methods to improve the performance of robot perception and decision-making.
 
-<!-- I'm interested in **Robotics**, **Machine Learning** and **Optimal Control**. Currently, I'm working on **Humanoid** and **Aerial Manipulation**. -->
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
 

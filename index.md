@@ -213,11 +213,12 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 </div>
 
 <!-- Research -->
+<!-- 在Research模块前添加分隔线 -->
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
 
-<!-- 排序控制 -->
+<!-- 排序控制按钮 -->
 <div class="sort-controls" style="margin: 1em 0 2em; display: flex; gap: 15px;">
   <button class="sort-btn active" data-sort="type">按类型排序</button>
   <button class="sort-btn" data-sort="year">按年份排序</button>
@@ -233,24 +234,57 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
     color: rgb(1,92,171);
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: all 0.3s ease;
     font-family: sans-serif;
   }
 
   .sort-btn:hover {
-    background: rgba(1,92,171,0.08);
-    transform: translateY(-1px);
+    background: rgba(1,92,171,0.1);
   }
 
   .sort-btn.active {
     background: rgb(1,92,171);
     color: white;
-    box-shadow: 0 4px 12px rgba(1,92,171,0.2);
   }
 
-  /* 论文条目动画 */
+  /* 论文条目布局 */
   .pub-item {
-    transition: transform 0.4s ease, opacity 0.3s ease;
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    margin: 2em 0;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+
+  /* 图片容器（始终在左侧） */
+  .pub-image {
+    flex: 0 0 220px;
+    min-width: 220px;
+    border: 1px solid rgba(1,92,171,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+
+  .pub-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .pub-item {
+      flex-direction: column;
+    }
+    .pub-image {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
   }
 </style>
 
@@ -265,19 +299,14 @@ document.addEventListener('DOMContentLoaded', () => {
   pubItems.forEach(item => {
     const venue = item.querySelector('.pub-venue').textContent;
     const yearMatch = venue.match(/(20\d{2})/);
-    item.dataset.year = yearMatch ? yearMatch[0] : '2023'; // 默认年份
+    item.dataset.year = yearMatch ? yearMatch[0] : '2023';
     
-    // 自动获取类型（根据前面的h3标题）
-    let currentType = '';
+    // 自动获取最近的h3标题作为类型
     let prevElem = item.previousElementSibling;
-    while(prevElem) {
-      if(prevElem.tagName === 'H3') {
-        currentType = prevElem.textContent;
-        break;
-      }
+    while(prevElem && prevElem.tagName !== 'H3') {
       prevElem = prevElem.previousElementSibling;
     }
-    item.dataset.type = currentType;
+    item.dataset.type = prevElem ? prevElem.textContent : '';
   });
 
   // 排序功能
@@ -285,7 +314,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const items = [...pubItems];
     
     if(sortType === 'year') {
-      items.sort((a, b) => b.dataset.year - a.dataset.year);
+      items.sort((a, b) => parseInt(b.dataset.year) - parseInt(a.dataset.year));
     } else {
       const typeOrder = ['Few-shot Generalization', 'Efficient Adaptation'];
       items.sort((a, b) => 
@@ -293,23 +322,14 @@ document.addEventListener('DOMContentLoaded', () => {
       );
     }
 
-    // 动画处理
-    items.forEach((item, index) => {
-      item.style.opacity = '0';
-      item.style.transform = 'translateY(20px)';
-      setTimeout(() => {
-        item.style.opacity = '1';
-        item.style.transform = 'translateY(0)';
-      }, 50 * index);
+    // 重新插入排序后的元素
+    const researchContent = document.querySelector('.research-content');
+    researchContent.replaceChildren(...items);
+
+    // 控制分类标题显示
+    typeHeaders.forEach(header => {
+      header.style.display = sortType === 'type' ? 'block' : 'none';
     });
-
-    // 重新插入元素
-    const fragment = document.createDocumentFragment();
-    items.forEach(item => fragment.appendChild(item.cloneNode(true)));
-    researchSection.replaceChild(fragment, researchSection.querySelector('.sort-controls').nextSibling);
-
-    // 更新类型标题显示
-    typeHeaders.forEach(header => header.style.display = sortType === 'type' ? 'block' : 'none');
   }
 
   // 按钮交互
@@ -327,10 +347,11 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="research-content">
   <h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
   
+  <!-- 论文条目1 - 图片始终在左侧 -->
   <div class="pub-item">
     <div class="pub-image">
-      <a href="https://corl2023.org/" target="_blank">
-        <img src="assets/research/llm_robot.jpg" alt="LLM驱动的机器人工具使用">
+      <a href="#" target="_blank">
+        <img src="assets/research/llm_robot.jpg" alt="LLM机器人工具使用">
       </a>
     </div>
     <div class="pub-content">
@@ -345,10 +366,11 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
+  <!-- 论文条目2 -->
   <div class="pub-item">
     <div class="pub-image">
-      <a href="https://iclr.cc/" target="_blank">
-        <img src="assets/research/hyper_dt.jpg" alt="超决策变换器架构">
+      <a href="#" target="_blank">
+        <img src="assets/research/hyper_dt.jpg" alt="超决策变换器">
       </a>
     </div>
     <div class="pub-content">
@@ -364,10 +386,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
   
+  <!-- 论文条目3 -->
   <div class="pub-item">
     <div class="pub-image">
-      <a href="https://corl2023.org/" target="_blank">
-        <img src="assets/research/continual_rl.jpg" alt="持续强化学习框架">
+      <a href="#" target="_blank">
+        <img src="assets/research/continual_rl.jpg" alt="持续强化学习">
       </a>
     </div>
     <div class="pub-content">

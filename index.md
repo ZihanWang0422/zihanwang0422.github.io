@@ -213,40 +213,11 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 </div>
 
 <!-- Research -->
-<!-- 在Research模块前添加分隔线 -->
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
 
-<!-- 排序控制按钮 -->
-<div class="sort-controls" style="margin: 1em 0 2em; display: flex; gap: 15px;">
-  <button class="sort-btn active" data-sort="type">按类型排序</button>
-  <button class="sort-btn" data-sort="year">按年份排序</button>
-</div>
-
 <style>
-  /* 排序按钮样式 */
-  .sort-btn {
-    padding: 8px 25px;
-    border: 2px solid rgb(1,92,171);
-    border-radius: 25px;
-    background: white;
-    color: rgb(1,92,171);
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    font-family: sans-serif;
-  }
-
-  .sort-btn:hover {
-    background: rgba(1,92,171,0.1);
-  }
-
-  .sort-btn.active {
-    background: rgb(1,92,171);
-    color: white;
-  }
-
   /* 论文条目布局 */
   .pub-item {
     display: flex;
@@ -258,7 +229,11 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
     transition: background 0.3s ease;
   }
 
-  /* 图片容器（始终在左侧） */
+  .pub-item:hover {
+    background: rgba(1,92,171,0.03);
+  }
+
+  /* 图片容器（始终左侧） */
   .pub-image {
     flex: 0 0 220px;
     min-width: 220px;
@@ -275,6 +250,10 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
     transition: transform 0.3s ease;
   }
 
+  .pub-image:hover img {
+    transform: scale(1.05);
+  }
+
   /* 响应式设计 */
   @media (max-width: 768px) {
     .pub-item {
@@ -286,68 +265,70 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
       margin: 0 auto;
     }
   }
+
+  /* 文本内容样式 */
+  .pub-title {
+    font-family: sans-serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #222;
+    margin-bottom: 8px;
+  }
+
+  .pub-authors {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.4;
+  }
+
+  .pub-venue {
+    font-size: 0.9rem;
+    color: rgb(1,92,171);
+    font-weight: 500;
+    margin: 8px 0;
+  }
+
+  .pub-links a {
+    display: inline-block;
+    color: rgb(1,92,171);
+    text-decoration: none;
+    margin-right: 15px;
+    padding: 4px 10px;
+    border: 1px solid rgba(1,92,171,0.3);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .pub-links a:hover {
+    background: rgb(1,92,171);
+    color: white;
+    border-color: transparent;
+  }
 </style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const researchSection = document.getElementById('research');
-  const sortButtons = document.querySelectorAll('.sort-btn');
-  let pubItems = Array.from(document.querySelectorAll('.pub-item'));
-  const typeHeaders = document.querySelectorAll('#research h3');
+  const pubItems = Array.from(document.querySelectorAll('.pub-item'));
 
-  // 初始化数据属性
+  // 初始化年份数据
   pubItems.forEach(item => {
     const venue = item.querySelector('.pub-venue').textContent;
     const yearMatch = venue.match(/(20\d{2})/);
     item.dataset.year = yearMatch ? yearMatch[0] : '2023';
-    
-    // 自动获取最近的h3标题作为类型
-    let prevElem = item.previousElementSibling;
-    while(prevElem && prevElem.tagName !== 'H3') {
-      prevElem = prevElem.previousElementSibling;
-    }
-    item.dataset.type = prevElem ? prevElem.textContent : '';
   });
 
-  // 排序功能
-  function sortItems(sortType) {
-    const items = [...pubItems];
-    
-    if(sortType === 'year') {
-      items.sort((a, b) => parseInt(b.dataset.year) - parseInt(a.dataset.year));
-    } else {
-      const typeOrder = ['Few-shot Generalization', 'Efficient Adaptation'];
-      items.sort((a, b) => 
-        typeOrder.indexOf(a.dataset.type) - typeOrder.indexOf(b.dataset.type)
-      );
-    }
-
-    // 重新插入排序后的元素
-    const researchContent = document.querySelector('.research-content');
-    researchContent.replaceChildren(...items);
-
-    // 控制分类标题显示
-    typeHeaders.forEach(header => {
-      header.style.display = sortType === 'type' ? 'block' : 'none';
-    });
-  }
-
-  // 按钮交互
-  sortButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      sortButtons.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      sortItems(btn.dataset.sort);
-    });
-  });
+  // 按年份降序排序
+  pubItems.sort((a, b) => parseInt(b.dataset.year) - parseInt(a.dataset.year));
+  
+  // 应用排序
+  const researchContent = document.querySelector('.research-content');
+  researchContent.replaceChildren(...pubItems);
 });
 </script>
 
 <!-- 研究内容 -->
 <div class="research-content">
-  <h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
-  
-  <!-- 论文条目1 - 图片始终在左侧 -->
+  <!-- 论文条目1 -->
   <div class="pub-item">
     <div class="pub-image">
       <a href="#" target="_blank">
@@ -370,7 +351,7 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="pub-item">
     <div class="pub-image">
       <a href="#" target="_blank">
-        <img src="assets/research/hyper_dt.jpg" alt="超决策变换器">
+        <img src="assets/research/hyper_dt.jpg" alt="超决策变换器架构">
       </a>
     </div>
     <div class="pub-content">
@@ -384,13 +365,11 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
   </div>
 
-  <h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
-  
   <!-- 论文条目3 -->
   <div class="pub-item">
     <div class="pub-image">
       <a href="#" target="_blank">
-        <img src="assets/research/continual_rl.jpg" alt="持续强化学习">
+        <img src="assets/research/continual_rl.jpg" alt="持续强化学习框架">
       </a>
     </div>
     <div class="pub-content">

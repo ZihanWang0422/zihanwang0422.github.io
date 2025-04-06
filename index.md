@@ -212,161 +212,177 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
     <br>
 </div>
 
+<!-- Research -->
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
 
+<!-- 排序控制 -->
+<div class="sort-controls" style="margin: 1em 0 2em; display: flex; gap: 15px;">
+  <button class="sort-btn active" data-sort="type">按类型排序</button>
+  <button class="sort-btn" data-sort="year">按年份排序</button>
+</div>
+
 <style>
-  /* 核心布局样式 */
-  .pub-item {
-    display: flex;
-    gap: 25px;
-    align-items: flex-start;
-    margin: 2em 0;
-    padding: 15px;
-    border-radius: 8px;
-    transition: background 0.3s ease;
-  }
-  .pub-item:hover {
-    background: rgba(1,92,171,0.03);
-  }
-
-  /* 图片容器 */
-  .pub-image {
-    flex: 0 0 220px;
-    min-width: 220px;
-    border: 1px solid rgba(1,92,171,0.1);
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  }
-  .pub-image img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    transition: transform 0.3s ease;
-  }
-  .pub-image:hover img {
-    transform: scale(1.05);
-  }
-
-  /* 文本内容 */
-  .pub-content {
-    flex: 1;
-    padding-right: 15px;
-  }
-  .pub-title {
-    font-family: sans-serif;
-    font-size: 1.15rem;
+  /* 排序按钮样式 */
+  .sort-btn {
+    padding: 8px 25px;
+    border: 2px solid rgb(1,92,171);
+    border-radius: 25px;
+    background: white;
+    color: rgb(1,92,171);
     font-weight: 600;
-    color: #222;
-    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: sans-serif;
   }
-  .pub-authors {
-    font-size: 0.95rem;
-    color: #444;
-    line-height: 1.4;
+
+  .sort-btn:hover {
+    background: rgba(1,92,171,0.08);
+    transform: translateY(-1px);
   }
-  .pub-venue {
-    font-size: 0.9rem;
-    color: rgb(1,92,171);
-    font-weight: 500;
-    margin: 8px 0;
-  }
-  .pub-links a {
-    display: inline-block;
-    color: rgb(1,92,171);
-    text-decoration: none;
-    margin-right: 15px;
-    padding: 4px 10px;
-    border: 1px solid rgba(1,92,171,0.3);
-    border-radius: 4px;
-    transition: all 0.2s ease;
-  }
-  .pub-links a:hover {
+
+  .sort-btn.active {
     background: rgb(1,92,171);
     color: white;
-    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(1,92,171,0.2);
   }
 
-  /* 响应式设计 */
-  @media (max-width: 768px) {
-    .pub-item {
-      flex-direction: column;
-      gap: 15px;
-      padding: 0;
-    }
-    .pub-image {
-      width: 100%;
-      max-width: 400px;
-      margin: 0 auto;
-    }
-    .pub-content {
-      padding: 0;
-    }
+  /* 论文条目动画 */
+  .pub-item {
+    transition: transform 0.4s ease, opacity 0.3s ease;
   }
 </style>
 
-<!-- 示例条目 1 -->
-<h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
-<div class="pub-item">
-  <div class="pub-image">
-    <a href="https://corl2023.org/" target="_blank">
-      <img src="assets/research/llm_robot.jpg" alt="LLM驱动的机器人工具使用示意图">
-    </a>
-  </div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const researchSection = document.getElementById('research');
+  const sortButtons = document.querySelectorAll('.sort-btn');
+  let pubItems = Array.from(document.querySelectorAll('.pub-item'));
+  const typeHeaders = document.querySelectorAll('#research h3');
+
+  // 初始化数据属性
+  pubItems.forEach(item => {
+    const venue = item.querySelector('.pub-venue').textContent;
+    const yearMatch = venue.match(/(20\d{2})/);
+    item.dataset.year = yearMatch ? yearMatch[0] : '2023'; // 默认年份
+    
+    // 自动获取类型（根据前面的h3标题）
+    let currentType = '';
+    let prevElem = item.previousElementSibling;
+    while(prevElem) {
+      if(prevElem.tagName === 'H3') {
+        currentType = prevElem.textContent;
+        break;
+      }
+      prevElem = prevElem.previousElementSibling;
+    }
+    item.dataset.type = currentType;
+  });
+
+  // 排序功能
+  function sortItems(sortType) {
+    const items = [...pubItems];
+    
+    if(sortType === 'year') {
+      items.sort((a, b) => b.dataset.year - a.dataset.year);
+    } else {
+      const typeOrder = ['Few-shot Generalization', 'Efficient Adaptation'];
+      items.sort((a, b) => 
+        typeOrder.indexOf(a.dataset.type) - typeOrder.indexOf(b.dataset.type)
+      );
+    }
+
+    // 动画处理
+    items.forEach((item, index) => {
+      item.style.opacity = '0';
+      item.style.transform = 'translateY(20px)';
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateY(0)';
+      }, 50 * index);
+    });
+
+    // 重新插入元素
+    const fragment = document.createDocumentFragment();
+    items.forEach(item => fragment.appendChild(item.cloneNode(true)));
+    researchSection.replaceChild(fragment, researchSection.querySelector('.sort-controls').nextSibling);
+
+    // 更新类型标题显示
+    typeHeaders.forEach(header => header.style.display = sortType === 'type' ? 'block' : 'none');
+  }
+
+  // 按钮交互
+  sortButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      sortButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      sortItems(btn.dataset.sort);
+    });
+  });
+});
+</script>
+
+<!-- 研究内容 -->
+<div class="research-content">
+  <h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
   
-  <div class="pub-content">
-    <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
-    <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
-    <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
-    <div class="pub-links">
-      <a href="#">[PDF]</a>
-      <a href="#">[Project]</a>
-      <a href="#">[Code]</a>
+  <div class="pub-item">
+    <div class="pub-image">
+      <a href="https://corl2023.org/" target="_blank">
+        <img src="assets/research/llm_robot.jpg" alt="LLM驱动的机器人工具使用">
+      </a>
+    </div>
+    <div class="pub-content">
+      <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
+      <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
+      <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
+      <div class="pub-links">
+        <a href="#">[PDF]</a>
+        <a href="#">[Project]</a>
+        <a href="#">[Code]</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="pub-item">
+    <div class="pub-image">
+      <a href="https://iclr.cc/" target="_blank">
+        <img src="assets/research/hyper_dt.jpg" alt="超决策变换器架构">
+      </a>
+    </div>
+    <div class="pub-content">
+      <div class="pub-title">Hyper-Decision Transformer for Efficient Online Policy Adaptation</div>
+      <div class="pub-authors">Mengdi Xu, Yuchen Lu, Yikang Shen, Shun Zhang, Ding Zhao, Chuang Gan</div>
+      <div class="pub-venue">ICLR 2023</div>
+      <div class="pub-links">
+        <a href="#">[PDF]</a>
+        <a href="#">[Video]</a>
+      </div>
+    </div>
+  </div>
+
+  <h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
+  
+  <div class="pub-item">
+    <div class="pub-image">
+      <a href="https://corl2023.org/" target="_blank">
+        <img src="assets/research/continual_rl.jpg" alt="持续强化学习框架">
+      </a>
+    </div>
+    <div class="pub-content">
+      <div class="pub-title">Continual Vision-based Reinforcement Learning with Group Symmetries</div>
+      <div class="pub-authors">Shiqi Liu*, Mengdi Xu*, Peide Huang, Yongkang Liu, Kentaro Oguchi, Ding Zhao</div>
+      <div class="pub-venue">CoRL 2023 (oral, 6.6%)</div>
+      <div class="pub-links">
+        <a href="#">[PDF]</a>
+        <a href="#">[Slides]</a>
+      </div>
     </div>
   </div>
 </div>
 
-<!-- 示例条目 2 -->
-<div class="pub-item">
-  <div class="pub-image">
-    <a href="https://iclr.cc/" target="_blank">
-      <img src="assets/research/hyper_dt.jpg" alt="超决策变换器架构图">
-    </a>
-  </div>
-  
-  <div class="pub-content">
-    <div class="pub-title">Hyper-Decision Transformer for Efficient Online Policy Adaptation</div>
-    <div class="pub-authors">Mengdi Xu, Yuchen Lu, Yikang Shen, Shun Zhang, Ding Zhao, Chuang Gan</div>
-    <div class="pub-venue">ICLR 2023</div>
-    <div class="pub-links">
-      <a href="#">[PDF]</a>
-      <a href="#">[Video]</a>
-    </div>
-  </div>
-</div>
-
-<!-- 示例条目 3 -->
-<h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
-<div class="pub-item">
-  <div class="pub-image">
-    <a href="https://corl2023.org/" target="_blank">
-      <img src="assets/research/continual_rl.jpg" alt="持续强化学习框架图示">
-    </a>
-  </div>
-  
-  <div class="pub-content">
-    <div class="pub-title">Continual Vision-based Reinforcement Learning with Group Symmetries</div>
-    <div class="pub-authors">Shiqi Liu*, Mengdi Xu*, Peide Huang, Yongkang Liu, Kentaro Oguchi, Ding Zhao</div>
-    <div class="pub-venue">CoRL 2023 (oral, 6.6%)</div>
-    <div class="pub-links">
-      <a href="#">[PDF]</a>
-      <a href="#">[Slides]</a>
-    </div>
-  </div>
-</div>
-
+<!-- Projects -->
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="projects">Projects </h2>

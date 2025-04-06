@@ -332,22 +332,21 @@ document.addEventListener('DOMContentLoaded', () => {
   <div class="pub-item">
     <div class="pub-image">
       <a href="#" target="_blank">
-        <img src="assets/research/llm_robot.jpg" alt="LLM机器人工具使用">
+        <img src="assets/research/slam.png" alt="手持激光扫描仪">
       </a>
     </div>
     <div class="pub-content">
-      <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
-      <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
-      <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
+      <div class="pub-title">Three-dimensional modeling of terrestrial buildings based on a handheld laser scanner</div>
+      <div class="pub-authors">Zihan Wang</div>
+      <div class="pub-venue">Bachelar Dgree Thesis</div>
       <div class="pub-links">
-        <a href="#">[PDF]</a>
-        <a href="#">[Project]</a>
+        <a href="#">[Paper]</a>
         <a href="#">[Code]</a>
       </div>
     </div>
   </div>
 
-  <!-- 论文条目2 -->
+  <!-- 论文条目2
   <div class="pub-item">
     <div class="pub-image">
       <a href="#" target="_blank">
@@ -363,26 +362,9 @@ document.addEventListener('DOMContentLoaded', () => {
         <a href="#">[Video]</a>
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <!-- 论文条目3 -->
-  <div class="pub-item">
-    <div class="pub-image">
-      <a href="#" target="_blank">
-        <img src="assets/research/continual_rl.jpg" alt="持续强化学习框架">
-      </a>
-    </div>
-    <div class="pub-content">
-      <div class="pub-title">Continual Vision-based Reinforcement Learning with Group Symmetries</div>
-      <div class="pub-authors">Shiqi Liu*, Mengdi Xu*, Peide Huang, Yongkang Liu, Kentaro Oguchi, Ding Zhao</div>
-      <div class="pub-venue">CoRL 2023 (oral, 6.6%)</div>
-      <div class="pub-links">
-        <a href="#">[PDF]</a>
-        <a href="#">[Slides]</a>
-      </div>
-    </div>
-  </div>
-</div>
+
 
 <!-- Projects -->
 <hr style="height:2px; background:#ccc; margin:2em 0">

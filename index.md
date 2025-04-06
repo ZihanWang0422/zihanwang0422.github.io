@@ -248,13 +248,21 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 
 <h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
 <div class="pub-item">
-  <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
-  <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
-  <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
-  <div class="pub-links">
-    <a href="#">[paper]</a>
-    <a href="#">[webpage]</a>
-    <a href="#">[code]</a>
+  <div class="pub-image">
+    <a href="https://example.com/paper1" target="_blank">
+      <img src="assets/research/llm_robot.jpg" alt="LLM Robot Tool Use">
+    </a>
+  </div>
+  
+  <div class="pub-content">
+    <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
+    <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
+    <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
+    <div class="pub-links">
+      <a href="#">[paper]</a>
+      <a href="#">[webpage]</a>
+      <a href="#">[code]</a>
+    </div>
   </div>
 </div>
 

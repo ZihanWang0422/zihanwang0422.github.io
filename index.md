@@ -217,41 +217,102 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
 
 <style>
+  /* 核心布局样式 */
   .pub-item {
-    margin: 1.5em 0;
-    padding-left: 20px;
-    border-left: 3px solid rgba(1,92,171,0.2);
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    margin: 2em 0;
+    padding: 15px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  .pub-item:hover {
+    background: rgba(1,92,171,0.03);
+  }
+
+  /* 图片容器 */
+  .pub-image {
+    flex: 0 0 220px;
+    min-width: 220px;
+    border: 1px solid rgba(1,92,171,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  }
+  .pub-image img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+  .pub-image:hover img {
+    transform: scale(1.05);
+  }
+
+  /* 文本内容 */
+  .pub-content {
+    flex: 1;
+    padding-right: 15px;
   }
   .pub-title {
     font-family: sans-serif;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     font-weight: 600;
-    color: #333;
+    color: #222;
+    margin-bottom: 8px;
   }
   .pub-authors {
     font-size: 0.95rem;
-    color: #666;
-    margin: 5px 0;
+    color: #444;
+    line-height: 1.4;
   }
   .pub-venue {
     font-size: 0.9rem;
-    color: #888;
-    font-style: italic;
+    color: rgb(1,92,171);
+    font-weight: 500;
+    margin: 8px 0;
   }
   .pub-links a {
+    display: inline-block;
     color: rgb(1,92,171);
     text-decoration: none;
     margin-right: 15px;
-    font-size: 0.9rem;
+    padding: 4px 10px;
+    border: 1px solid rgba(1,92,171,0.3);
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+  .pub-links a:hover {
+    background: rgb(1,92,171);
+    color: white;
+    border-color: transparent;
+  }
+
+  /* 响应式设计 */
+  @media (max-width: 768px) {
+    .pub-item {
+      flex-direction: column;
+      gap: 15px;
+      padding: 0;
+    }
+    .pub-image {
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+    }
+    .pub-content {
+      padding: 0;
+    }
   }
 </style>
 
+<!-- 示例条目 1 -->
 <h3 style="color: rgb(1,92,171); margin-top:1.5em">Few-shot Generalization</h3>
-
 <div class="pub-item">
   <div class="pub-image">
-    <a href="https://example.com/paper1" target="_blank">
-      <img src="assets/research/llm_robot.jpg" alt="LLM Robot Tool Use">
+    <a href="https://corl2023.org/" target="_blank">
+      <img src="assets/research/llm_robot.jpg" alt="LLM驱动的机器人工具使用示意图">
     </a>
   </div>
   
@@ -260,31 +321,48 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
     <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
     <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
     <div class="pub-links">
-      <a href="#">[paper]</a>
-      <a href="#">[webpage]</a>
-      <a href="#">[code]</a>
+      <a href="#">[PDF]</a>
+      <a href="#">[Project]</a>
+      <a href="#">[Code]</a>
     </div>
   </div>
 </div>
 
-
-<h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
-
+<!-- 示例条目 2 -->
 <div class="pub-item">
   <div class="pub-image">
-    <a href="https://example.com/paper1" target="_blank">
-      <img src="assets/research/llm_robot.jpg" alt="LLM Robot Tool Use">
+    <a href="https://iclr.cc/" target="_blank">
+      <img src="assets/research/hyper_dt.jpg" alt="超决策变换器架构图">
     </a>
   </div>
   
   <div class="pub-content">
-    <div class="pub-title">Creative Robot Tool Use with Large Language Models</div>
-    <div class="pub-authors">Mengdi Xu*, Peide Huang*, Wenhao Yu*, Shiqi Liu, Xilun Zhang, Yaru Niu, Tingnan Zhang, Fei Xia, Jie Tan, Ding Zhao</div>
-    <div class="pub-venue">CoRL 2023 Workshop on Language and Robot Learning</div>
+    <div class="pub-title">Hyper-Decision Transformer for Efficient Online Policy Adaptation</div>
+    <div class="pub-authors">Mengdi Xu, Yuchen Lu, Yikang Shen, Shun Zhang, Ding Zhao, Chuang Gan</div>
+    <div class="pub-venue">ICLR 2023</div>
     <div class="pub-links">
-      <a href="#">[paper]</a>
-      <a href="#">[webpage]</a>
-      <a href="#">[code]</a>
+      <a href="#">[PDF]</a>
+      <a href="#">[Video]</a>
+    </div>
+  </div>
+</div>
+
+<!-- 示例条目 3 -->
+<h3 style="color: rgb(1,92,171); margin-top:1.5em">Efficient Adaptation</h3>
+<div class="pub-item">
+  <div class="pub-image">
+    <a href="https://corl2023.org/" target="_blank">
+      <img src="assets/research/continual_rl.jpg" alt="持续强化学习框架图示">
+    </a>
+  </div>
+  
+  <div class="pub-content">
+    <div class="pub-title">Continual Vision-based Reinforcement Learning with Group Symmetries</div>
+    <div class="pub-authors">Shiqi Liu*, Mengdi Xu*, Peide Huang, Yongkang Liu, Kentaro Oguchi, Ding Zhao</div>
+    <div class="pub-venue">CoRL 2023 (oral, 6.6%)</div>
+    <div class="pub-links">
+      <a href="#">[PDF]</a>
+      <a href="#">[Slides]</a>
     </div>
   </div>
 </div>

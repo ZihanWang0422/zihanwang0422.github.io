@@ -208,7 +208,7 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
             </span><br>
             <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
             <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
-            <span style="font-size: 15px;">Topic: <a href="https://docs.google.com/presentation/d/1AB1nN69qvbDMoYwKr_wVQCPA4gvBt-gM/edit?usp=drive_link&ouid=110514396844944080931&rtpof=true&sd=true" target="_blank">Vision Language Based 6-Dof Grasp</a></span><br>
+            <span style="font-size: 15px;">Topic: <a target="_blank">Vision Language Based 6-Dof Grasp</a></span><br>
         </div>
     </div>
     <br>

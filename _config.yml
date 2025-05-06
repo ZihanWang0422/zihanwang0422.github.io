@@ -84,7 +84,7 @@ legal:
   #   url:               /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             Template from github@hang0610
+copyright:             © 2025 Zihan Wang
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/

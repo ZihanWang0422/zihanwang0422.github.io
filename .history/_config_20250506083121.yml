@@ -59,22 +59,18 @@ menu:
     url:               /#biography
   # - title:             NEWS
   #   url:               /#news
-  # - title:             REASEARCH
-  #   url:               /#reaearch
+  - title:             RESEARCH
+    url:               /#research
   - title:             PROJECTS
-    url:               /#projects
-  - title:             BLOG
-    url:               /#blog  
+    url:               /#projects 
   - title:             AWARDS
     url:               /#awards
   # - title:             SERVICE
   #   url:               /#service
-  - title:             SKILLS
-    url:               /#skills
-  # - title:             MISCELLANEOUS
-  #   url:               /#misc.
   - title:             RESUME
     url:               /assets/files/resume.pdf
+  - title:             BLOG
+    url:               https://zihanwang03.wordpress.com/
 
 
 # Add links to the footer.
@@ -88,14 +84,14 @@ legal:
   #   url:               /CHANGELOG/
 
 # This text will appear in a `<small>` tag in the footer of every page.
-copyright:             Template from github@hang0610
+copyright:             © 2025 Zihan Wang
 
 # Format of the permalinks
 permalink:             /:categories/:year-:month-:day-:title/
 
 # Pagination configuration (used by the `blog` layout)
-paginate:              10
-paginate_path:         /:num/
+paginate:              5
+paginate_path:         /blog/page:num/
 
 
 # Theme
@@ -221,6 +217,12 @@ defaults:
     values:
       seo:
         type:          WebPage
+
+  - scope:
+      path: "blog/_posts"
+      type: blog_posts
+    values:
+      layout: post
 
 kramdown:
   math_engine:         katex
@@ -349,6 +351,10 @@ collections:
   projects:
     permalink:         /projects/:path/
     output:            true
+
+  blog_posts:
+    output: true
+    permalink: /blog/:year/:month/:day/:title/
 
 
 # File inclusion/exclusion

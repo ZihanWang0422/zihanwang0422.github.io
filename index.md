@@ -165,6 +165,22 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
 
   <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
       <div style="width: 15%; display: inline-block;">
+          <img src="assets/images/cuhk.jpg" style="border-radius: 50%;">
+      </div>
+      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
+          <span>
+              <b style="font-size: 18px;">The Chinese University of Hong Kong</b>
+              <span style="font-size: 15px; float: right">Sep. 2025 - Dec. 2026</span>
+          </span><br>
+          <span style="font-size: 15px;">Master Student</span><br>
+          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotics</span><br>
+      </div>
+  </div>
+  
+  <br>
+
+  <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
+      <div style="width: 15%; display: inline-block;">
           <img src="assets/images/buaa.jpg" style="border-radius: 50%;">
       </div>
       <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
@@ -177,41 +193,10 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
       </div>
   </div>
 
-  <br>
-
-  <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
-      <div style="width: 15%; display: inline-block;">
-          <img src="assets/images/cuhk.jpg" style="border-radius: 50%;">
-      </div>
-      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
-          <span>
-              <b style="font-size: 18px;">The Chinese University of Hong Kong</b>
-              <span style="font-size: 15px; float: right">Sep. 2025 - Dec. 2026</span>
-          </span><br>
-          <span style="font-size: 15px;">Master Student</span><br>
-          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotics</span><br>
-      </div>
-  </div>
-
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
 <h3 class="h2" style="color: rgb(1,92,171); font-size: 25px; font-weight: bold;" id="">Experience </h3>
 <div>
-    <div style="display: flex; align-items: center;">
-        <div style="width: 15%; display: inline-block;">
-            <img src="assets/images/nus.jpg" style="border-square: 50%;">
-        </div>
-        <div style="padding-left: 4%; width: 83%; display: inline-block;">
-            <span>
-                <b style="font-size: 18px;">Research Assistant (Remote)</b>
-                <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
-            </span><br>
-            <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
-            <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
-            <span style="font-size: 15px;">Topic: <a target="_blank">Vision Language Based 6-Dof Grasp</a></span><br>
-        </div>
-    </div>
-    <br>
     <div style="display: flex; align-items: center;">
         <div style="width: 15%; display: inline-block;">
             <img src="assets/images/THU.jpg" style="border-square: 50%;" width="100%">
@@ -224,6 +209,21 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
             <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
             <span style="font-size: 15px;">Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof.Jia Liu </a></span><br>
            <span style="font-size: 15px;">Topic: VLA Navigation Car</span><br>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex; align-items: center;">
+        <div style="width: 15%; display: inline-block;">
+            <img src="assets/images/nus.jpg" style="border-square: 50%;">
+        </div>
+        <div style="padding-left: 4%; width: 83%; display: inline-block;">
+            <span>
+                <b style="font-size: 18px;">Research Assistant (Remote)</b>
+                <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
+            </span><br>
+            <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
+            <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
+            <span style="font-size: 15px;">Topic: <a target="_blank">Vision Language Based 6-Dof Grasp</a></span><br>
         </div>
     </div>
     <br>

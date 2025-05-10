@@ -464,6 +464,40 @@ document.addEventListener('DOMContentLoaded', () => {
   <tbody>
       <tr>
         <td style="width: 30%; vertical-align: top; padding-right: 20px;">
+          <img src="assets/competition/vla_car.jpg"
+              style="width: 100%; max-width: 280px; height: auto; object-fit: contain"/>
+        </td>
+        <td style="vertical-align: top;">
+          <div style="padding-left: 15px;">
+            <div style="margin-bottom: 8px;">
+              <span style="font-family: 'Helvetica Neue Thin'; font-size: 1.15rem; line-height: 1.3; font-weight: bold;">
+                VLA Navigation Car
+              </span>
+              <div style="margin-top: 4px;">
+                <span class="icon-star-full" aria-hidden="true"></span>
+                <span style="font-family: 'Comic Sans MS'; color: #6495ED; font-weight:bold; font-size:1.0rem">
+                  2D Slam Navigation
+                </span>
+              </div>
+            </div>
+            <!-- 修改后的链接 -->
+            <div class="project-links">
+              <a href="https://github.com/ZihanWang0422/YuyuanCup">[Code]</a>
+            </div>
+            <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
+                Implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for improved Nav2 autonomous navigation capabilities on NVIDIA Jetson®.
+            </div>
+          </div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+
+<table class="stretch-table" style="margin: -0.2em 0em 0.5em -0.5em; width: 100%">
+  <tbody>
+      <tr>
+        <td style="width: 30%; vertical-align: top; padding-right: 20px;">
           <img src="assets/competition/aircraft.jpg"
               style="width: 100%; max-width: 280px; height: auto; object-fit: contain"/>
         </td>
@@ -590,6 +624,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="awards">Misc. </h2>
   <span class="icon-award" aria-hidden="true"></span> During my spare time, I greatly enjoy palying basketball🏀, swimming🏊 and playing guitar🎸.
 
+<hr style="height:2px; background:#ccc; margin:2em 0">
 <!-- map -->
 <!--
 <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=380&t=tt&d=w5Q40Mcc2glzXD3S396H2X_VPVmmSjd_AlGD-dtYM2o&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff'></script> -->

@@ -462,6 +462,39 @@ document.addEventListener('DOMContentLoaded', () => {
   <tbody>
       <tr>
         <td style="width: 30%; vertical-align: top; padding-right: 20px;">
+          <img src="assets/competition/legged-wheel.jpg"
+              style="width: 100%; max-width: 280px; height: auto; object-fit: contain"/>
+        </td>
+        <td style="vertical-align: top;">
+          <div style="padding-left: 15px;">
+            <div style="margin-bottom: 8px;">
+              <span style="font-family: 'Helvetica Neue Thin'; font-size: 1.15rem; line-height: 1.3; font-weight: bold;">
+                Wheel-legged Robot
+              </span>
+              <div style="margin-top: 4px;">
+                <span class="icon-star-full" aria-hidden="true"></span>
+                <span style="font-family: 'Comic Sans MS'; color: #6495ED; font-weight:bold; font-size:1.0rem">
+                  LQR Control
+                </span>
+              </div>
+            </div>
+            <!-- 修改后的链接 -->
+            <div class="project-links">
+              <a href="https://github.com/ZihanWang0422/wheel-legged-master">[Code]</a>
+            </div>
+            <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
+                Implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for improved Nav2 autonomous navigation capabilities on NVIDIA Jetson®.
+            </div>
+          </div>
+        </td>
+      </tr>
+  </tbody>
+</table>
+
+<table class="stretch-table" style="margin: -0.2em 0em 0.5em -0.5em; width: 100%">
+  <tbody>
+      <tr>
+        <td style="width: 30%; vertical-align: top; padding-right: 20px;">
           <img src="assets/competition/vla_car.jpg"
               style="width: 100%; max-width: 280px; height: auto; object-fit: contain"/>
         </td>

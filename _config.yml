@@ -32,6 +32,10 @@ description:           >
 # It also used by the `jekyll-seo-tag` plugin.
 logo:                  /assets/images/han.jpeg
 
+# SEO设置 - 禁用社交媒体预览图片
+social_links_image: false
+image: false
+
 # A shorter description for the sidebar.
 tagline: |
   Homepage

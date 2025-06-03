@@ -1,0 +1,14 @@
+{% comment %}
+  覆盖默认的SEO标签行为，禁用社交媒体预览图片
+{% endcomment %}
+
+{% if page.image %}
+  <!-- 禁用页面图片预览 -->
+{% else %}
+  <!-- 页面没有定义图片 -->
+{% endif %}
+
+<!-- 移除所有OpenGraph和Twitter卡片的图片标签 -->
+<meta property="og:image" content="" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:image" content="" /> 

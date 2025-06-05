@@ -203,7 +203,7 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
         </div>
         <div style="padding-left: 4%; width: 83%; display: inline-block;">
             <span>
-                <b style="font-size: 18px;">Research Assistant</b>
+                <b style="font-size: 18px;">Research Intern</b>
                 <span style="font-size: 15px; float: right">Mar. 2025 - Jul. 2025</span>
             </span><br>
             <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
@@ -218,7 +218,7 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
         </div>
         <div style="padding-left: 4%; width: 83%; display: inline-block;">
             <span>
-                <b style="font-size: 18px;">Research Assistant (Remote)</b>
+                <b style="font-size: 18px;">Research Intern (Remote)</b>
                 <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
             </span><br>
             <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
               <a href="https://github.com/ZihanWang0422/wheel-legged-master">[Code]</a>
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
-                Implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for improved Nav2 autonomous navigation capabilities on NVIDIA Jetson®.
+                Developed a wheel-legged robot control system utilizing STM32H7 microcontroller with integrated PID and LQR algorithms for precise motion control and attitude stabilization across complex terrain.
             </div>
           </div>
         </td>
@@ -517,6 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
                 Implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for improved Nav2 autonomous navigation capabilities on NVIDIA Jetson®.
+                Leveraged ESDF (Euclidean Signed Distance Field) mapping for 3D SLAM, achieving precise environmental reconstruction and optimized path planning.
             </div>
           </div>
         </td>

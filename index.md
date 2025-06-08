@@ -223,7 +223,7 @@ Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang Univer
             </span><br>
             <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
             <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
-            <span style="font-size: 15px;">Topic: <a target="_blank">Vision Language Based 6-Dof Grasp</a></span><br>
+            <span style="font-size: 15px;">Topic: <a target="_blank">6-Dof Grasp based on VLA model</a></span><br>
         </div>
     </div>
     <br>
@@ -593,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
-<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="awards">Awards </h2>
+<!-- <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="awards">Awards </h2>
   <span class="icon-award" aria-hidden="true"></span> College Students' Innovation and Entrepreneurship Training Project(National Level Award), 2024
 
 <br>
@@ -604,7 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <span class="icon-award" aria-hidden="true"></span> Academic Excellence Award, 2023
 
-<hr style="height:2px; background:#ccc; margin:2em 0">
+<hr style="height:2px; background:#ccc; margin:2em 0"> -->
 
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="skills">Skills </h2>
 

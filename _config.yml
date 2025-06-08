@@ -67,14 +67,14 @@ menu:
     url:               /#research
   - title:             PROJECTS
     url:               /#projects 
-  - title:             AWARDS
-    url:               /#awards
+  # - title:             AWARDS
+  #   url:               /#awards
   # - title:             SERVICE
   #   url:               /#service
   - title:             RESUME
     url:               /assets/files/resume.pdf
-  - title:             BLOG
-    url:               https://zihanwang03.wordpress.com/
+  # - title:             BLOG
+  #   url:               https://zihanwang03.wordpress.com/
 
 
 # Add links to the footer.

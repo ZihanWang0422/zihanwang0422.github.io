@@ -1,7 +1,11 @@
 ---
 layout: post
 title: Robot Learning
-tags: [Robot Learning, Reinforcement Learning]
+description: Robot Learning is a field of study at the intersection of machine learning and robotics.
+image: /assets/images/blog/robot-learning.png
+tags:
+  - Robot Learning
+  - Reinforcement Learning
 permalink: /blog/robot-learning/
 toc: true
 ---

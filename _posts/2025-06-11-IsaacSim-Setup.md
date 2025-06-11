@@ -1,11 +1,14 @@
 ---
 layout: post
 title: IsaacSim Setup
-tags: [Simulator, Navigation, SLAM]
+description: Some basic IsaacSim Setup and SLAM/Nav2 demo.
+image: /assets/images/blog/simulator.png
+tags:
+  - Simulator
+  - Navigation
+  - SLAM
 permalink: /blog/isaac-sim-setup/
 ---
-
-Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
 * TOC
 {:toc}

@@ -17,12 +17,6 @@ hide_description: true
     {% endif %}
   </div>
 
-  {% if page.description %}
-  <div class="post-description">
-    {{ page.description }}
-  </div>
-  {% endif %}
-
   <div class="post-content">
     {{ content }}
   </div>
@@ -53,13 +47,6 @@ hide_description: true
     text-decoration: none;
   }
   
-  .post-description {
-    font-style: italic;
-    margin-bottom: 2rem;
-    color: #555;
-    font-size: 1.1rem;
-  }
-  
   .post-content {
     margin-top: 2rem;
   }
@@ -71,6 +58,13 @@ hide_description: true
   /* 隐藏重复的标题和描述 */
   .page-title, .description {
     display: none !important;
+  }
+
+  .post-description {
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.1rem;
   }
 </style>
 

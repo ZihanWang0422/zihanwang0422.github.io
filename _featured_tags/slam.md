@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: SLAM
-permalink: /blog/tags/slam/
+permalink: /blog/slam/
 --- 

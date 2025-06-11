@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: Robot Learning
-permalink: /blog/tags/robot-learning/
+permalink: /blog/robot-learning/
 --- 

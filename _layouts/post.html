@@ -11,7 +11,7 @@ hide_description: true
     {% if page.tags.size > 0 %}
     <span class="post-tags">
       {% for tag in page.tags %}
-      <a href="{{ site.baseurl }}/blog/tags/{{ tag | slugify }}/" class="post-tag">{{ tag }}</a>
+      <a href="{{ site.baseurl }}/blog/{{ tag | slugify }}/" class="post-tag">{{ tag }}</a>
       {% endfor %}
     </span>
     {% endif %}

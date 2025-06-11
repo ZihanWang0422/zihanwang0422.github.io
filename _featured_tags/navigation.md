@@ -1,5 +1,5 @@
 ---
 layout: tag
 tag: Navigation
-permalink: /blog/tags/navigation/
+permalink: /blog/navigation/
 --- 

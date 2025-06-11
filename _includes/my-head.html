@@ -30,3 +30,76 @@
   <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
   <!-- <script src="https://cdn.jsdelivr.net/gh/cferdinandi/gumshoe@4/dist/gumshoe.polyfills.min.js"></script> -->
   <!-- <meta name="google-site-verification" content="Kghnw3GY5eb5r6k7i6m8b1AUutptytsD-h4NDSjY7rA" /> -->
+
+<!-- 引入自定义CSS文件 -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom.css">
+
+<style>
+  /* 隐藏顶部描述部分 */
+  .description {
+    display: none !important;
+  }
+  
+  /* 隐藏描述标题 */
+  h2.description-title, h2:first-child {
+    display: none !important;
+  }
+  
+  /* 隐藏特定文本的元素 */
+  .page-description, .DESCRIPTION {
+    display: none !important;
+  }
+  
+  /* 隐藏文章页面顶部的DESCRIPTION标题和内容 */
+  .post > .DESCRIPTION, 
+  .post > h2:contains("DESCRIPTION"), 
+  .post > .description,
+  .post-content > h2:first-child,
+  .post-content > p:first-child {
+    display: none !important;
+  }
+  
+  /* 使用更通用的选择器 */
+  h2, p {
+    display: none !important;
+  }
+  
+  /* 但保留文章内容 */
+  .post-content h2, .post-content p {
+    display: block !important;
+  }
+  
+  /* 保留标题和日期 */
+  .post-title, .post-date {
+    display: block !important;
+  }
+  
+  /* 隐藏页面顶部的DESCRIPTION部分 */
+  header .description {
+    display: none !important;
+  }
+  
+  /* 隐藏文章页面顶部的描述部分 */
+  article .description {
+    display: none !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 查找并隐藏DESCRIPTION标题和内容
+    const elements = document.getElementsByTagName('*');
+    for (let i = 0; i < elements.length; i++) {
+      const el = elements[i];
+      if (el.textContent.trim() === 'DESCRIPTION') {
+        el.style.display = 'none';
+        
+        // 隐藏下一个元素（可能是描述内容）
+        let next = el.nextElementSibling;
+        if (next && next.tagName !== 'H1' && next.tagName !== 'H2' && next.tagName !== 'H3') {
+          next.style.display = 'none';
+        }
+      }
+    }
+  });
+</script>

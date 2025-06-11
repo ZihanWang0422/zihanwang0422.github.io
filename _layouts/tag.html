@@ -2,21 +2,18 @@
 layout: page
 ---
 
-{{ content }}
+<h1 class="tag-title">{{ page.tag }}</h1>
 
-<div class="tags-section">
-  <p class="tags-title">All Tags:</p>
-  <div class="tags-list">
-    {% assign sorted_tags = site.tags | sort %}
-    {% for tag in sorted_tags %}
-    <a href="{{ site.baseurl }}/blog/tags/{{ tag[0] | slugify }}/" class="blog-tag">{{ tag[0] }}</a>
-    {% endfor %}
-  </div>
+<div class="tag-description">
+  <p>Articles tagged with <strong>{{ page.tag }}</strong></p>
+  <p><a href="{{ site.baseurl }}/blog/tags/" class="all-tags-link">← All tags</a></p>
 </div>
 
-{% if site.posts.size > 0 %}
 <div class="posts">
-  {% for post in site.posts %}
+  {% assign tag = page.tag %}
+  {% assign filtered_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
+  
+  {% for post in filtered_posts %}
   <article class="post">
     <h2 class="post-title">
       <a href="{{ post.url | relative_url }}">
@@ -42,40 +39,27 @@ layout: page
   </article>
   {% endfor %}
 </div>
-{% else %}
-<p>暂无博客文章</p>
-{% endif %}
 
 <style>
-  .tags-section {
+  .tag-title {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+  
+  .tag-description {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
     border-bottom: 1px solid #eee;
   }
   
-  .tags-title {
-    margin-bottom: 0.5rem;
+  .all-tags-link {
     font-weight: bold;
-  }
-  
-  .tags-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .blog-tag {
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    font-size: 0.9rem;
+    color: #4fb1ba;
     text-decoration: none;
-    color: #333;
   }
   
-  .blog-tag:hover {
-    background-color: #e1e1e1;
+  .all-tags-link:hover {
+    text-decoration: underline;
   }
   
   .post {

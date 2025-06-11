@@ -51,13 +51,6 @@ author:
   #twitter:             ZihanWang
 
 # Add links to the sidebar.
-# menu:
-#   - title:             Example
-#     url:               /example/
-#   - title:             Documentation
-#     url:               /docs/
-#   - title:             About
-#     url:               /about/
 menu:
   - title:             BIOGRAPHY
     url:               /#biography
@@ -352,7 +345,7 @@ collections:
     output:            true
 
   featured_tags:
-    permalink:         /tag-:name/
+    permalink:         /blog/tags/:name/
     output:            true
 
   projects:

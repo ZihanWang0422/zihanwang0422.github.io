@@ -212,19 +212,52 @@
   
   li {
     margin-bottom: 0.5rem;
+    transition: all 0.2s ease;
     
     a {
       color: #333;
       text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-block;
+      padding: 2px 0;
       
       &:hover {
         color: rgb(0, 87, 156);
+        transform: translateX(2px);
       }
     }
     
     > ul {
       margin-top: 0.5rem;
       padding-left: 1.5rem;
+    }
+  }
+  
+  // 嵌套级别样式
+  ul {
+    padding-left: 0;
+    list-style-type: none;
+    
+    ul {
+      padding-left: 1.5rem;
+      
+      li {
+        font-size: 0.95em;
+        
+        a {
+          color: #444;
+        }
+      }
+      
+      ul {
+        li {
+          font-size: 0.9em;
+          
+          a {
+            color: #555;
+          }
+        }
+      }
     }
   }
 }
@@ -245,6 +278,29 @@
     border-radius: 0 4px 4px 0;
     z-index: 100;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    /* 隐藏滚动条 */
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    
+    &::-webkit-scrollbar-thumb {
+      background: #ccc;
+      border-radius: 2px;
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+      background: #aaa;
+    }
   }
   
   /* 为目录留出空间 */

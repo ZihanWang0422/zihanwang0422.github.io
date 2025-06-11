@@ -72,4 +72,67 @@ hide_description: true
   .page-title, .description {
     display: none !important;
   }
-</style> 
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 获取目录和所有标题
+    const toc = document.getElementById('markdown-toc');
+    if (toc) {
+      const tocLinks = toc.querySelectorAll('a');
+      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
+      
+      // 添加活跃类的样式
+      const style = document.createElement('style');
+      style.innerHTML = `
+        #markdown-toc a.active {
+          color: rgb(0, 87, 156) !important;
+          font-weight: bold !important;
+          transform: translateX(2px);
+          transition: all 0.2s ease;
+        }
+        #markdown-toc a.active::before {
+          content: "→ ";
+          position: relative;
+          left: -2px;
+        }
+      `;
+      document.head.appendChild(style);
+      
+      // 滚动时更新活跃目录项
+      window.addEventListener('scroll', function() {
+        // 获取当前滚动位置
+        const scrollPosition = window.scrollY + 150; // 添加偏移量以提前高亮
+        
+        // 找到当前可见的标题
+        let currentHeading = null;
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          if (heading.offsetTop <= scrollPosition) {
+            currentHeading = heading;
+          } else {
+            // 如果已经超过了当前滚动位置，就不再继续查找
+            break;
+          }
+        }
+        
+        // 移除所有活跃类
+        tocLinks.forEach(function(link) {
+          link.classList.remove('active');
+        });
+        
+        // 如果找到当前标题，高亮对应的目录项
+        if (currentHeading) {
+          const id = currentHeading.id;
+          const activeLink = toc.querySelector('a[href="#' + id + '"]');
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
+      
+      // 初始触发一次滚动事件
+      window.dispatchEvent(new Event('scroll'));
+    }
+  });
+</script> 

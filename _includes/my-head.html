@@ -38,7 +38,7 @@
   }
   
   /* 隐藏描述标题 */
-  h2.description-title, h2:first-child {
+  h2.description-title {
     display: none !important;
   }
   
@@ -51,24 +51,9 @@
   .post > .DESCRIPTION, 
   .post > h2:contains("DESCRIPTION"), 
   .post > .description,
-  .post-content > h2:first-child,
-  .post-content > p:first-child {
+  .post-content > h2:first-of-type:contains("DESCRIPTION"),
+  .post-content > p:first-of-type:empty + p {
     display: none !important;
-  }
-  
-  /* 使用更通用的选择器 */
-  h2, p {
-    display: none !important;
-  }
-  
-  /* 但保留文章内容 */
-  .post-content h2, .post-content p {
-    display: block !important;
-  }
-  
-  /* 保留标题和日期 */
-  .post-title, .post-date {
-    display: block !important;
   }
   
   /* 隐藏页面顶部的DESCRIPTION部分 */
@@ -88,7 +73,7 @@
     const elements = document.getElementsByTagName('*');
     for (let i = 0; i < elements.length; i++) {
       const el = elements[i];
-      if (el.textContent.trim() === 'DESCRIPTION') {
+      if (el.textContent && el.textContent.trim() === 'DESCRIPTION') {
         el.style.display = 'none';
         
         // 隐藏下一个元素（可能是描述内容）

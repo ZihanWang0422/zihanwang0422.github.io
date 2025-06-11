@@ -3,7 +3,7 @@ layout: page
 ---
 
 <div class="tag-description">
-  <p><a href="{{ site.baseurl }}/blog/" class="all-tags-link">← Back to Blog</a></p>
+  <p class="back-to-blog"><a href="{{ site.baseurl }}/blog/" class="all-tags-link">← Back to Blog</a></p>
 </div>
 
 <div class="posts">
@@ -63,14 +63,29 @@ layout: page
     border-bottom: 1px solid #eee;
   }
   
+  .back-to-blog {
+    margin-top: 1rem;
+    font-size: 1.1rem;
+    display: block !important;
+  }
+  
   .all-tags-link {
     font-weight: bold;
     color: #4fb1ba;
     text-decoration: none;
+    display: inline-block !important;
   }
   
   .all-tags-link:hover {
     text-decoration: underline;
+  }
+  
+  /* 确保这些元素不会被隐藏 */
+  .tag-description p,
+  .tag-description a {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
   }
   
   .post {

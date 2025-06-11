@@ -1,7 +1,7 @@
 ---
 layout: post
 title: IsaacSim Setup
-tags: [介绍]
+tags: [Simulator, Navigation, SLAM]
 permalink: /blog/isaac-sim-setup/
 ---
 
@@ -9,7 +9,7 @@ Some basic IsaacSim setup and SLAM/Nav2 demo.
 
 # Prerequisite
 
-[Official GeForce Drivers | NVIDIA](https://www.nvidia.com/en-us/geforce/drivers/)
+[Official GeForce Drivers NVIDIA](https://www.nvidia.com/en-us/geforce/drivers/)
 
 [ubuntu22.04安装nvidia驱动/CUDA/cudnn_](https://blog.csdn.net/qq_34972053/article/details/127689332)
 
@@ -125,15 +125,15 @@ Some basic IsaacSim setup and SLAM/Nav2 demo.
 
 
 
-   * Docker + Nvidia container toolkit: [使用 NVIDIA Container Toolkit 和 Docker 配置 GPU 深度学习环境 - 溺死在幸福里的猪 - 博客园](https://www.cnblogs.com/li508q/p/18444582)
+* Docker + Nvidia container toolkit: [使用 NVIDIA Container Toolkit 和 Docker 配置 GPU 深度学习环境 - 溺死在幸福里的猪 - 博客园](https://www.cnblogs.com/li508q/p/18444582)
 
-[Ubuntu22.04安装docker、nvidia-docker、NVIDIA Container Toolkit亲自安装必有效_ubuntu22.04安装nvidia-docker-CSDN博客](https://blog.csdn.net/guoqingru0311/article/details/145926492)
+​	   [Ubuntu22.04安装docker、nvidia-docker、NVIDIA Container Toolkit亲自安装必有效_ubuntu22.04安装nvidia-docker-CSDN博 		客](https://blog.csdn.net/guoqingru0311/article/details/145926492)
 
 
 
    * 问题解决记录1：nvidia-container-cli: initialization error: load library failed
 
-[docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393)
+​		[docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · 		NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393)
 
 
 
@@ -211,6 +211,8 @@ Some basic IsaacSim setup and SLAM/Nav2 demo.
 
 
 
+
+
 # Isaac Sim
 
 ## Installization（Workstation）
@@ -268,6 +270,8 @@ Some basic IsaacSim setup and SLAM/Nav2 demo.
   #每次启动isaac sim前均需要运行source
   source install/local_setup.bash
   ```
+
+
 
 
 

@@ -190,3 +190,59 @@
     color: DimGray;
     margin-top: 0.5em;
   }
+
+/* 目录样式 */
+.toc-container {
+  margin: 2rem 0;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.03);
+  border-radius: 5px;
+  border-left: 4px solid var(--accent-color, #4fb1ba);
+}
+
+.toc-title {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.3rem;
+  color: var(--accent-color, #4fb1ba);
+}
+
+.toc {
+  font-size: 0.95rem;
+}
+
+.toc ul {
+  padding-left: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.toc li {
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.toc a {
+  color: inherit;
+  text-decoration: none;
+  border-bottom: none !important;
+}
+
+.toc a:hover {
+  color: var(--accent-color, #4fb1ba);
+  text-decoration: underline;
+}
+
+/* 适配移动设备的TOC */
+@media (max-width: 768px) {
+  .toc-container {
+    padding: 1rem;
+  }
+  
+  .toc {
+    font-size: 0.9rem;
+  }
+  
+  .toc ul {
+    padding-left: 1.2rem;
+  }
+}

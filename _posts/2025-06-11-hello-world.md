@@ -1,9 +1,10 @@
 ---
 layout: post
-title: 欢迎来到我的博客
+title: IsaacSim Setup
 description: >
   这是我的第一篇博客文章，欢迎访问！
 tags: [介绍]
+permalink: /blog/isaac-sim-setup/
 ---
 
 ## 欢迎来到我的博客

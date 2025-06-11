@@ -91,7 +91,7 @@ legal:
 copyright:             © 2025 Zihan Wang
 
 # Format of the permalinks
-permalink:             /:categories/:year-:month-:day-:title/
+permalink:             /blog/:title/
 
 # Pagination configuration (used by the `blog` layout)
 paginate:              10
@@ -358,7 +358,7 @@ collections:
 
   blog_posts:
     output: true
-    permalink: /blog/:year/:month/:day/:title/
+    permalink: /blog/:title/
     hidden: true
 
 

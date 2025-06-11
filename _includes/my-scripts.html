@@ -16,5 +16,13 @@
     
     document.addEventListener('DOMContentLoaded', function () {
       document.querySelectorAll('.collapsible-content').forEach(div => div.style.display = 'none');
+      
+      // 处理重复的标题
+      const titles = document.querySelectorAll('h1.page-title, h1.post-title');
+      if (titles.length > 1) {
+        for (let i = 1; i < titles.length; i++) {
+          titles[i].style.display = 'none';
+        }
+      }
     });
 </script>

@@ -359,6 +359,7 @@ collections:
   blog_posts:
     output: true
     permalink: /blog/:year/:month/:day/:title/
+    hidden: true
 
 
 # File inclusion/exclusion

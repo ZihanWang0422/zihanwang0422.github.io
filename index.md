@@ -8,6 +8,7 @@ description: >
 hide_description: true
 hide_posts: true
 no_posts: true
+posts_page: /blog/
 ---
 <!-- <script type="text/javascript">
 	document.getElementsByClassName("page-title")[0].classList.add("sr-only");
@@ -626,7 +627,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <!--
 <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=380&t=tt&d=w5Q40Mcc2glzXD3S396H2X_VPVmmSjd_AlGD-dtYM2o&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff'></script> -->
 
-<!--posts-->
+
 
 <style>
     /* table {

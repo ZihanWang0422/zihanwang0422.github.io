@@ -17,6 +17,12 @@ hide_description: true
     {% endif %}
   </div>
 
+  {% if page.description %}
+  <div class="post-description">
+    {{ page.description }}
+  </div>
+  {% endif %}
+
   <div class="post-content">
     {{ content }}
   </div>

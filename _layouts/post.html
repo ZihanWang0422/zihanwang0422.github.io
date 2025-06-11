@@ -23,8 +23,10 @@ hide_description: true
   </div>
   {% endif %}
 
-  <div class="post-content">
-    {{ content }}
+  <div class="post-content-wrapper">
+    <div class="post-content">
+      {{ content }}
+    </div>
   </div>
 </article>
 
@@ -72,4 +74,58 @@ hide_description: true
   .page-title, .description {
     display: none !important;
   }
-</style> 
+  
+  /* 内容包装器，确保足够宽以容纳侧边目录 */
+  .post-content-wrapper {
+    width: 100%;
+    position: relative;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // 创建一个固定在右侧的目录副本
+    const toc = document.getElementById('markdown-toc');
+    if (toc) {
+      // 获取所有标题元素
+      const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3');
+      const tocLinks = toc.querySelectorAll('a');
+      
+      // 滚动时更新活跃目录项
+      window.addEventListener('scroll', function() {
+        // 获取当前滚动位置
+        const scrollPosition = window.scrollY;
+        
+        // 找到当前可见的标题
+        let currentHeading = null;
+        for (let i = 0; i < headings.length; i++) {
+          const heading = headings[i];
+          const topOffset = heading.offsetTop - 120; // 考虑固定头部高度
+          
+          if (scrollPosition >= topOffset) {
+            currentHeading = heading;
+          } else {
+            break;
+          }
+        }
+        
+        // 移除所有活跃类
+        tocLinks.forEach(function(link) {
+          link.classList.remove('active');
+        });
+        
+        // 如果找到当前标题，高亮对应的目录项
+        if (currentHeading) {
+          const id = currentHeading.id;
+          const activeLink = toc.querySelector('a[href="#' + id + '"]');
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
+      
+      // 初始触发一次滚动事件
+      window.dispatchEvent(new Event('scroll'));
+    }
+  });
+</script> 

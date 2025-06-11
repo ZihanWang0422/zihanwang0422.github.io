@@ -6,7 +6,7 @@ permalink: /blog/isaac-sim-setup/
 toc: true
 ---
 
-Some basic IsaacSim setup and SLAM/Nav2 demo.
+Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
 * TOC
 {:toc}

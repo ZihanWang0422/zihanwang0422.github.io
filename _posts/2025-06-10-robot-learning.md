@@ -1,8 +1,6 @@
 ---
 layout: post
 title: Robot Learning
-description: >
-  本文简要介绍了机器人学习的主要方法和最新进展。
 tags: [Robot Learning, Reinforcement Learning]
 permalink: /blog/robot-learning/
 ---

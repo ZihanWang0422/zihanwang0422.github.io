@@ -1,8 +1,6 @@
 ---
 layout: post
 title: IsaacSim Setup
-description: >
-  这是我的第一篇博客文章，欢迎访问！
 tags: [介绍]
 permalink: /blog/isaac-sim-setup/
 ---

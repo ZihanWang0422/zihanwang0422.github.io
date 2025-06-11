@@ -73,8 +73,8 @@ menu:
   #   url:               /#service
   - title:             RESUME
     url:               /assets/files/resume.pdf
-  # - title:             BLOG
-  #   url:               https://zihanwang03.wordpress.com/
+  - title:             BLOG
+    url:               /blog/
 
 
 # Add links to the footer.
@@ -94,7 +94,7 @@ copyright:             © 2025 Zihan Wang
 permalink:             /:categories/:year-:month-:day-:title/
 
 # Pagination configuration (used by the `blog` layout)
-paginate:              5
+paginate:              10
 paginate_path:         /blog/page:num/
 
 

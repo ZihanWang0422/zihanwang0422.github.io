@@ -1,9 +1,9 @@
 ---
 layout: page
-title: 文章标签
+title: Tags
 description: >
   按标签浏览所有博客文章
-hide_description: false
+hide_description: true
 permalink: /tags/
 ---
 
@@ -24,7 +24,6 @@ permalink: /tags/
         <li>
           <a class="post-title" href="{{ site.baseurl }}{{ post.url }}">
             {{ post.title }}
-            <small class="post-date">{{ post.date | date_to_string }}</small>
           </a>
         </li>
       {% endfor %}
@@ -69,11 +68,5 @@ permalink: /tags/
   
   .tags-expo-posts li {
     margin-bottom: 0.5rem;
-  }
-  
-  .post-date {
-    color: #767676;
-    font-size: 0.8rem;
-    margin-left: 0.5rem;
   }
 </style> 

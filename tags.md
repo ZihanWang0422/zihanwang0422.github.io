@@ -4,7 +4,7 @@ title: Tags
 description: >
   按标签浏览所有博客文章
 hide_description: true
-permalink: /tags/
+permalink: /blog/tags/
 ---
 
 {% assign sorted_tags = site.tags | sort %}

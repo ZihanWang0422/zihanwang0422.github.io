@@ -5,7 +5,7 @@ layout: page
 {{ content }}
 
 <div class="tags-section">
-  <p>按标签浏览: <a href="{{ site.baseurl }}/tags/" class="all-tags-link">所有标签</a></p>
+  <p>By topic: <a href="{{ site.baseurl }}/blog/tags/" class="all-tags-link">Tags</a></p>
 </div>
 
 {% if site.posts.size > 0 %}
@@ -29,7 +29,7 @@ layout: page
     {% if post.tags.size > 0 %}
     <div class="post-tags">
       {% for tag in post.tags %}
-      <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+      <a href="{{ site.baseurl }}/blog/tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
       {% endfor %}
     </div>
     {% endif %}

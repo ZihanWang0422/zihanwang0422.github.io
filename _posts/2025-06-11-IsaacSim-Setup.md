@@ -3,15 +3,12 @@ layout: post
 title: IsaacSim Setup
 tags: [Simulator, Navigation, SLAM]
 permalink: /blog/isaac-sim-setup/
-toc: true
 ---
 
 Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
-<div class="toc-wrapper" markdown="1">
-* 目录
+* TOC
 {:toc}
-</div>
 
 # Prerequisite
 

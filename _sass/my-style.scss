@@ -191,190 +191,76 @@
     margin-top: 0.5em;
   }
 
-/* 目录样式 */
-.toc-container {
-  margin: 2rem 0;
-  padding: 1.5rem;
-  background-color: rgba(0, 0, 0, 0.03);
-  border-radius: 5px;
-  border-left: 4px solid var(--accent-color, #4fb1ba);
-}
-
-.toc-title {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.3rem;
-  color: var(--accent-color, #4fb1ba);
-}
-
-.toc {
-  font-size: 0.95rem;
-}
-
-.toc ul {
-  padding-left: 1.5rem;
-  margin-bottom: 0.5rem;
-}
-
-.toc li {
-  margin-bottom: 0.5rem;
-  line-height: 1.4;
-}
-
-.toc a {
-  color: inherit;
-  text-decoration: none;
-  border-bottom: none !important;
-}
-
-.toc a:hover {
-  color: var(--accent-color, #4fb1ba);
-  text-decoration: underline;
-}
-
-/* 适配移动设备的TOC */
-@media (max-width: 768px) {
-  .toc-container {
-    padding: 1rem;
-  }
-  
-  .toc {
-    font-size: 0.9rem;
-  }
-  
-  .toc ul {
-    padding-left: 1.2rem;
-  }
-}
-
-/* 目录样式基础设置 */
+/* 目录样式 - 完全重写 */
 #markdown-toc {
-  background: rgba(245, 245, 245, 0.95);
+  background: #f8f8f8;
   padding: 1.5rem;
   margin: 2rem 0;
-  border-radius: 5px;
-  list-style-position: inside;
+  border-radius: 4px;
   list-style-type: none;
   
   &::before {
     content: "目录";
+    display: block;
     font-weight: bold;
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    display: block;
-    color: var(--accent-color, #4fb1ba);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    color: rgb(0, 87, 156);
+    border-bottom: 1px solid #eee;
     padding-bottom: 0.5rem;
-  }
-  
-  ul {
-    list-style-type: none;
-    padding-left: 1.2rem;
-    margin-top: 0.3rem;
-    margin-bottom: 0.5rem;
   }
   
   li {
     margin-bottom: 0.5rem;
-    line-height: 1.4;
-    position: relative;
     
-    &::before {
-      content: "•";
-      position: absolute;
-      left: -1rem;
-      color: var(--accent-color, #4fb1ba);
-    }
-  }
-  
-  a {
-    color: #555;
-    text-decoration: none;
-    border-bottom: none !important;
-    display: inline-block;
-    padding: 0.1rem 0;
-    font-size: 0.95rem;
-    
-    &:hover, &.active {
-      color: var(--accent-color, #4fb1ba);
+    a {
+      color: #333;
       text-decoration: none;
+      
+      &:hover {
+        color: rgb(0, 87, 156);
+      }
     }
     
-    &.active {
-      font-weight: bold;
-      transform: translateX(2px);
+    > ul {
+      margin-top: 0.5rem;
+      padding-left: 1.5rem;
     }
   }
 }
 
-/* 包装器样式 */
-.toc-wrapper {
-  display: block;
-  width: 100%;
-}
-
-/* 强制修复目录固定在右侧 */
 @media (min-width: 1020px) {
-  /* 移动设备上显示toc-wrapper，在桌面上隐藏 */
-  .toc-wrapper {
-    display: none !important;
-  }
-  
-  /* 设置目录样式 */
+  /* 固定目录在右侧 */
   #markdown-toc {
-    position: fixed !important;
-    top: 120px !important;
-    right: 20px !important;
-    left: auto !important;
-    width: 250px !important;
-    max-height: 80vh !important;
-    overflow-y: auto !important;
-    z-index: 100 !important;
-    margin: 0 !important;
-    background: rgba(249, 249, 249, 0.97) !important;
-    border-left: 3px solid rgb(0, 87, 156) !important;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
-    font-size: 0.9rem !important;
-    
-    /* 隐藏滚动条 */
-    &::-webkit-scrollbar {
-      width: 0 !important;
-      background: transparent !important;
-    }
-    
-    ul {
-      padding-left: 1rem !important;
-    }
-    
-    li {
-      font-size: 0.85rem !important;
-    }
+    position: fixed;
+    top: 120px;
+    right: 30px;
+    width: 240px;
+    max-height: 80vh;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    margin: 0;
+    background: rgba(248, 248, 248, 0.95);
+    border-left: 3px solid rgb(0, 87, 156);
+    border-radius: 0 4px 4px 0;
+    z-index: 100;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   }
   
-  /* 为内容区域腾出空间 */
-  .content {
-    max-width: calc(100% - 260px) !important;
-  }
-  
+  /* 为目录留出空间 */
   .post-content {
-    max-width: calc(100% - 280px) !important;
+    width: calc(100% - 280px);
+    max-width: calc(100% - 280px);
   }
 }
 
-/* 移动设备响应式样式 */
 @media (max-width: 1019px) {
-  .toc-wrapper {
-    display: block !important;
-  }
-  
   #markdown-toc {
-    position: relative !important;
-    width: auto !important;
-    margin: 2rem 0 !important;
-    box-shadow: none !important;
-  }
-  
-  .post-content {
-    max-width: 100% !important;
+    position: relative;
+    width: auto;
+    max-width: none;
+    overflow: visible;
+    border-radius: 4px;
+    box-shadow: none;
   }
 }

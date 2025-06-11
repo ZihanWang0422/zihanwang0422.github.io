@@ -1,13 +1,40 @@
-/* 隐藏文章页面顶部的DESCRIPTION部分 */
+/* 调整文章页面的DESCRIPTION部分样式，而不是隐藏它 */
 .DESCRIPTION,
 h2:contains("DESCRIPTION"),
 .description {
-  display: none !important;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+  font-weight: normal;
+  order: 2; /* 使用flexbox排序 */
 }
 
-/* 隐藏文章页面顶部的描述内容 */
+/* 调整描述内容的样式 */
 .DESCRIPTION + p,
 h2:contains("DESCRIPTION") + p,
 .description + p {
-  display: none !important;
+  font-style: italic;
+  margin-bottom: 2rem;
+  color: #555;
+  font-size: 1rem;
+  order: 3; /* 使用flexbox排序 */
+}
+
+/* 使用flexbox布局调整顺序 */
+.post {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-title {
+  order: 1;
+}
+
+.post-date {
+  order: 4;
+}
+
+.post-content {
+  order: 5;
 } 

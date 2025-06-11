@@ -4,10 +4,10 @@ hide_title: true
 hide_description: true
 ---
 
-<!-- 引入自定义CSS文件，用于隐藏页面顶部的DESCRIPTION部分 -->
+<!-- 引入自定义CSS文件，用于调整页面顶部的DESCRIPTION部分 -->
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom-post.css">
 
-<!-- 引入自定义JavaScript文件，用于在页面加载后隐藏DESCRIPTION部分 -->
+<!-- 引入自定义JavaScript文件，用于在页面加载后移动DESCRIPTION部分 -->
 <script src="{{ site.baseurl }}/assets/js/custom-post.js"></script>
 
 <article class="post">
@@ -51,6 +51,8 @@ hide_description: true
     border-radius: 3px;
     font-size: 0.8rem;
     text-decoration: none;
+    position: relative;
+    left: -10px; /* 将标签向左移动 */
   }
   
   .post-content {
@@ -71,6 +73,22 @@ hide_description: true
     margin-bottom: 2rem;
     color: #555;
     font-size: 1.1rem;
+  }
+  
+  /* 描述标题和内容的样式 */
+  .description-title {
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-weight: normal;
+  }
+  
+  .description-content {
+    font-style: italic;
+    margin-bottom: 1.5rem;
+    color: #555;
+    font-size: 1rem;
   }
 </style>
 

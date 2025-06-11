@@ -7,8 +7,6 @@ tags: [Robot Learning, Reinforcement Learning]
 permalink: /blog/robot-learning/
 ---
 
-## 机器人学习方法综述
-
 机器人学习是机器人技术中的重要研究方向，它使机器人能够通过经验不断提升自身能力。本文将简要介绍几种主要的机器人学习方法。
 
 ### 监督学习

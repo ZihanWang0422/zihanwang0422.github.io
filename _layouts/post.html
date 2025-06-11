@@ -1,0 +1,68 @@
+---
+layout: page
+---
+
+<article class="post">
+  <h1 class="post-title">{{ page.title }}</h1>
+  <div class="post-date">
+    <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>
+    {% if page.tags.size > 0 %}
+    <span class="post-tags">
+      {% for tag in page.tags %}
+      <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
+      {% endfor %}
+    </span>
+    {% endif %}
+  </div>
+
+  {% if page.description %}
+  <div class="post-description">
+    {{ page.description }}
+  </div>
+  {% endif %}
+
+  <div class="post-content">
+    {{ content }}
+  </div>
+</article>
+
+<style>
+  .post-title {
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+  }
+  
+  .post-date {
+    margin-bottom: 1.5rem;
+    color: #767676;
+  }
+  
+  .post-tags {
+    margin-left: 1rem;
+  }
+  
+  .post-tag {
+    display: inline-block;
+    padding: 0.2rem 0.5rem;
+    margin-right: 0.5rem;
+    background-color: #f1f1f1;
+    border-radius: 3px;
+    font-size: 0.8rem;
+    text-decoration: none;
+  }
+  
+  .post-description {
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.1rem;
+  }
+  
+  .post-content {
+    margin-top: 2rem;
+  }
+  
+  .post-content h2:first-child {
+    display: none;
+  }
+</style> 

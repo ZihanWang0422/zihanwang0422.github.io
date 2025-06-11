@@ -23,10 +23,8 @@ hide_description: true
   </div>
   {% endif %}
 
-  <div class="post-content-wrapper">
-    <div class="post-content">
-      {{ content }}
-    </div>
+  <div class="post-content">
+    {{ content }}
   </div>
 </article>
 
@@ -74,58 +72,98 @@ hide_description: true
   .page-title, .description {
     display: none !important;
   }
-  
-  /* 内容包装器，确保足够宽以容纳侧边目录 */
-  .post-content-wrapper {
-    width: 100%;
-    position: relative;
-  }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    // 创建一个固定在右侧的目录副本
-    const toc = document.getElementById('markdown-toc');
-    if (toc) {
-      // 获取所有标题元素
-      const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3');
-      const tocLinks = toc.querySelectorAll('a');
+    // 创建右侧固定目录
+    const createStickyTOC = function() {
+      const tocWrapper = document.querySelector('.toc-wrapper');
+      if (!tocWrapper) return;
       
-      // 滚动时更新活跃目录项
-      window.addEventListener('scroll', function() {
-        // 获取当前滚动位置
-        const scrollPosition = window.scrollY;
+      const toc = document.getElementById('markdown-toc');
+      if (!toc) return;
+      
+      // 在大屏幕下，克隆目录并放置在页面右侧
+      if (window.innerWidth >= 1020) {
+        // 创建一个副本目录
+        const clonedToc = toc.cloneNode(true);
+        clonedToc.id = 'sticky-toc';
         
-        // 找到当前可见的标题
-        let currentHeading = null;
-        for (let i = 0; i < headings.length; i++) {
-          const heading = headings[i];
-          const topOffset = heading.offsetTop - 120; // 考虑固定头部高度
+        // 添加样式
+        clonedToc.style.position = 'fixed';
+        clonedToc.style.top = '120px';
+        clonedToc.style.right = '20px';
+        clonedToc.style.width = '250px';
+        clonedToc.style.maxHeight = '80vh';
+        clonedToc.style.overflowY = 'auto';
+        clonedToc.style.background = 'rgba(249, 249, 249, 0.97)';
+        clonedToc.style.borderLeft = '3px solid rgb(0, 87, 156)';
+        clonedToc.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+        clonedToc.style.zIndex = '100';
+        clonedToc.style.padding = '1.5rem';
+        clonedToc.style.borderRadius = '5px';
+        
+        // 将副本添加到文档中
+        document.body.appendChild(clonedToc);
+        
+        // 获取所有标题元素
+        const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3');
+        const tocLinks = clonedToc.querySelectorAll('a');
+        
+        // 滚动时更新活跃目录项
+        window.addEventListener('scroll', function() {
+          const scrollPosition = window.scrollY;
           
-          if (scrollPosition >= topOffset) {
-            currentHeading = heading;
-          } else {
-            break;
+          // 找到当前可见的标题
+          let currentHeading = null;
+          for (let i = 0; i < headings.length; i++) {
+            const heading = headings[i];
+            const topOffset = heading.offsetTop - 120;
+            
+            if (scrollPosition >= topOffset) {
+              currentHeading = heading;
+            } else {
+              break;
+            }
           }
-        }
-        
-        // 移除所有活跃类
-        tocLinks.forEach(function(link) {
-          link.classList.remove('active');
+          
+          // 移除所有活跃类
+          tocLinks.forEach(function(link) {
+            link.classList.remove('active');
+          });
+          
+          // 如果找到当前标题，高亮对应的目录项
+          if (currentHeading) {
+            const id = currentHeading.id;
+            const activeLink = clonedToc.querySelector('a[href="#' + id + '"]');
+            if (activeLink) {
+              activeLink.classList.add('active');
+            }
+          }
         });
         
-        // 如果找到当前标题，高亮对应的目录项
-        if (currentHeading) {
-          const id = currentHeading.id;
-          const activeLink = toc.querySelector('a[href="#' + id + '"]');
-          if (activeLink) {
-            activeLink.classList.add('active');
-          }
+        // 调整文章内容区域的宽度，为目录腾出空间
+        const postContent = document.querySelector('.post-content');
+        if (postContent) {
+          postContent.style.maxWidth = 'calc(100% - 280px)';
         }
-      });
+      }
+    };
+    
+    // 初始化目录
+    createStickyTOC();
+    
+    // 窗口大小调整时重新初始化
+    window.addEventListener('resize', function() {
+      // 移除现有的固定目录
+      const stickyToc = document.getElementById('sticky-toc');
+      if (stickyToc) {
+        stickyToc.remove();
+      }
       
-      // 初始触发一次滚动事件
-      window.dispatchEvent(new Event('scroll'));
-    }
+      // 重新创建固定目录
+      createStickyTOC();
+    });
   });
 </script> 

@@ -307,78 +307,74 @@
   }
 }
 
-/* 浮动固定的TOC样式 */
+/* 包装器样式 */
+.toc-wrapper {
+  display: block;
+  width: 100%;
+}
+
+/* 强制修复目录固定在右侧 */
 @media (min-width: 1020px) {
-  /* 隐藏文章内的目录 */
-  .post-content #markdown-toc {
-    display: none;
+  /* 移动设备上显示toc-wrapper，在桌面上隐藏 */
+  .toc-wrapper {
+    display: none !important;
   }
   
-  /* 创建固定在右侧的目录副本 */
+  /* 设置目录样式 */
   #markdown-toc {
-    position: fixed;
-    top: 120px;
-    right: 20px;
-    width: 260px;
-    max-height: 70vh;
-    overflow-y: auto;
-    z-index: 10;
-    font-size: 0.9rem;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
-    border-left: 3px solid var(--accent-color, #4fb1ba);
-    transition: all 0.3s ease;
+    position: fixed !important;
+    top: 120px !important;
+    right: 20px !important;
+    left: auto !important;
+    width: 250px !important;
+    max-height: 80vh !important;
+    overflow-y: auto !important;
+    z-index: 100 !important;
+    margin: 0 !important;
+    background: rgba(249, 249, 249, 0.97) !important;
+    border-left: 3px solid rgb(0, 87, 156) !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1) !important;
+    font-size: 0.9rem !important;
     
-    /* 隐藏滚动条但保持功能 */
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+    /* 隐藏滚动条 */
     &::-webkit-scrollbar {
-      display: none;  /* Chrome, Safari, Opera */
+      width: 0 !important;
+      background: transparent !important;
     }
     
     ul {
-      padding-left: 1rem;
+      padding-left: 1rem !important;
     }
     
     li {
-      margin-bottom: 0.4rem;
-      line-height: 1.3;
-      
-      &::before {
-        left: -0.8rem;
-      }
-    }
-    
-    a {
-      font-size: 0.85rem;
+      font-size: 0.85rem !important;
     }
   }
   
-  /* 为右侧目录腾出空间 */
+  /* 为内容区域腾出空间 */
+  .content {
+    max-width: calc(100% - 260px) !important;
+  }
+  
   .post-content {
-    max-width: calc(100% - 300px);
-  }
-  
-  /* 添加一些互动效果 */
-  #markdown-toc {
-    &:hover {
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    }
+    max-width: calc(100% - 280px) !important;
   }
 }
 
-/* 移动设备上恢复正常显示 */
+/* 移动设备响应式样式 */
 @media (max-width: 1019px) {
+  .toc-wrapper {
+    display: block !important;
+  }
+  
   #markdown-toc {
-    position: relative;
-    width: auto;
-    max-height: none;
-    overflow-y: visible;
-    margin: 2rem 0;
-    border-left: none;
-    border-radius: 5px;
+    position: relative !important;
+    width: auto !important;
+    margin: 2rem 0 !important;
+    box-shadow: none !important;
   }
   
   .post-content {
-    max-width: 100%;
+    max-width: 100% !important;
   }
 }

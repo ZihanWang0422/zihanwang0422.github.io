@@ -8,8 +8,10 @@ toc: true
 
 Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
-* TOC
+<div class="toc-wrapper" markdown="1">
+* 目录
 {:toc}
+</div>
 
 # Prerequisite
 
@@ -131,13 +133,13 @@ Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
 * Docker + Nvidia container toolkit: [使用 NVIDIA Container Toolkit 和 Docker 配置 GPU 深度学习环境 - 溺死在幸福里的猪 - 博客园](https://www.cnblogs.com/li508q/p/18444582)
 
-​	   [Ubuntu22.04安装docker、nvidia-docker、NVIDIA Container Toolkit亲自安装必有效_ubuntu22.04安装nvidia-docker-CSDN博 		客](https://blog.csdn.net/guoqingru0311/article/details/145926492)
+	   [Ubuntu22.04安装docker、nvidia-docker、NVIDIA Container Toolkit亲自安装必有效_ubuntu22.04安装nvidia-docker-CSDN博 		客](https://blog.csdn.net/guoqingru0311/article/details/145926492)
 
 
 
    * 问题解决记录1：nvidia-container-cli: initialization error: load library failed
 
-​		[docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · 		NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393)
+		[docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · 		NVIDIA/nvidia-docker](https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393)
 
 
 
@@ -246,13 +248,13 @@ Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
 * 本地下载：ROS2 humble
 
-​	注意source ros2空间！！
+	注意source ros2空间！！
 
-​	source /opt/ros/humble/setup.bash
+	source /opt/ros/humble/setup.bash
 
 * ROS bridge extnesion
 
-​	***Window->Extensions*** and search for ROS 2 bridge
+	***Window->Extensions*** and search for ROS 2 bridge
 
 * Set up Isaac Sim ROS Workspaces
 
@@ -316,13 +318,13 @@ Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
 * Load example:
 
-   &#x20;**Window > Examples > Robotics Examples然后打开ROS2 > Navigation > Carter**
+   **Window > Examples > Robotics Examples然后打开ROS2 > Navigation > Carter**
 
-   **&#x20;Play**
+   **Play**
 
 * Pose Estimate
 
-* Nav2 Goal&#x20;
+* Nav2 Goal
 
 
 
@@ -397,7 +399,7 @@ Some basic IsaacSim Setup and SLAM/Nav2 demo.
 
 * RVIZ2:
 
-​     	选中3d LiDAR可以感知较大范围的物体，可以辅助Nav时Goal的选择
+     	选中3d LiDAR可以感知较大范围的物体，可以辅助Nav时Goal的选择
 
 <img src="/assets/img/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
 

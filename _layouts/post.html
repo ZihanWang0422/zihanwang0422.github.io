@@ -4,6 +4,12 @@ hide_title: true
 hide_description: true
 ---
 
+<!-- 引入自定义CSS文件，用于隐藏页面顶部的DESCRIPTION部分 -->
+<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom-post.css">
+
+<!-- 引入自定义JavaScript文件，用于在页面加载后隐藏DESCRIPTION部分 -->
+<script src="{{ site.baseurl }}/assets/js/custom-post.js"></script>
+
 <article class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="post-date">

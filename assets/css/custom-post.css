@@ -1,0 +1,13 @@
+/* 隐藏文章页面顶部的DESCRIPTION部分 */
+.DESCRIPTION,
+h2:contains("DESCRIPTION"),
+.description {
+  display: none !important;
+}
+
+/* 隐藏文章页面顶部的描述内容 */
+.DESCRIPTION + p,
+h2:contains("DESCRIPTION") + p,
+.description + p {
+  display: none !important;
+} 

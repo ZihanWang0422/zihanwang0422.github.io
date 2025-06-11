@@ -23,15 +23,6 @@ hide_description: true
   </div>
   {% endif %}
 
-  {% if page.toc %}
-  <div class="toc-container">
-    <h2 class="toc-title">目录</h2>
-    <div class="toc">
-      {% include toc.html html=content %}
-    </div>
-  </div>
-  {% endif %}
-
   <div class="post-content">
     {{ content }}
   </div>
@@ -80,27 +71,5 @@ hide_description: true
   /* 隐藏重复的标题和描述 */
   .page-title, .description {
     display: none !important;
-  }
-
-  /* TOC样式 */
-  .toc-container {
-    margin: 2rem 0;
-    padding: 1rem;
-    background-color: #f8f9fa;
-    border-radius: 5px;
-  }
-  
-  .toc-title {
-    margin-top: 0;
-    margin-bottom: 1rem;
-    font-size: 1.5rem;
-  }
-  
-  .toc ul {
-    margin-bottom: 0;
-  }
-  
-  .toc li {
-    margin-bottom: 0.5rem;
   }
 </style> 

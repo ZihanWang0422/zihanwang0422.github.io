@@ -692,7 +692,7 @@ hr:nth-of-type(12) {
 
 <div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
   <!-- Clustrmaps世界地图访问统计 -->
-  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=NG3BaEn0-9-LMc-9FXFOlJ8GeJ4__KH0US9Rp2kqEnA&cl=ffffff&w=a"></script>
+  <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI"></script>
   
   <!-- 访问计数器 -->
   <div style="margin-top: 20px; padding: 15px; border-radius: 5px; background-color: #f8f9fa; display: inline-block;">

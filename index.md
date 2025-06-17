@@ -687,3 +687,31 @@ hr:nth-of-type(12) {
   border-width: 3px 0 0 0 !important;
 }
 </style>
+
+<hr style="height:2px; background:#ccc; margin:2em 0">
+
+<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="sitemap">网站地图 </h2>
+
+<div class="site-map-container">
+  <div class="site-map">
+    <ul style="list-style-type: none; padding-left: 0;">
+      <li style="margin-bottom: 10px;"><a href="#biography" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">个人简介</a></li>
+      <li style="margin-bottom: 10px;"><a href="#" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">教育经历</a></li>
+      <li style="margin-bottom: 10px;"><a href="#" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">工作经验</a></li>
+      <li style="margin-bottom: 10px;"><a href="/blog/" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">博客文章</a></li>
+    </ul>
+  </div>
+  
+  <div class="visitor-stats" style="margin-top: 20px; padding: 10px; border-radius: 5px; background-color: #f8f9fa; display: inline-block;">
+    <h3 style="color: rgb(1,92,171); margin-top: 0;">网站访问统计</h3>
+    <div>
+      <!-- 添加不蒜子访问统计 -->
+      <span style="font-size: 0.9rem;">总访问量：<span id="busuanzi_value_site_pv" style="font-weight: bold;"></span> 次</span><br>
+      <span style="font-size: 0.9rem;">访客数：<span id="busuanzi_value_site_uv" style="font-weight: bold;"></span> 人</span><br>
+      <span style="font-size: 0.9rem;">本页访问量：<span id="busuanzi_value_page_pv" style="font-weight: bold;"></span> 次</span>
+    </div>
+  </div>
+</div>
+
+<!-- 不蒜子访问统计脚本 -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

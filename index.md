@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <!-- 修改后的链接 -->
             <div class="project-links">
-              <a href="https://github.com/ZihanWang0422/YuyuanCup">[Code]</a>
+              <a href="https://github.com/EmbodiedLLM/roadRunner">[Code]</a>
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
                 Implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for improved Nav2 autonomous navigation capabilities on NVIDIA Jetson®.

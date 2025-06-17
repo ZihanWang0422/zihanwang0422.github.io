@@ -688,13 +688,11 @@ hr:nth-of-type(12) {
 }
 </style>
 
-<hr style="height:2px; background:#ccc; margin:2em 0">
-
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="visitor-stats">访问统计 </h2>
 
 <div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
-  <!-- Revolvermaps 3D世界地图访问统计 -->
-  <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=59v4vwn4f5u&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
+  <!-- Clustrmaps世界地图访问统计 -->
+  <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=NG3BaEn0-9-LMc-9FXFOlJ8GeJ4__KH0US9Rp2kqEnA&cl=ffffff&w=a"></script>
   
   <!-- 访问计数器 -->
   <div style="margin-top: 20px; padding: 15px; border-radius: 5px; background-color: #f8f9fa; display: inline-block;">

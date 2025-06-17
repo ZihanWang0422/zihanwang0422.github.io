@@ -690,25 +690,19 @@ hr:nth-of-type(12) {
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
-<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="sitemap">网站地图 </h2>
+<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="visitor-stats">访问统计 </h2>
 
-<div class="site-map-container">
-  <div class="site-map">
-    <ul style="list-style-type: none; padding-left: 0;">
-      <li style="margin-bottom: 10px;"><a href="#biography" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">个人简介</a></li>
-      <li style="margin-bottom: 10px;"><a href="#" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">教育经历</a></li>
-      <li style="margin-bottom: 10px;"><a href="#" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">工作经验</a></li>
-      <li style="margin-bottom: 10px;"><a href="/blog/" style="text-decoration: none; color: rgb(1,92,171); font-weight: bold;">博客文章</a></li>
-    </ul>
-  </div>
+<div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
+  <!-- Revolvermaps 3D世界地图访问统计 -->
+  <script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=59v4vwn4f5u&amp;m=0&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33" async="async"></script>
   
-  <div class="visitor-stats" style="margin-top: 20px; padding: 10px; border-radius: 5px; background-color: #f8f9fa; display: inline-block;">
-    <h3 style="color: rgb(1,92,171); margin-top: 0;">网站访问统计</h3>
+  <!-- 访问计数器 -->
+  <div style="margin-top: 20px; padding: 15px; border-radius: 5px; background-color: #f8f9fa; display: inline-block;">
     <div>
-      <!-- 添加不蒜子访问统计 -->
-      <span style="font-size: 0.9rem;">总访问量：<span id="busuanzi_value_site_pv" style="font-weight: bold;"></span> 次</span><br>
-      <span style="font-size: 0.9rem;">访客数：<span id="busuanzi_value_site_uv" style="font-weight: bold;"></span> 人</span><br>
-      <span style="font-size: 0.9rem;">本页访问量：<span id="busuanzi_value_page_pv" style="font-weight: bold;"></span> 次</span>
+      <!-- 不蒜子访问统计 -->
+      <span style="font-size: 1rem;">总访问量：<span id="busuanzi_value_site_pv" style="font-weight: bold;"></span> 次</span><br>
+      <span style="font-size: 1rem;">访客数：<span id="busuanzi_value_site_uv" style="font-weight: bold;"></span> 人</span><br>
+      <span style="font-size: 1rem;">本页访问量：<span id="busuanzi_value_page_pv" style="font-weight: bold;"></span> 次</span>
     </div>
   </div>
 </div>

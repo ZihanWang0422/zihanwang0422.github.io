@@ -65,6 +65,28 @@
   article .description {
     display: none !important;
   }
+
+  /* 移除链接旁边的箭头图标 */
+  a[href^="http"]::after, 
+  a.external::after, 
+  a[target="_blank"]::after,
+  a[href^="http"] > svg,
+  a.external > svg,
+  a[target="_blank"] > svg,
+  .link-icon,
+  a svg.icon {
+    display: none !important;
+  }
+  
+  /* 移除所有链接的箭头标记 */
+  a::after {
+    content: none !important;
+  }
+  
+  /* 清除链接旁的任何伪元素 */
+  a:before, a:after {
+    display: none !important;
+  }
 </style>
 
 <script>

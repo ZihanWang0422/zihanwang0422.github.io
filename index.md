@@ -688,12 +688,10 @@ hr:nth-of-type(12) {
 }
 </style>
 
-<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="visitor-stats">访问统计 </h2>
-
 <div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
   <!-- Clustrmaps世界地图访问统计 -->
   <div style="width: 40%; max-width: 600px; margin: 0 auto;">
-    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI"></script>
+    <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI&cl=ffffff&w=a"></script>
   </div>
   
   <!-- 访问计数器 -->

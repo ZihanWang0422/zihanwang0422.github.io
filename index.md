@@ -693,5 +693,18 @@ hr:nth-of-type(12) {
   <div style="width: 40%; max-width: 600px; margin: 0 auto;">
     <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI&cl=ffffff&w=a"></script>
   </div>
+</div>
+
+<!-- 添加自定义样式修复底部空白 -->
+<style>
+  .content {
+    min-height: auto !important; /* 覆盖可能导致多余空白的样式 */
+  }
   
+  footer {
+    margin-top: 0 !important; /* 减少页脚上方空白 */
+    padding-top: 0 !important;
+  }
+</style>
+
 

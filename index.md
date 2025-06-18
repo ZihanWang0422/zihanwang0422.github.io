@@ -694,16 +694,4 @@ hr:nth-of-type(12) {
     <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI&cl=ffffff&w=a"></script>
   </div>
   
-  <!-- 访问计数器 -->
-  <div style="margin-top: 20px; padding: 15px; border-radius: 5px; background-color: #f8f9fa; display: inline-block;">
-    <div>
-      <!-- 不蒜子访问统计 -->
-      <span style="font-size: 1rem;">总访问量：<span id="busuanzi_value_site_pv" style="font-weight: bold;"></span> 次</span><br>
-      <span style="font-size: 1rem;">访客数：<span id="busuanzi_value_site_uv" style="font-weight: bold;"></span> 人</span><br>
-      <span style="font-size: 1rem;">本页访问量：<span id="busuanzi_value_page_pv" style="font-weight: bold;"></span> 次</span>
-    </div>
-  </div>
-</div>
 
-<!-- 不蒜子访问统计脚本 -->
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>

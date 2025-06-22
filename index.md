@@ -628,7 +628,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
   <!-- Clustrmaps世界地图访问统计 -->
   <div style="width: 70%; max-width: 600px; margin: 0 auto;">
-    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI"></script>
+ <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI&cl=ffffff&w=a"></script>
   </div>
   
 <!-- 添加自定义样式修复底部空白 -->

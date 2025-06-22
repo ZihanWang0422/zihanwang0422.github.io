@@ -25,7 +25,7 @@ layout: page
     {% if post.tags.size > 0 %}
     <div class="post-tags">
       {% for tag in post.tags %}
-      <span class="post-tag">{{ tag }}</span>
+      <a href="{{ site.baseurl }}/blog/{{ tag | slugify | downcase }}/" class="post-tag">{{ tag }}</a>
       {% endfor %}
     </div>
     {% endif %}
@@ -70,5 +70,13 @@ layout: page
     background-color: #f1f1f1;
     border-radius: 3px;
     font-size: 0.8rem;
+    text-decoration: none;
+    color: #333;
+    transition: background-color 0.2s, color 0.2s;
+  }
+  
+  .post-tag:hover {
+    background-color: #e1e1e1;
+    color: #000;
   }
 </style> 

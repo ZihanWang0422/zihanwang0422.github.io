@@ -16,7 +16,7 @@ permalink: /tags/
 <div class="tags-expo">
   <div class="tags-expo-list">
     {% for tag in sorted_tags %}
-    <a href="#{{ tag[0] | slugify }}" class="tag-link">{{ tag[0] }}</a>
+    <a href="{{ site.baseurl }}/blog/{{ tag[0] | slugify | downcase }}/" class="tag-link">{{ tag[0] }}</a>
     {% endfor %}
   </div>
   <hr/>

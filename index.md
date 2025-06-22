@@ -514,7 +514,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <!-- 修改后的链接 -->
             <div class="project-links">
-              <a href="https://github.com/EmbodiedLLM/roadRunner">[Code]</a>
+              <a href="https://github.com/ZihanWang0422/YuyuanCup">[Code]</a>
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
                 Implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for improved Nav2 autonomous navigation capabilities on NVIDIA Jetson®.
@@ -687,24 +687,3 @@ hr:nth-of-type(12) {
   border-width: 3px 0 0 0 !important;
 }
 </style>
-
-<div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
-  <!-- Clustrmaps世界地图访问统计 -->
-  <div style="width: 40%; max-width: 600px; margin: 0 auto;">
-    <script type="text/javascript" id="clustrmaps" src="//clustrmaps.com/map_v2.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI&cl=ffffff&w=a"></script>
-  </div>
-</div>
-
-<!-- 添加自定义样式修复底部空白 -->
-<style>
-  .content {
-    min-height: auto !important; /* 覆盖可能导致多余空白的样式 */
-  }
-  
-  footer {
-    margin-top: 0 !important; /* 减少页脚上方空白 */
-    padding-top: 0 !important;
-  }
-</style>
-
-

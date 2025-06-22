@@ -4,53 +4,31 @@ layout: page
 
 {{ content }}
 
-<div class="tags-section">
-  <p class="tags-title">All Tags:</p>
-  <div class="tags-list">
-    {% assign sorted_tags = site.tags | sort %}
-    {% for tag in sorted_tags %}
-    <a href="{{ site.baseurl }}/blog/{{ tag[0] | slugify }}/" class="blog-tag">{{ tag[0] }}</a>
-    {% endfor %}
-  </div>
-</div>
-
 {% if site.posts.size > 0 %}
 <div class="posts">
   {% for post in site.posts %}
   <article class="post">
-    <div class="post-content-wrapper">
-      <div class="post-content">
-        <h2 class="post-title">
-          <a href="{{ post.url | relative_url }}">
-            {{ post.title }}
-          </a>
-        </h2>
+    <h2 class="post-title">
+      <a href="{{ post.url | relative_url }}">
+        {{ post.title }}
+      </a>
+    </h2>
 
-        <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
-          {{ post.date | date: "%Y-%m-%d" }}
-        </time>
+    <time datetime="{{ post.date | date_to_xmlschema }}" class="post-date">
+      {{ post.date | date: "%Y-%m-%d" }}
+    </time>
 
-        {% if post.description %}
-        <p class="post-description">{{ post.description }}</p>
-        {% endif %}
+    {% if post.description %}
+    <p class="post-description">{{ post.description }}</p>
+    {% endif %}
 
-        {% if post.tags.size > 0 %}
-        <div class="post-tags">
-          {% for tag in post.tags %}
-          <a href="{{ site.baseurl }}/blog/{{ tag | slugify }}/" class="post-tag">{{ tag }}</a>
-          {% endfor %}
-        </div>
-        {% endif %}
-      </div>
-      
-      <div class="post-image">
-        {% if post.image %}
-          <img src="{{ post.image | relative_url }}" alt="{{ post.title }}">
-        {% else %}
-          <img src="{{ site.baseurl }}/assets/images/blog/default.png" alt="Blog post">
-        {% endif %}
-      </div>
+    {% if post.tags.size > 0 %}
+    <div class="post-tags">
+      {% for tag in post.tags %}
+      <span class="post-tag">{{ tag }}</span>
+      {% endfor %}
     </div>
+    {% endif %}
   </article>
   {% endfor %}
 </div>
@@ -59,37 +37,6 @@ layout: page
 {% endif %}
 
 <style>
-  .tags-section {
-    margin-bottom: 2rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid #eee;
-  }
-  
-  .tags-title {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-  }
-  
-  .tags-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-  }
-  
-  .blog-tag {
-    display: inline-block;
-    padding: 0.2rem 0.5rem;
-    background-color: #f1f1f1;
-    border-radius: 3px;
-    font-size: 0.9rem;
-    text-decoration: none;
-    color: #333;
-  }
-  
-  .blog-tag:hover {
-    background-color: #e1e1e1;
-  }
-  
   .post {
     margin-bottom: 2rem;
     padding-bottom: 1rem;
@@ -98,31 +45,6 @@ layout: page
   
   .post:last-child {
     border-bottom: none;
-  }
-  
-  .post-content-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1.5rem;
-  }
-  
-  .post-content {
-    flex: 1;
-  }
-  
-  .post-image {
-    width: 120px;
-    height: 120px;
-    flex-shrink: 0;
-    overflow: hidden;
-    border-radius: 4px;
-  }
-  
-  .post-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
   
   .post-title {
@@ -148,22 +70,5 @@ layout: page
     background-color: #f1f1f1;
     border-radius: 3px;
     font-size: 0.8rem;
-    text-decoration: none;
-  }
-  
-  .post-tag:hover {
-    background-color: #e1e1e1;
-  }
-  
-  @media (max-width: 768px) {
-    .post-content-wrapper {
-      flex-direction: column;
-    }
-    
-    .post-image {
-      width: 100%;
-      height: 180px;
-      margin-top: 1rem;
-    }
   }
 </style> 

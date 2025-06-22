@@ -4,12 +4,6 @@ hide_title: true
 hide_description: true
 ---
 
-<!-- 引入自定义CSS文件，用于调整页面顶部的DESCRIPTION部分 -->
-<link rel="stylesheet" href="{{ site.baseurl }}/assets/css/custom-post.css">
-
-<!-- 引入自定义JavaScript文件，用于在页面加载后移动DESCRIPTION部分 -->
-<script src="{{ site.baseurl }}/assets/js/custom-post.js"></script>
-
 <article class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="post-date">
@@ -17,11 +11,17 @@ hide_description: true
     {% if page.tags.size > 0 %}
     <span class="post-tags">
       {% for tag in page.tags %}
-      <a href="{{ site.baseurl }}/blog/{{ tag | slugify }}/" class="post-tag">{{ tag }}</a>
+      <a href="{{ site.baseurl }}/tags/#{{ tag | slugify }}" class="post-tag">{{ tag }}</a>
       {% endfor %}
     </span>
     {% endif %}
   </div>
+
+  {% if page.description %}
+  <div class="post-description">
+    {{ page.description }}
+  </div>
+  {% endif %}
 
   <div class="post-content">
     {{ content }}
@@ -37,17 +37,10 @@ hide_description: true
   .post-date {
     margin-bottom: 1.5rem;
     color: #767676;
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    justify-content: flex-start;
   }
   
   .post-tags {
-    margin-left: 0.5rem;
-    display: inline-flex;
-    align-items: center;
-    flex-wrap: wrap;
+    margin-left: 1rem;
   }
   
   .post-tag {
@@ -58,6 +51,13 @@ hide_description: true
     border-radius: 3px;
     font-size: 0.8rem;
     text-decoration: none;
+  }
+  
+  .post-description {
+    font-style: italic;
+    margin-bottom: 2rem;
+    color: #555;
+    font-size: 1.1rem;
   }
   
   .post-content {
@@ -72,90 +72,4 @@ hide_description: true
   .page-title, .description {
     display: none !important;
   }
-
-  .post-description {
-    font-style: italic;
-    margin-bottom: 2rem;
-    color: #555;
-    font-size: 1.1rem;
-  }
-  
-  /* 描述标题和内容的样式 */
-  .description-title {
-    font-size: 1.2rem;
-    margin-top: 1rem;
-    margin-bottom: 0.5rem;
-    color: #555;
-    font-weight: normal;
-  }
-  
-  .description-content {
-    font-style: italic;
-    margin-bottom: 1.5rem;
-    color: #555;
-    font-size: 1rem;
-  }
-</style>
-
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    // 获取目录和所有标题
-    const toc = document.getElementById('markdown-toc');
-    if (toc) {
-      const tocLinks = toc.querySelectorAll('a');
-      const headings = document.querySelectorAll('h1, h2, h3, h4, h5, h6');
-      
-      // 添加活跃类的样式
-      const style = document.createElement('style');
-      style.innerHTML = `
-        #markdown-toc a.active {
-          color: rgb(0, 87, 156) !important;
-          font-weight: bold !important;
-          transform: translateX(2px);
-          transition: all 0.2s ease;
-        }
-        #markdown-toc a.active::before {
-          content: "→ ";
-          position: relative;
-          left: -2px;
-        }
-      `;
-      document.head.appendChild(style);
-      
-      // 滚动时更新活跃目录项
-      window.addEventListener('scroll', function() {
-        // 获取当前滚动位置
-        const scrollPosition = window.scrollY + 150; // 添加偏移量以提前高亮
-        
-        // 找到当前可见的标题
-        let currentHeading = null;
-        for (let i = 0; i < headings.length; i++) {
-          const heading = headings[i];
-          if (heading.offsetTop <= scrollPosition) {
-            currentHeading = heading;
-          } else {
-            // 如果已经超过了当前滚动位置，就不再继续查找
-            break;
-          }
-        }
-        
-        // 移除所有活跃类
-        tocLinks.forEach(function(link) {
-          link.classList.remove('active');
-        });
-        
-        // 如果找到当前标题，高亮对应的目录项
-        if (currentHeading) {
-          const id = currentHeading.id;
-          const activeLink = toc.querySelector('a[href="#' + id + '"]');
-          if (activeLink) {
-            activeLink.classList.add('active');
-          }
-        }
-      });
-      
-      // 初始触发一次滚动事件
-      window.dispatchEvent(new Event('scroll'));
-    }
-  });
-</script> 
+</style> 

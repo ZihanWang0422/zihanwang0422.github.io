@@ -3,10 +3,7 @@ layout: post
 title: IsaacSim Setup
 description: Some basic IsaacSim Setup and SLAM/Nav2 demo.
 image: /assets/images/blog/simulator.png
-tags:
-  - Simulator
-  - Navigation
-  - SLAM
+tags: [Simulator, Navigation, SLAM]
 permalink: /blog/isaac-sim-setup/
 ---
 

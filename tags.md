@@ -7,6 +7,10 @@ hide_description: false
 permalink: /tags/
 ---
 
+{% comment %}
+  为了确保标签页面正常工作，所有博客文章应该使用相同的标签格式：
+  tags: [Tag1, Tag2, Tag3]
+{% endcomment %}
 {% assign sorted_tags = site.tags | sort %}
 
 <div class="tags-expo">

@@ -623,11 +623,25 @@ document.addEventListener('DOMContentLoaded', () => {
   <span class="icon-award" aria-hidden="true"></span> During my spare time, I greatly enjoy palying basketball🏀, swimming🏊 and playing guitar🎸.
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
-<!-- map -->
-<!--
-<script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=380&t=tt&d=w5Q40Mcc2glzXD3S396H2X_VPVmmSjd_AlGD-dtYM2o&co=2d78ad&cmo=3acc3a&cmn=ff5353&ct=ffffff'></script> -->
 
 
+<div class="visitor-stats-container" style="text-align: center; margin: 20px 0;">
+  <!-- Clustrmaps世界地图访问统计 -->
+  <div style="width: 70%; max-width: 600px; margin: 0 auto;">
+    <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI"></script>
+  </div>
+  
+<!-- 添加自定义样式修复底部空白 -->
+<style>
+  .content {
+    min-height: auto !important; /* 覆盖可能导致多余空白的样式 */
+  }
+  
+  footer {
+    margin-top: 0 !important; /* 减少页脚上方空白 */
+    padding-top: 0 !important;
+  }
+</style>
 
 <style>
     /* table {

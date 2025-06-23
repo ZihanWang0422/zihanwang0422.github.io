@@ -3,8 +3,6 @@ layout: page
 hide_title: true
 ---
 
-<h1 class="tag-title">{{ page.tag }}</h1>
-
 <div class="posts">
   {% assign tag = page.tag %}
   {% assign filtered_posts = site.posts | where_exp: "post", "post.tags contains tag" %}
@@ -36,16 +34,10 @@ hide_title: true
 </div>
 
 <div class="back-to-all-tags">
-  <a href="{{ site.baseurl }}/blog/">返回博客</a>
+  <a href="{{ site.baseurl }}/blog/">⬅️Back to Blog</a>
 </div>
 
 <style>
-  .tag-title {
-    margin-bottom: 2rem;
-    font-size: 2rem;
-    text-align: center;
-  }
-  
   .post {
     margin-bottom: 2rem;
     padding-bottom: 1rem;

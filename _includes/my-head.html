@@ -91,6 +91,16 @@
   a:before, a:after {
     display: none !important;
   }
+
+  /* 隐藏默认生成的目录 */
+  ul#markdown-toc {
+    display: none !important;
+  }
+  
+  /* 隐藏TOC标记所在的段落 */
+  p:has(+ ul#markdown-toc) {
+    display: none !important;
+  }
 </style>
 
 <script>
@@ -110,12 +120,26 @@
       }
     }
     
+    // 移除原始生成的目录
+    const originalToc = document.getElementById('markdown-toc');
+    if (originalToc) {
+      // 如果存在原始目录，将其移除
+      originalToc.remove();
+      
+      // 同时移除可能包含TOC标记的段落
+      const paragraphs = document.querySelectorAll('p');
+      paragraphs.forEach(function(p) {
+        if (p.textContent.includes('TOC') || p.textContent.includes('{:toc}')) {
+          p.remove();
+        }
+      });
+    }
+    
     // 处理目录固定效果和高亮功能
-    const tocElements = document.querySelectorAll('#markdown-toc, .toc ul, #my_toc');
-    if (tocElements.length > 0) {
+    const tocContainer = document.querySelector('.toc-container');
+    if (tocContainer) {
       // 检测是否为移动设备
       const isMobile = window.innerWidth < 992;
-      const toc = tocElements[0];
       
       if (!isMobile) {
         // 设置初始定位
@@ -128,9 +152,9 @@
           
           // 确保目录不会超出顶部
           if (currentScrollTop > initialOffset) {
-            toc.style.top = '20px';
+            tocContainer.style.top = '20px';
           } else {
-            toc.style.top = (initialOffset - currentScrollTop) + 'px';
+            tocContainer.style.top = (initialOffset - currentScrollTop) + 'px';
           }
           
           lastScrollTop = currentScrollTop;
@@ -139,41 +163,18 @@
         // 监听窗口大小变化
         window.addEventListener('resize', function() {
           if (window.innerWidth < 992) {
-            toc.style.position = 'relative';
-            toc.style.top = '0';
+            tocContainer.style.position = 'relative';
+            tocContainer.style.top = '0';
           } else {
-            toc.style.position = 'fixed';
+            tocContainer.style.position = 'fixed';
             const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
             if (currentScrollTop > initialOffset) {
-              toc.style.top = '20px';
+              tocContainer.style.top = '20px';
             } else {
-              toc.style.top = (initialOffset - currentScrollTop) + 'px';
+              tocContainer.style.top = (initialOffset - currentScrollTop) + 'px';
             }
           }
         });
-      }
-      
-      // 为目录添加标题
-      if (!document.querySelector('.toc-container::before')) {
-        const tocContainer = document.querySelector('.toc-container');
-        if (tocContainer) {
-          const tocTitle = document.createElement('div');
-          tocTitle.className = 'toc-title';
-          tocTitle.textContent = '目录';
-          tocTitle.style.fontWeight = 'bold';
-          tocTitle.style.marginBottom = '10px';
-          tocTitle.style.color = '#333';
-          tocTitle.style.fontSize = '1.1rem';
-          tocTitle.style.borderBottom = '1px solid #eee';
-          tocTitle.style.paddingBottom = '5px';
-          
-          // 将标题插入到目录容器的最前面
-          if (tocContainer.firstChild) {
-            tocContainer.insertBefore(tocTitle, tocContainer.firstChild);
-          } else {
-            tocContainer.appendChild(tocTitle);
-          }
-        }
       }
       
       // 实现目录高亮功能
@@ -194,7 +195,7 @@
         if (!headings.length) return;
         
         // 获取目录中的所有链接
-        const tocLinks = document.querySelectorAll('#markdown-toc a, .toc a, #my_toc a');
+        const tocLinks = document.querySelectorAll('#my_toc a');
         if (!tocLinks.length) return;
         
         // 创建标题元素和对应目录项的映射
@@ -281,12 +282,11 @@
           
           // 高亮当前章节
           if (currentHeadingId) {
-            const activeLink = document.querySelector(`#markdown-toc a[href="#${currentHeadingId}"], .toc a[href="#${currentHeadingId}"], #my_toc a[href="#${currentHeadingId}"]`);
+            const activeLink = document.querySelector(`#my_toc a[href="#${currentHeadingId}"]`);
             if (activeLink) {
               activeLink.classList.add('active');
               
               // 确保高亮的目录项在视图中可见（如果目录较长）
-              const tocContainer = document.querySelector('#markdown-toc, .toc ul, #my_toc');
               if (tocContainer) {
                 const activeLinkRect = activeLink.getBoundingClientRect();
                 const tocContainerRect = tocContainer.getBoundingClientRect();

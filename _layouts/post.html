@@ -26,16 +26,44 @@ hide_description: true
   {% endif %}
 
   <div class="post-content">
-    {% if content contains "* TOC" or content contains "{:toc}" %}
-      <!-- 文章中已有TOC标记，不需要自动生成 -->
-      {{ content }}
-    {% else %}
-      <!-- 自动生成目录 -->
-      {% include toc.html html=content sanitize=true class="inline_toc" id="my_toc" h_min=2 h_max=4 %}
-      {{ content }}
-    {% endif %}
+    <!-- 移除文章中的原始TOC标记并自动生成目录 -->
+    {% assign content_no_toc = content | replace: "* TOC", "" | replace: "{:toc}", "" %}
+    {% assign content_without_toc = content_no_toc | replace: "<p></p>", "" | replace: "<p> </p>", "" %}
+    
+    <!-- 输出移除TOC标记后的内容 -->
+    {{ content_without_toc }}
   </div>
 </article>
+
+<!-- 生成右侧固定目录 -->
+<div class="toc-wrapper">
+  {% include toc.html html=content_without_toc sanitize=true class="inline_toc" id="my_toc" h_min=2 h_max=4 %}
+</div>
+
+<script>
+  // 移除原始目录和相关空段落
+  document.addEventListener('DOMContentLoaded', function() {
+    // 移除默认生成的目录
+    const originalToc = document.querySelector('ul#markdown-toc');
+    if (originalToc) {
+      originalToc.remove();
+    }
+    
+    // 移除空段落
+    const emptyParagraphs = document.querySelectorAll('.post-content p:empty, .post-content p:only-child:not(:has(*))');
+    emptyParagraphs.forEach(function(p) {
+      p.remove();
+    });
+    
+    // 移除仅包含空格的段落
+    const paragraphs = document.querySelectorAll('.post-content p');
+    paragraphs.forEach(function(p) {
+      if (!p.textContent.trim()) {
+        p.remove();
+      }
+    });
+  });
+</script>
 
 <style>
   .post-title {
@@ -92,5 +120,16 @@ hide_description: true
   /* 隐藏重复的标题和描述 */
   .page-title, .description {
     display: none !important;
+  }
+  
+  /* 隐藏Jekyll默认生成的目录 */
+  #markdown-toc {
+    display: none !important;
+  }
+
+  /* 目录包装器，确保不影响文章布局 */
+  .toc-wrapper {
+    position: relative;
+    z-index: 1000;
   }
 </style> 

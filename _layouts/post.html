@@ -23,12 +23,6 @@ hide_description: true
   </div>
   {% endif %}
 
-  {% if page.description %}
-  <div class="post-description">
-    {{ page.description }}
-  </div>
-  {% endif %}
-
   <div class="post-content">
     {{ content }}
   </div>
@@ -76,13 +70,6 @@ hide_description: true
     height: auto;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .post-description {
-    font-style: italic;
-    margin-bottom: 2rem;
-    color: #555;
-    font-size: 1.1rem;
   }
   
   .post-content {

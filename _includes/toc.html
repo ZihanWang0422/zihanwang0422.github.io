@@ -38,6 +38,9 @@
 
     {% capture listModifier %}{% if orderedList %}1.{% else %}-{% endif %}{% endcapture %}
 
+    {% assign lastLevel = 0 %}
+    {% assign nestedList = false %}
+
     {% for node in nodes %}
         {% if node == "" %}
             {% continue %}
@@ -91,24 +94,52 @@
         {% capture anchor_body %}{{ anchor_body | replace: "|", "\|" }}{% endcapture %}
 
         {% if html_id %}
-            {% capture list_item %}{{ space }}{{ listModifier }} <li{% if include.item_class %} class="{{ include.item_class | replace: '%level%', headerLevel }}"{% endif %}><a href="{% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}"{% if include.anchor_class %} class="{{ include.anchor_class }}"{% endif %}>{{ anchor_body }}</a></li>{% endcapture %}
+            {% comment %} 
+                确定是否需要打开新的嵌套列表
+            {% endcomment %}
+            {% assign currentLevel = headerLevel | minus: minHeader %}
+            
+            {% if currentLevel > lastLevel %}
+                {% comment %} 需要打开一个或多个子列表 {% endcomment %}
+                {% for i in (lastLevel..currentLevel) offset:1 %}
+                    {% capture my_toc %}{{ my_toc }}
+<ul>{% endcapture %}
+                    {% assign nestedList = true %}
+                {% endfor %}
+            {% elsif currentLevel < lastLevel %}
+                {% comment %} 需要关闭一个或多个子列表 {% endcomment %}
+                {% for i in (currentLevel..lastLevel) offset:1 %}
+                    {% capture my_toc %}{{ my_toc }}
+</ul></li>{% endcapture %}
+                {% endfor %}
+            {% elsif lastLevel > 0 and lastLevel == currentLevel %}
+                {% comment %} 关闭上一个列表项 {% endcomment %}
+                {% capture my_toc %}{{ my_toc }}</li>{% endcapture %}
+            {% endif %}
+            
+            {% comment %} 添加当前列表项 {% endcomment %}
             {% capture my_toc %}{{ my_toc }}
-{{ list_item }}{% endcapture %}
+<li{% if include.item_class %} class="{{ include.item_class | replace: '%level%', headerLevel }}"{% endif %}><a href="{% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}"{% if include.anchor_class %} class="{{ include.anchor_class }}"{% endif %}>{{ anchor_body }}</a>{% endcapture %}
+            
+            {% assign lastLevel = currentLevel %}
         {% endif %}
     {% endfor %}
 
-    {% if include.class %}
-        {% capture my_toc %}<ul class="{{ include.class }}">{{ my_toc | lstrip }}
-</ul>{% endcapture %}
-    {% else %}
-        {% capture my_toc %}<ul>{{ my_toc | lstrip }}
-</ul>{% endcapture %}
+    {% comment %} 关闭所有打开的列表 {% endcomment %}
+    {% if nestedList %}
+        {% for i in (1..lastLevel) %}
+            {% capture my_toc %}{{ my_toc }}
+</li></ul>{% endcapture %}
+        {% endfor %}
     {% endif %}
 
-    {% if include.id %}
-        {% capture my_toc %}<ul id="{{ include.id }}">{{ my_toc | lstrip | remove: '<ul>' | remove: '</ul>' }}
-</ul>{% endcapture %}
+    {% comment %} 将TOC包装在UL中 {% endcomment %}
+    {% if my_toc != "" %}
+        {% assign rootUlClass = include.class | default: '' %}
+        {% capture my_toc %}<ul{% if rootUlClass != '' %} class="{{ rootUlClass }}"{% endif %}{% if include.id %} id="{{ include.id }}"{% endif %}>{{ my_toc | strip }}
+</li></ul>{% endcapture %}
     {% endif %}
+
 {% endcapture %}{% assign tocWorkspace = '' %}
 <div class="toc-container">
     <div class="toc-title">Index</div>

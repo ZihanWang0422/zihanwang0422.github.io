@@ -135,9 +135,35 @@
       });
     }
     
-    // 处理目录固定效果和高亮功能
+    // 处理目录
     const tocContainer = document.querySelector('.toc-container');
     if (tocContainer) {
+      // 清理目录中的文本
+      const cleanTocText = function() {
+        const tocLinks = document.querySelectorAll('#my_toc a');
+        tocLinks.forEach(function(link) {
+          // 替换链接文本中的乱码和杂项字符
+          const text = link.textContent;
+          const cleanText = text
+            .replace(/{:\.inline_toc} - {:\.}/g, '')
+            .replace(/{:\.}/g, '')
+            .replace(/\{.*?\}/g, '')
+            .replace(/\[.*?\]/g, '')
+            .replace(/\(.*?\)/g, '')
+            .replace(/^\s*-\s*/, '') 
+            .replace(/^\s*–\s*/, '') 
+            .replace(/^\s*—\s*/, '')
+            .trim();
+          
+          if (cleanText !== text) {
+            link.textContent = cleanText;
+          }
+        });
+      };
+      
+      // 立即清理目录文本
+      cleanTocText();
+      
       // 检测是否为移动设备
       const isMobile = window.innerWidth < 992;
       
@@ -179,20 +205,6 @@
       
       // 实现目录高亮功能
       const highlightToc = function() {
-        // 清理目录中的乱码文本
-        const tocLinks = document.querySelectorAll('#my_toc a');
-        tocLinks.forEach(function(link) {
-          const text = link.textContent;
-          // 移除常见的乱码模式
-          const cleanText = text.replace(/{:\.inline_toc} - {:\.}/g, '')
-                                .replace(/{:\.}/g, '')
-                                .replace(/\{.*?\}/g, '')
-                                .trim();
-          if (cleanText !== text) {
-            link.textContent = cleanText;
-          }
-        });
-        
         // 确保所有标题都有ID
         const allHeadings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
         
@@ -209,6 +221,7 @@
         if (!headings.length) return;
         
         // 获取目录中的所有链接
+        const tocLinks = document.querySelectorAll('#my_toc a');
         if (!tocLinks.length) return;
         
         // 创建标题元素和对应目录项的映射
@@ -337,7 +350,12 @@
       };
       
       // 延迟运行，确保DOM已完全加载
-      setTimeout(highlightToc, 500);
+      setTimeout(function() {
+        // 再次清理目录文本
+        cleanTocText();
+        // 执行高亮功能
+        highlightToc();
+      }, 500);
     }
   });
 </script>

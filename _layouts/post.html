@@ -75,6 +75,9 @@ hide_description: true
           .replace(/\{.*?\}/g, '')
           .replace(/\[.*?\]/g, '')
           .replace(/\(.*?\)/g, '')
+          .replace(/^\s*-\s*/, '') // 移除开头的短横线
+          .replace(/^\s*–\s*/, '') // 移除开头的破折号
+          .replace(/^\s*—\s*/, '') // 移除开头的长横线
           .trim();
         
         if (cleanText !== text) {

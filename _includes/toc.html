@@ -84,30 +84,33 @@
         {% endfor %}
 
         {% unless include.item_class == blank %}
-            {% capture listItemClass %}{:.{{ include.item_class | replace: '%level%', headerLevel }}}{% endcapture %}
+            {% capture listItemClass %} class="{{ include.item_class | replace: '%level%', headerLevel }}"{% endcapture %}
         {% endunless %}
 
         {% capture anchor_body %}{% if include.sanitize %}{{ header | strip_html }}{% else %}{{ header }}{% endif %}{% endcapture %}
         {% capture anchor_body %}{{ anchor_body | replace: "|", "\|" }}{% endcapture %}
 
         {% if html_id %}
-            {% capture list_item %}{{ space }}{{ listModifier }} {{ listItemClass }} [{{ anchor_body }}]({% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}){% if include.anchor_class %}{:.{{ include.anchor_class }}}{% endif %}{% endcapture %}
+            {% capture list_item %}{{ space }}{{ listModifier }} <li{% if include.item_class %} class="{{ include.item_class | replace: '%level%', headerLevel }}"{% endif %}><a href="{% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}"{% if include.anchor_class %} class="{{ include.anchor_class }}"{% endif %}>{{ anchor_body }}</a></li>{% endcapture %}
             {% capture my_toc %}{{ my_toc }}
 {{ list_item }}{% endcapture %}
         {% endif %}
     {% endfor %}
 
     {% if include.class %}
-        {% capture my_toc %}{:.{{ include.class }}}
-{{ my_toc | normalize_whitespace }}{% endcapture %}
+        {% capture my_toc %}<ul class="{{ include.class }}">{{ my_toc | lstrip }}
+</ul>{% endcapture %}
+    {% else %}
+        {% capture my_toc %}<ul>{{ my_toc | lstrip }}
+</ul>{% endcapture %}
     {% endif %}
 
     {% if include.id %}
-        {% capture my_toc %}{: #{{ include.id }}}
-{{ my_toc | normalize_whitespace }}{% endcapture %}
+        {% capture my_toc %}<ul id="{{ include.id }}">{{ my_toc | lstrip | remove: '<ul>' | remove: '</ul>' }}
+</ul>{% endcapture %}
     {% endif %}
 {% endcapture %}{% assign tocWorkspace = '' %}
 <div class="toc-container">
-    <div class="toc-title">目录</div>
-    {{ my_toc | markdownify }} 
+    <div class="toc-title">Index</div>
+    {{ my_toc | strip }}
 </div> 

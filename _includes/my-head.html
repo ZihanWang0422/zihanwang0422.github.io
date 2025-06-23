@@ -179,6 +179,20 @@
       
       // 实现目录高亮功能
       const highlightToc = function() {
+        // 清理目录中的乱码文本
+        const tocLinks = document.querySelectorAll('#my_toc a');
+        tocLinks.forEach(function(link) {
+          const text = link.textContent;
+          // 移除常见的乱码模式
+          const cleanText = text.replace(/{:\.inline_toc} - {:\.}/g, '')
+                                .replace(/{:\.}/g, '')
+                                .replace(/\{.*?\}/g, '')
+                                .trim();
+          if (cleanText !== text) {
+            link.textContent = cleanText;
+          }
+        });
+        
         // 确保所有标题都有ID
         const allHeadings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
         
@@ -195,7 +209,6 @@
         if (!headings.length) return;
         
         // 获取目录中的所有链接
-        const tocLinks = document.querySelectorAll('#my_toc a');
         if (!tocLinks.length) return;
         
         // 创建标题元素和对应目录项的映射

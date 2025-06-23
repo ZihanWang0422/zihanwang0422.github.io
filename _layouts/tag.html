@@ -1,8 +1,9 @@
 ---
 layout: page
+hide_title: true
 ---
 
-<h1 class="page-title">{{ page.title }}</h1>
+<h1 class="tag-title">{{ page.tag }}</h1>
 
 <div class="posts">
   {% assign tag = page.tag %}
@@ -39,6 +40,12 @@ layout: page
 </div>
 
 <style>
+  .tag-title {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    text-align: center;
+  }
+  
   .post {
     margin-bottom: 2rem;
     padding-bottom: 1rem;

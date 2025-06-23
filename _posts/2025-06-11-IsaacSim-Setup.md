@@ -398,11 +398,11 @@ permalink: /blog/isaac-sim-setup/
 
      	选中3d LiDAR可以感知较大范围的物体，可以辅助Nav时Goal的选择
 
-<img src="/assets/img/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
+<img src="/assets/images/blog//2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
 
 4. Reconstruction + Segmantic image
 
-<img src="/assets/img/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;" />
+<img src="/assets/images/blog/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;" />
 
 
 

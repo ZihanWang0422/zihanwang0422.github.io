@@ -17,6 +17,12 @@ hide_description: true
     {% endif %}
   </div>
 
+  {% if page.image %}
+  <div class="post-image">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.title }}">
+  </div>
+  {% endif %}
+
   {% if page.description %}
   <div class="post-description">
     {{ page.description }}
@@ -58,6 +64,18 @@ hide_description: true
   .post-tag:hover {
     background-color: #e1e1e1;
     color: #000;
+  }
+  
+  .post-image {
+    margin: 1.5rem 0;
+    text-align: center;
+  }
+  
+  .post-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .post-description {

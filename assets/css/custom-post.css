@@ -37,4 +37,103 @@ h2:contains("DESCRIPTION") + p,
 
 .post-content {
   order: 5;
+}
+
+/* 目录固定在右侧的样式 */
+.toc-container {
+  position: relative;
+}
+
+#markdown-toc, 
+.toc ul, 
+#my_toc {
+  position: fixed;
+  top: 100px;
+  right: 20px;
+  max-width: 280px;
+  background-color: #fff;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-height: 70vh;
+  overflow-y: auto;
+  z-index: 1000;
+  font-size: 0.9rem;
+  border-left: 3px solid #4FB1BA;
+}
+
+#markdown-toc li,
+.toc li,
+#my_toc li {
+  margin-bottom: 8px;
+  list-style-type: none;
+}
+
+#markdown-toc ul,
+.toc ul,
+#my_toc ul {
+  padding-left: 15px;
+}
+
+#markdown-toc a,
+.toc a,
+#my_toc a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s, background-color 0.2s;
+  display: block;
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+#markdown-toc a:hover,
+.toc a:hover,
+#my_toc a:hover {
+  color: #4FB1BA;
+  background-color: #f5f5f5;
+}
+
+/* 目录当前阅读项高亮样式 */
+#markdown-toc a.active,
+.toc a.active,
+#my_toc a.active {
+  color: #fff;
+  background-color: #4FB1BA;
+  font-weight: bold;
+}
+
+/* 目录标题 */
+.toc-container::before {
+  content: "目录";
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+  font-size: 1.1rem;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+}
+
+/* 调整目录在移动设备上的显示 */
+@media (max-width: 1200px) {
+  #markdown-toc,
+  .toc ul,
+  #my_toc {
+    max-width: 220px;
+  }
+}
+
+@media (max-width: 992px) {
+  #markdown-toc,
+  .toc ul,
+  #my_toc {
+    position: relative;
+    top: 0;
+    right: 0;
+    max-width: 100%;
+    margin-bottom: 20px;
+    box-shadow: none;
+    border: 1px solid #eee;
+    border-left: 3px solid #4FB1BA;
+  }
 } 

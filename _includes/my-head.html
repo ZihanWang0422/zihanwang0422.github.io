@@ -109,5 +109,222 @@
         }
       }
     }
+    
+    // 处理目录固定效果和高亮功能
+    const tocElements = document.querySelectorAll('#markdown-toc, .toc ul, #my_toc');
+    if (tocElements.length > 0) {
+      // 检测是否为移动设备
+      const isMobile = window.innerWidth < 992;
+      const toc = tocElements[0];
+      
+      if (!isMobile) {
+        // 设置初始定位
+        const initialOffset = 100;
+        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', function() {
+          const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+          
+          // 确保目录不会超出顶部
+          if (currentScrollTop > initialOffset) {
+            toc.style.top = '20px';
+          } else {
+            toc.style.top = (initialOffset - currentScrollTop) + 'px';
+          }
+          
+          lastScrollTop = currentScrollTop;
+        });
+        
+        // 监听窗口大小变化
+        window.addEventListener('resize', function() {
+          if (window.innerWidth < 992) {
+            toc.style.position = 'relative';
+            toc.style.top = '0';
+          } else {
+            toc.style.position = 'fixed';
+            const currentScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (currentScrollTop > initialOffset) {
+              toc.style.top = '20px';
+            } else {
+              toc.style.top = (initialOffset - currentScrollTop) + 'px';
+            }
+          }
+        });
+      }
+      
+      // 为目录添加标题
+      if (!document.querySelector('.toc-container::before')) {
+        const tocContainer = document.querySelector('.toc-container');
+        if (tocContainer) {
+          const tocTitle = document.createElement('div');
+          tocTitle.className = 'toc-title';
+          tocTitle.textContent = '目录';
+          tocTitle.style.fontWeight = 'bold';
+          tocTitle.style.marginBottom = '10px';
+          tocTitle.style.color = '#333';
+          tocTitle.style.fontSize = '1.1rem';
+          tocTitle.style.borderBottom = '1px solid #eee';
+          tocTitle.style.paddingBottom = '5px';
+          
+          // 将标题插入到目录容器的最前面
+          if (tocContainer.firstChild) {
+            tocContainer.insertBefore(tocTitle, tocContainer.firstChild);
+          } else {
+            tocContainer.appendChild(tocTitle);
+          }
+        }
+      }
+      
+      // 实现目录高亮功能
+      const highlightToc = function() {
+        // 确保所有标题都有ID
+        const allHeadings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4, .post-content h5, .post-content h6');
+        
+        allHeadings.forEach(function(heading, index) {
+          if (!heading.id) {
+            // 如果标题没有ID，则生成一个ID
+            const headingText = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+            heading.id = headingText || `heading-${index}`;
+          }
+        });
+        
+        // 获取所有标题元素
+        const headings = document.querySelectorAll('h1[id], h2[id], h3[id], h4[id], h5[id], h6[id]');
+        if (!headings.length) return;
+        
+        // 获取目录中的所有链接
+        const tocLinks = document.querySelectorAll('#markdown-toc a, .toc a, #my_toc a');
+        if (!tocLinks.length) return;
+        
+        // 创建标题元素和对应目录项的映射
+        const headingMap = new Map();
+        
+        // 填充映射
+        headings.forEach(heading => {
+          const id = heading.id;
+          if (id) {
+            headingMap.set(id, {
+              element: heading,
+              position: heading.getBoundingClientRect().top + window.scrollY
+            });
+          }
+        });
+        
+        // 为目录链接添加点击事件（平滑滚动）
+        tocLinks.forEach(link => {
+          link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+              
+              // 点击后立即高亮该目录项
+              tocLinks.forEach(l => l.classList.remove('active'));
+              this.classList.add('active');
+            }
+          });
+        });
+        
+        // 监听滚动事件，高亮当前阅读的章节
+        const updateHighlight = function() {
+          // 重新计算所有标题位置，因为可能有DOM变化
+          headings.forEach(heading => {
+            const id = heading.id;
+            if (id && headingMap.has(id)) {
+              headingMap.get(id).position = heading.getBoundingClientRect().top + window.scrollY;
+            }
+          });
+          
+          // 获取当前滚动位置
+          const scrollPosition = window.scrollY + 100;
+          
+          // 找到当前可见的标题
+          let currentHeadingId = null;
+          let closestHeading = null;
+          let closestDistance = Infinity;
+          
+          // 首先检查滚动位置之前的标题
+          headingMap.forEach((data, id) => {
+            if (data.position <= scrollPosition) {
+              const distance = scrollPosition - data.position;
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                closestHeading = { id, data };
+              }
+            }
+          });
+          
+          // 如果找到了最接近的标题
+          if (closestHeading) {
+            currentHeadingId = closestHeading.id;
+          } else {
+            // 如果没有找到滚动位置之前的标题，则找最接近的标题
+            headingMap.forEach((data, id) => {
+              const distance = Math.abs(data.position - scrollPosition);
+              if (distance < closestDistance) {
+                closestDistance = distance;
+                currentHeadingId = id;
+              }
+            });
+          }
+          
+          // 移除所有高亮
+          tocLinks.forEach(link => {
+            link.classList.remove('active');
+          });
+          
+          // 高亮当前章节
+          if (currentHeadingId) {
+            const activeLink = document.querySelector(`#markdown-toc a[href="#${currentHeadingId}"], .toc a[href="#${currentHeadingId}"], #my_toc a[href="#${currentHeadingId}"]`);
+            if (activeLink) {
+              activeLink.classList.add('active');
+              
+              // 确保高亮的目录项在视图中可见（如果目录较长）
+              const tocContainer = document.querySelector('#markdown-toc, .toc ul, #my_toc');
+              if (tocContainer) {
+                const activeLinkRect = activeLink.getBoundingClientRect();
+                const tocContainerRect = tocContainer.getBoundingClientRect();
+                
+                if (activeLinkRect.top < tocContainerRect.top || activeLinkRect.bottom > tocContainerRect.bottom) {
+                  activeLink.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                  });
+                }
+              }
+            }
+          }
+        };
+        
+        // 初次运行更新高亮（延迟执行以确保DOM和位置已计算）
+        setTimeout(updateHighlight, 300);
+        
+        // 监听滚动事件
+        window.addEventListener('scroll', updateHighlight);
+        
+        // 监听窗口大小变化，重新计算位置
+        window.addEventListener('resize', function() {
+          // 延迟执行以确保DOM已重新布局
+          setTimeout(function() {
+            headings.forEach(heading => {
+              const id = heading.id;
+              if (id && headingMap.has(id)) {
+                headingMap.get(id).position = heading.getBoundingClientRect().top + window.scrollY;
+              }
+            });
+            updateHighlight();
+          }, 200);
+        });
+      };
+      
+      // 延迟运行，确保DOM已完全加载
+      setTimeout(highlightToc, 500);
+    }
   });
 </script>

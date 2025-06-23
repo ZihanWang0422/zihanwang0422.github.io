@@ -4,6 +4,8 @@ hide_title: true
 hide_description: true
 ---
 
+<link rel="stylesheet" href="{{ '/assets/css/custom-post.css' | relative_url }}">
+
 <article class="post">
   <h1 class="post-title">{{ page.title }}</h1>
   <div class="post-date">
@@ -24,7 +26,14 @@ hide_description: true
   {% endif %}
 
   <div class="post-content">
-    {{ content }}
+    {% if content contains "* TOC" or content contains "{:toc}" %}
+      <!-- 文章中已有TOC标记，不需要自动生成 -->
+      {{ content }}
+    {% else %}
+      <!-- 自动生成目录 -->
+      {% include toc.html html=content sanitize=true class="inline_toc" id="my_toc" h_min=2 h_max=4 %}
+      {{ content }}
+    {% endif %}
   </div>
 </article>
 

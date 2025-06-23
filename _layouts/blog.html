@@ -2,6 +2,13 @@
 layout: page
 ---
 
+<div class="blog-header">
+  <h1>{{ page.title }}</h1>
+  {% if site.logo %}
+  <img src="{{ site.logo | relative_url }}" alt="{{ site.title }}" class="blog-logo">
+  {% endif %}
+</div>
+
 {{ content }}
 
 <div class="tags-list">
@@ -54,6 +61,21 @@ layout: page
 {% endif %}
 
 <style>
+  /* 博客标题和logo样式 */
+  .blog-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+  
+  .blog-logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+  
   /* 标签列表样式 */
   .tags-list {
     margin: 1rem 0 1.5rem;

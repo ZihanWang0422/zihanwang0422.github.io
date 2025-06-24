@@ -37,12 +37,31 @@ hide_description: true
 
 <!-- 生成右侧固定目录 -->
 <div class="toc-wrapper">
-  {% include toc.html html=content_without_toc sanitize=true id="my_toc" h_min=2 h_max=4 %}
+  {% include toc.html html=content_without_toc sanitize=true id="my_toc" h_min=1 h_max=4 %}
 </div>
 
 <script>
   // 移除原始目录和相关空段落，清理乱码
   document.addEventListener('DOMContentLoaded', function() {
+    // 确保所有标题都有ID（特别是h1标题）
+    const headings = document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4');
+    headings.forEach(function(heading, index) {
+      if (!heading.id) {
+        // 如果标题没有ID，则生成一个ID
+        const headingText = heading.textContent.trim().toLowerCase().replace(/\s+/g, '-').replace(/[^\w\-]+/g, '');
+        heading.id = headingText || `heading-${index}`;
+      }
+    });
+    
+    // 特别处理Prerequisite标题
+    const prerequisiteHeading = Array.from(headings).find(h => 
+      h.textContent.trim().toLowerCase() === 'prerequisite'
+    );
+    
+    if (prerequisiteHeading && !prerequisiteHeading.id) {
+      prerequisiteHeading.id = 'prerequisite';
+    }
+
     // 移除默认生成的目录
     const originalToc = document.querySelector('ul#markdown-toc');
     if (originalToc) {
@@ -84,13 +103,59 @@ hide_description: true
           link.textContent = cleanText;
         }
       });
+      
+      // 检查是否存在Prerequisite项，如果不存在并且页面上有该标题，则手动添加
+      const hasTocPrerequisite = Array.from(tocLinks).some(link => 
+        link.textContent.trim().toLowerCase() === 'prerequisite'
+      );
+      
+      const hasPagePrerequisite = Array.from(headings).some(h => 
+        h.textContent.trim().toLowerCase() === 'prerequisite'
+      );
+      
+      if (!hasTocPrerequisite && hasPagePrerequisite) {
+        const prerequisiteHeading = Array.from(headings).find(h => 
+          h.textContent.trim().toLowerCase() === 'prerequisite'
+        );
+        
+        if (prerequisiteHeading && prerequisiteHeading.id) {
+          // 找到目录的根列表
+          const tocRoot = document.querySelector('#my_toc');
+          if (tocRoot) {
+            // 创建新的目录项
+            const newItem = document.createElement('li');
+            newItem.className = 'header-level-1'; // 假设Prerequisite是h1
+            
+            const newLink = document.createElement('a');
+            newLink.href = '#' + prerequisiteHeading.id;
+            newLink.textContent = 'Prerequisite';
+            
+            newItem.appendChild(newLink);
+            
+            // 将新项添加到目录中（根据需要调整位置）
+            if (tocRoot.children.length > 0) {
+              tocRoot.insertBefore(newItem, tocRoot.children[1]); // 在第一项之后插入
+            } else {
+              tocRoot.appendChild(newItem);
+            }
+          }
+        }
+      }
     };
     
     // 立即清理一次
     cleanTocText();
     
     // 延迟再清理一次，确保所有内容都已加载
-    setTimeout(cleanTocText, 1000);
+    setTimeout(function() {
+      cleanTocText();
+      
+      // 重新生成目录（如果发现缺少标题）
+      if (document.querySelectorAll('#my_toc > li').length < document.querySelectorAll('.post-content h1, .post-content h2, .post-content h3, .post-content h4').length) {
+        console.log('标题数量不匹配，尝试刷新页面重新生成目录');
+        // 这里不实际刷新页面，只记录日志
+      }
+    }, 1000);
   });
 </script>
 

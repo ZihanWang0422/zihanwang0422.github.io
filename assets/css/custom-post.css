@@ -87,6 +87,17 @@ p:contains("* TOC") {
   position: relative;
 }
 
+/* H1标题在目录中的特殊样式 */
+#my_toc > li > a {
+  font-weight: bold;
+  font-size: 1.05em;
+  color: #222;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  margin-bottom: 8px;
+  display: block;
+}
+
 #my_toc a {
   text-decoration: none;
   color: #333;

@@ -40,6 +40,7 @@
 
     {% assign lastLevel = 0 %}
     {% assign nestedList = false %}
+    {% assign firstItem = true %}
 
     {% for node in nodes %}
         {% if node == "" %}
@@ -102,26 +103,31 @@
             {% if currentLevel > lastLevel %}
                 {% comment %} 需要打开一个或多个子列表 {% endcomment %}
                 {% for i in (lastLevel..currentLevel) offset:1 %}
-                    {% capture my_toc %}{{ my_toc }}
+                    {% if firstItem %}
+                        {% assign firstItem = false %}
+                    {% else %}
+                        {% capture my_toc %}{{ my_toc }}
 <ul>{% endcapture %}
-                    {% assign nestedList = true %}
+                        {% assign nestedList = true %}
+                    {% endif %}
                 {% endfor %}
             {% elsif currentLevel < lastLevel %}
                 {% comment %} 需要关闭一个或多个子列表 {% endcomment %}
                 {% for i in (currentLevel..lastLevel) offset:1 %}
                     {% capture my_toc %}{{ my_toc }}
-</ul></li>{% endcapture %}
+</li></ul>{% endcapture %}
                 {% endfor %}
-            {% elsif lastLevel > 0 and lastLevel == currentLevel %}
+            {% elsif lastLevel > 0 and lastLevel == currentLevel and forloop.index > 1 %}
                 {% comment %} 关闭上一个列表项 {% endcomment %}
                 {% capture my_toc %}{{ my_toc }}</li>{% endcapture %}
             {% endif %}
             
             {% comment %} 添加当前列表项 {% endcomment %}
             {% capture my_toc %}{{ my_toc }}
-<li{% if include.item_class %} class="{{ include.item_class | replace: '%level%', headerLevel }}"{% endif %}><a href="{% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}"{% if include.anchor_class %} class="{{ include.anchor_class }}"{% endif %}>{{ anchor_body }}</a>{% endcapture %}
+<li{% if include.item_class %} class="{{ include.item_class | replace: '%level%', headerLevel }} header-level-{{ headerLevel }}"{% else %} class="header-level-{{ headerLevel }}"{% endif %}><a href="{% if include.baseurl %}{{ include.baseurl }}{% endif %}#{{ html_id }}"{% if include.anchor_class %} class="{{ include.anchor_class }}"{% endif %}>{{ anchor_body }}</a>{% endcapture %}
             
             {% assign lastLevel = currentLevel %}
+            {% assign firstItem = false %}
         {% endif %}
     {% endfor %}
 

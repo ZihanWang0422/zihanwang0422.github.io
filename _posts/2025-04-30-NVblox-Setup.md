@@ -10,7 +10,7 @@ permalink: /blog/nvblox-setup/
 * TOC
 {:toc}
 
-* [ ] To do：Jetson上realsense相关本地配置
+<!-- * [ ] To do：Jetson上realsense相关本地配置
 
 Kernel-builder:
 
@@ -18,15 +18,15 @@ Kernel-builder:
 
 [GitHub - jetsonhacks/jetson-orin-librealsense: Prebuilt kernel modules for running librealsense on J](https://github.com/jetsonhacks/jetson-orin-librealsense)
 
-[librealsense/doc/installation\_jetson.md at master · IntelRealSense/librealsense](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md)
+[librealsense/doc/installation\_jetson.md at master · IntelRealSense/librealsense](https://github.com/IntelRealSense/librealsense/blob/master/doc/installation_jetson.md) -->
 
 
 
-## 1. Prerequisite(Jetson Orin Nano)
+# Prerequisite(Jetson Orin Nano)
 
-1. Jetson Setup
+## Jetson Setup
 
-2. 重启容器
+## 重启docker
 
 ```bash
 sudo systemctl daemon-reload && sudo systemctl restart docker
@@ -35,7 +35,7 @@ sudo apt-get install git-lfs
 git lfs install --skip-repo
 ```
 
-* 环境变量设置
+## 环境变量设置
 
 ```bash
 mkdir -p  ~/workspaces/isaac_ros-dev/src
@@ -43,7 +43,7 @@ echo "export ISAAC_ROS_WS=${HOME}/workspaces/isaac_ros-dev/" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-* 建立环境
+## 建立环境
 
 ```bash
 cd ${ISAAC_ROS_WS}/src && \
@@ -86,13 +86,13 @@ fi
 
 
 
-## 2. NVBlox配置
+# NVBlox配置
 
 &#x20;     bug1 [ Jetson部署NVBlox](https://c1afcru08q1.feishu.cn/docx/KyOjdFzlRoRmlKxQXC4cbxgNnbe#share-W8zgdsXNmoJy02xR7LhcMu9onTg)
 
 
 
-## 3. Realsense Docker 配置
+# Realsense Docker 配置
 
 ```bash
 cd ${ISAAC_ROS_WS}/src && \
@@ -110,11 +110,11 @@ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh 
 ```
 
-运行realsense-viewer，看到深度图像
+运行`realsense-viewer`，看到深度图像
 
 
 
-## 4. IsaacROS NVBlox 运行
+# IsaacROS NVBlox 运行
 
 ```bash
 cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh
@@ -129,7 +129,7 @@ source install/setup.bash
 ros2 launch nvblox_examples_bringup realsense_example.launch.py
 ```
 
-![image](./2025-04-30-NVblox-Setup.assets/image.png)
+<img src="/assets/images/blog//2025-04-30-NVblox-Setup.assets/image.png" alt="img" style="zoom:50%;" />
 
 或者录制ROSbag后，从ROSbag运行[ Jetson部署NVBlox](https://c1afcru08q1.feishu.cn/docx/KyOjdFzlRoRmlKxQXC4cbxgNnbe#share-Cb5ydnI67osUbNxsSWUcQUOjnRG)
 
@@ -140,7 +140,7 @@ rosbag:=<YOUR_ROSBAG_PATH>
 
 
 
-## 5. ROSbag录制
+# ROSbag录制
 
 
 
@@ -162,9 +162,9 @@ ROSbag-NVBlox如下（待验证）：https://www.jianguoyun.com/p/DddYoskQ7IupDR
 
 
 
-## ⚠️Debug
+# ⚠️Debug
 
-1. bug1： TypeError: canonicalize\_name() got an unexpected keyword argument 'validate'
+## bug1： TypeError: canonicalize\_name() got an unexpected keyword argument 'validate'
 
 AttributeError: module 'packaging.utils' has no attribute 'InvalidName'
 
@@ -1249,9 +1249,9 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 
 
 
-* bug2: NVblox + RealSense: “Lookup transform failed for frame camera0\_link” & Missing Realsense Splitter Node
+## bug2: NVblox + RealSense: “Lookup transform failed for frame camera0\_link” & Missing Realsense Splitter Node
 
 在`/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/`下面修改 `multi_mapper.h`，在`CHECK(false) << "Requested mapping type is not implemented.";`后面第89行加入`return “UnknownMappingType”;`
 
-![image-1](./2025-04-30-NVblox-Setup.assets/image-1.png)
 
+<img src="/assets/images/blog//2025-04-30-NVblox-Setup.assets/image-1.png" alt="img" style="zoom:50%;" />

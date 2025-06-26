@@ -138,101 +138,6 @@ posts_page: /blog/
 }
 </style>
 
-<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="biography">Biography </h2>
-
-Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang University(BUAA)](https://ev.buaa.edu.cn/)**
-
-🤖 My research interests lie in harnessing the method of **learning** and **control** to enable robots to interact with environments and tackle tasks with robustness and adaptability. Especially, I am interested in using some generative models and sim-to-real methods to improve the performance of robot perception and decision-making.
-
-
-<hr style="height:2px; background:#ccc; margin:2em 0">
-
-<h3 class="h2" style="color: rgb(1,92,171); font-size: 25px; font-weight: bold;" id="">Education </h3>
-<div>
-  <!-- <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
-      <div style="width: 15%; display: inline-block;">
-          <img src="assets/images/cmu-seal-r.png" style="border-radius: 50%;">
-      </div>
-      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
-          <span>
-              <b style="font-size: 18px;">Carnegie Mellon University</b>
-              <span style="font-size: 15px; float: right">Aug. 2024 - Present</span>
-          </span><br>
-          <span style="font-size: 15px;">Master Student</span><br>
-          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotic Systems Development</span><br>
-      </div>
-  </div> -->
-  <!-- <br> -->
-
-  <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
-      <div style="width: 15%; display: inline-block;">
-          <img src="assets/images/cuhk.jpg" style="border-radius: 50%;">
-      </div>
-      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
-          <span>
-              <b style="font-size: 18px;">The Chinese University of Hong Kong</b>
-              <span style="font-size: 15px; float: right">Sep. 2025 - Dec. 2026</span>
-          </span><br>
-          <span style="font-size: 15px;">Master Student</span><br>
-          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotics</span><br>
-      </div>
-  </div>
-  
-  <br>
-
-  <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
-      <div style="width: 15%; display: inline-block;">
-          <img src="assets/images/buaa.jpg" style="border-radius: 50%;">
-      </div>
-      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
-          <span>
-              <b style="font-size: 18px;">Beihang University</b>
-              <span style="font-size: 15px; float: right">Sep. 2021 - Jun. 2025</span>
-          </span><br>
-          <span style="font-size: 15px;">Undergraduate Student</span><br>
-          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Automation</span><br>
-      </div>
-  </div>
-
-<hr style="height:2px; background:#ccc; margin:2em 0">
-
-<h3 class="h2" style="color: rgb(1,92,171); font-size: 25px; font-weight: bold;" id="">Experience </h3>
-<div>
-    <div style="display: flex; align-items: center;">
-        <div style="width: 15%; display: inline-block;">
-            <img src="assets/images/THU.jpg" style="border-square: 50%;" width="100%">
-        </div>
-        <div style="padding-left: 4%; width: 83%; display: inline-block;">
-            <span>
-                <b style="font-size: 18px;">Research Intern</b>
-                <span style="font-size: 15px; float: right">Mar. 2025 - Jul. 2025</span>
-            </span><br>
-            <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
-            <span style="font-size: 15px;">Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof. Jia Liu </a></span><br>
-           <span style="font-size: 15px;">Topic: VLA Navigation Car</span><br>
-        </div>
-    </div>
-    <br>
-    <div style="display: flex; align-items: center;">
-        <div style="width: 15%; display: inline-block;">
-            <img src="assets/images/nus.jpg" style="border-square: 50%;">
-        </div>
-        <div style="padding-left: 4%; width: 83%; display: inline-block;">
-            <span>
-                <b style="font-size: 18px;">Research Intern (Remote)</b>
-                <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
-            </span><br>
-            <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
-            <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
-            <span style="font-size: 15px;">Topic: <a target="_blank">6-Dof Grasp based on VLA model</a></span><br>
-        </div>
-    </div>
-    <br>
-</div>
-
-<!-- Research -->
-<hr style="height:2px; background:#ccc; margin:2em 0">
-
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
 
 <style>
@@ -594,20 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
 
-<!-- <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="awards">Awards </h2>
-  <span class="icon-award" aria-hidden="true"></span> College Students' Innovation and Entrepreneurship Training Project(National Level Award), 2024
-
-<br>
-
-  <span class="icon-award" aria-hidden="true"></span> Academic Excellence Award, 2024
-
-<br>
-
-  <span class="icon-award" aria-hidden="true"></span> Academic Excellence Award, 2023
-
-<hr style="height:2px; background:#ccc; margin:2em 0"> -->
-
-<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="skills">Skills </h2>
+<!-- <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="skills">Skills </h2>
 
 - <font size=4 face="微软雅黑" >Programming Languages<br></font>
   <font size=3 face="微软雅黑" color=gray>Python, C/C++, Pytorch, Matlab.</font>
@@ -616,6 +508,91 @@ document.addEventListener('DOMContentLoaded', () => {
 
 - <font size=4 face="微软雅黑" >Robotics Tools<br></font>
   <font size=3 face="微软雅黑" color=gray>OpenCV, PCL, ROS/ROS2, IsaacSim, Gazebo.</font>
+
+<hr style="height:2px; background:#ccc; margin:2em 0"> -->
+
+<h3 class="h2" style="color: rgb(1,92,171); font-size: 25px; font-weight: bold;" id="">Education </h3>
+<div>
+  <!-- <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
+      <div style="width: 15%; display: inline-block;">
+          <img src="assets/images/cmu-seal-r.png" style="border-radius: 50%;">
+      </div>
+      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
+          <span>
+              <b style="font-size: 18px;">Carnegie Mellon University</b>
+              <span style="font-size: 15px; float: right">Aug. 2024 - Present</span>
+          </span><br>
+          <span style="font-size: 15px;">Master Student</span><br>
+          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotic Systems Development</span><br>
+      </div>
+  </div> -->
+  <!-- <br> -->
+
+  <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
+      <div style="width: 15%; display: inline-block;">
+          <img src="assets/images/cuhk.jpg" style="border-radius: 50%;">
+      </div>
+      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
+          <span>
+              <b style="font-size: 18px;">The Chinese University of Hong Kong</b>
+              <span style="font-size: 15px; float: right">Sep. 2025 - Dec. 2026</span>
+          </span><br>
+          <span style="font-size: 15px;">Master Student</span><br>
+          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotics</span><br>
+      </div>
+  </div>
+  
+  <br>
+
+  <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
+      <div style="width: 15%; display: inline-block;">
+          <img src="assets/images/buaa.jpg" style="border-radius: 50%;">
+      </div>
+      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
+          <span>
+              <b style="font-size: 18px;">Beihang University</b>
+              <span style="font-size: 15px; float: right">Sep. 2021 - Jun. 2025</span>
+          </span><br>
+          <span style="font-size: 15px;">Undergraduate Student</span><br>
+          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Automation</span><br>
+      </div>
+  </div>
+
+<hr style="height:2px; background:#ccc; margin:2em 0">
+
+<h3 class="h2" style="color: rgb(1,92,171); font-size: 25px; font-weight: bold;" id="">Experience </h3>
+<div>
+    <div style="display: flex; align-items: center;">
+        <div style="width: 15%; display: inline-block;">
+            <img src="assets/images/THU.jpg" style="border-square: 50%;" width="100%">
+        </div>
+        <div style="padding-left: 4%; width: 83%; display: inline-block;">
+            <span>
+                <b style="font-size: 18px;">Research Intern</b>
+                <span style="font-size: 15px; float: right">Mar. 2025 - Jul. 2025</span>
+            </span><br>
+            <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
+            <span style="font-size: 15px;">Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof. Jia Liu </a></span><br>
+           <span style="font-size: 15px;">Topic: VLA Navigation Car</span><br>
+        </div>
+    </div>
+    <br>
+    <div style="display: flex; align-items: center;">
+        <div style="width: 15%; display: inline-block;">
+            <img src="assets/images/nus.jpg" style="border-square: 50%;">
+        </div>
+        <div style="padding-left: 4%; width: 83%; display: inline-block;">
+            <span>
+                <b style="font-size: 18px;">Research Intern (Remote)</b>
+                <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
+            </span><br>
+            <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
+            <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
+            <span style="font-size: 15px;">Topic: <a target="_blank">6-Dof Grasp based on VLA model</a></span><br>
+        </div>
+    </div>
+    <br>
+</div>
 
 <hr style="height:2px; background:#ccc; margin:2em 0">
 

@@ -564,7 +564,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <div style="padding-left: 4%; width: 83%; display: inline-block;">
             <span>
                 <b style="font-size: 18px;">Research Intern</b>
-                <span style="font-size: 15px; float: right">Mar. 2025 - Jul. 2025</span>
+                <span style="font-size: 15px; float: right">Mar. 2025 - Jun. 2025</span>
             </span><br>
             <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
             <span style="font-size: 15px;">Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof. Jia Liu </a></span><br>

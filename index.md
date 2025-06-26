@@ -138,6 +138,15 @@ posts_page: /blog/
 }
 </style>
 
+
+<h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="biography">Biography </h2>
+
+Welcome to my homepage! **I'm a Senior undergraduated student at [Beihang University(BUAA)](https://ev.buaa.edu.cn/)**
+
+🤖 My research interests lie in harnessing the method of **learning** and **control** to enable robots to interact with environments and tackle tasks with robustness and adaptability. Especially, I am interested in using some generative models and sim-to-real methods to improve the performance of robot perception and decision-making.
+
+<hr style="height:2px; background:#ccc; margin:2em 0">
+
 <h2 class="h1" style="color: rgb(1,92,171); font-weight: bold; font-size:30px" id="research">Research </h2>
 
 <style>
@@ -513,20 +522,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <h3 class="h2" style="color: rgb(1,92,171); font-size: 25px; font-weight: bold;" id="">Education </h3>
 <div>
-  <!-- <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
-      <div style="width: 15%; display: inline-block;">
-          <img src="assets/images/cmu-seal-r.png" style="border-radius: 50%;">
-      </div>
-      <div style="padding-left: 4%; width: 83%; display: inline-block; height: 100%;">
-          <span>
-              <b style="font-size: 18px;">Carnegie Mellon University</b>
-              <span style="font-size: 15px; float: right">Aug. 2024 - Present</span>
-          </span><br>
-          <span style="font-size: 15px;">Master Student</span><br>
-          <span style="font-size: 15px;">Major:</span> <span style="font-size: 15px; font-weight: bold;">Robotic Systems Development</span><br>
-      </div>
-  </div> -->
-  <!-- <br> -->
 
   <div style="display: flex; align-items: center; margin:0rem 0rem 0.2rem 0rem">
       <div style="width: 15%; display: inline-block;">

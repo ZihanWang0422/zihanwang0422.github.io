@@ -265,7 +265,9 @@ document.addEventListener('DOMContentLoaded', () => {
   <!-- 论文条目1 -->
   <div class="pub-item">
     <div class="pub-image">
-        <img src="assets/research/aircraft.jpg" alt="等离子飞行器">
+        <a href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank">
+          <img src="assets/research/aircraft.jpg" alt="等离子飞行器">
+        </a>
     </div>
     <div class="pub-content">
       <div class="pub-title">Plasma-propelled ultra-quiet flying robot system and power combination control method</div>

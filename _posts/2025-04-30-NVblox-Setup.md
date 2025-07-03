@@ -1,7 +1,7 @@
 ---
 layout: post
 title: NVblox Setup
-description: Setup tutorials of 
+description: Setup tutorials of NVblox
 image: /assets/images/blog/simulator.png
 tags: [Jetson, Navigation, SLAM]
 permalink: /blog/nvblox-setup/

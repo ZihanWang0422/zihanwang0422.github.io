@@ -10,13 +10,13 @@ permalink: /blog/isaac-sim-setup/
 * TOC
 {:toc}
 
-# Prerequisite
+## Prerequisite
 
 [Official GeForce Drivers NVIDIA](https://www.nvidia.com/en-us/geforce/drivers/)
 
 [ubuntu22.04安装nvidia驱动/CUDA/cudnn_](https://blog.csdn.net/qq_34972053/article/details/127689332)
 
-## Cuda安装相关
+### Cuda安装相关
 
 1. Nvidia Driver
 
@@ -66,7 +66,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-## Docker 配置：
+### Docker 配置：
 
 [Container Installation — Isaac Sim Documentation](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html)
 
@@ -144,7 +144,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-## Isaac Ros Workspace Setup
+### Isaac Ros Workspace Setup
 
 1. Restart docker
 
@@ -216,9 +216,9 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-# Isaac Sim
+## Isaac Sim
 
-## Installization（Workstation）
+### Installization（Workstation）
 
 1. Download
 
@@ -278,7 +278,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-## Nav2:
+### Nav2:
 
 [ROS2 Navigation — Isaac Sim Documentation](https://docs.isaacsim.omniverse.nvidia.com/latest/ros2_tutorials/tutorial_ros2_navigation.html#ros2-navigation)
 
@@ -327,7 +327,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-## NVBlox:
+### NVBlox:
 
 1. 首先完成前置环境配置：
 
@@ -408,7 +408,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-## Visual Slam
+### Visual Slam
 
 1. 首先完成前置环境配置：
 

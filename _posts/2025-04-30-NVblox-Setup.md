@@ -22,11 +22,11 @@ Kernel-builder:
 
 
 
-# Prerequisite(Jetson Orin Nano)
+## Prerequisite(Jetson Orin Nano)
 
-## Jetson Setup
+### Jetson Setup
 
-## 重启docker
+### 重启docker
 
 ```bash
 sudo systemctl daemon-reload && sudo systemctl restart docker
@@ -35,7 +35,7 @@ sudo apt-get install git-lfs
 git lfs install --skip-repo
 ```
 
-## 环境变量设置
+### 环境变量设置
 
 ```bash
 mkdir -p  ~/workspaces/isaac_ros-dev/src
@@ -43,7 +43,7 @@ echo "export ISAAC_ROS_WS=${HOME}/workspaces/isaac_ros-dev/" >> ~/.bashrc
 source ~/.bashrc
 ```
 
-## 建立环境
+### 建立环境
 
 ```bash
 cd ${ISAAC_ROS_WS}/src && \
@@ -86,13 +86,13 @@ fi
 
 
 
-# NVBlox配置
+## NVBlox配置
 
 &#x20;     bug1 [ Jetson部署NVBlox](https://c1afcru08q1.feishu.cn/docx/KyOjdFzlRoRmlKxQXC4cbxgNnbe#share-W8zgdsXNmoJy02xR7LhcMu9onTg)
 
 
 
-# Realsense Docker 配置
+## Realsense Docker 配置
 
 ```bash
 cd ${ISAAC_ROS_WS}/src && \
@@ -114,7 +114,7 @@ cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 
 
 
-# IsaacROS NVBlox 运行
+## IsaacROS NVBlox 运行
 
 ```bash
 cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh
@@ -140,7 +140,7 @@ rosbag:=<YOUR_ROSBAG_PATH>
 
 
 
-# ROSbag录制
+## ROSbag录制
 
 
 
@@ -162,9 +162,9 @@ ROSbag-NVBlox如下（待验证）：https://www.jianguoyun.com/p/DddYoskQ7IupDR
 
 
 
-# ⚠️Debug
+## ⚠️Debug
 
-## bug1： TypeError: canonicalize\_name() got an unexpected keyword argument 'validate'
+### bug1： TypeError: canonicalize\_name() got an unexpected keyword argument 'validate'
 
 AttributeError: module 'packaging.utils' has no attribute 'InvalidName'
 
@@ -1249,7 +1249,7 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 
 
 
-## bug2: NVblox + RealSense: “Lookup transform failed for frame camera0\_link” & Missing Realsense Splitter Node
+### bug2: NVblox + RealSense: “Lookup transform failed for frame camera0\_link” & Missing Realsense Splitter Node
 
 在`/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/`下面修改 `multi_mapper.h`，在`CHECK(false) << "Requested mapping type is not implemented.";`后面第89行加入`return “UnknownMappingType”;`
 

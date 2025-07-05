@@ -11,7 +11,15 @@
     width: 300px; /* 根据实际侧边栏宽度调整 */
     overflow-y: auto; /* 如果内容过长允许滚动 */
     z-index: 1000; /* 确保显示层级 */
+    display: block !important;
+    visibility: visible !important;
   }
+
+/* 确保侧边栏背景正常显示 */
+.sidebar-bg.sidebar-overlay {
+  opacity: 1 !important;
+  visibility: visible !important;
+}
 
 /* 内容区域偏移 */
 .content {
@@ -51,6 +59,8 @@ hy-drawer {
   transform: none !important;
   contain: none;
   will-change: unset;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 hy-drawer > .hy-drawer-scrim { 
@@ -61,6 +71,8 @@ hy-drawer.cover {
   position: relative;
   width: auto;
   height: auto;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 
 /* 禁用抽屉切换按钮 */

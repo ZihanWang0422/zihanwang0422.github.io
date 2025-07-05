@@ -3,41 +3,67 @@
 //   text-shadow: rgba(0, 0, 0, 0.25) 0.1rem 0.1rem 0.15rem;
 // }
 /* 侧边栏容器固定 */
-// .sidebar {
-//     position: fixed;
-//     top: 0;
-//     left: 0;
-//     bottom: 0;
-//     width: 300px; /* 根据实际侧边栏宽度调整 */
-//     overflow-y: auto; /* 如果内容过长允许滚动 */
-//     z-index: 1000; /* 确保显示层级 */
-//   }
-
-// /* 内容区域偏移 */
-// .content {
-//     margin-left: 300px; /* 与侧边栏宽度一致 */
-//   }
-  
-//   /* 移动端恢复默认 */
-//   @media (max-width: 768px) {
-//     .sidebar {
-//       position: static;
-//       width: auto;
-//     }
-    
-//     .content {
-//       margin-left: 0;
-//     }
-//   }
-  
-//   /* 保持侧边栏头像固定 */
-//   .sidebar-about {
-//     position: sticky;
-//     top: 20px;
-//   }
-  
-  /* 固定导航菜单 */
-  .sidebar-nav {
-    position: sticky;
-    top: 200px; /* 根据实际高度调整 */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px; /* 根据实际侧边栏宽度调整 */
+    overflow-y: auto; /* 如果内容过长允许滚动 */
+    z-index: 1000; /* 确保显示层级 */
   }
+
+/* 内容区域偏移 */
+.content {
+    margin-left: 300px; /* 与侧边栏宽度一致 */
+  }
+  
+/* 移动端恢复默认 */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    width: auto;
+  }
+  
+  .content {
+    margin-left: 0;
+  }
+}
+  
+/* 保持侧边栏头像固定 */
+.sidebar-about {
+  position: sticky;
+  top: 20px;
+}
+  
+/* 固定导航菜单 */
+.sidebar-nav {
+  position: sticky;
+  top: 200px; /* 根据实际高度调整 */
+}
+
+/* 禁用抽屉功能 */
+hy-drawer {
+  display: block !important;
+  position: static;
+  width: auto;
+  height: 100%;
+  transform: none !important;
+  contain: none;
+  will-change: unset;
+}
+
+hy-drawer > .hy-drawer-scrim { 
+  display: none !important; 
+}
+
+hy-drawer.cover {
+  position: relative;
+  width: auto;
+  height: auto;
+}
+
+/* 禁用抽屉切换按钮 */
+.navbar > .nav-btn-bar > .nav-btn {
+  display: none;
+}

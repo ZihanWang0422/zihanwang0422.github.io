@@ -480,7 +480,7 @@ document.addEventListener('DOMContentLoaded', () => {
       <tr>
         <td style="width: 30%; vertical-align: top; padding-right: 20px;">
           <img src="assets/competition/zhixing_video.gif"
-              style="width: 100%; max-width: 280px; height: 180px; object-fit: cover; object-position: center"/>
+              style="width: 100%; height: 200px; object-fit: cover; object-position: center"/>
         </td>
         <td style="vertical-align: top;">
           <div style="padding-left: 15px;">

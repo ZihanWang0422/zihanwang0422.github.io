@@ -570,7 +570,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </span><br>
             <span style="font-size: 15px;"><a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">Tsinghua Laboratory of Brain and Intelligence</a></span><br>
             <span style="font-size: 15px;">Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof. Jia Liu </a></span><br>
-           <span style="font-size: 15px;">Topic: VLA Navigation Car</span><br>
+           <span style="font-size: 15px;">Topic: VLN Navigation Car</span><br>
         </div>
     </div>
     <br>
@@ -584,8 +584,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 <span style="font-size: 15px; float: right">Jul. 2023 - Dec. 2023</span>
             </span><br>
             <span style="font-size: 15px;"><a href="https://cde.nus.edu.sg/me/" target="_blank">Department of Mechanical Engineering at NUS</a></span><br>
-            <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">PhD. Wenshuo Wang</a></span><br>
-            <span style="font-size: 15px;">Topic: <a target="_blank">6-Dof Grasp based on VLA model</a></span><br>
+            <span style="font-size: 15px;">Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">Dr. Wenshuo Wang</a></span><br>
+            <span style="font-size: 15px;">Topic: <a target="_blank">6-Dof Grasp </a></span><br>
         </div>
     </div>
     <br>

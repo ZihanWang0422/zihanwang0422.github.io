@@ -398,6 +398,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- 修改后的链接 -->
             <div class="project-links">
               <a href="https://github.com/ZihanWang0422/wheel-legged-master">[Code]</a>
+              <a href="https://youtube.com/shorts/dZCjQW7pA4g?feature=share">[Demo]</a>
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
                 Developed a wheel-legged robot control system utilizing STM32H7 microcontroller with integrated PID and LQR algorithms for precise motion control and attitude stabilization across complex terrain.
@@ -465,6 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
             <!-- 修改后的链接 -->
             <div class="project-links">
               <a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car">[Code]</a>
+              <a href="https://youtube.com/shorts/R3W2jP_Io_M?feature=share">[Demo]</a>
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
                 I was responsible for designing an efficient motion planning algorithm using PID and A* search algorithms that enables car to avoid randomly positioned obstacles.
@@ -497,7 +499,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
             <!-- 修改后的链接 -->
             <div class="project-links">
-              <a href="https://github.com/ZihanWang0422/YuyuanCup">[Demo]</a>
+              <a href="https://youtu.be/74ppMMNvv9I">[Demo]</a>
             </div>
             <div style="color: gray; font-size: 0.9rem; line-height: 1.5;">
               In this project we designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning.

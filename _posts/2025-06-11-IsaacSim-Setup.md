@@ -66,7 +66,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-### Docker 配置：
+### Docker 配置
 
 [Container Installation — Isaac Sim Documentation](https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html)
 
@@ -81,7 +81,7 @@ permalink: /blog/isaac-sim-setup/
    sudo groupdel docker
    ```
 
-2. Docker 下载：
+2. Docker 下载
 
    ```bash
    curl -fsSL https://get.docker.com -o get-docker.sh
@@ -101,7 +101,7 @@ permalink: /blog/isaac-sim-setup/
    docker images
    ```
 
-3. 下载NVIDIA Container Toolkit：
+3. 下载NVIDIA Container Toolkit
 
    ```bash
    curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
@@ -278,7 +278,7 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-### Nav2:
+### Nav2
 
 [ROS2 Navigation — Isaac Sim Documentation](https://docs.isaacsim.omniverse.nvidia.com/latest/ros2_tutorials/tutorial_ros2_navigation.html#ros2-navigation)
 
@@ -299,7 +299,7 @@ permalink: /blog/isaac-sim-setup/
 
 3. Running
 
-* 启动流程：
+* 启动流程
 
    ```bash
    #Terminal1
@@ -313,7 +313,7 @@ permalink: /blog/isaac-sim-setup/
    ros2 launch carter_navigation carter_navigation.launch.py
    ```
 
-* Load example:
+* Load example
 
    **Window > Examples > Robotics Examples然后打开ROS2 > Navigation > Carter**
 
@@ -327,15 +327,15 @@ permalink: /blog/isaac-sim-setup/
 
 
 
-### NVBlox:
+### NVBlox
 
-1. 首先完成前置环境配置：
+1. 首先完成前置环境配置
 
    [ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)
 
    
 
-2. isaac\_ros\_nvblox：
+2. isaac\_ros\_nvblox
 
    ```bash
    #Launch docker container 

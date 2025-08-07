@@ -455,33 +455,6 @@ I'm always looking for related colaboration. If you are interested to chat with 
 
     </div>
   </div>
-</div>
-
-<!-- JavaScript to handle button clicks -->
-<script>
-  // Get the buttons and publications
-  const showSelectedBtn = document.getElementById('show-selected-btn');
-  const showAllBtn = document.getElementById('show-all-btn');
-  const publications = document.querySelectorAll('.pub');
-
-  // Add event listener to 'Show Selected Publication' button
-  showSelectedBtn.addEventListener('click', function() {
-    publications.forEach(pub => {
-      if (pub.getAttribute('data-selected') === 'true') {
-        pub.style.display = 'block';  // Show selected publication
-      } else {
-        pub.style.display = 'none';  // Hide other publications
-      }
-    });
-  });
-
-  // Add event listener to 'Show All' button
-  showAllBtn.addEventListener('click', function() {
-    publications.forEach(pub => {
-      pub.style.display = 'block';  // Show all publications
-    });
-  });
-</script>
 
 <!-- SiteMap -->
 <div style="display: flex; justify-content: center; align-items: center;">

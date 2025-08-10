@@ -71,11 +71,6 @@ img {
     vertical-align: middle
 }
 
-/* Remove borders from all intro-img and frame elements */
-.intro-img, .frame {
-    border: none !important;
-}
-
 figure>img {
     display: block
 }

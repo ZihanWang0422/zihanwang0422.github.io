@@ -72,10 +72,8 @@ img {
 }
 
 /* Remove borders from all intro-img and frame elements */
-.intro-img, .frame, img.intro-img, img.frame {
+.intro-img, .frame {
     border: none !important;
-    border-style: none !important;
-    border-width: 0 !important;
 }
 
 figure>img {

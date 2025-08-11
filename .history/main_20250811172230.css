@@ -76,7 +76,7 @@ img {
      border: none !important;
      border-style: none !important;
      border-width: 0 !important;
-     width: 200px !important; /* Set consistent width for all project and research images */
+     width: 180px !important; /* Set consistent width for all project and research images */
      height: auto !important; /* Maintain aspect ratio */
      object-fit: contain; /* Ensures the image fits within the container */
      object-position: center; /* Centers the image */

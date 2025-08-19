@@ -366,13 +366,7 @@
 
     <h3 id="joint-configuration">Joint Configuration</h3>
 
-    <p>All joints need to be configured for all connection parts. For wheels, set component1 as wheel and component2 as base_link.</p>
-
-    <p>⚠️ When setting wheel joint-continuous, there may be reversal situations. In this case, switch the component objects as shown below:</p>
-
-    <img src="../images/blog/urdf/image-3.png" alt="image-3">
-
-    <img src="../images/blog/urdf/image-5.png" alt="image-5">
+    <p>Configure 4 wheel joints. All wheels use revolute joints connected to the respective wheel brackets, with rotation axes along the Y-axis. Name the joints: front_left_wheel_joint, front_right_wheel_joint, rear_left_wheel_joint, rear_right_wheel_joint.</p>
 
     <h3 id="file-structure">File Structure:</h3>    <img src="../images/blog/urdf/image-4.png" alt="image-4">
 
@@ -433,6 +427,7 @@ rosrun tf tf_echo base_link wheel_link</code></pre>
     <p>To improve simulation efficiency, it's recommended to simplify the complexity of collision meshes while maintaining detection accuracy.</p>
 
     <img src="../images/blog/urdf/image-1.png" alt="image-1">
+
 
     <div class="blog-tags">
       <span class="tag">Simulator</span>

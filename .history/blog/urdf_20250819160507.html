@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>IsaacSim Environment Setup - Zihan Wang</title>
-  <meta name="description" lang="en" content="Some basic IsaacSim Setup and SLAM/Nav2 demo.">
-  <meta name="keywords" lang="en" content="Zihan Wang, IsaacSim, CUDA, ROS, SLAM" />
+  <title>URDF Modeling Tutorial - Zihan Wang</title>
+  <meta name="description" lang="en" content="Fusion2URDF - From 3D model to URDF.">
+  <meta name="keywords" lang="en" content="Zihan Wang, URDF, Fusion360, ROS" />
 
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
   <link rel="stylesheet" href="../main.css">
@@ -32,7 +32,7 @@
       text-align: center;
       margin-bottom: 40px;
       padding: 40px 0;
-      background: linear-gradient(135deg, #667eea 0%, #177bcc 100%);
+      background: linear-gradient(135deg, #667eea 0%, #589dec 100%);
       color: white;
       border-radius: 8px;
     }
@@ -49,6 +49,11 @@
       padding: 30px;
       border-radius: 8px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .blog-content h1 {
+      color: #333;
+      margin-bottom: 20px;
     }
     
     .blog-content h2 {
@@ -128,15 +133,6 @@
       margin: 20px auto;
       border-radius: 8px;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    
-    .blog-content ul, .blog-content ol {
-      margin-bottom: 15px;
-      padding-left: 20px;
-    }
-    
-    .blog-content li {
-      margin-bottom: 5px;
     }
     
     .back-to-blog {
@@ -298,9 +294,9 @@
   <a href="../blog.html" class="back-to-blog">← Back to Blog List</a>
   
   <div class="blog-header">
-    <h1>IsaacSim Environment Setup</h1>
+    <h1>URDF Modeling Tutorial</h1>
     <div class="blog-meta">
-      <i class="fa fa-calendar"></i> June 11, 2025
+      <i class="fa fa-calendar"></i> June 12, 2025
     </div>
   </div>
 
@@ -312,64 +308,43 @@
     <div class="toc-content" id="tocContent">
       <ul class="toc-list">
         <li class="toc-item">
-          <a href="#prerequisites" class="toc-link h2">Prerequisites</a>
+          <a href="#fusion-360-modeling" class="toc-link h2">Fusion 360 Modeling</a>
         </li>
         <li class="toc-item">
-          <a href="#cuda-installation" class="toc-link h2">CUDA Installation</a>
+          <a href="#main-body-components" class="toc-link h3">Main Body Components</a>
         </li>
         <li class="toc-item">
-          <a href="#nvidia-driver" class="toc-link h3">1. NVIDIA Driver</a>
+          <a href="#joint-configuration" class="toc-link h3">Joint Configuration</a>
         </li>
         <li class="toc-item">
-          <a href="#download-cuda" class="toc-link h3">2. Download CUDA</a>
+          <a href="#file-structure" class="toc-link h3">File Structure</a>
         </li>
         <li class="toc-item">
-          <a href="#switch-cuda" class="toc-link h3">3. Switch CUDA Version</a>
+          <a href="#fusion2urdf" class="toc-link h2">Fusion2urdf</a>
         </li>
         <li class="toc-item">
-          <a href="#isaacsim-installation" class="toc-link h2">IsaacSim Installation</a>
+          <a href="#script-modifications" class="toc-link h3">Script Modifications</a>
         </li>
         <li class="toc-item">
-          <a href="#system-requirements" class="toc-link h3">System Requirements</a>
+          <a href="#export-settings" class="toc-link h3">Export Settings</a>
         </li>
         <li class="toc-item">
-          <a href="#download-installation" class="toc-link h3">Download and Installation</a>
+          <a href="#ros-integration" class="toc-link h2">ROS Integration</a>
         </li>
         <li class="toc-item">
-          <a href="#ros2-integration" class="toc-link h2">ROS2 Integration Configuration</a>
+          <a href="#verification-testing" class="toc-link h3">Verification and Testing</a>
         </li>
         <li class="toc-item">
-          <a href="#isaac-ros-installation" class="toc-link h3">Isaac ROS Installation</a>
+          <a href="#common-issues" class="toc-link h2">Common Issues and Solutions</a>
         </li>
         <li class="toc-item">
-          <a href="#slam-demo" class="toc-link h2">SLAM Demonstration</a>
+          <a href="#joint-reversal" class="toc-link h3">Joint Reversal Problem</a>
         </li>
         <li class="toc-item">
-          <a href="#configure-scene" class="toc-link h3">Configure Isaac Sim Scene</a>
+          <a href="#collision-optimization" class="toc-link h3">Collision Detection Optimization</a>
         </li>
         <li class="toc-item">
-          <a href="#run-slam" class="toc-link h3">Run SLAM</a>
-        </li>
-        <li class="toc-item">
-          <a href="#nav2-demo" class="toc-link h2">Nav2 Demonstration</a>
-        </li>
-        <li class="toc-item">
-          <a href="#map-building" class="toc-link h3">Map Building</a>
-        </li>
-        <li class="toc-item">
-          <a href="#navigation-config" class="toc-link h3">Navigation Configuration</a>
-        </li>
-        <li class="toc-item">
-          <a href="#run-navigation" class="toc-link h3">Run Navigation</a>
-        </li>
-        <li class="toc-item">
-          <a href="#visualization-debugging" class="toc-link h2">Visualization and Debugging</a>
-        </li>
-        <li class="toc-item">
-          <a href="#lidar-visualization" class="toc-link h3">3D LiDAR Visualization</a>
-        </li>
-        <li class="toc-item">
-          <a href="#semantic-images" class="toc-link h3">Reconstruction and Semantic Images</a>
+          <a href="#summary" class="toc-link h2">Summary</a>
         </li>
       </ul>
     </div>
@@ -377,194 +352,93 @@
 
   <div class="blog-content">
     
-    <h2 id="prerequisites">Prerequisites</h2>
+    <p>URDF Repository: <a href="https://github.com/EmbodiedLLM/RoadRunner_Description" target="_blank">https://github.com/EmbodiedLLM/RoadRunner_Description</a></p>
 
-    <p><a href="https://www.nvidia.com/en-us/geforce/drivers/" target="_blank">Official GeForce Drivers NVIDIA</a></p>
+    <p>Assembly Files: <a href="https://www.jianguoyun.com/p/DekYivEQ7IupDRjN9f0FIAA" target="_blank">https://www.jianguoyun.com/p/DekYivEQ7IupDRjN9f0FIAA</a></p>
 
-    <p><a href="https://blog.csdn.net/qq_34972053/article/details/127689332" target="_blank">Ubuntu 22.04 NVIDIA Driver/CUDA/cuDNN Installation</a></p>
+    <h2 id="fusion-360-modeling">Fusion 360 Modeling</h2>
 
-    <h2 id="cuda-installation">CUDA Installation</h2>
+    <h3 id="main-body-components">Main Body Components</h3>
 
-    <h3 id="nvidia-driver">1. NVIDIA Driver</h3>
+    <p>First, switch the coordinate system of the entire main body to the standard position, then merge all parts except the four wheels, radar, IMU, and RealSense into one entity (base_link).</p>
 
-    <pre><code># Uninstall existing nvidia driver
-sudo apt-get --purge remove "*nvidia*"
-sudo apt autoremove
-# Install specific version driver
-sudo add-apt-repository ppa:graphics-drivers/ppa  # Add official ppa source
-sudo apt update  # Check package update list
-apt list --upgradable  # View upgradable package list
-sudo apt upgrade  # Update all upgradable packages
-# Download driver
-ubuntu-drivers devices    # Ubuntu detects available drivers for nvidia card
-sudo apt install nvidia-driver-5xx  # Install graphics driver based on your nvidia card</code></pre>
+    <p>⚠️ Before merging entities, disable "Capture Design History", then make all components independent, otherwise component position anomalies may occur.</p>
 
-    <h3 id="download-cuda">2. Download CUDA</h3>
+    <h3 id="joint-configuration">Joint Configuration</h3>
 
-    <p>Download link: <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
+    <p>Configure 4 wheel joints. All wheels use revolute joints connected to the respective wheel brackets, with rotation axes along the Y-axis. Name the joints: front_left_wheel_joint, front_right_wheel_joint, rear_left_wheel_joint, rear_right_wheel_joint.</p>
 
-    <h3 id="switch-cuda">3. Switch CUDA Version:</h3>
+    <h3 id="file-structure">File Structure:</h3>    <img src="../images/blog/urdf/image-4.png" alt="image-4">
 
-    <pre><code># Check installed cuda versions
-ls -l /usr/local | grep cuda
-# Open environment variables
-vim ~/.bashrc</code></pre>
+    <h2 id="fusion2urdf">Fusion2urdf</h2>
 
-    <p>Add CUDA path configuration to bashrc file:</p>
+    <p>Tutorial: <a href="https://github.com/runtimerobotics/fusion360-urdf-ros2?tab=readme-ov-file#usage" target="_blank">https://github.com/runtimerobotics/fusion360-urdf-ros2?tab=readme-ov-file#usage</a></p>
 
-    <pre><code>export CUDA_HOME=/usr/local/cuda-xx.x
-export PATH=$CUDA_HOME/bin:$PATH
-export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</code></pre>
+    <p>Download: <a href="https://github.com/syuntoku14/fusion2urdf" target="_blank">https://github.com/syuntoku14/fusion2urdf</a></p>
 
-    <h2 id="isaacsim-installation">IsaacSim Installation</h2>
+    <h3 id="script-modifications">Script Modifications</h3>
 
-    <h3 id="system-requirements">System Requirements</h3>
+    <p>Need to modify the basic script to adapt to the latest version of Fusion360, mainly involving API interface updates and compatibility issues.</p>
+
+    <h3 id="export-settings">Export Settings</h3>
+
+    <p>When exporting URDF, pay attention to the following key parameter settings:</p>
     <ul>
-      <li>Ubuntu 20.04 or 22.04</li>
-      <li>NVIDIA RTX series graphics card</li>
-      <li>CUDA 11.8 or higher</li>
-      <li>At least 32GB RAM (recommended)</li>
-      <li>At least 50GB available disk space</li>
+      <li>Proper configuration of material properties</li>
+      <li>Reasonable setting of joint limits</li>
+      <li>Optimization of collision detection meshes</li>
+      <li>Accurate calculation of inertial parameters</li>
     </ul>
 
-    <h3 id="download-installation">Download and Installation</h3>
+    <h2 id="ros-integration">ROS Integration</h2>
 
-    <p>1. Visit NVIDIA Omniverse official website to download Omniverse Launcher</p>
-    <p>2. Install Isaac Sim through Launcher</p>
-    <p>3. Configure Python environment</p>
-
-    <pre><code># Install dependencies
-pip install omni-isaac-sim
-pip install opencv-python numpy matplotlib</code></pre>
-
-    <h2 id="ros2-integration">ROS2 Integration Configuration</h2>
-
-    <h3 id="isaac-ros-installation">Isaac ROS Installation</h3>
-
-    <pre><code># Install ROS2 Humble
-sudo apt update && sudo apt install curl gnupg lsb-release
-sudo curl -sSL https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc | sudo apt-key add -
-sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)] http://packages.ros.org/ros2/ubuntu $(lsb_release -cs) main" > /etc/apt/sources.list.d/ros2-latest.list'
-sudo apt update
-sudo apt install ros-humble-desktop
-
-# Install Isaac ROS
-mkdir -p ~/workspaces/isaac_ros-dev/src
-cd ~/workspaces/isaac_ros-dev/src
-git clone https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git
-cd ~/workspaces/isaac_ros-dev
-colcon build</code></pre>
-
-    <h2 id="slam-demo">SLAM Demonstration</h2>
-
-    <h3 id="configure-scene">Configure Isaac Sim Scene</h3>
-
-    <p>1. Start Isaac Sim</p>
-    <p>2. Load Warehouse scene</p>
-    <p>3. Add Carter robot</p>
-    <p>4. Configure sensors (LiDAR, Camera)</p>
-
-    <h3 id="run-slam">Run SLAM</h3>
-
-    <pre><code># Terminal 1: Start Isaac Sim ROS Bridge
-cd ~/.local/share/ov/pkg/isaac_sim-*
-./isaac-sim.sh --/isaac/startup/ros_bridge_extension="omni.isaac.ros2_bridge"
-
-# Terminal 2: Start SLAM
-source ~/workspaces/isaac_ros-dev/install/setup.bash
-ros2 launch isaac_ros_visual_slam isaac_ros_visual_slam.launch.py
-
-# Terminal 3: Start Navigation
-ros2 launch isaac_ros_navigation isaac_ros_navigation.launch.py</code></pre>
-
-    <h2 id="nav2-demo">Nav2 Demonstration</h2>
-
-    <h3 id="map-building">Map Building</h3>
-
-    <p>After building environment map using SLAM, you can save it in Nav2 compatible format:</p>
-
-    <pre><code>ros2 run nav2_map_server map_saver_cli -f my_map</code></pre>
-
-    <h3 id="navigation-config">Navigation Configuration</h3>
-
-    <p>Configure Nav2 parameter files, including:</p>
+    <p>The exported URDF files can be used directly in ROS environment, supporting the following functions:</p>
     <ul>
-      <li>Local path planner parameters</li>
-      <li>Global path planner parameters</li>
-      <li>Behavior tree configuration</li>
-      <li>Costmap parameters</li>
+      <li>Gazebo physical simulation</li>
+      <li>RViz visualization display</li>
+      <li>Navigation stack navigation</li>
+      <li>MoveIt motion planning</li>
     </ul>
 
-    <h3 id="run-navigation">Run Navigation</h3>
+    <h3 id="verification-testing">Verification and Testing</h3>
 
-    <pre><code># Start navigation stack
-ros2 launch nav2_bringup navigation_launch.py map:=my_map.yaml
+    <p>Recommend the following verification before use:</p>
+    <pre><code>roslaunch urdf_tutorial display.launch model:=your_robot.urdf
+    rostopic   echo /joint_states
+    rosrun     tf tf_echo base_link wheel_link</code></pre>
 
-# Set goal points in RViz for navigation testing</code></pre>
+    <img src="../images/blog/urdf/image-2.png" alt="image-2">
 
-    <h2 id="visualization-debugging">Visualization and Debugging</h2>
+    <h2 id="common-issues">Common Issues and Solutions</h2>
 
-    <h3 id="lidar-visualization">3D LiDAR Visualization</h3>
+    <h3 id="joint-reversal">Joint Reversal Problem</h3>
+    
+    <p>If you find the joint movement direction is opposite to expected, you can solve it by adjusting the component order of the joint.</p>
 
-    <p>Selecting 3D LiDAR can perceive objects in a large range, which can assist in goal selection during navigation.</p>
+    <img src="../images/blog/urdf/image.png" alt="image" style="width: 67%;">
 
-    <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;">
+    <h3 id="collision-optimization">Collision Detection Optimization</h3>
 
-    <h3 id="semantic-images">Reconstruction and Semantic Images</h3>
+    <p>To improve simulation efficiency, it's recommended to simplify the complexity of collision meshes while maintaining detection accuracy.</p>
 
-    <p>Isaac Sim provides powerful semantic segmentation and 3D reconstruction capabilities:</p>
+    <img src="../images/blog/urdf/image-1.png" alt="image-1">
 
-    <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;">
+    <h2 id="summary">Summary</h2>
 
-    <h2>Performance Optimization</h2>
+    <p>Through the Fusion360 to URDF conversion process, we can quickly convert CAD models into robot description files usable by ROS. Although this process requires some technical knowledge, once mastered, it can greatly improve the efficiency of robot development.</p>
 
-    <h3>Rendering Settings</h3>
+    <p>Key points:</p>
     <ul>
-      <li>Adjust rendering quality to balance performance and visual effects</li>
-      <li>Turn off unnecessary visual effects</li>
-      <li>Optimize lighting and shadow settings</li>
+      <li>Correctly set coordinate systems and joint relationships</li>
+      <li>Optimize model complexity to suit simulation needs</li>
+      <li>Fully test and verify model correctness</li>
+      <li>Adjust physical parameters according to application scenarios</li>
     </ul>
-
-    <h3>Physics Simulation Optimization</h3>
-    <ul>
-      <li>Adjust physics update frequency</li>
-      <li>Simplify collision detection meshes</li>
-      <li>Optimize joint and constraint settings</li>
-    </ul>
-
-    <h2>Common Issue Solutions</h2>
-
-    <h3>CUDA Version Compatibility</h3>
-    <p>Ensure CUDA version is consistent with Isaac Sim requirements to avoid startup failures due to version conflicts.</p>
-
-    <h3>Insufficient Memory</h3>
-    <p>Isaac Sim has high memory requirements, it's recommended to:</p>
-    <ul>
-      <li>Close other memory-intensive applications</li>
-      <li>Reduce the number of simultaneously loaded models</li>
-      <li>Adjust rendering settings to reduce memory usage</li>
-    </ul>
-
-    <h3>ROS Communication Issues</h3>
-    <p>Check ROS_DOMAIN_ID settings to ensure Isaac Sim and ROS nodes are in the same network domain.</p>
-
-    <h2>Summary</h2>
-
-    <p>Isaac Sim is a powerful robot simulation platform that can achieve the following through proper configuration:</p>
-    <ul>
-      <li>High-precision physical simulation</li>
-      <li>Realistic sensor simulation</li>
-      <li>Seamless integration with ROS</li>
-      <li>SLAM and navigation algorithm validation</li>
-    </ul>
-
-    <p>Mastering Isaac Sim configuration and usage can greatly improve the efficiency of robot algorithm development and testing.</p>
 
     <div class="blog-tags">
       <span class="tag">Simulator</span>
-      <span class="tag">Navigation</span>
-      <span class="tag">SLAM</span>
-      <span class="tag">CUDA</span>
+      <span class="tag">URDF</span>
+      <span class="tag">Fusion360</span>
       <span class="tag">ROS</span>
     </div>
   </div>

@@ -629,66 +629,7 @@ window.addEventListener('scroll', updateActiveSection);
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
   updateActiveSection();
-  initCodeCopyButtons();
 });
-
-// Add copy buttons to code blocks
-function initCodeCopyButtons() {
-  const codeBlocks = document.querySelectorAll('pre code');
-  
-  codeBlocks.forEach((block, index) => {
-    const pre = block.parentElement;
-    
-    // Wrap pre in container if not already wrapped
-    if (!pre.parentElement.classList.contains('code-block-container')) {
-      const container = document.createElement('div');
-      container.className = 'code-block-container';
-      pre.parentElement.insertBefore(container, pre);
-      container.appendChild(pre);
-    }
-    
-    // Create copy button
-    const copyButton = document.createElement('button');
-    copyButton.className = 'copy-button';
-    copyButton.textContent = 'Copy';
-    copyButton.onclick = () => copyToClipboard(block, copyButton);
-    
-    // Add button to container
-    pre.parentElement.appendChild(copyButton);
-  });
-}
-
-// Copy text to clipboard
-function copyToClipboard(codeBlock, button) {
-  const text = codeBlock.textContent;
-  
-  navigator.clipboard.writeText(text).then(() => {
-    button.textContent = 'Copied';
-    button.classList.add('copied');
-    
-    setTimeout(() => {
-      button.textContent = 'Copy';
-      button.classList.remove('copied');
-    }, 2000);
-  }).catch(err => {
-    console.error('Failed to copy: ', err);
-    // Fallback for older browsers
-    const textArea = document.createElement('textarea');
-    textArea.value = text;
-    document.body.appendChild(textArea);
-    textArea.select();
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
-    
-    button.textContent = 'Copied';
-    button.classList.add('copied');
-    
-    setTimeout(() => {
-      button.textContent = 'Copy';
-      button.classList.remove('copied');
-    }, 2000);
-  });
-}
 </script>
 
 </body>

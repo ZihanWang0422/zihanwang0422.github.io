@@ -884,11 +884,11 @@ RUN mkdir -p /opt/nvidia/isaac_ros_dev_base && dpkg-query -W | sort > /opt/nvidi
 RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64 -O /usr/local/bin/yq \
 && chmod +x /usr/local/bin/yq</code></pre>
 
-    <p>Note that after modification, runtime timeout errors may still occur, in which case run it again!</p>
+    <p>注意修改后可能还会出现运行超时错误，此时再运行一遍即可！</p>
 
     <h3>bug2: NVblox + RealSense: "Lookup transform failed for frame camera0\_link" & Missing Realsense Splitter Node</h3>
 
-    <p>Modify <code>multi_mapper.h</code> in <code>/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/</code>, add <code>return "UnknownMappingType";</code> on line 89 after <code>CHECK(false) << "Requested mapping type is not implemented.";</code></p>
+    <p>在<code>/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/</code>下面修改 <code>multi_mapper.h</code>，在<code>CHECK(false) << "Requested mapping type is not implemented.";</code>后面第89行加入<code>return "UnknownMappingType";</code></p>
 
     <img src="../images/blog/2025-04-30-NVblox-Setup.assets/image-1.png" alt="img" style="zoom:50%;" />
 

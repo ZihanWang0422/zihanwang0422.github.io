@@ -185,36 +185,36 @@
   <div class="blog-content">
     
     <div class="warning">
-      <p><strong>Note:</strong> This tutorial is based on Jetson Orin Nano platform. Other platforms may require appropriate configuration adjustments.</p>
+      <p><strong>注意：</strong> 本教程基于Jetson Orin Nano平台，其他平台可能需要适当调整配置。</p>
     </div>
 
-    <h2>Prerequisites (Jetson Orin Nano)</h2>
+    <h2>前置条件 (Jetson Orin Nano)</h2>
 
-    <h3>Jetson Setup</h3>
+    <h3>Jetson设置</h3>
 
-    <p>Ensure the Jetson device has been properly flashed with JetPack system and basic configuration is completed.</p>
+    <p>确保Jetson设备已正确刷入JetPack系统，并完成基础配置。</p>
 
-    <h3>Restart Docker</h3>
+    <h3>重启Docker</h3>
 
     <pre><code>sudo systemctl daemon-reload && sudo systemctl restart docker
 
 sudo apt-get install git-lfs
 git lfs install --skip-repo</code></pre>
 
-    <h3>Environment Variable Setup</h3>
+    <h3>环境变量设置</h3>
 
     <pre><code>mkdir -p  ~/workspaces/isaac_ros-dev/src
 echo "export ISAAC_ROS_WS=${HOME}/workspaces/isaac_ros-dev/" >> ~/.bashrc
 source ~/.bashrc</code></pre>
 
-    <h3>Build Environment</h3>
+    <h3>建立环境</h3>
 
     <pre><code>cd ${ISAAC_ROS_WS}/src && \
    git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common
    
 sudo apt-get install -y curl jq tar</code></pre>
 
-    <h3>Download NVBlox Assets</h3>
+    <h3>下载NVBlox资源</h3>
 
     <pre><code>NGC_ORG="nvidia"
 NGC_TEAM="isaac"
@@ -248,105 +248,105 @@ versions/$LATEST_VERSION_ID/files/$NGC_FILENAME" && \
     rm ${NGC_FILENAME}
 fi</code></pre>
 
-    <h2>NVBlox Configuration</h2>
+    <h2>NVBlox配置</h2>
 
-    <h3>Build and Installation</h3>
+    <h3>编译和安装</h3>
 
     <pre><code>cd ${ISAAC_ROS_WS}
-# Pull NVBlox package
+# 拉取NVBlox包
 cd src
 git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox.git
 
-# Build
+# 编译
 cd ${ISAAC_ROS_WS}
 colcon build --packages-select nvblox_ros nvblox_examples_bringup</code></pre>
 
     <div class="warning">
-      <p><strong>Common Build Errors:</strong> If you encounter build errors, you may need to modify the source code. See the code modification section below.</p>
+      <p><strong>常见编译错误：</strong> 如果遇到编译错误，可能需要修改源码。详见下方的代码修改部分。</p>
     </div>
 
-    <h3>Source Code Modification</h3>
+    <h3>源码修改</h3>
 
-    <p>Errors that may be encountered during compilation require manual code modification. In <code>/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/</code>, modify <code>multi_mapper.h</code> by adding <code>return "UnknownMappingType";</code> on line 89 after <code>CHECK(false) << "Requested mapping type is not implemented.";</code></p>
+    <p>在编译过程中可能遇到的错误需要手动修改代码。在<code>/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/</code>下面修改 <code>multi_mapper.h</code>，在<code>CHECK(false) << "Requested mapping type is not implemented.";</code>后面第89行加入<code>return "UnknownMappingType";</code></p>
 
     <img src="../images/blog/2025-04-30-NVblox-Setup.assets/image-1.png" alt="img" style="zoom:50%;">
 
-    <h2>RealSense Docker Configuration</h2>
+    <h2>RealSense Docker配置</h2>
 
-    <h3>RealSense Integration</h3>
+    <h3>RealSense集成</h3>
 
     <pre><code>cd ${ISAAC_ROS_WS}/src && \
    git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common</code></pre>
 
-    <h3>Docker Container Configuration</h3>
+    <h3>Docker容器配置</h3>
 
-    <p>NVBlox needs to run in a Docker container to ensure environment consistency:</p>
+    <p>NVBlox需要在Docker容器中运行以确保环境一致性：</p>
 
-    <pre><code># Start Isaac ROS Docker container
+    <pre><code># 启动Isaac ROS Docker容器
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh</code></pre>
 
-    <h3>Build in Container</h3>
+    <h3>容器内编译</h3>
 
-    <p>Execute compilation inside the Docker container:</p>
+    <p>在Docker容器内执行编译：</p>
 
-    <pre><code># Inside the container
+    <pre><code># 在容器内
 cd /workspaces/isaac_ros-dev
 colcon build --packages-select nvblox_ros nvblox_examples_bringup
 source install/setup.bash</code></pre>
 
-    <h2>Running NVBlox</h2>
+    <h2>运行NVBlox</h2>
 
-    <h3>Start RealSense Camera</h3>
+    <h3>启动RealSense相机</h3>
 
-    <pre><code># Start RealSense example inside container
+    <pre><code># 在容器内启动RealSense示例
 ros2 launch nvblox_examples_bringup realsense_example.launch.py</code></pre>
 
-    <p>After successful startup, you should see the following interface:</p>
+    <p>成功启动后应该能看到以下界面：</p>
 
     <img src="../images/blog/2025-04-30-NVblox-Setup.assets/image.png" alt="img" style="zoom:50%;">
 
-    <h3>Using ROSbag Data</h3>
+    <h3>使用ROSbag数据</h3>
 
-    <p>Or after recording a ROSbag, run from the ROSbag:</p>
+    <p>或者录制ROSbag后，从ROSbag运行：</p>
 
     <pre><code>ros2 launch nvblox_examples_bringup realsense_example.launch.py \
 rosbag:=<YOUR_ROSBAG_PATH></code></pre>
 
-    <h2>Features</h2>
+    <h2>功能特性</h2>
 
-    <h3>Real-time 3D Reconstruction</h3>
+    <h3>实时3D重建</h3>
     <ul>
-      <li>Real-time voxelized reconstruction based on depth cameras</li>
-      <li>Support for RGB-D sensor data fusion</li>
-      <li>Dynamic object detection and filtering</li>
+      <li>基于深度相机的实时体素化重建</li>
+      <li>支持RGB-D传感器数据融合</li>
+      <li>动态物体检测和过滤</li>
     </ul>
 
-    <h3>Path Planning Integration</h3>
+    <h3>路径规划集成</h3>
     <ul>
-      <li>Seamless integration with Nav2 navigation stack</li>
-      <li>Real-time cost map updates</li>
-      <li>Support for multi-layer map representation</li>
+      <li>与Nav2导航栈无缝集成</li>
+      <li>实时代价地图更新</li>
+      <li>支持多层地图表示</li>
     </ul>
 
-    <h3>Semantic Segmentation</h3>
+    <h3>语义分割</h3>
     <ul>
-      <li>AI model-based semantic understanding</li>
-      <li>Customizable object categories</li>
-      <li>Support for dynamic scene updates</li>
+      <li>基于AI模型的语义理解</li>
+      <li>可定制物体类别</li>
+      <li>支持动态场景更新</li>
     </ul>
 
-    <h2>Performance Optimization</h2>
+    <h2>性能优化</h2>
 
-    <h3>Memory Management</h3>
-    <p>NVBlox has high memory requirements, especially on Jetson platforms:</p>
+    <h3>内存管理</h3>
+    <p>NVBlox对内存要求较高，特别是在Jetson平台上：</p>
     <ul>
-      <li>Adjust voxel resolution to balance accuracy and memory usage</li>
-      <li>Set appropriate map size limits</li>
-      <li>Regularly clean up invalid voxel data</li>
+      <li>调整体素分辨率以平衡精度和内存使用</li>
+      <li>设置适当的地图大小限制</li>
+      <li>定期清理无效的体素数据</li>
     </ul>
 
-    <h3>Computational Optimization</h3>
+    <h3>计算优化</h3>
     <ul>
       <li>利用GPU加速体素化计算</li>
       <li>调整处理频率避免过度计算</li>
@@ -377,22 +377,17 @@ rosbag:=<YOUR_ROSBAG_PATH></code></pre>
       <li>检查散热情况</li>
     </ul>
 
-      <li>Enable GPU acceleration for voxel operations</li>
-      <li>Adjust processing thread count based on CPU cores</li>
-      <li>Use asynchronous processing to reduce latency</li>
-    </ul>
+    <h2>配置参数</h2>
 
-    <h2>Configuration Parameters</h2>
-
-    <h3>Main Parameter Descriptions</h3>
+    <h3>主要参数说明</h3>
     <ul>
-      <li><strong>voxel_size</strong>: Voxel size, affects reconstruction accuracy and computational load</li>
-      <li><strong>max_range</strong>: Maximum detection distance</li>
-      <li><strong>min_range</strong>: Minimum detection distance</li>
-      <li><strong>update_rate</strong>: Map update frequency</li>
+      <li><strong>voxel_size</strong>: 体素大小，影响重建精度和计算量</li>
+      <li><strong>max_range</strong>: 最大检测距离</li>
+      <li><strong>min_range</strong>: 最小检测距离</li>
+      <li><strong>update_rate</strong>: 地图更新频率</li>
     </ul>
 
-    <h3>Example Configuration File</h3>
+    <h3>示例配置文件</h3>
     <pre><code># nvblox_params.yaml
 nvblox_node:
   ros__parameters:
@@ -403,26 +398,7 @@ nvblox_node:
     use_color: true
     use_semantics: false</code></pre>
 
-    <h2>Summary</h2>
-
-    <p>NVBlox is a powerful 3D reconstruction and mapping tool provided by NVIDIA, particularly suitable for SLAM and navigation applications of mobile robots. Through this tutorial configuration, you should be able to:</p>
-
-    <ul>
-      <li>Successfully deploy NVBlox on Jetson platform</li>
-      <li>Integrate RealSense depth cameras</li>
-      <li>Achieve real-time 3D environment reconstruction</li>
-      <li>Integrate with ROS2 navigation stack</li>
-    </ul>
-
-    <p>In practical applications, it is recommended to adjust relevant parameters based on specific scenarios and hardware configurations to achieve optimal performance and reconstruction results.</p>
-
-    <div class="blog-tags">
-      <span class="tag">Jetson</span>
-      <span class="tag">Navigation</span>
-      <span class="tag">SLAM</span>
-      <span class="tag">3D Mapping</span>
-      <span class="tag">RealSense</span>
-    </div>    <h2>总结</h2>
+    <h2>总结</h2>
 
     <p>NVBlox是NVIDIA提供的强大3D重建和映射工具，特别适用于移动机器人的SLAM和导航应用。通过本教程的配置，您应该能够：</p>
 

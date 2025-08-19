@@ -377,22 +377,17 @@ rosbag:=<YOUR_ROSBAG_PATH></code></pre>
       <li>检查散热情况</li>
     </ul>
 
-      <li>Enable GPU acceleration for voxel operations</li>
-      <li>Adjust processing thread count based on CPU cores</li>
-      <li>Use asynchronous processing to reduce latency</li>
-    </ul>
+    <h2>配置参数</h2>
 
-    <h2>Configuration Parameters</h2>
-
-    <h3>Main Parameter Descriptions</h3>
+    <h3>主要参数说明</h3>
     <ul>
-      <li><strong>voxel_size</strong>: Voxel size, affects reconstruction accuracy and computational load</li>
-      <li><strong>max_range</strong>: Maximum detection distance</li>
-      <li><strong>min_range</strong>: Minimum detection distance</li>
-      <li><strong>update_rate</strong>: Map update frequency</li>
+      <li><strong>voxel_size</strong>: 体素大小，影响重建精度和计算量</li>
+      <li><strong>max_range</strong>: 最大检测距离</li>
+      <li><strong>min_range</strong>: 最小检测距离</li>
+      <li><strong>update_rate</strong>: 地图更新频率</li>
     </ul>
 
-    <h3>Example Configuration File</h3>
+    <h3>示例配置文件</h3>
     <pre><code># nvblox_params.yaml
 nvblox_node:
   ros__parameters:
@@ -403,26 +398,7 @@ nvblox_node:
     use_color: true
     use_semantics: false</code></pre>
 
-    <h2>Summary</h2>
-
-    <p>NVBlox is a powerful 3D reconstruction and mapping tool provided by NVIDIA, particularly suitable for SLAM and navigation applications of mobile robots. Through this tutorial configuration, you should be able to:</p>
-
-    <ul>
-      <li>Successfully deploy NVBlox on Jetson platform</li>
-      <li>Integrate RealSense depth cameras</li>
-      <li>Achieve real-time 3D environment reconstruction</li>
-      <li>Integrate with ROS2 navigation stack</li>
-    </ul>
-
-    <p>In practical applications, it is recommended to adjust relevant parameters based on specific scenarios and hardware configurations to achieve optimal performance and reconstruction results.</p>
-
-    <div class="blog-tags">
-      <span class="tag">Jetson</span>
-      <span class="tag">Navigation</span>
-      <span class="tag">SLAM</span>
-      <span class="tag">3D Mapping</span>
-      <span class="tag">RealSense</span>
-    </div>    <h2>总结</h2>
+    <h2>总结</h2>
 
     <p>NVBlox是NVIDIA提供的强大3D重建和映射工具，特别适用于移动机器人的SLAM和导航应用。通过本教程的配置，您应该能够：</p>
 

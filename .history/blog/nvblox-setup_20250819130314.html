@@ -221,6 +221,16 @@
       font-weight: 600;
     }
     
+    .toc-toggle {
+      display: inline-block;
+      float: right;
+      transition: transform 0.3s ease;
+    }
+    
+    .toc-toggle.collapsed {
+      transform: rotate(-90deg);
+    }
+    
     /* Mobile responsiveness */
     @media (max-width: 1200px) {
       .toc-container {
@@ -282,8 +292,9 @@
 
   <!-- Table of Contents -->
   <div class="toc-container">
-    <div class="toc-header">
+    <div class="toc-header" onclick="toggleTOC()">
       📋 Table of Contents
+      <span class="toc-toggle">▼</span>
     </div>
     <div class="toc-content" id="tocContent">
       <ul class="toc-list">
@@ -1053,6 +1064,22 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 </footer>
 
 <script>
+// Table of Contents functionality
+function toggleTOC() {
+  const tocContent = document.getElementById('tocContent');
+  const tocToggle = document.querySelector('.toc-toggle');
+  
+  if (tocContent.classList.contains('collapsed')) {
+    tocContent.classList.remove('collapsed');
+    tocToggle.classList.remove('collapsed');
+    tocToggle.textContent = '▼';
+  } else {
+    tocContent.classList.add('collapsed');
+    tocToggle.classList.add('collapsed');
+    tocToggle.textContent = '▶';
+  }
+}
+
 // Scroll highlight functionality
 function updateActiveSection() {
   const sections = document.querySelectorAll('h2[id], h3[id]');

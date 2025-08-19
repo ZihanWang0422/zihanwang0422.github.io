@@ -543,6 +543,22 @@ ros2 launch nav2_bringup navigation_launch.py map:=my_map.yaml
 </footer>
 
 <script>
+// Table of Contents functionality
+function toggleTOC() {
+  const tocContent = document.getElementById('tocContent');
+  const tocToggle = document.querySelector('.toc-toggle');
+  
+  if (tocContent.classList.contains('collapsed')) {
+    tocContent.classList.remove('collapsed');
+    tocToggle.classList.remove('collapsed');
+    tocToggle.textContent = '▼';
+  } else {
+    tocContent.classList.add('collapsed');
+    tocToggle.classList.add('collapsed');
+    tocToggle.textContent = '▶';
+  }
+}
+
 // Scroll highlight functionality
 function updateActiveSection() {
   const sections = document.querySelectorAll('h2[id], h3[id]');

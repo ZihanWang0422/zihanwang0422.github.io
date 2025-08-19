@@ -460,15 +460,15 @@ ros2 launch isaac_ros_visual_slam isaac_ros_visual_slam.launch.py
 # Terminal 3: Start Navigation
 ros2 launch isaac_ros_navigation isaac_ros_navigation.launch.py</code></pre>
 
-    <h2 id="nav2-demo">Nav2 Demonstration</h2>
+    <h2>Nav2 Demonstration</h2>
 
-    <h3 id="map-building">Map Building</h3>
+    <h3>Map Building</h3>
 
     <p>After building environment map using SLAM, you can save it in Nav2 compatible format:</p>
 
     <pre><code>ros2 run nav2_map_server map_saver_cli -f my_map</code></pre>
 
-    <h3 id="navigation-config">Navigation Configuration</h3>
+    <h3>Navigation Configuration</h3>
 
     <p>Configure Nav2 parameter files, including:</p>
     <ul>
@@ -478,22 +478,22 @@ ros2 launch isaac_ros_navigation isaac_ros_navigation.launch.py</code></pre>
       <li>Costmap parameters</li>
     </ul>
 
-    <h3 id="run-navigation">Run Navigation</h3>
+    <h3>Run Navigation</h3>
 
     <pre><code># Start navigation stack
 ros2 launch nav2_bringup navigation_launch.py map:=my_map.yaml
 
 # Set goal points in RViz for navigation testing</code></pre>
 
-    <h2 id="visualization-debugging">Visualization and Debugging</h2>
+    <h2>Visualization and Debugging</h2>
 
-    <h3 id="lidar-visualization">3D LiDAR Visualization</h3>
+    <h3>3D LiDAR Visualization</h3>
 
     <p>Selecting 3D LiDAR can perceive objects in a large range, which can assist in goal selection during navigation.</p>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;">
 
-    <h3 id="semantic-images">Reconstruction and Semantic Images</h3>
+    <h3>Reconstruction and Semantic Images</h3>
 
     <p>Isaac Sim provides powerful semantic segmentation and 3D reconstruction capabilities:</p>
 
@@ -557,79 +557,6 @@ ros2 launch nav2_bringup navigation_launch.py map:=my_map.yaml
 <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
   <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
 </footer>
-
-<script>
-// Table of Contents functionality
-function toggleTOC() {
-  const tocContent = document.getElementById('tocContent');
-  const tocToggle = document.querySelector('.toc-toggle');
-  
-  if (tocContent.classList.contains('collapsed')) {
-    tocContent.classList.remove('collapsed');
-    tocToggle.classList.remove('collapsed');
-    tocToggle.textContent = '▼';
-  } else {
-    tocContent.classList.add('collapsed');
-    tocToggle.classList.add('collapsed');
-    tocToggle.textContent = '▶';
-  }
-}
-
-// Scroll highlight functionality
-function updateActiveSection() {
-  const sections = document.querySelectorAll('h2[id], h3[id]');
-  const tocLinks = document.querySelectorAll('.toc-link');
-  
-  let currentSection = '';
-  const scrollPosition = window.scrollY + 100; // Add offset for better UX
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight + 200) {
-      currentSection = section.id;
-    }
-  });
-  
-  // Remove active class from all links
-  tocLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  // Add active class to current section link
-  if (currentSection) {
-    const activeLink = document.querySelector(`.toc-link[href="#${currentSection}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-  }
-}
-
-// Smooth scroll to section
-document.querySelectorAll('.toc-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Update active section on scroll
-window.addEventListener('scroll', updateActiveSection);
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-  updateActiveSection();
-});
-</script>
 
 </body>
 

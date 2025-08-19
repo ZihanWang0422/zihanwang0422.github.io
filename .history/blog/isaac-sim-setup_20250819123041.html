@@ -286,89 +286,17 @@
     </div>
   </div>
 
-  <!-- Table of Contents -->
-  <div class="toc-container">
-    <div class="toc-header" onclick="toggleTOC()">
-      📋 Table of Contents
-      <span class="toc-toggle">▼</span>
-    </div>
-    <div class="toc-content" id="tocContent">
-      <ul class="toc-list">
-        <li class="toc-item">
-          <a href="#prerequisites" class="toc-link h2">Prerequisites</a>
-        </li>
-        <li class="toc-item">
-          <a href="#cuda-installation" class="toc-link h2">CUDA Installation</a>
-        </li>
-        <li class="toc-item">
-          <a href="#nvidia-driver" class="toc-link h3">1. NVIDIA Driver</a>
-        </li>
-        <li class="toc-item">
-          <a href="#download-cuda" class="toc-link h3">2. Download CUDA</a>
-        </li>
-        <li class="toc-item">
-          <a href="#switch-cuda" class="toc-link h3">3. Switch CUDA Version</a>
-        </li>
-        <li class="toc-item">
-          <a href="#isaacsim-installation" class="toc-link h2">IsaacSim Installation</a>
-        </li>
-        <li class="toc-item">
-          <a href="#system-requirements" class="toc-link h3">System Requirements</a>
-        </li>
-        <li class="toc-item">
-          <a href="#download-installation" class="toc-link h3">Download and Installation</a>
-        </li>
-        <li class="toc-item">
-          <a href="#ros2-integration" class="toc-link h2">ROS2 Integration Configuration</a>
-        </li>
-        <li class="toc-item">
-          <a href="#isaac-ros-installation" class="toc-link h3">Isaac ROS Installation</a>
-        </li>
-        <li class="toc-item">
-          <a href="#slam-demo" class="toc-link h2">SLAM Demonstration</a>
-        </li>
-        <li class="toc-item">
-          <a href="#configure-scene" class="toc-link h3">Configure Isaac Sim Scene</a>
-        </li>
-        <li class="toc-item">
-          <a href="#run-slam" class="toc-link h3">Run SLAM</a>
-        </li>
-        <li class="toc-item">
-          <a href="#nav2-demo" class="toc-link h2">Nav2 Demonstration</a>
-        </li>
-        <li class="toc-item">
-          <a href="#map-building" class="toc-link h3">Map Building</a>
-        </li>
-        <li class="toc-item">
-          <a href="#navigation-config" class="toc-link h3">Navigation Configuration</a>
-        </li>
-        <li class="toc-item">
-          <a href="#run-navigation" class="toc-link h3">Run Navigation</a>
-        </li>
-        <li class="toc-item">
-          <a href="#visualization-debugging" class="toc-link h2">Visualization and Debugging</a>
-        </li>
-        <li class="toc-item">
-          <a href="#lidar-visualization" class="toc-link h3">3D LiDAR Visualization</a>
-        </li>
-        <li class="toc-item">
-          <a href="#semantic-images" class="toc-link h3">Reconstruction and Semantic Images</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-
   <div class="blog-content">
     
-    <h2 id="prerequisites">Prerequisites</h2>
+    <h2>Prerequisites</h2>
 
     <p><a href="https://www.nvidia.com/en-us/geforce/drivers/" target="_blank">Official GeForce Drivers NVIDIA</a></p>
 
     <p><a href="https://blog.csdn.net/qq_34972053/article/details/127689332" target="_blank">Ubuntu 22.04 NVIDIA Driver/CUDA/cuDNN Installation</a></p>
 
-    <h2 id="cuda-installation">CUDA Installation</h2>
+    <h2>CUDA Installation</h2>
 
-    <h3 id="nvidia-driver">1. NVIDIA Driver</h3>
+    <h3>1. NVIDIA Driver</h3>
 
     <pre><code># Uninstall existing nvidia driver
 sudo apt-get --purge remove "*nvidia*"
@@ -382,11 +310,11 @@ sudo apt upgrade  # Update all upgradable packages
 ubuntu-drivers devices    # Ubuntu detects available drivers for nvidia card
 sudo apt install nvidia-driver-5xx  # Install graphics driver based on your nvidia card</code></pre>
 
-    <h3 id="download-cuda">2. Download CUDA</h3>
+    <h3>2. Download CUDA</h3>
 
     <p>Download link: <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
 
-    <h3 id="switch-cuda">3. Switch CUDA Version:</h3>
+    <h3>3. Switch CUDA Version:</h3>
 
     <pre><code># Check installed cuda versions
 ls -l /usr/local | grep cuda
@@ -399,9 +327,9 @@ vim ~/.bashrc</code></pre>
 export PATH=$CUDA_HOME/bin:$PATH
 export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</code></pre>
 
-    <h2 id="isaacsim-installation">IsaacSim Installation</h2>
+    <h2>IsaacSim Installation</h2>
 
-    <h3 id="system-requirements">System Requirements</h3>
+    <h3>System Requirements</h3>
     <ul>
       <li>Ubuntu 20.04 or 22.04</li>
       <li>NVIDIA RTX series graphics card</li>
@@ -410,7 +338,7 @@ export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</code></pre>
       <li>At least 50GB available disk space</li>
     </ul>
 
-    <h3 id="download-installation">Download and Installation</h3>
+    <h3>Download and Installation</h3>
 
     <p>1. Visit NVIDIA Omniverse official website to download Omniverse Launcher</p>
     <p>2. Install Isaac Sim through Launcher</p>
@@ -420,9 +348,9 @@ export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH</code></pre>
 pip install omni-isaac-sim
 pip install opencv-python numpy matplotlib</code></pre>
 
-    <h2 id="ros2-integration">ROS2 Integration Configuration</h2>
+    <h2>ROS2 Integration Configuration</h2>
 
-    <h3 id="isaac-ros-installation">Isaac ROS Installation</h3>
+    <h3>Isaac ROS Installation</h3>
 
     <pre><code># Install ROS2 Humble
 sudo apt update && sudo apt install curl gnupg lsb-release
@@ -438,16 +366,16 @@ git clone https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git
 cd ~/workspaces/isaac_ros-dev
 colcon build</code></pre>
 
-    <h2 id="slam-demo">SLAM Demonstration</h2>
+    <h2>SLAM Demonstration</h2>
 
-    <h3 id="configure-scene">Configure Isaac Sim Scene</h3>
+    <h3>Configure Isaac Sim Scene</h3>
 
     <p>1. Start Isaac Sim</p>
     <p>2. Load Warehouse scene</p>
     <p>3. Add Carter robot</p>
     <p>4. Configure sensors (LiDAR, Camera)</p>
 
-    <h3 id="run-slam">Run SLAM</h3>
+    <h3>Run SLAM</h3>
 
     <pre><code># Terminal 1: Start Isaac Sim ROS Bridge
 cd ~/.local/share/ov/pkg/isaac_sim-*
@@ -460,15 +388,15 @@ ros2 launch isaac_ros_visual_slam isaac_ros_visual_slam.launch.py
 # Terminal 3: Start Navigation
 ros2 launch isaac_ros_navigation isaac_ros_navigation.launch.py</code></pre>
 
-    <h2 id="nav2-demo">Nav2 Demonstration</h2>
+    <h2>Nav2 Demonstration</h2>
 
-    <h3 id="map-building">Map Building</h3>
+    <h3>Map Building</h3>
 
     <p>After building environment map using SLAM, you can save it in Nav2 compatible format:</p>
 
     <pre><code>ros2 run nav2_map_server map_saver_cli -f my_map</code></pre>
 
-    <h3 id="navigation-config">Navigation Configuration</h3>
+    <h3>Navigation Configuration</h3>
 
     <p>Configure Nav2 parameter files, including:</p>
     <ul>
@@ -478,22 +406,22 @@ ros2 launch isaac_ros_navigation isaac_ros_navigation.launch.py</code></pre>
       <li>Costmap parameters</li>
     </ul>
 
-    <h3 id="run-navigation">Run Navigation</h3>
+    <h3>Run Navigation</h3>
 
     <pre><code># Start navigation stack
 ros2 launch nav2_bringup navigation_launch.py map:=my_map.yaml
 
 # Set goal points in RViz for navigation testing</code></pre>
 
-    <h2 id="visualization-debugging">Visualization and Debugging</h2>
+    <h2>Visualization and Debugging</h2>
 
-    <h3 id="lidar-visualization">3D LiDAR Visualization</h3>
+    <h3>3D LiDAR Visualization</h3>
 
     <p>Selecting 3D LiDAR can perceive objects in a large range, which can assist in goal selection during navigation.</p>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;">
 
-    <h3 id="semantic-images">Reconstruction and Semantic Images</h3>
+    <h3>Reconstruction and Semantic Images</h3>
 
     <p>Isaac Sim provides powerful semantic segmentation and 3D reconstruction capabilities:</p>
 
@@ -557,79 +485,6 @@ ros2 launch nav2_bringup navigation_launch.py map:=my_map.yaml
 <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
   <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
 </footer>
-
-<script>
-// Table of Contents functionality
-function toggleTOC() {
-  const tocContent = document.getElementById('tocContent');
-  const tocToggle = document.querySelector('.toc-toggle');
-  
-  if (tocContent.classList.contains('collapsed')) {
-    tocContent.classList.remove('collapsed');
-    tocToggle.classList.remove('collapsed');
-    tocToggle.textContent = '▼';
-  } else {
-    tocContent.classList.add('collapsed');
-    tocToggle.classList.add('collapsed');
-    tocToggle.textContent = '▶';
-  }
-}
-
-// Scroll highlight functionality
-function updateActiveSection() {
-  const sections = document.querySelectorAll('h2[id], h3[id]');
-  const tocLinks = document.querySelectorAll('.toc-link');
-  
-  let currentSection = '';
-  const scrollPosition = window.scrollY + 100; // Add offset for better UX
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight + 200) {
-      currentSection = section.id;
-    }
-  });
-  
-  // Remove active class from all links
-  tocLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  // Add active class to current section link
-  if (currentSection) {
-    const activeLink = document.querySelector(`.toc-link[href="#${currentSection}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-  }
-}
-
-// Smooth scroll to section
-document.querySelectorAll('.toc-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Update active section on scroll
-window.addEventListener('scroll', updateActiveSection);
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-  updateActiveSection();
-});
-</script>
 
 </body>
 

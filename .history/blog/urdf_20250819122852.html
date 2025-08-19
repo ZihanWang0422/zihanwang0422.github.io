@@ -347,23 +347,31 @@
 
     <p>⚠️ Before merging entities, disable "Capture Design History", then make all components independent, otherwise component position anomalies may occur.</p>
 
-    <h3 id="joint-configuration">Joint Configuration</h3>
+    <h3>Joint Configuration</h3>
 
-    <p>Configure 4 wheel joints. All wheels use revolute joints connected to the respective wheel brackets, with rotation axes along the Y-axis. Name the joints: front_left_wheel_joint, front_right_wheel_joint, rear_left_wheel_joint, rear_right_wheel_joint.</p>
+    <p>All connection parts need to have joints configured. Set wheel's component1 as wheel and component2 as base_link.</p>
 
-    <h3 id="file-structure">File Structure:</h3>    <img src="../images/blog/urdf/image-4.png" alt="image-4">
+    <p>⚠️ When setting wheel joint-continuous, reversal may occur. In this case, switch the component objects as shown below:</p>
 
-    <h2 id="fusion2urdf">Fusion2urdf</h2>
+    <img src="../images/blog/urdf/image-3.png" alt="image-3">
+
+    <img src="../images/blog/urdf/image-5.png" alt="image-5">
+
+    <h3>File Structure:</h3>
+
+    <img src="../images/blog/urdf/image-4.png" alt="image-4">
+
+    <h2>Fusion2urdf</h2>
 
     <p>Tutorial: <a href="https://github.com/runtimerobotics/fusion360-urdf-ros2?tab=readme-ov-file#usage" target="_blank">https://github.com/runtimerobotics/fusion360-urdf-ros2?tab=readme-ov-file#usage</a></p>
 
     <p>Download: <a href="https://github.com/syuntoku14/fusion2urdf" target="_blank">https://github.com/syuntoku14/fusion2urdf</a></p>
 
-    <h3 id="script-modifications">Script Modifications</h3>
+    <h3>Script Modifications</h3>
 
     <p>Need to modify the basic script to adapt to the latest version of Fusion360, mainly involving API interface updates and compatibility issues.</p>
 
-    <h3 id="export-settings">Export Settings</h3>
+    <h3>Export Settings</h3>
 
     <p>When exporting URDF, pay attention to the following key parameter settings:</p>
     <ul>
@@ -373,7 +381,7 @@
       <li>Accurate calculation of inertial parameters</li>
     </ul>
 
-    <h2 id="ros-integration">ROS Integration</h2>
+    <h2>ROS Integration</h2>
 
     <p>The exported URDF files can be used directly in ROS environment, supporting the following functions:</p>
     <ul>
@@ -383,7 +391,7 @@
       <li>MoveIt motion planning</li>
     </ul>
 
-    <h3 id="verification-testing">Verification and Testing</h3>
+    <h3>Verification and Testing</h3>
 
     <p>Recommend the following verification before use:</p>
     <pre><code>roslaunch urdf_tutorial display.launch model:=your_robot.urdf
@@ -392,21 +400,21 @@ rosrun tf tf_echo base_link wheel_link</code></pre>
 
     <img src="../images/blog/urdf/image-2.png" alt="image-2">
 
-    <h2 id="common-issues">Common Issues and Solutions</h2>
+    <h2>Common Issues and Solutions</h2>
 
-    <h3 id="joint-reversal">Joint Reversal Problem</h3>
+    <h3>Joint Reversal Problem</h3>
     
     <p>If you find the joint movement direction is opposite to expected, you can solve it by adjusting the component order of the joint.</p>
 
     <img src="../images/blog/urdf/image.png" alt="image" style="width: 67%;">
 
-    <h3 id="collision-optimization">Collision Detection Optimization</h3>
+    <h3>Collision Detection Optimization</h3>
 
     <p>To improve simulation efficiency, it's recommended to simplify the complexity of collision meshes while maintaining detection accuracy.</p>
 
     <img src="../images/blog/urdf/image-1.png" alt="image-1">
 
-    <h2 id="summary">Summary</h2>
+    <h2>Summary</h2>
 
     <p>Through the Fusion360 to URDF conversion process, we can quickly convert CAD models into robot description files usable by ROS. Although this process requires some technical knowledge, once mastered, it can greatly improve the efficiency of robot development.</p>
 
@@ -431,79 +439,6 @@ rosrun tf tf_echo base_link wheel_link</code></pre>
 <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
   <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
 </footer>
-
-<script>
-// Table of Contents functionality
-function toggleTOC() {
-  const tocContent = document.getElementById('tocContent');
-  const tocToggle = document.querySelector('.toc-toggle');
-  
-  if (tocContent.classList.contains('collapsed')) {
-    tocContent.classList.remove('collapsed');
-    tocToggle.classList.remove('collapsed');
-    tocToggle.textContent = '▼';
-  } else {
-    tocContent.classList.add('collapsed');
-    tocToggle.classList.add('collapsed');
-    tocToggle.textContent = '▶';
-  }
-}
-
-// Scroll highlight functionality
-function updateActiveSection() {
-  const sections = document.querySelectorAll('h2[id], h3[id]');
-  const tocLinks = document.querySelectorAll('.toc-link');
-  
-  let currentSection = '';
-  const scrollPosition = window.scrollY + 100; // Add offset for better UX
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight + 200) {
-      currentSection = section.id;
-    }
-  });
-  
-  // Remove active class from all links
-  tocLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  // Add active class to current section link
-  if (currentSection) {
-    const activeLink = document.querySelector(`.toc-link[href="#${currentSection}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-  }
-}
-
-// Smooth scroll to section
-document.querySelectorAll('.toc-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Update active section on scroll
-window.addEventListener('scroll', updateActiveSection);
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-  updateActiveSection();
-});
-</script>
 
 </body>
 

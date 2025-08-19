@@ -400,13 +400,13 @@ rosrun tf tf_echo base_link wheel_link</code></pre>
 
     <img src="../images/blog/urdf/image.png" alt="image" style="width: 67%;">
 
-    <h3 id="collision-optimization">Collision Detection Optimization</h3>
+    <h3>Collision Detection Optimization</h3>
 
     <p>To improve simulation efficiency, it's recommended to simplify the complexity of collision meshes while maintaining detection accuracy.</p>
 
     <img src="../images/blog/urdf/image-1.png" alt="image-1">
 
-    <h2 id="summary">Summary</h2>
+    <h2>Summary</h2>
 
     <p>Through the Fusion360 to URDF conversion process, we can quickly convert CAD models into robot description files usable by ROS. Although this process requires some technical knowledge, once mastered, it can greatly improve the efficiency of robot development.</p>
 
@@ -431,79 +431,6 @@ rosrun tf tf_echo base_link wheel_link</code></pre>
 <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
   <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
 </footer>
-
-<script>
-// Table of Contents functionality
-function toggleTOC() {
-  const tocContent = document.getElementById('tocContent');
-  const tocToggle = document.querySelector('.toc-toggle');
-  
-  if (tocContent.classList.contains('collapsed')) {
-    tocContent.classList.remove('collapsed');
-    tocToggle.classList.remove('collapsed');
-    tocToggle.textContent = '▼';
-  } else {
-    tocContent.classList.add('collapsed');
-    tocToggle.classList.add('collapsed');
-    tocToggle.textContent = '▶';
-  }
-}
-
-// Scroll highlight functionality
-function updateActiveSection() {
-  const sections = document.querySelectorAll('h2[id], h3[id]');
-  const tocLinks = document.querySelectorAll('.toc-link');
-  
-  let currentSection = '';
-  const scrollPosition = window.scrollY + 100; // Add offset for better UX
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight + 200) {
-      currentSection = section.id;
-    }
-  });
-  
-  // Remove active class from all links
-  tocLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  // Add active class to current section link
-  if (currentSection) {
-    const activeLink = document.querySelector(`.toc-link[href="#${currentSection}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-  }
-}
-
-// Smooth scroll to section
-document.querySelectorAll('.toc-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Update active section on scroll
-window.addEventListener('scroll', updateActiveSection);
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-  updateActiveSection();
-});
-</script>
 
 </body>
 

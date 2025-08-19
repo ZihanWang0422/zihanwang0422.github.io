@@ -368,13 +368,13 @@ Kernel-builder:
 sudo apt-get install git-lfs
 git lfs install --skip-repo</code></pre>
 
-    <h3 id="environment-variables">Environment Variable Setup</h3>
+    <h3>Environment Variable Setup</h3>
 
     <pre><code>mkdir -p  ~/workspaces/isaac_ros-dev/src
 echo "export ISAAC_ROS_WS=${HOME}/workspaces/isaac_ros-dev/" >> ~/.bashrc
 source ~/.bashrc</code></pre>
 
-    <h3 id="build-environment">Build Environment</h3>
+    <h3>Build Environment</h3>
 
     <pre><code>cd ${ISAAC_ROS_WS}/src && \
    git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common
@@ -413,11 +413,11 @@ versions/$LATEST_VERSION_ID/files/$NGC_FILENAME" && \
     rm ${NGC_FILENAME}
 fi</code></pre>
 
-    <h2 id="nvblox-configuration">NVBlox Configuration</h2>
+    <h2>NVBlox Configuration</h2>
 
     <p>bug1 <a href="https://c1afcru08q1.feishu.cn/docx/KyOjdFzlRoRmlKxQXC4cbxgNnbe#share-W8zgdsXNmoJy02xR7LhcMu9onTg">Jetson Deployment NVBlox</a></p>
 
-    <h2 id="realsense-docker">RealSense Docker Configuration</h2>
+    <h2>RealSense Docker Configuration</h2>
 
     <pre><code>cd ${ISAAC_ROS_WS}/src && \
    git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common</code></pre>
@@ -431,7 +431,7 @@ echo CONFIG_IMAGE_KEY=ros2_humble.realsense > .isaac_ros_common-config</code></p
 
     <p>Run <code>realsense-viewer</code> to see depth images</p>
 
-    <h2 id="isaacros-execution">IsaacROS NVBlox Execution</h2>
+    <h2>IsaacROS NVBlox Execution</h2>
 
     <pre><code>cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh</code></pre>
 
@@ -447,7 +447,7 @@ source install/setup.bash</code></pre>
     <pre><code>ros2 launch nvblox_examples_bringup realsense_example.launch.py \
 rosbag:=&lt;YOUR_ROSBAG_PATH&gt;</code></pre>
 
-    <h2 id="rosbag-recording">ROSbag Recording</h2>
+    <h2>ROSbag Recording</h2>
 
     <pre><code>cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh
 cd /workspaces/isaac_ros-dev
@@ -457,9 +457,9 @@ source install/setup.bash</code></pre>
 
     <p>ROSbag-NVBlox as follows (to be verified): https://www.jianguoyun.com/p/DddYoskQ7IupDRjN\_v8FIAA</p>
 
-    <h2 id="debug-section">⚠️Debug</h2>
+    <h2>⚠️Debug</h2>
 
-    <h3 id="bug1">bug1： TypeError: canonicalize\_name() got an unexpected keyword argument 'validate'</h3>
+    <h3>bug1： TypeError: canonicalize\_name() got an unexpected keyword argument 'validate'</h3>
 
     <p>AttributeError: module 'packaging.utils' has no attribute 'InvalidName'</p>
 
@@ -1047,7 +1047,7 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 
     <p>Note that after modification, runtime timeout errors may still occur, in which case run it again!</p>
 
-    <h3 id="bug2">bug2: NVblox + RealSense: "Lookup transform failed for frame camera0\_link" & Missing Realsense Splitter Node</h3>
+    <h3>bug2: NVblox + RealSense: "Lookup transform failed for frame camera0\_link" & Missing Realsense Splitter Node</h3>
 
     <p>Modify <code>multi_mapper.h</code> in <code>/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/</code>, add <code>return "UnknownMappingType";</code> on line 89 after <code>CHECK(false) << "Requested mapping type is not implemented.";</code></p>
 
@@ -1067,79 +1067,6 @@ RUN wget https://github.com/mikefarah/yq/releases/latest/download/yq_linux_amd64
 <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
   <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
 </footer>
-
-<script>
-// Table of Contents functionality
-function toggleTOC() {
-  const tocContent = document.getElementById('tocContent');
-  const tocToggle = document.querySelector('.toc-toggle');
-  
-  if (tocContent.classList.contains('collapsed')) {
-    tocContent.classList.remove('collapsed');
-    tocToggle.classList.remove('collapsed');
-    tocToggle.textContent = '▼';
-  } else {
-    tocContent.classList.add('collapsed');
-    tocToggle.classList.add('collapsed');
-    tocToggle.textContent = '▶';
-  }
-}
-
-// Scroll highlight functionality
-function updateActiveSection() {
-  const sections = document.querySelectorAll('h2[id], h3[id]');
-  const tocLinks = document.querySelectorAll('.toc-link');
-  
-  let currentSection = '';
-  const scrollPosition = window.scrollY + 100; // Add offset for better UX
-  
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
-    
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight + 200) {
-      currentSection = section.id;
-    }
-  });
-  
-  // Remove active class from all links
-  tocLinks.forEach(link => {
-    link.classList.remove('active');
-  });
-  
-  // Add active class to current section link
-  if (currentSection) {
-    const activeLink = document.querySelector(`.toc-link[href="#${currentSection}"]`);
-    if (activeLink) {
-      activeLink.classList.add('active');
-    }
-  }
-}
-
-// Smooth scroll to section
-document.querySelectorAll('.toc-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const targetId = this.getAttribute('href').substring(1);
-    const targetElement = document.getElementById(targetId);
-    
-    if (targetElement) {
-      targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
-    }
-  });
-});
-
-// Update active section on scroll
-window.addEventListener('scroll', updateActiveSection);
-
-// Initialize on page load
-document.addEventListener('DOMContentLoaded', function() {
-  updateActiveSection();
-});
-</script>
 
 </body>
 

@@ -385,7 +385,7 @@
 
     <h2 id="cuda-installation">CUDA Installation</h2>
 
-    <h3 id="nvidia-driver">NVIDIA Driver</h3>
+    <h3 id="nvidia-driver">1. NVIDIA Driver</h3>
 
     <pre><code># Uninstall existing nvidia driver
 sudo apt-get --purge remove "*nvidia*"
@@ -399,11 +399,11 @@ sudo apt upgrade  # Update all upgradable packages
 ubuntu-drivers devices    # Ubuntu detects available drivers for nvidia card
 sudo apt install nvidia-driver-5xx  # Install graphics driver based on your nvidia card</code></pre>
 
-    <h3 id="download-cuda">Download CUDA</h3>
+    <h3 id="download-cuda">2. Download CUDA</h3>
 
     <p>Download link: <a href="https://developer.nvidia.com/cuda-toolkit-archive" target="_blank">https://developer.nvidia.com/cuda-toolkit-archive</a></p>
 
-    <h3 id="switch-cuda">Switch CUDA Version:</h3>
+    <h3 id="switch-cuda">3. Switch CUDA Version:</h3>
 
     <pre><code># Check installed cuda versions
 ls -l /usr/local | grep cuda

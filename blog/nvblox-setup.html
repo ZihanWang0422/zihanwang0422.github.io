@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>NVblox部署指南 - Zihan Wang</title>
+  <meta name="description" lang="en" content="Setup tutorials of NVblox on Jetson Orin Nano">
+  <meta name="keywords" lang="en" content="Zihan Wang, NVblox, Jetson, RealSense, SLAM" />
+
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/academicons.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="../js/jquery-2.1.3.min.js"> </script>
+
+  <style>
+    .blog-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .blog-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 40px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    .blog-meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .blog-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .blog-content h2 {
+      color: #444;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    
+    .blog-content h3 {
+      color: #555;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+    
+    .blog-content p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .blog-content pre {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      padding: 15px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+    }
+    
+    .blog-content code {
+      background: #f8f9fa;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+    
+    .blog-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .blog-content ul, .blog-content ol {
+      margin-bottom: 15px;
+      padding-left: 20px;
+    }
+    
+    .blog-content li {
+      margin-bottom: 5px;
+    }
+    
+    .back-to-blog {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    
+    .back-to-blog:hover {
+      text-decoration: underline;
+    }
+    
+    .blog-tags {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #666;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 8px;
+      margin-bottom: 5px;
+    }
+    
+    .warning {
+      background: #fff3cd;
+      border: 1px solid #ffeaa7;
+      border-radius: 4px;
+      padding: 15px;
+      margin: 15px 0;
+      color: #856404;
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <header class="site-header" style="border: 2px solid lightgrey;">
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <div class="trigger">
+    <a class="page-link" href="../index.html#bio"><b>Biography</b></a>
+    <a class="page-link" href="../index.html#timeline"><b>Experiences</b></a>
+    <a class="page-link" href="../index.html#research"><b>Research</b></a>
+    <a class="page-link" href="../index.html#projects"><b>Projects</b></a>
+    <a class="page-link" href="../blog.html"><b>Blog</b></a>
+  </div>
+</nav>
+  </div>
+</header>
+
+<div class="blog-container">
+  <a href="../blog.html" class="back-to-blog">← 返回博客列表</a>
+  
+  <div class="blog-header">
+    <h1>NVblox部署指南</h1>
+    <div class="blog-meta">
+      <i class="fa fa-calendar"></i> 2025年4月30日 &nbsp;&nbsp;
+      <i class="fa fa-user"></i> Zihan Wang &nbsp;&nbsp;
+      <i class="fa fa-comment"></i> 技术教程
+    </div>
+  </div>
+
+  <div class="blog-content">
+    
+    <div class="warning">
+      <p><strong>注意：</strong> 本教程基于Jetson Orin Nano平台，其他平台可能需要适当调整配置。</p>
+    </div>
+
+    <h2>前置条件 (Jetson Orin Nano)</h2>
+
+    <h3>Jetson设置</h3>
+
+    <p>确保Jetson设备已正确刷入JetPack系统，并完成基础配置。</p>
+
+    <h3>重启Docker</h3>
+
+    <pre><code>sudo systemctl daemon-reload && sudo systemctl restart docker
+
+sudo apt-get install git-lfs
+git lfs install --skip-repo</code></pre>
+
+    <h3>环境变量设置</h3>
+
+    <pre><code>mkdir -p  ~/workspaces/isaac_ros-dev/src
+echo "export ISAAC_ROS_WS=${HOME}/workspaces/isaac_ros-dev/" >> ~/.bashrc
+source ~/.bashrc</code></pre>
+
+    <h3>建立环境</h3>
+
+    <pre><code>cd ${ISAAC_ROS_WS}/src && \
+   git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common
+   
+sudo apt-get install -y curl jq tar</code></pre>
+
+    <h3>下载NVBlox资源</h3>
+
+    <pre><code>NGC_ORG="nvidia"
+NGC_TEAM="isaac"
+PACKAGE_NAME="isaac_ros_nvblox"
+NGC_RESOURCE="isaac_ros_nvblox_assets"
+NGC_FILENAME="quickstart.tar.gz"
+MAJOR_VERSION=3
+MINOR_VERSION=2
+VERSION_REQ_URL="https://catalog.ngc.nvidia.com/api/resources/versions?orgName=$NGC_ORG&teamName=$NGC_TEAM&name=$NGC_RESOURCE&isPublic=true&pageNumber=0&pageSize=100&sortOrder=CREATED_DATE_DESC"
+AVAILABLE_VERSIONS=$(curl -s \
+    -H "Accept: application/json" "$VERSION_REQ_URL")
+LATEST_VERSION_ID=$(echo $AVAILABLE_VERSIONS | jq -r "
+    .recipeVersions[]
+    | .versionId as \$v
+    | \$v | select(test(\"^\\\\d+\\\\.\\\\d+\\\\.\\\\d+$\"))
+    | split(\".\") | {major: .[0]|tonumber, minor: .[1]|tonumber, patch: .[2]|tonumber}
+    | select(.major == $MAJOR_VERSION and .minor <= $MINOR_VERSION)
+    | \$v
+    " | sort -V | tail -n 1
+)
+if [ -z "$LATEST_VERSION_ID" ]; then
+    echo "No corresponding version found for Isaac ROS $MAJOR_VERSION.$MINOR_VERSION"
+    echo "Found versions:"
+    echo $AVAILABLE_VERSIONS | jq -r '.recipeVersions[].versionId'
+else
+    mkdir -p ${ISAAC_ROS_WS}/isaac_ros_assets && \
+    FILE_REQ_URL="https://api.ngc.nvidia.com/v2/resources/$NGC_ORG/$NGC_TEAM/$NGC_RESOURCE/\
+versions/$LATEST_VERSION_ID/files/$NGC_FILENAME" && \
+    curl -LO --request GET "${FILE_REQ_URL}" && \
+    tar -xf ${NGC_FILENAME} -C ${ISAAC_ROS_WS}/isaac_ros_assets && \
+    rm ${NGC_FILENAME}
+fi</code></pre>
+
+    <h2>NVBlox配置</h2>
+
+    <h3>编译和安装</h3>
+
+    <pre><code>cd ${ISAAC_ROS_WS}
+# 拉取NVBlox包
+cd src
+git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_nvblox.git
+
+# 编译
+cd ${ISAAC_ROS_WS}
+colcon build --packages-select nvblox_ros nvblox_examples_bringup</code></pre>
+
+    <div class="warning">
+      <p><strong>常见编译错误：</strong> 如果遇到编译错误，可能需要修改源码。详见下方的代码修改部分。</p>
+    </div>
+
+    <h3>源码修改</h3>
+
+    <p>在编译过程中可能遇到的错误需要手动修改代码。在<code>/workspaces/isaac_ros-dev/src/isaac_ros_nvblox/nvblox_ros/nvblox_core/nvblox/include/nvblox/mapper/</code>下面修改 <code>multi_mapper.h</code>，在<code>CHECK(false) << "Requested mapping type is not implemented.";</code>后面第89行加入<code>return "UnknownMappingType";</code></p>
+
+    <img src="../images/blog/2025-04-30-NVblox-Setup.assets/image-1.png" alt="img" style="zoom:50%;">
+
+    <h2>RealSense Docker配置</h2>
+
+    <h3>RealSense集成</h3>
+
+    <pre><code>cd ${ISAAC_ROS_WS}/src && \
+   git clone -b release-3.2 https://github.com/NVIDIA-ISAAC-ROS/isaac_ros_common.git isaac_ros_common</code></pre>
+
+    <h3>Docker容器配置</h3>
+
+    <p>NVBlox需要在Docker容器中运行以确保环境一致性：</p>
+
+    <pre><code># 启动Isaac ROS Docker容器
+cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
+./scripts/run_dev.sh</code></pre>
+
+    <h3>容器内编译</h3>
+
+    <p>在Docker容器内执行编译：</p>
+
+    <pre><code># 在容器内
+cd /workspaces/isaac_ros-dev
+colcon build --packages-select nvblox_ros nvblox_examples_bringup
+source install/setup.bash</code></pre>
+
+    <h2>运行NVBlox</h2>
+
+    <h3>启动RealSense相机</h3>
+
+    <pre><code># 在容器内启动RealSense示例
+ros2 launch nvblox_examples_bringup realsense_example.launch.py</code></pre>
+
+    <p>成功启动后应该能看到以下界面：</p>
+
+    <img src="../images/blog/2025-04-30-NVblox-Setup.assets/image.png" alt="img" style="zoom:50%;">
+
+    <h3>使用ROSbag数据</h3>
+
+    <p>或者录制ROSbag后，从ROSbag运行：</p>
+
+    <pre><code>ros2 launch nvblox_examples_bringup realsense_example.launch.py \
+rosbag:=<YOUR_ROSBAG_PATH></code></pre>
+
+    <h2>功能特性</h2>
+
+    <h3>实时3D重建</h3>
+    <ul>
+      <li>基于深度相机的实时体素化重建</li>
+      <li>支持RGB-D传感器数据融合</li>
+      <li>动态物体检测和过滤</li>
+    </ul>
+
+    <h3>路径规划集成</h3>
+    <ul>
+      <li>与Nav2导航栈无缝集成</li>
+      <li>实时代价地图更新</li>
+      <li>支持多层地图表示</li>
+    </ul>
+
+    <h3>语义分割</h3>
+    <ul>
+      <li>基于AI模型的语义理解</li>
+      <li>可定制物体类别</li>
+      <li>支持动态场景更新</li>
+    </ul>
+
+    <h2>性能优化</h2>
+
+    <h3>内存管理</h3>
+    <p>NVBlox对内存要求较高，特别是在Jetson平台上：</p>
+    <ul>
+      <li>调整体素分辨率以平衡精度和内存使用</li>
+      <li>设置适当的地图大小限制</li>
+      <li>定期清理无效的体素数据</li>
+    </ul>
+
+    <h3>计算优化</h3>
+    <ul>
+      <li>利用GPU加速体素化计算</li>
+      <li>调整处理频率避免过度计算</li>
+      <li>优化传感器数据预处理</li>
+    </ul>
+
+    <h2>常见问题排错</h2>
+
+    <h3>编译错误</h3>
+    <p>最常见的问题是源码编译错误，需要手动修改头文件：</p>
+    <ul>
+      <li>检查CUDA版本兼容性</li>
+      <li>确保所有依赖包已正确安装</li>
+      <li>按照上述说明修改multi_mapper.h文件</li>
+    </ul>
+
+    <h3>运行时错误</h3>
+    <ul>
+      <li>检查RealSense相机连接</li>
+      <li>确认相机权限设置</li>
+      <li>验证Docker容器网络配置</li>
+    </ul>
+
+    <h3>性能问题</h3>
+    <ul>
+      <li>监控内存使用情况</li>
+      <li>调整处理参数</li>
+      <li>检查散热情况</li>
+    </ul>
+
+    <h2>配置参数</h2>
+
+    <h3>主要参数说明</h3>
+    <ul>
+      <li><strong>voxel_size</strong>: 体素大小，影响重建精度和计算量</li>
+      <li><strong>max_range</strong>: 最大检测距离</li>
+      <li><strong>min_range</strong>: 最小检测距离</li>
+      <li><strong>update_rate</strong>: 地图更新频率</li>
+    </ul>
+
+    <h3>示例配置文件</h3>
+    <pre><code># nvblox_params.yaml
+nvblox_node:
+  ros__parameters:
+    voxel_size: 0.05
+    max_range: 10.0
+    min_range: 0.5
+    update_rate: 10.0
+    use_color: true
+    use_semantics: false</code></pre>
+
+    <h2>总结</h2>
+
+    <p>NVBlox是NVIDIA提供的强大3D重建和映射工具，特别适用于移动机器人的SLAM和导航应用。通过本教程的配置，您应该能够：</p>
+
+    <ul>
+      <li>在Jetson平台上成功部署NVBlox</li>
+      <li>集成RealSense深度相机</li>
+      <li>实现实时3D环境重建</li>
+      <li>与ROS2导航栈集成使用</li>
+    </ul>
+
+    <p>在实际应用中，建议根据具体场景和硬件配置调整相关参数，以获得最佳的性能和重建效果。</p>
+
+    <div class="blog-tags">
+      <span class="tag">Jetson</span>
+      <span class="tag">Navigation</span>
+      <span class="tag">SLAM</span>
+      <span class="tag">3D Mapping</span>
+      <span class="tag">RealSense</span>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
+  <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
+</footer>
+
+</body>
+
+</html>

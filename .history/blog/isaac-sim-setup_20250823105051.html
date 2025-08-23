@@ -697,46 +697,46 @@ export LD_LIBRARY_PATH=&lt;/path/to/isaac_sim_installation&gt;/extscache/omni.se
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
 
-    <p>4. Reconstruction + Semantic image</p>
+    <p>4. Reconstruction + Segmantic image</p>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;" />
 
-    <h3 id="visual-slam">Visual SLAM</h3>
+    <h3 id="visual-slam">Visual Slam</h3>
 
-    <p>1. First complete the prerequisite environment configuration:</p>
+    <p>1. 首先完成前置环境配置：</p>
 
     <p>[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)</p>
 
     <p>⚠️Error: <a href="https://forums.developer.nvidia.com/t/failed-to-initialize-cuvslam-tracker-4-x86-64-zed-camera/321998">[Failed to initialize CUVSLAM tracker: 4]</a></p>
 
-    <p>2. isaac_ros_visual_slam environment configuration</p>
+    <p>2. isaac_ros_visual_slam 环境配置</p>
 
     <div class="code-block-container">
       <pre><code>cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
 
 sudo apt-get update
-# Need to source with this before each launch
+#每次launch前要用这个source一下
 sudo apt-get install -y ros-humble-isaac-ros-visual-slam</code></pre>
     </div>
 
     <p>3. Run Launch File</p>
 
     <div class="code-block-container">
-      <pre><code># Terminal 1
+      <pre><code>#Terminal 1
 sudo apt-get update
 sudo apt-get install -y ros-humble-isaac-ros-examples
-# Using quickstart
+#使用quickstart
 ros2 launch isaac_ros_examples isaac_ros_examples.launch.py launch_fragments:=visual_slam \
 interface_specs_file:=${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_interface_specs.json \
 rectified_images:=false</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code># Terminal 2
+      <pre><code>#Terminal 2
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
-# This is used to start the camera, run after Terminal 3 is complete
+#这个用来启动摄像头，在运行完Terminal3后运行
 ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_bag --remap  \
 /front_stereo_camera/left/image_raw:=/left/image_rect \
 /front_stereo_camera/left/camera_info:=/left/camera_info_rect \
@@ -749,10 +749,10 @@ ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_
     </div>
 
     <div class="code-block-container">
-      <pre><code># Terminal 3
+      <pre><code>#Terminal
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
    ./scripts/run_dev.sh
-# Run RViz   
+#run rviz   
 rviz2 -d $(ros2 pkg prefix isaac_ros_visual_slam --share)/rviz/default.cfg.rviz</code></pre>
     </div>
 

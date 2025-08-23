@@ -653,7 +653,7 @@ navigation:=False</code></pre>
     <p>3. Reconstruction + Nav2</p>
 
     <ul>
-      <li>The source before running launch should use this: [ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-DrtGdxZGSoVHnLxUbGecTRFTnab)</li>
+      <li>跑launch之前的source应该运行这个：[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-DrtGdxZGSoVHnLxUbGecTRFTnab)</li>
     </ul>
 
     <div class="code-block-container">
@@ -667,76 +667,76 @@ ros2 launch nvblox_examples_bringup isaac_sim_example.launch.py</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code># It's recommended to start isaac-sim-selector first
+      <pre><code>#建议先启动isaac-sim-selector
 ./isaac-sim.selector.sh
-# In the selector GUI interface, first Clear cache, then Open in terminal
+#在selector gui界面内先Clear cache，然后Open in terminal
 ./isaac-sim.sh</code></pre>
     </div>
 
-    <p>⚠️Crash:</p>
+    <p>⚠️Crash：</p>
 
-    <p>After clicking play, a crash prompt may appear or after running Nav2 for a while, you may see: llvm: out of memory</p>
+    <p>点击play后会出现crash提示或者在运行一段Nav2后会出现 llvm: out of memory</p>
 
-    <p>At this time, you need to downgrade the NVIDIA Driver version. According to official recommendations, it should be >= <strong>535.129.03</strong></p>
+    <p>此时需要对Nvidia Driver版本进行降级，根据官方推荐为 >= <strong>535.129.03</strong></p>
 
-    <p>If crash occurs again during runtime, keep the nvblox terminal and restart IsaacSim</p>
+    <p>如果运行时再出现crash，保留nvblox终端，再次运行isaacsim</p>
 
-    <p>⚠️Error:</p>
+    <p>⚠️Error：</p>
 
     <div class="code-block-container">
       <pre><code>[Error] [omni.sensors.nv.lidar.lidar_core.plugin] CUDA Driver CALL FAILED at line 522: the provided PTX was compiled with an unsupported toolchain.
 [Error] [omni.sensors.nv.lidar.lidar_core.plugin] CUDA Driver CALL FAILED at line 548: named symbol not found
-# &lt;/path/to/isaac_sim_installation&gt; is the download path of IsaacSim files
+#&lt;/path/to/isaac_sim_installation&gt;为isaacsim文件的下载路径
 export LD_LIBRARY_PATH=&lt;/path/to/isaac_sim_installation&gt;/extscache/omni.sensors.nv.common-2.5.0-coreapi+lx64.r.cp310/bin:$LD_LIBRARY_PATH</code></pre>
     </div>
 
     <ul>
       <li>RVIZ2:<br/>
-        Selecting 3D LiDAR can perceive objects in a large range, which can assist in goal selection during navigation</li>
+        选中3d LiDAR可以感知较大范围的物体，可以辅助Nav时Goal的选择</li>
     </ul>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
 
-    <p>4. Reconstruction + Semantic image</p>
+    <p>4. Reconstruction + Segmantic image</p>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;" />
 
-    <h3 id="visual-slam">Visual SLAM</h3>
+    <h3 id="visual-slam">Visual Slam</h3>
 
-    <p>1. First complete the prerequisite environment configuration:</p>
+    <p>1. 首先完成前置环境配置：</p>
 
     <p>[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)</p>
 
     <p>⚠️Error: <a href="https://forums.developer.nvidia.com/t/failed-to-initialize-cuvslam-tracker-4-x86-64-zed-camera/321998">[Failed to initialize CUVSLAM tracker: 4]</a></p>
 
-    <p>2. isaac_ros_visual_slam environment configuration</p>
+    <p>2. isaac_ros_visual_slam 环境配置</p>
 
     <div class="code-block-container">
       <pre><code>cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
 
 sudo apt-get update
-# Need to source with this before each launch
+#每次launch前要用这个source一下
 sudo apt-get install -y ros-humble-isaac-ros-visual-slam</code></pre>
     </div>
 
     <p>3. Run Launch File</p>
 
     <div class="code-block-container">
-      <pre><code># Terminal 1
+      <pre><code>#Terminal 1
 sudo apt-get update
 sudo apt-get install -y ros-humble-isaac-ros-examples
-# Using quickstart
+#使用quickstart
 ros2 launch isaac_ros_examples isaac_ros_examples.launch.py launch_fragments:=visual_slam \
 interface_specs_file:=${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_interface_specs.json \
 rectified_images:=false</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code># Terminal 2
+      <pre><code>#Terminal 2
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
-# This is used to start the camera, run after Terminal 3 is complete
+#这个用来启动摄像头，在运行完Terminal3后运行
 ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_bag --remap  \
 /front_stereo_camera/left/image_raw:=/left/image_rect \
 /front_stereo_camera/left/camera_info:=/left/camera_info_rect \
@@ -749,10 +749,10 @@ ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_
     </div>
 
     <div class="code-block-container">
-      <pre><code># Terminal 3
+      <pre><code>#Terminal
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
    ./scripts/run_dev.sh
-# Run RViz   
+#run rviz   
 rviz2 -d $(ros2 pkg prefix isaac_ros_visual_slam --share)/rviz/default.cfg.rviz</code></pre>
     </div>
 

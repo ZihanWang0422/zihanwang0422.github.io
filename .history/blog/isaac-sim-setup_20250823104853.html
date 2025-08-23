@@ -412,7 +412,7 @@ sudo rm -rf /var/run/docker.sock
 sudo groupdel docker</code></pre>
     </div>
 
-    <p>2. Docker download:</p>
+    <p>2. Docker 下载：</p>
 
     <div class="code-block-container">
       <pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
@@ -422,17 +422,17 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 
-# Set Docker to start automatically on boot
+#设置开机自启动docker
 systemctl enable docker
 sudo systemctl restart docker
 
-# Verify Docker
+#验证docker
 docker run hello-world
-# View installed Docker images
+#查看docker里面安装的镜像文件
 docker images</code></pre>
     </div>
 
-    <p>3. Download NVIDIA Container Toolkit:</p>
+    <p>3. 下载NVIDIA Container Toolkit：</p>
 
     <div class="code-block-container">
       <pre><code>curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
@@ -442,27 +442,27 @@ docker images</code></pre>
     && \
     sudo apt-get update
     
-# Install the NVIDIA Container Toolkit packages
+#Install the NVIDIA Container Toolkit packages
 sudo apt-get install -y nvidia-container-toolkit
 sudo systemctl restart docker
 
-# Configure the container runtime
+#Configure the container runtime
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 
-# Check nvidia-smi
+#查看nvidia-smi
 docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
 docker run --rm -it --gpus all ubuntu:22.04 /bin/bash
-# When starting CUDA in Docker, make sure to match the Ubuntu version of your host machine
-# Check corresponding versions here: https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/supported-tags.md</code></pre>
+#启动docker里面的cuda时，需要对应好本机的ubuntu版本
+#查看对应版本如下：https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/supported-tags.md</code></pre>
     </div>
 
     <ul>
-      <li>Docker + Nvidia container toolkit: <a href="https://www.cnblogs.com/li508q/p/18444582">Configure GPU Deep Learning Environment with NVIDIA Container Toolkit and Docker</a></li>
-      <li><a href="https://blog.csdn.net/guoqingru0311/article/details/145926492">Ubuntu22.04 Install Docker, nvidia-docker, NVIDIA Container Toolkit - Effective Installation Guide</a></li>
-      <li>Issue Resolution Record 1: nvidia-container-cli: initialization error: load library failed</li>
-      <li><a href="https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393">Docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · NVIDIA/nvidia-docker</a></li>
-      <li>Some packages can be pulled from https://hub.docker.com/search</li>
+      <li>Docker + Nvidia container toolkit: <a href="https://www.cnblogs.com/li508q/p/18444582">使用 NVIDIA Container Toolkit 和 Docker 配置 GPU 深度学习环境 - 溺死在幸福里的猪 - 博客园</a></li>
+      <li><a href="https://blog.csdn.net/guoqingru0311/article/details/145926492">Ubuntu22.04安装docker、nvidia-docker、NVIDIA Container Toolkit亲自安装必有效_ubuntu22.04安装nvidia-docker-CSDN博客</a></li>
+      <li>问题解决记录1：nvidia-container-cli: initialization error: load library failed</li>
+      <li><a href="https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393">ocker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · NVIDIA/nvidia-docker</a></li>
+      <li>一些package可以从https://hub.docker.com/search进行pull</li>
     </ul>
 
     <h3 id="isaac-ros-workspace">Isaac Ros Workspace Setup</h3>
@@ -535,13 +535,13 @@ fi</code></pre>
 
     <h2 id="isaac-sim">Isaac Sim</h2>
 
-    <h3 id="installization-workstation">Installation (Workstation)</h3>
+    <h3 id="installization-workstation">Installization（Workstation）</h3>
 
     <p>1. Download</p>
 
     <p><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/download.html">Download Isaac Sim — Isaac Sim Documentation</a></p>
 
-    <p>2. Workstation Installation</p>
+    <p>2. Workstation Installiation</p>
 
     <div class="code-block-container">
       <pre><code>mkdir ~/isaacsim
@@ -549,24 +549,24 @@ cd ~/Downloads
 
 cd ~/isaacsim
 ./post_install.sh
-# Running this command will open the app selector, where you can choose built-in ROS environment and ROS bridge
+#运行这个命令会打开app selector，可以选择内置ros环境和ros bridge
 ./isaac-sim.selector.sh
 
-# Running this command will directly launch the program
+#运行这个命令会直接唤起程序
  ./isaac-sim.sh</code></pre>
     </div>
 
-    <p>3. ROS2 Installation</p>
+    <p>3. ROS2 Installization</p>
 
     <ul>
-      <li>Local download: ROS2 humble<br/>
-        Note: Source ROS2 workspace!!<br/>
+      <li>本地下载：ROS2 humble<br/>
+        注意source ros2空间！！<br/>
         source /opt/ros/humble/setup.bash</li>
-      <li>ROS bridge extension<br/>
+      <li>ROS bridge extnesion<br/>
         <strong>Window->Extensions</strong> and search for ROS 2 bridge</li>
       <li>Set up Isaac Sim ROS Workspaces<br/>
-        Download workspace: <a href="https://github.com/isaac-sim/IsaacSim-ros_workspaces">isaac-sim/IsaacSim-ros_workspaces: Isaac Sim ROS Workspaces</a><br/>
-        Download related packages:</li>
+        下载ws：<a href="https://github.com/isaac-sim/IsaacSim-ros_workspaces">isaac-sim/IsaacSim-ros_workspaces: Isaac Sim ROS Workspaces</a><br/>
+        下载相关包：</li>
     </ul>
 
     <div class="code-block-container">
@@ -580,7 +580,7 @@ rosdep install -i --from-path src --rosdistro humble -y
 
 colcon build
 
-# Need to run source before starting Isaac Sim each time
+#每次启动isaac sim前均需要运行source
 source install/local_setup.bash</code></pre>
     </div>
 
@@ -588,7 +588,7 @@ source install/local_setup.bash</code></pre>
 
     <p><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/ros2_tutorials/tutorial_ros2_navigation.html#ros2-navigation">ROS2 Navigation — Isaac Sim Documentation</a></p>
 
-    <p>1. Installation</p>
+    <p>1. Installization</p>
 
     <div class="code-block-container">
       <pre><code>sudo apt install ros-&lt;ros2-distro&gt;-navigation2
@@ -602,15 +602,15 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup</code></pre>
     <p>3. Running</p>
 
     <ul>
-      <li>Startup process:</li>
+      <li>启动流程：</li>
     </ul>
 
     <div class="code-block-container">
-      <pre><code># Terminal 1
+      <pre><code>#Terminal1
 cd ~/isaacsim
 ./isaac-sim.selector.sh
 
-# Terminal 2
+#Terminal2
 cd ~/IsaacSim-ros_workspaces
 cd humble_ws
 source install/local_setup.bash
@@ -619,7 +619,7 @@ ros2 launch carter_navigation carter_navigation.launch.py</code></pre>
 
     <ul>
       <li>Load example:<br/>
-        <strong>Window > Examples > Robotics Examples then open ROS2 > Navigation > Carter</strong><br/>
+        <strong>Window > Examples > Robotics Examples然后打开ROS2 > Navigation > Carter</strong><br/>
         <strong>Play</strong></li>
       <li>Pose Estimate</li>
       <li>Nav2 Goal</li>
@@ -627,16 +627,16 @@ ros2 launch carter_navigation carter_navigation.launch.py</code></pre>
 
     <h3 id="nvblox">NVBlox:</h3>
 
-    <p>1. First complete the prerequisite environment configuration:</p>
+    <p>1. 首先完成前置环境配置：</p>
 
     <p>[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)</p>
 
-    <p>2. isaac_ros_nvblox:</p>
+    <p>2. isaac_ros_nvblox：</p>
 
     <div class="code-block-container">
-      <pre><code># Launch docker container 
+      <pre><code>#Launch docker container 
 cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh
-# Install isaac_ros_nvblox and its dependencies. (May need to run this again for sourcing when restarting Docker)
+#Install isaac_ros_nvblox and its dependencies.(重新启动docker时可能需要再运行下这个进行source)
 sudo apt-get update
 sudo apt update &&
 sudo apt-get install -y ros-humble-isaac-ros-nvblox && \
@@ -653,7 +653,7 @@ navigation:=False</code></pre>
     <p>3. Reconstruction + Nav2</p>
 
     <ul>
-      <li>The source before running launch should use this: [ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-DrtGdxZGSoVHnLxUbGecTRFTnab)</li>
+      <li>跑launch之前的source应该运行这个：[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-DrtGdxZGSoVHnLxUbGecTRFTnab)</li>
     </ul>
 
     <div class="code-block-container">
@@ -667,76 +667,76 @@ ros2 launch nvblox_examples_bringup isaac_sim_example.launch.py</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code># It's recommended to start isaac-sim-selector first
+      <pre><code>#建议先启动isaac-sim-selector
 ./isaac-sim.selector.sh
-# In the selector GUI interface, first Clear cache, then Open in terminal
+#在selector gui界面内先Clear cache，然后Open in terminal
 ./isaac-sim.sh</code></pre>
     </div>
 
-    <p>⚠️Crash:</p>
+    <p>⚠️Crash：</p>
 
-    <p>After clicking play, a crash prompt may appear or after running Nav2 for a while, you may see: llvm: out of memory</p>
+    <p>点击play后会出现crash提示或者在运行一段Nav2后会出现 llvm: out of memory</p>
 
-    <p>At this time, you need to downgrade the NVIDIA Driver version. According to official recommendations, it should be >= <strong>535.129.03</strong></p>
+    <p>此时需要对Nvidia Driver版本进行降级，根据官方推荐为 >= <strong>535.129.03</strong></p>
 
-    <p>If crash occurs again during runtime, keep the nvblox terminal and restart IsaacSim</p>
+    <p>如果运行时再出现crash，保留nvblox终端，再次运行isaacsim</p>
 
-    <p>⚠️Error:</p>
+    <p>⚠️Error：</p>
 
     <div class="code-block-container">
       <pre><code>[Error] [omni.sensors.nv.lidar.lidar_core.plugin] CUDA Driver CALL FAILED at line 522: the provided PTX was compiled with an unsupported toolchain.
 [Error] [omni.sensors.nv.lidar.lidar_core.plugin] CUDA Driver CALL FAILED at line 548: named symbol not found
-# &lt;/path/to/isaac_sim_installation&gt; is the download path of IsaacSim files
+#&lt;/path/to/isaac_sim_installation&gt;为isaacsim文件的下载路径
 export LD_LIBRARY_PATH=&lt;/path/to/isaac_sim_installation&gt;/extscache/omni.sensors.nv.common-2.5.0-coreapi+lx64.r.cp310/bin:$LD_LIBRARY_PATH</code></pre>
     </div>
 
     <ul>
       <li>RVIZ2:<br/>
-        Selecting 3D LiDAR can perceive objects in a large range, which can assist in goal selection during navigation</li>
+        选中3d LiDAR可以感知较大范围的物体，可以辅助Nav时Goal的选择</li>
     </ul>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
 
-    <p>4. Reconstruction + Semantic image</p>
+    <p>4. Reconstruction + Segmantic image</p>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;" />
 
-    <h3 id="visual-slam">Visual SLAM</h3>
+    <h3 id="visual-slam">Visual Slam</h3>
 
-    <p>1. First complete the prerequisite environment configuration:</p>
+    <p>1. 首先完成前置环境配置：</p>
 
     <p>[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)</p>
 
     <p>⚠️Error: <a href="https://forums.developer.nvidia.com/t/failed-to-initialize-cuvslam-tracker-4-x86-64-zed-camera/321998">[Failed to initialize CUVSLAM tracker: 4]</a></p>
 
-    <p>2. isaac_ros_visual_slam environment configuration</p>
+    <p>2. isaac_ros_visual_slam 环境配置</p>
 
     <div class="code-block-container">
       <pre><code>cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
 
 sudo apt-get update
-# Need to source with this before each launch
+#每次launch前要用这个source一下
 sudo apt-get install -y ros-humble-isaac-ros-visual-slam</code></pre>
     </div>
 
     <p>3. Run Launch File</p>
 
     <div class="code-block-container">
-      <pre><code># Terminal 1
+      <pre><code>#Terminal 1
 sudo apt-get update
 sudo apt-get install -y ros-humble-isaac-ros-examples
-# Using quickstart
+#使用quickstart
 ros2 launch isaac_ros_examples isaac_ros_examples.launch.py launch_fragments:=visual_slam \
 interface_specs_file:=${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_interface_specs.json \
 rectified_images:=false</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code># Terminal 2
+      <pre><code>#Terminal 2
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
-# This is used to start the camera, run after Terminal 3 is complete
+#这个用来启动摄像头，在运行完Terminal3后运行
 ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_bag --remap  \
 /front_stereo_camera/left/image_raw:=/left/image_rect \
 /front_stereo_camera/left/camera_info:=/left/camera_info_rect \
@@ -749,10 +749,10 @@ ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_
     </div>
 
     <div class="code-block-container">
-      <pre><code># Terminal 3
+      <pre><code>#Terminal
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
    ./scripts/run_dev.sh
-# Run RViz   
+#run rviz   
 rviz2 -d $(ros2 pkg prefix isaac_ros_visual_slam --share)/rviz/default.cfg.rviz</code></pre>
     </div>
 

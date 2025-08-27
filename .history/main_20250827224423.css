@@ -824,12 +824,9 @@ pre>code {
 .circle-img-light {
     margin: 0px auto;
     width: 168px;
-    height: 168px;
     border-width: 3px;
     border-style: solid;
-    border-radius: 50%;
-    object-fit: cover;
-    object-position: center;
+    border-radius: 50%
 }
 
 #my-name {

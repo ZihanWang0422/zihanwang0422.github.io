@@ -224,6 +224,8 @@
       object-fit: contain;
       object-position: center;
       border-radius: 4px;
+      background: white;
+      border: 1px solid #e1e8ed;
     }
 
     @media (max-width: 768px) {
@@ -427,15 +429,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <img src="images/LiDAR.png" alt="3D Point Cloud Building Model 2">
     </div>
     <div class="project-content">
-      <h2 class="project-title">3D Building Reconstruction</h2>
+      <h2 class="project-title">Building 3D Point Cloud Fine Modeling</h2>
       <div class="project-description">
         <span class="tldr-label">TL;DR:</span>
-       We developed a building fine modeling method based on point cloud segmentation and pointcloud ICP algorithm. Using handheld LiDAR scanners, we generated 3D point clouds of buildings and applied a semantic segmentation model to improve accuracy and robustness in complex scenes. A geometry–semantic constrained reconstruction algorithm was further designed to restore missing structures. The method achieves efficient and high-precision 3D building models, accurately representing details such as walls, roofs, doors, and windows.
+        I  focuses on the fine modeling needs of building 3D point clouds. Using handheld SLAM scanners to generate 3D point cloud images of buildings, we propose a high-precision, high-efficiency building fine modeling method based on point cloud segmentation. This addresses issues in existing methods such as insufficient segmentation accuracy in complex scenes and difficulties in fusing model geometry with semantic information. We establish a segmentation model that integrates multi-features with deep learning to improve segmentation accuracy and robustness of building point clouds in complex scenes (such as vegetation occlusion and irregular structures). We also design a model reconstruction algorithm with joint geometric and semantic constraints to supplement missing or incomplete external feature structures, achieving high-fidelity representation of building details (such as walls, roofs, doors and windows).
       </div>
       <div class="project-tags">
         <span class="tag hardware">LiDAR Scanner</span>
         <span class="tag software">PCL</span>
-        <span class="tag algorithm">Pointcloud ICP</span>
+        <span class="tag algorithm">ICP</span>
 
       </div>
       <div class="project-links">

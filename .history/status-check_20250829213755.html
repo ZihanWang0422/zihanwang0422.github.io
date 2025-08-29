@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>返回顶部按钮状态检查</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .status-card {
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            padding: 20px;
+            border-left: 5px solid;
+        }
+        
+        .status-card.good { border-left-color: #4caf50; }
+        .status-card.warning { border-left-color: #ff9800; }
+        .status-card.error { border-left-color: #f44336; }
+        
+        .status-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .status-content {
+            opacity: 0.9;
+            line-height: 1.5;
+        }
+        
+        .page-list {
+            list-style: none;
+            padding: 0;
+            margin: 10px 0;
+        }
+        
+        .page-list li {
+            padding: 5px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .page-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .check-btn {
+            background: #4fc3f7;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            margin: 5px;
+        }
+        
+        .check-btn:hover {
+            background: #29b6f6;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+        }
+        
+        .actions {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .color-preview {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            margin-left: 10px;
+            vertical-align: middle;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+        }
+        
+        .footer-note {
+            text-align: center;
+            margin-top: 40px;
+            opacity: 0.8;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fa fa-arrow-up"></i> 返回顶部按钮状态检查</h1>
+        
+        <div class="status-grid">
+            <div class="status-card good">
+                <div class="status-title">
+                    <i class="fa fa-check-circle"></i>
+                    已部署页面
+                </div>
+                <div class="status-content">
+                    以下页面已成功部署浅蓝色返回顶部按钮：
+                    <ul class="page-list">
+                        <li>📄 index.html - 主页</li>
+                        <li>📄 projects.html - 项目页面</li>
+                        <li>📄 blog.html - 博客列表</li>
+                        <li>📄 blog/isaac-sim-setup.html</li>
+                        <li>📄 blog/nvblox-setup.html</li>
+                        <li>📄 blog/urdf.html</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="status-card good">
+                <div class="status-title">
+                    <i class="fa fa-palette"></i>
+                    当前主题
+                </div>
+                <div class="status-content">
+                    颜色主题: 浅蓝色渐变 <span class="color-preview"></span><br>
+                    浅色模式: #4fc3f7 → #29b6f6<br>
+                    深色模式: #42a5f5 → #1e88e5<br>
+                    悬停效果: 增强对比度<br>
+                    主题切换: ✅ 支持
+                </div>
+            </div>
+            
+            <div class="status-card good">
+                <div class="status-title">
+                    <i class="fa fa-cogs"></i>
+                    功能特性
+                </div>
+                <div class="status-content">
+                    ✅ 智能显示（滚动>100px）<br>
+                    ✅ 平滑滚动动画<br>
+                    ✅ 响应式设计<br>
+                    ✅ 键盘导航支持<br>
+                    ✅ 无障碍访问<br>
+                    ✅ 深色主题兼容
+                </div>
+            </div>
+            
+            <div class="status-card good">
+                <div class="status-title">
+                    <i class="fa fa-tools"></i>
+                    开发工具
+                </div>
+                <div class="status-content">
+                    📁 css/back-to-top.css - 统一样式<br>
+                    📁 js/back-to-top.js - 功能脚本<br>
+                    📁 templates/ - HTML模板<br>
+                    📁 scripts/deploy-back-to-top.sh - 部署脚本<br>
+                    📁 config/button-themes.conf - 主题配置
+                </div>
+            </div>
+        </div>
+        
+        <div class="actions">
+            <button class="check-btn" onclick="window.open('index.html', '_blank')">
+                <i class="fa fa-home"></i> 检查主页
+            </button>
+            <button class="check-btn" onclick="window.open('projects.html', '_blank')">
+                <i class="fa fa-briefcase"></i> 检查项目页
+            </button>
+            <button class="check-btn" onclick="window.open('blog.html', '_blank')">
+                <i class="fa fa-blog"></i> 检查博客页
+            </button>
+            <button class="check-btn" onclick="openDiagnostic()">
+                <i class="fa fa-stethoscope"></i> 诊断工具
+            </button>
+        </div>
+        
+        <div class="footer-note">
+            <p><strong>使用提示：</strong></p>
+            <p>• 在任何页面向下滚动超过100像素即可看到返回顶部按钮</p>
+            <p>• 按钮支持鼠标点击和键盘操作（回车键/空格键）</p>
+            <p>• 在深色主题下，按钮会自动调整为更适合的颜色</p>
+            <p>• 如需为新页面添加按钮，请使用 scripts/deploy-back-to-top.sh 脚本</p>
+        </div>
+    </div>
+    
+    <script>
+        function openDiagnostic() {
+            window.open('diagnostic.html', '_blank');
+        }
+        
+        // 添加一些交互效果
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.status-card');
+            cards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-5px)';
+                    this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.3)';
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

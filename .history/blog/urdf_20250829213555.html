@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>URDF Modeling Tutorial - Zihan Wang</title>
+  <meta name="description" lang="en" content="Fusion2URDF - From 3D model to URDF.">
+  <meta name="keywords" lang="en" content="Zihan Wang, URDF, Fusion360, ROS" />
+
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/academicons.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="../js/jquery-2.1.3.min.js"> </script>
+  <script src="../js/theme.js"> </script>
+
+  <style>
+    .blog-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .blog-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 40px 0;
+      background: linear-gradient(135deg, #667eea 0%, #589dec 100%);
+      color: white;
+      border-radius: 8px;
+    }
+    
+    .blog-meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+    
+    .blog-content {
+      background: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    
+    .blog-content h1 {
+      color: #333;
+      margin-bottom: 20px;
+    }
+    
+    .blog-content h2 {
+      color: #444;
+      margin-top: 30px;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
+    }
+    
+    .blog-content h3 {
+      color: #555;
+      margin-top: 25px;
+      margin-bottom: 10px;
+    }
+    
+    .blog-content p {
+      margin-bottom: 15px;
+      color: #666;
+    }
+    
+    .blog-content pre {
+      background: #f8f9fa;
+      border: 1px solid #e9ecef;
+      border-radius: 4px;
+      padding: 15px;
+      overflow-x: auto;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .blog-content code {
+      background: #f8f9fa;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+    }
+    
+    /* Code block copy button */
+    .code-block-container {
+      position: relative;
+    }
+    
+    .copy-button {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      background: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      padding: 6px 10px;
+      font-size: 12px;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: all 0.3s ease;
+      z-index: 10;
+    }
+    
+    .copy-button:hover {
+      background: #495057;
+      opacity: 1;
+    }
+    
+    .copy-button.copied {
+      background: #28a745;
+    }
+    
+    .copy-button.copied::after {
+      content: " ✓";
+    }
+    
+    .blog-content img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    
+    .back-to-home {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(0, 102, 204, 0.1);
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-home:hover {
+      background: rgba(0, 102, 204, 0.2);
+      text-decoration: none;
+    }
+    
+    .blog-tags {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+    
+    .tag {
+      display: inline-block;
+      background: #f0f0f0;
+      color: #666;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      margin-right: 8px;
+      margin-bottom: 5px;
+    }
+    
+    /* Table of Contents Styles */
+    .toc-container {
+      position: fixed;
+      top: 45%;
+      right: 20px;
+      transform: translateY(-50%);
+      width: 280px;
+      max-height: 80vh;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+    }
+    
+    .toc-header {
+      padding: 15px 20px;
+      background: linear-gradient(135deg, #667eea 0%, #589dec 100%);
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      border-radius: 8px 8px 0 0;
+      user-select: none;
+    }
+    
+    .toc-content {
+      padding: 0;
+      max-height: calc(80vh - 50px);
+      overflow-y: auto;
+      border-radius: 0 0 8px 8px;
+    }
+    
+    .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .toc-item {
+      border-bottom: 1px solid #f0f0f0;
+    }
+    
+    .toc-item:last-child {
+      border-bottom: none;
+    }
+    
+    .toc-link {
+      display: block;
+      padding: 12px 20px;
+      color: #333;
+      text-decoration: none;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      border-left: 3px solid transparent;
+    }
+    
+    .toc-link.h2 {
+      font-weight: 600;
+      padding-left: 20px;
+    }
+    
+    .toc-link.h3 {
+      font-size: 13px;
+      color: #666;
+      padding-left: 40px;
+    }
+    
+    .toc-link:hover {
+      background-color: #f8f9fa;
+      color: #667eea;
+    }
+    
+    .toc-link.active {
+      background-color: #e8f1ff;
+      color: #667eea;
+      border-left-color: #667eea;
+      font-weight: 600;
+    }
+    
+    /* Mobile responsiveness */
+    @media (max-width: 1200px) {
+      .toc-container {
+        position: static;
+        width: 100%;
+        margin-bottom: 20px;
+        max-height: none;
+      }
+      
+      .toc-content {
+        max-height: 300px;
+      }
+    }
+    
+    /* Smooth scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Theme Toggle Button Styles */
+    .theme-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Dark Theme Styles */
+    [data-theme="dark"] {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .blog-container {
+        background-color: #1a1a1a !important;
+    }
+
+    [data-theme="dark"] .blog-header {
+        background: linear-gradient(135deg, #2d5aa0 0%, #1e3a5f 100%) !important;
+    }
+
+    [data-theme="dark"] .blog-content {
+        background-color: #2d2d2d !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .back-to-home {
+        color: #4da6ff !important;
+        background: rgba(77, 166, 255, 0.1) !important;
+    }
+
+    [data-theme="dark"] .back-to-home:hover {
+        background: rgba(77, 166, 255, 0.2) !important;
+    }
+
+    [data-theme="dark"] .toc-container {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .toc-header {
+        background-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .toc-link {
+        color: #d0d0d0 !important;
+    }
+
+    [data-theme="dark"] .toc-link:hover {
+        color: #4da6ff !important;
+    }
+
+    [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .highlight {
+        background-color: #404040 !important;
+    }
+
+    [data-theme="dark"] pre {
+        background-color: #2d2d2d !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] code {
+        background-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link:hover {
+        color: #4da6ff;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0;
+    }
+
+    /* Back to Top Button Styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-top {
+        background: linear-gradient(135deg, #4a9eff 0%, #667eea 100%);
+    }
+
+    [data-theme="dark"] .back-to-top:hover {
+        background: linear-gradient(135deg, #667eea 0%, #4a9eff 100%);
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <header class="site-header" style="border: 2px solid lightgrey; position: relative;">
+
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" id="theme-icon"></i>
+  </div>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" onclick="scrollToTop()">
+    <i class="fa fa-arrow-up"></i>
+  </button>
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <div class="trigger">
+    <a class="page-link" href="../index.html#bio"><b>Biography</b></a>
+    <a class="page-link" href="../index.html#timeline"><b>Experiences</b></a>
+    <a class="page-link" href="../index.html#research"><b>Research</b></a>
+    <a class="page-link" href="../projects.html"><b>Projects</b></a>
+    <a class="page-link" href="../blog.html"><b>Blog</b></a>
+  </div>
+</nav>
+  </div>
+</header>
+
+<div class="blog-container">
+  <a href="../blog.html" class="back-to-home">← Back to Blog List</a>
+  
+  <div class="blog-header">
+    <h1>URDF Modeling Tutorial</h1>
+    <div class="blog-meta">
+      <i class="fa fa-calendar"></i> June 12, 2025
+    </div>
+  </div>
+
+  <!-- Table of Contents -->
+  <div class="toc-container">
+    <div class="toc-header">
+      📋 Table of Contents
+    </div>
+    <div class="toc-content" id="tocContent">
+      <ul class="toc-list">
+        <li class="toc-item">
+          <a href="#fusion-360-modeling" class="toc-link h2">Fusion 360 Modeling</a>
+        </li>
+        <li class="toc-item">
+          <a href="#main-body-components" class="toc-link h3">Main Body Components</a>
+        </li>
+        <li class="toc-item">
+          <a href="#joint-configuration" class="toc-link h3">Joint Configuration</a>
+        </li>
+        <li class="toc-item">
+          <a href="#file-structure" class="toc-link h3">File Structure</a>
+        </li>
+        <li class="toc-item">
+          <a href="#fusion2urdf" class="toc-link h2">Fusion2urdf</a>
+        </li>
+        <li class="toc-item">
+          <a href="#script-modifications" class="toc-link h3">Script Modifications</a>
+        </li>
+        <li class="toc-item">
+          <a href="#export-settings" class="toc-link h3">Export Settings</a>
+        </li>
+        <li class="toc-item">
+          <a href="#ros-integration" class="toc-link h2">ROS Integration</a>
+        </li>
+        <li class="toc-item">
+          <a href="#verification-testing" class="toc-link h3">Verification and Testing</a>
+        </li>
+        <li class="toc-item">
+          <a href="#common-issues" class="toc-link h2">Common Issues and Solutions</a>
+        </li>
+        <li class="toc-item">
+          <a href="#joint-reversal" class="toc-link h3">Joint Reversal Problem</a>
+        </li>
+        <li class="toc-item">
+          <a href="#collision-optimization" class="toc-link h3">Collision Detection Optimization</a>
+        </li>
+        <li class="toc-item">
+          <a href="#summary" class="toc-link h2">Summary</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="blog-content">
+    
+    <p>URDF Repository: <a href="https://github.com/EmbodiedLLM/RoadRunner_Description" target="_blank">https://github.com/EmbodiedLLM/RoadRunner_Description</a></p>
+
+    <p>Assembly Files: <a href="https://www.jianguoyun.com/p/DekYivEQ7IupDRjN9f0FIAA" target="_blank">https://www.jianguoyun.com/p/DekYivEQ7IupDRjN9f0FIAA</a></p>
+
+    <h2 id="fusion-360-modeling">Fusion 360 Modeling</h2>
+
+    <h3 id="main-body-components">Main Body Components</h3>
+
+    <p>First, switch the coordinate system of the entire main body to the standard position, then merge all parts except the four wheels, radar, IMU, and RealSense into one entity (base_link).</p>
+
+    <p>⚠️ Before merging entities, disable "Capture Design History", then make all components independent, otherwise component position anomalies may occur.</p>
+
+    <h3 id="joint-configuration">Joint Configuration</h3>
+
+    <p>All joints need to be configured for all connection parts. For wheels, set component1 as wheel and component2 as base_link.</p>
+
+    <p>⚠️ When setting wheel joint-continuous, there may be reversal situations. In this case, switch the component objects as shown below:</p>
+
+    <img src="../images/blog/urdf/image-3.png" alt="image-3">
+
+    <img src="../images/blog/urdf/image-5.png" alt="image-5" style="width: 60%;">
+
+    <h3 id="file-structure">File Structure:</h3>    <img src="../images/blog/urdf/image-4.png" alt="image-4">
+
+    <h2 id="fusion2urdf">Fusion2urdf</h2>
+
+    <p>Tutorial: <a href="https://github.com/runtimerobotics/fusion360-urdf-ros2?tab=readme-ov-file#usage" target="_blank">https://github.com/runtimerobotics/fusion360-urdf-ros2?tab=readme-ov-file#usage</a></p>
+
+    <p>Download: <a href="https://github.com/syuntoku14/fusion2urdf" target="_blank">https://github.com/syuntoku14/fusion2urdf</a></p>
+
+    <h3 id="script-modifications">Script Modifications</h3>
+
+    <p>Need to modify the basic script to adapt to the latest version of Fusion360, mainly involving API interface updates and compatibility issues.</p>
+
+    <h3 id="export-settings">Export Settings</h3>
+
+    <p>When exporting URDF, pay attention to the following key parameter settings:</p>
+    <ul>
+      <li>Proper configuration of material properties</li>
+      <li>Reasonable setting of joint limits</li>
+      <li>Optimization of collision detection meshes</li>
+      <li>Accurate calculation of inertial parameters</li>
+    </ul>
+
+    <h2 id="ros-integration">ROS Integration</h2>
+
+    <p>The exported URDF files can be used directly in ROS environment, supporting the following functions:</p>
+    <ul>
+      <li>Gazebo physical simulation</li>
+      <li>RViz visualization display</li>
+      <li>Navigation stack navigation</li>
+      <li>MoveIt motion planning</li>
+    </ul>
+
+    <h3 id="verification-testing">Verification and Testing</h3>
+
+    <p>Recommend the following verification before use:</p>
+    <pre><code># Launch URDF display in RViz
+roslaunch urdf_tutorial display.launch model:=your_robot.urdf
+
+# Monitor joint states
+rostopic echo /joint_states
+
+# Check transform between frames
+rosrun tf tf_echo base_link wheel_link</code></pre>
+
+    <img src="../images/blog/urdf/image-2.png" alt="image-2">
+
+    <h2 id="common-issues">Common Issues and Solutions</h2>
+
+    <h3 id="joint-reversal">Joint Reversal Problem</h3>
+    
+    <p>If you find the joint movement direction is opposite to expected, you can solve it by adjusting the component order of the joint.</p>
+
+    <img src="../images/blog/urdf/image.png" alt="image" style="width: 67%;">
+
+    <h3 id="collision-optimization">Collision Detection Optimization</h3>
+
+    <p>To improve simulation efficiency, it's recommended to simplify the complexity of collision meshes while maintaining detection accuracy.</p>
+
+    <img src="../images/blog/urdf/image-1.png" alt="image-1">
+
+    <div class="blog-tags">
+      <span class="tag">Simulator</span>
+      <span class="tag">URDF</span>
+      <span class="tag">Fusion360</span>
+      <span class="tag">ROS</span>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
+  <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
+</footer>
+
+<script>
+// Scroll highlight functionality
+function updateActiveSection() {
+  const sections = document.querySelectorAll('h2[id], h3[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+  
+  let currentSection = '';
+  const scrollPosition = window.scrollY + 100;
+  
+  // Find the current section based on scroll position
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = sections[i];
+    const sectionTop = section.offsetTop - 150; // Offset for better detection
+    
+    if (scrollPosition >= sectionTop) {
+      currentSection = section.id;
+      break;
+    }
+  }
+  
+  // Remove active class from all links
+  tocLinks.forEach(link => {
+    link.classList.remove('active');
+  });
+  
+  // Add active class to current section link
+  if (currentSection) {
+    const activeLink = document.querySelector(`.toc-link[href="#${currentSection}"]`);
+    if (activeLink) {
+      activeLink.classList.add('active');
+    }
+  }
+}
+
+// Smooth scroll to section
+document.querySelectorAll('.toc-link').forEach(link => {
+  link.addEventListener('click', function(e) {
+    e.preventDefault();
+    const targetId = this.getAttribute('href').substring(1);
+    const targetElement = document.getElementById(targetId);
+    
+    if (targetElement) {
+      targetElement.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  });
+});
+
+// Update active section on scroll
+window.addEventListener('scroll', updateActiveSection);
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+  updateActiveSection();
+  initCodeCopyButtons();
+});
+
+// Back to top functionality
+window.addEventListener('scroll', function() {
+    const backToTopButton = document.querySelector('.back-to-top');
+    if (window.pageYOffset > 300) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+});
+
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+
+// Add copy buttons to code blocks
+function initCodeCopyButtons() {
+  const codeBlocks = document.querySelectorAll('pre code');
+  
+  codeBlocks.forEach((block, index) => {
+    const pre = block.parentElement;
+    
+    // Wrap pre in container if not already wrapped
+    if (!pre.parentElement.classList.contains('code-block-container')) {
+      const container = document.createElement('div');
+      container.className = 'code-block-container';
+      pre.parentElement.insertBefore(container, pre);
+      container.appendChild(pre);
+    }
+    
+    // Create copy button
+    const copyButton = document.createElement('button');
+    copyButton.className = 'copy-button';
+    copyButton.textContent = 'Copy';
+    copyButton.onclick = () => copyToClipboard(block, copyButton);
+    
+    // Add button to container
+    pre.parentElement.appendChild(copyButton);
+  });
+}
+
+// Copy text to clipboard
+function copyToClipboard(codeBlock, button) {
+  const text = codeBlock.textContent;
+  
+  navigator.clipboard.writeText(text).then(() => {
+    button.textContent = 'Copied';
+    button.classList.add('copied');
+    
+    setTimeout(() => {
+      button.textContent = 'Copy';
+      button.classList.remove('copied');
+    }, 2000);
+  }).catch(err => {
+    console.error('Failed to copy: ', err);
+    // Fallback for older browsers
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    document.body.appendChild(textArea);
+    textArea.select();
+    document.execCommand('copy');
+    document.body.removeChild(textArea);
+    
+    button.textContent = 'Copied';
+    button.classList.add('copied');
+    
+    setTimeout(() => {
+      button.textContent = 'Copy';
+      button.classList.remove('copied');
+    }, 2000);
+  });
+}
+</script>
+
+</body>
+
+</html>

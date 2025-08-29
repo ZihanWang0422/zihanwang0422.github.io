@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>返回顶部按钮测试页面</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+        }
+        
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .tall-content {
+            height: 2000px;
+            background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        /* 返回顶部按钮样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(20px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* 调试模式 - 始终显示按钮 */
+        .back-to-top.debug {
+            opacity: 1 !important;
+            visibility: visible !important;
+            transform: translateY(0) !important;
+            background: red !important;
+        }
+        
+        .debug-info {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 14px;
+            z-index: 1001;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>返回顶部按钮测试页面</h1>
+        
+        <div class="debug-info" id="debugInfo">
+            滚动位置: <span id="scrollPos">0</span>px<br>
+            按钮状态: <span id="buttonStatus">隐藏</span><br>
+            <button onclick="toggleDebugMode()">调试模式</button>
+        </div>
+        
+        <p>这是一个测试页面，用来验证返回顶部按钮是否正常工作。</p>
+        
+        <h2>使用说明</h2>
+        <ol>
+            <li>向下滚动超过100px，右下角应该出现返回顶部按钮</li>
+            <li>点击按钮应该平滑滚动回顶部</li>
+            <li>如果看不到按钮，点击左上角的"调试模式"按钮</li>
+        </ol>
+        
+        <div class="tall-content">
+            <h2>长内容区域</h2>
+            <p>继续向下滚动...</p>
+            <p>滚动位置超过100px时，右下角应该出现一个紫色渐变的圆形按钮。</p>
+            <p>如果您看不到按钮，可能的原因：</p>
+            <ul>
+                <li>浏览器兼容性问题</li>
+                <li>CSS样式被其他样式覆盖</li>
+                <li>JavaScript代码有错误</li>
+                <li>Font Awesome图标库未正确加载</li>
+            </ul>
+            
+            <h3>更多内容</h3>
+            <p>这里有更多内容来测试滚动效果...</p>
+            <p>继续滚动，测试按钮的显示和隐藏功能。</p>
+            <p>返回顶部按钮应该：</p>
+            <ul>
+                <li>在滚动位置 > 100px 时显示</li>
+                <li>在滚动位置 ≤ 100px 时隐藏</li>
+                <li>有平滑的淡入淡出动画</li>
+                <li>点击时平滑滚动到顶部</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop" title="返回顶部">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        let debugMode = false;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            const scrollPosElement = document.getElementById('scrollPos');
+            const buttonStatusElement = document.getElementById('buttonStatus');
+            
+            // 更新调试信息
+            function updateDebugInfo() {
+                const scrollPos = window.pageYOffset;
+                scrollPosElement.textContent = scrollPos;
+                
+                if (backToTopButton.classList.contains('show')) {
+                    buttonStatusElement.textContent = '显示';
+                } else {
+                    buttonStatusElement.textContent = '隐藏';
+                }
+            }
+            
+            // 显示/隐藏按钮
+            function toggleButton() {
+                if (window.pageYOffset > 100) {
+                    backToTopButton.classList.add('show');
+                } else {
+                    backToTopButton.classList.remove('show');
+                }
+                updateDebugInfo();
+            }
+            
+            // 滚动事件监听
+            window.addEventListener('scroll', toggleButton);
+            
+            // 点击事件监听
+            backToTopButton.addEventListener('click', function() {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 初始检查
+            toggleButton();
+        });
+        
+        // 调试模式切换
+        function toggleDebugMode() {
+            debugMode = !debugMode;
+            const backToTopButton = document.getElementById('backToTop');
+            
+            if (debugMode) {
+                backToTopButton.classList.add('debug');
+                alert('调试模式已开启！按钮现在应该始终可见（红色）');
+            } else {
+                backToTopButton.classList.remove('debug');
+                alert('调试模式已关闭！按钮恢复正常行为');
+            }
+        }
+    </script>
+</body>
+</html>

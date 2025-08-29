@@ -53,7 +53,7 @@
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
+      gap: 50px;
       grid-auto-rows: auto;
     }
     
@@ -73,7 +73,7 @@
       background: #fff;
       border: 1px solid #e1e8ed;
       border-radius: 8px;
-      padding: 20px;
+      padding: 25px;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       transition: box-shadow 0.3s ease;
       display: flex;
@@ -176,9 +176,9 @@
       gap: 10px;
       flex-wrap: wrap;
       position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
+      bottom: 25px;
+      left: 25px;
+      right: 25px;
     }
     
     .project-link {
@@ -234,14 +234,14 @@
     /* 课程项目分隔条样式 */
     .section-divider {
       grid-column: 1 / -1;
-      margin: 20px 0 15px 0;
+      margin: 40px 0 30px 0;
       text-align: center;
     }
     
     .section-bar {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      padding: 10px 25px;
+      padding: 15px 30px;
       border-radius: 8px;
       display: inline-block;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
@@ -322,69 +322,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <a href="index.html" class="back-to-home">← Back to Home</a>
   
   <div class="projects-grid">
-<!-- Section Divider: Research Projects -->
-<div class="section-divider">
-  <div class="section-bar">
-    <h3 class="section-title">Research Projects</h3>
-  </div>
-</div>
-
-    <!-- Project 1: 6DoF Grasping -->
-  <div class="project-card">
-    <div class="dual-image-container">
-      <img src="images/6dof_grasp1.png" alt="6DoF Occluded Target Object Grasping Architecture">
-      <img src="images/6dof_grasp2.png" alt="6DoF Multi-Modal Approach">
-    </div>
-    <div class="project-content">
-      <h2 class="project-title">6-DoF Occluded Target Object Grasping</h2>
-      <div class="project-description">
-        <span class="tldr-label">TL;DR:</span>
-        We developed a novel approach for 6-DoF grasping of occluded target objects using vision-language models (VLM) and multi-modal learning. Our system integrates textual prompts, visual perception, and point cloud data through a multi-head attention mechanism to achieve robust grasp affordance prediction and occupancy estimation. The approach combines predefined templates with modal fusion techniques, enabling precise target object identification and grasping in cluttered environments with partial occlusion scenarios.
-      </div>
-      <div class="project-tags">
-        <span class="tag hardware"></span>
-        <span class="tag algorithm">6-DoF Grasping</span>
-        <span class="tag algorithm">Vision-Language Model</span>
-
-      </div>
-      <div class="project-links">
-        </a>
-        <a href="#" class="project-link" style="opacity: 0.5; pointer-events: none;">
-          <i class="fa fa-github"></i> Code
-        </a>
-      </div>
-    </div>
-  </div>
-
-  <!-- Project 2: Plasma-propelled Ultra-quiet Flying Robot -->
-  <div class="project-card">
-    <div class="project-image">
-      <img src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
-    </div>
-    <div class="project-content">
-      <h2 class="project-title">Plasma-propelled Ultra-quiet Flying Robot</h2>
-      <div class="project-description">
-        <span class="tldr-label">TL;DR:</span>
-        We developed an innovative plasma-propelled ultra-quiet flying robot system that utilizes electroaerodynamic (EAD) propulsion technology. The system features a novel power combination control method that enables silent flight operation with minimal acoustic signature. Our approach integrates advanced plasma generation techniques with intelligent control algorithms to achieve stable flight performance while maintaining ultra-quiet operation characteristics, making it ideal for surveillance and monitoring applications requiring stealth capabilities.
-      </div>
-      <div class="project-tags">
-        <span class="tag hardware">ESP32</span>
-        <span class="tag hardware">AC Boost Circuit (Electrical System Design)</span>
-        <span class="tag software">Comsol</span>
-        <span class="tag algorithm">Sliding Mode Control</span>
-
-      </div>
-      <div class="project-links">
-        <a href="https://arxiv.org/pdf/2508.12395" target="_blank" class="project-link">
-          <i class="fa fa-file-text"></i> Paper
-        </a>
-        <a href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" class="project-link">
-          <i class="fa fa-file-text"></i> Patent
-        </a>
-      </div>
-    </div>
-  </div>
-
 <!-- Section Divider: Competition Projects -->
 <div class="section-divider">
   <div class="section-bar">
@@ -484,7 +421,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <img src="images/zhixing_video.gif" alt="Zhi Xing Robot">
     </div>
     <div class="project-content">
-      <h2 class="project-title">Zhi Xing Car I</h2>
+      <h2 class="project-title">Zhi Xing Car 1</h2>
       <div class="project-description">
         <span class="tldr-label">TL;DR:</span>
         We designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning. The robot integrates multiple sensors and algorithms to achieve robust autonomous navigation in indoor environments, demonstrating practical applications of robotics in real-world scenarios.

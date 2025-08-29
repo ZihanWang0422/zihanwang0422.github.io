@@ -550,12 +550,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <h2 class="project-title">Plasma-Propelled Blimp with Two-DOF Vector Thrusting</h2>
       <div class="project-description">
         <span class="tldr-label">TL;DR:</span>
-        We proposed the design and control of a Plasma-propelled Ultra-silence Blimp
-(PUB), a novel aerial robot employing plasma vector propulsion for ultra-quiet flight without
-mechanical propellers. The system utilizes a helium-lift platform for extended endurance
-and a four-layer ring asymmetric capacitor to generate ionic wind thrust. The modular
-propulsion units allow flexible configuration to meet mission-specific requirements, while a
-two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop slip control scheme is implemented for stable maneuvering.
+        We developed an innovative plasma-propelled ultra-quiet flying robot system that utilizes electroaerodynamic (EAD) propulsion technology. The system features a novel power combination control method that enables silent flight operation with minimal acoustic signature. Our approach integrates advanced plasma generation techniques with intelligent control algorithms to achieve stable flight performance while maintaining ultra-quiet operation characteristics, making it ideal for surveillance and monitoring applications requiring stealth capabilities.
       </div>
       <div class="project-tags">
         <span class="tag hardware">ESP32</span>
@@ -744,7 +739,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
       </div>
       <div class="project-tags">
         <span class="tag hardware">LiDAR Scanner</span>
-        <span class="tag software">CloudCompare(based on PCL)</span>
+        <span class="tag software">PCL</span>
         <span class="tag algorithm">Pointcloud ICP</span>
 
       </div>
@@ -817,24 +812,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     console.log('返回顶部按钮已找到，正在初始化...');
-    
-    // 检查Font Awesome是否加载
-    setTimeout(function() {
-        const icon = backToTopButton.querySelector('i.fa');
-        const fallbackSpan = backToTopButton.querySelector('span');
-        
-        if (icon && fallbackSpan) {
-            const iconStyle = window.getComputedStyle(icon);
-            const fontFamily = iconStyle.fontFamily;
-            
-            // 如果Font Awesome未加载，显示备用箭头
-            if (!fontFamily.includes('FontAwesome') && !fontFamily.includes('Font Awesome')) {
-                console.warn('Font Awesome未正确加载，使用备用箭头');
-                icon.style.display = 'none';
-                fallbackSpan.style.display = 'inline';
-            }
-        }
-    }, 1000);
     
     // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {

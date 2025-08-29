@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>返回顶部按钮图标诊断</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        
+        .diagnostic-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .test-section {
+            margin: 20px 0;
+            padding: 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+        }
+        
+        .icon-test {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px;
+            background: #f0f0f0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        
+        .back-to-top-test {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top-test:hover {
+            background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+            transform: translateY(-3px);
+        }
+        
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+        
+        .success { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .error { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .warning { background: #fff3cd; color: #856404; border: 1px solid #ffeaa7; }
+        
+        .icon-large {
+            font-size: 24px;
+            margin: 0 10px;
+        }
+        
+        h1, h2 {
+            color: #333;
+        }
+        
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        
+        .test-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="diagnostic-container">
+        <h1>🔍 返回顶部按钮图标诊断</h1>
+        
+        <div class="test-section">
+            <h2>1. Font Awesome 图标测试</h2>
+            <p>以下是一些Font Awesome图标测试，如果显示为方块或问号，说明Font Awesome未正确加载：</p>
+            
+            <div class="icon-test">
+                <i class="fa fa-arrow-up icon-large"></i><br>
+                fa-arrow-up
+            </div>
+            
+            <div class="icon-test">
+                <i class="fa fa-chevron-up icon-large"></i><br>
+                fa-chevron-up
+            </div>
+            
+            <div class="icon-test">
+                <i class="fa fa-angle-up icon-large"></i><br>
+                fa-angle-up
+            </div>
+            
+            <div class="icon-test">
+                <i class="fa fa-home icon-large"></i><br>
+                fa-home
+            </div>
+            
+            <div class="icon-test">
+                <i class="fa fa-heart icon-large"></i><br>
+                fa-heart
+            </div>
+        </div>
+        
+        <div class="test-section">
+            <h2>2. 返回顶部按钮测试</h2>
+            <p>右下角应该有一个蓝色的返回顶部按钮，里面有向上箭头图标：</p>
+            
+            <div id="buttonStatus" class="status">检查中...</div>
+            
+            <button class="test-button" onclick="testButtonVisibility()">检查按钮可见性</button>
+            <button class="test-button" onclick="testIconContent()">检查图标内容</button>
+            <button class="test-button" onclick="openProjectsPage()">打开Projects页面</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>3. CSS样式测试</h2>
+            <div id="cssStatus" class="status">检查中...</div>
+            <button class="test-button" onclick="testCSSStyles()">检查CSS样式</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>4. 网络连接测试</h2>
+            <div id="networkStatus" class="status">检查中...</div>
+            <button class="test-button" onclick="testNetworkConnection()">测试Font Awesome CDN</button>
+        </div>
+        
+        <div class="test-section">
+            <h2>5. 解决方案</h2>
+            <button class="test-button" onclick="showSolutions()">显示可能的解决方案</button>
+            <div id="solutions" style="display:none; margin-top:15px;">
+                <h3>可能的解决方案：</h3>
+                <ol>
+                    <li><strong>网络问题</strong>：Font Awesome CDN无法访问，尝试使用本地文件</li>
+                    <li><strong>浏览器缓存</strong>：清除浏览器缓存并刷新页面</li>
+                    <li><strong>CSS冲突</strong>：其他CSS可能覆盖了图标样式</li>
+                    <li><strong>字体显示</strong>：浏览器字体渲染问题，尝试不同的浏览器</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+
+    <!-- 测试用的返回顶部按钮 -->
+    <button class="back-to-top-test" id="testBackToTop" title="测试返回顶部按钮">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 自动检查
+            setTimeout(checkAll, 1000);
+        });
+        
+        function checkAll() {
+            testButtonVisibility();
+            testCSSStyles();
+            testNetworkConnection();
+        }
+        
+        function testButtonVisibility() {
+            const button = document.getElementById('testBackToTop');
+            const status = document.getElementById('buttonStatus');
+            
+            if (button) {
+                const rect = button.getBoundingClientRect();
+                const isVisible = rect.width > 0 && rect.height > 0;
+                const icon = button.querySelector('i');
+                
+                if (isVisible && icon) {
+                    status.className = 'status success';
+                    status.innerHTML = `
+                        ✅ 按钮可见 (${rect.width}x${rect.height}px)<br>
+                        ✅ 图标元素存在: ${icon.className}<br>
+                        📍 位置: right: ${window.innerWidth - rect.right}px, bottom: ${window.innerHeight - rect.bottom}px
+                    `;
+                } else {
+                    status.className = 'status error';
+                    status.innerHTML = '❌ 按钮不可见或图标缺失';
+                }
+            } else {
+                status.className = 'status error';
+                status.innerHTML = '❌ 找不到测试按钮元素';
+            }
+        }
+        
+        function testIconContent() {
+            const icon = document.querySelector('#testBackToTop i');
+            if (icon) {
+                const computedStyle = window.getComputedStyle(icon);
+                const content = computedStyle.getPropertyValue('content');
+                const fontFamily = computedStyle.getPropertyValue('font-family');
+                
+                alert(`图标信息:\n类名: ${icon.className}\n字体: ${fontFamily}\n内容: ${content}\n字体大小: ${computedStyle.fontSize}`);
+            } else {
+                alert('未找到图标元素');
+            }
+        }
+        
+        function testCSSStyles() {
+            const button = document.getElementById('testBackToTop');
+            const status = document.getElementById('cssStatus');
+            
+            if (button) {
+                const styles = window.getComputedStyle(button);
+                const background = styles.background || styles.backgroundColor;
+                const position = styles.position;
+                const zIndex = styles.zIndex;
+                
+                status.className = 'status success';
+                status.innerHTML = `
+                    📊 CSS样式检查:<br>
+                    背景: ${background.includes('gradient') ? '✅ 渐变背景正常' : '⚠️ 背景异常'}<br>
+                    定位: ${position === 'fixed' ? '✅ fixed定位正常' : '❌ 定位异常'}<br>
+                    层级: z-index = ${zIndex}
+                `;
+            } else {
+                status.className = 'status error';
+                status.innerHTML = '❌ 无法获取CSS样式';
+            }
+        }
+        
+        function testNetworkConnection() {
+            const status = document.getElementById('networkStatus');
+            status.innerHTML = '🔄 正在测试网络连接...';
+            
+            // 创建一个测试图片来检查CDN连接
+            const testImg = new Image();
+            testImg.onload = function() {
+                status.className = 'status success';
+                status.innerHTML = '✅ 网络连接正常，Font Awesome CDN可访问';
+            };
+            testImg.onerror = function() {
+                status.className = 'status error';
+                status.innerHTML = '❌ 网络连接异常，Font Awesome CDN无法访问';
+            };
+            testImg.src = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0';
+        }
+        
+        function openProjectsPage() {
+            window.open('projects.html', '_blank');
+        }
+        
+        function showSolutions() {
+            const solutions = document.getElementById('solutions');
+            solutions.style.display = solutions.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+</body>
+</html>

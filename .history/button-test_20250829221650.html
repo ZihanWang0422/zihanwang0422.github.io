@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>返回顶部按钮测试</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: Arial, sans-serif;
+            min-height: 2000px; /* 让页面足够长以便测试滚动 */
+            background: linear-gradient(to bottom, #f0f8ff, #e6f3ff);
+        }
+        
+        .content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        /* 返回顶部按钮 - 完全相同的样式 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+            border: none;
+            border-radius: 50%;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            /* 让按钮始终可见 */
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .back-to-top:hover {
+            background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .test-icons {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        
+        .icon-row {
+            margin: 10px 0;
+            padding: 10px;
+            background: white;
+            border-radius: 5px;
+        }
+        
+        .icon-large {
+            font-size: 24px;
+            margin-right: 15px;
+            color: #4fc3f7;
+        }
+        
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            left: 20px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        
+        h1 { color: #333; text-align: center; }
+        h2 { color: #4fc3f7; }
+        
+        .instruction {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #4fc3f7;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll-indicator" id="scrollInfo">
+        滚动位置: <span id="scrollPos">0</span>px<br>
+        窗口高度: <span id="windowHeight">0</span>px
+    </div>
+    
+    <div class="content">
+        <h1>🔧 返回顶部按钮功能测试</h1>
+        
+        <div class="instruction">
+            <strong>测试说明：</strong><br>
+            1. 右下角应该有一个蓝色的圆形返回顶部按钮<br>
+            2. 按钮中应该有白色的向上箭头图标<br>
+            3. 点击按钮应该平滑滚动到页面顶部<br>
+            4. 鼠标悬停时按钮会变深蓝色并上移
+        </div>
+        
+        <h2>Font Awesome 图标测试</h2>
+        <div class="test-icons">
+            <div class="icon-row">
+                <i class="fa fa-arrow-up icon-large"></i> fa-arrow-up（返回顶部使用的图标）
+            </div>
+            <div class="icon-row">
+                <i class="fa fa-chevron-up icon-large"></i> fa-chevron-up（备选图标1）
+            </div>
+            <div class="icon-row">
+                <i class="fa fa-angle-up icon-large"></i> fa-angle-up（备选图标2）
+            </div>
+            <div class="icon-row">
+                <i class="fa fa-caret-up icon-large"></i> fa-caret-up（备选图标3）
+            </div>
+            <div class="icon-row">
+                <i class="fa fa-home icon-large"></i> fa-home（测试图标）
+            </div>
+            <div class="icon-row">
+                <i class="fa fa-star icon-large"></i> fa-star（测试图标）
+            </div>
+        </div>
+        
+        <p>如果上面的图标都显示正常，说明Font Awesome已正确加载。</p>
+        <p>如果图标显示为方块 ■ 或问号 ?，说明Font Awesome未正确加载。</p>
+        
+        <h2>按钮状态信息</h2>
+        <div id="buttonInfo" style="background: #f8f9fa; padding: 15px; border-radius: 5px; font-family: monospace;">
+            正在检测...
+        </div>
+        
+        <h2>滚动测试区域</h2>
+        <p>向下滚动测试按钮的显示/隐藏功能（在这个测试页面中按钮始终可见）。</p>
+        
+        <div style="height: 500px; background: linear-gradient(45deg, #e3f2fd, #f3e5f5); margin: 20px 0; padding: 20px; border-radius: 10px;">
+            <h3>滚动区域 1</h3>
+            <p>继续向下滚动...</p>
+        </div>
+        
+        <div style="height: 500px; background: linear-gradient(45deg, #f3e5f5, #e8f5e8); margin: 20px 0; padding: 20px; border-radius: 10px;">
+            <h3>滚动区域 2</h3>
+            <p>测试返回顶部功能...</p>
+        </div>
+        
+        <div style="height: 500px; background: linear-gradient(45deg, #e8f5e8, #fff3e0); margin: 20px 0; padding: 20px; border-radius: 10px;">
+            <h3>滚动区域 3</h3>
+            <p>点击右下角的蓝色按钮返回顶部。</p>
+        </div>
+    </div>
+
+    <!-- 返回顶部按钮 -->
+    <button class="back-to-top" id="backToTop" title="返回顶部">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const backToTopButton = document.getElementById('backToTop');
+            const scrollPosEl = document.getElementById('scrollPos');
+            const windowHeightEl = document.getElementById('windowHeight');
+            const buttonInfoEl = document.getElementById('buttonInfo');
+            
+            function updateInfo() {
+                const scrollPos = window.pageYOffset;
+                scrollPosEl.textContent = scrollPos;
+                windowHeightEl.textContent = window.innerHeight;
+                
+                // 检查按钮信息
+                if (backToTopButton) {
+                    const rect = backToTopButton.getBoundingClientRect();
+                    const styles = window.getComputedStyle(backToTopButton);
+                    const icon = backToTopButton.querySelector('i');
+                    
+                    buttonInfoEl.innerHTML = `
+按钮元素: ✅ 存在<br>
+按钮位置: right=${window.innerWidth - rect.right}px, bottom=${window.innerHeight - rect.bottom}px<br>
+按钮大小: ${rect.width}px × ${rect.height}px<br>
+背景色: ${styles.background}<br>
+透明度: ${styles.opacity}<br>
+可见性: ${styles.visibility}<br>
+z-index: ${styles.zIndex}<br>
+图标元素: ${icon ? '✅ 存在 - ' + icon.className : '❌ 缺失'}<br>
+图标字体: ${icon ? window.getComputedStyle(icon).fontFamily : 'N/A'}
+                    `;
+                } else {
+                    buttonInfoEl.innerHTML = '❌ 按钮元素不存在';
+                }
+            }
+            
+            // 滚动事件
+            window.addEventListener('scroll', updateInfo);
+            
+            // 点击事件
+            backToTopButton.addEventListener('click', function() {
+                console.log('返回顶部按钮被点击');
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+            
+            // 初始更新
+            updateInfo();
+            
+            // 定期更新
+            setInterval(updateInfo, 1000);
+        });
+    </script>
+</body>
+</html>

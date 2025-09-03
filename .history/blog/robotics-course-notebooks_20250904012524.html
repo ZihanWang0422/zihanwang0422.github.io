@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Robotics Course Notebooks - Zihan Wang</title>
+  <meta name="description" lang="en" content="Comprehensive collection of robotics course seminars and interactive notebooks covering various topics in robotics.">
+  <meta name="keywords" lang="en" content="Zihan Wang, Robotics, Course, Seminar, Notebook, SLAM, Computer Vision, Machine Learning" />
+
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../css/academicons.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="../js/jquery-2.1.3.min.js"> </script>
+  <script src="../js/theme.js"> </script>
+
+  <style>
+    .blog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .blog-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    
+    .blog-header h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .blog-header p {
+      position: relative;
+      z-index: 1;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .blog-meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
+    }
+    
+    .blog-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    
+    .back-to-blog {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      transition: all 0.3s ease;
+    }
+    
+    .back-to-blog:hover {
+      background: rgba(102, 126, 234, 0.2);
+      border-color: #667eea;
+      transform: translateX(-5px);
+      text-decoration: none;
+      color: #667eea;
+    }
+
+    .notebook-section {
+      margin: 40px 0;
+      padding: 30px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      border-left: 5px solid #667eea;
+    }
+
+    .notebook-section h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .notebook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
+    }
+
+    .notebook-item {
+      background: white;
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e1e8ed;
+    }
+
+    .notebook-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .notebook-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .notebook-desc {
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.5;
+    }
+
+    .notebook-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
+    }
+
+    .tag {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      color: #8b4513;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid rgba(139, 69, 19, 0.2);
+    }
+
+    .notebook-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .action-btn {
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 13px;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .notebook-btn {
+      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+      color: #8b1538;
+      border: 1px solid rgba(139, 21, 56, 0.2);
+    }
+
+    .notebook-btn:hover {
+      background: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: #8b1538;
+    }
+
+    .slides-btn {
+      background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+      color: #2d3748;
+      border: 1px solid rgba(45, 55, 72, 0.2);
+    }
+
+    .slides-btn:hover {
+      background: linear-gradient(135deg, #fed6e3 0%, #a8edea 100%);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: #2d3748;
+    }
+
+    .video-btn {
+      background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
+      color: #6b46c1;
+      border: 1px solid rgba(107, 70, 193, 0.2);
+    }
+
+    .video-btn:hover {
+      background: linear-gradient(135deg, #ffd1ff 0%, #fad0c4 100%);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: #6b46c1;
+    }
+
+    .topic-overview {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .topic-overview h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .topic-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .topic-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+
+    .topic-item h4 {
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .topic-item p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      margin: 0 0 12px 0;
+    }
+
+    .topic-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .topic-link {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .topic-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    /* Theme Toggle Button Styles */
+    .theme-toggle {
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1000;
+    }
+
+    .theme-toggle:hover {
+        background: rgba(0, 0, 0, 0.1);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Dark Theme Styles */
+    [data-theme="dark"] {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .blog-content {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .notebook-section {
+        background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .notebook-item {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .notebook-title {
+        color: #ffffff;
+    }
+
+    [data-theme="dark"] .notebook-desc {
+        color: #b0b0b0;
+    }
+
+    [data-theme="dark"] .tag {
+        background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
+        color: #e0e0e0;
+        border-color: rgba(224, 224, 224, 0.2);
+    }
+
+    [data-theme="dark"] .topic-overview {
+        background: linear-gradient(135deg, #4a9eff 0%, #667eea 100%);
+    }
+
+    [data-theme="dark"] .back-to-blog {
+        color: #4da6ff;
+        background: rgba(77, 166, 255, 0.1);
+        border-color: rgba(77, 166, 255, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-blog:hover {
+        background: rgba(77, 166, 255, 0.2);
+        border-color: #4da6ff;
+        color: #4da6ff;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link:hover {
+        color: #4da6ff;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0;
+    }
+  </style>
+
+</head>
+
+<body>
+
+    <header class="site-header" style="border: 2px solid lightgrey; position: relative;">
+
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" id="theme-icon"></i>
+  </div>
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <div class="trigger">
+    <a class="page-link" href="../index.html#bio"><b>Biography</b></a>
+    <a class="page-link" href="../index.html#timeline"><b>Experiences</b></a>
+    <a class="page-link" href="../index.html#research"><b>Research</b></a>
+    <a class="page-link" href="../projects.html"><b>Projects</b></a>
+    <a class="page-link" href="../blog.html"><b>Blog</b></a>
+  </div>
+</nav>
+  </div>
+</header>
+
+<div class="blog-container">
+  <a href="../blog.html" class="back-to-blog">← Back to Blog</a>
+  
+  <div class="blog-header">
+    <h1>Robotics Course Notebooks</h1>
+    <p>Comprehensive collection of robotics course seminars and interactive notebooks</p>
+  </div>
+
+  <div class="blog-meta">
+    <div><i class="fa fa-calendar"></i> Updated: September 2025</div>
+    <div><i class="fa fa-tags"></i> Robotics, Education, Interactive Learning</div>
+    <div><i class="fa fa-user"></i> Zihan Wang</div>
+  </div>
+
+  <div class="blog-content">
+    
+    <!-- Overview Section -->
+    <div class="topic-overview">
+      <h2><i class="fa fa-graduation-cap"></i> Course</h2>
+      <p>This comprehensive collection brings together robotics course materials from top universities including Stanford, MIT, CMU, and UC Berkeley. All notebooks are interactive and include practical implementations, theoretical background, and hands-on exercises covering the full spectrum of modern robotics.</p>
+      
+      <div class="topic-list">
+        <div class="topic-item">
+          <h4>Computer Vision</h4>
+          <p>Feature detection, stereo vision, object recognition, deep learning for vision</p>
+          <div class="topic-links">
+            <a href="#" class="topic-link">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+            <a href="#" class="topic-link">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+        <div class="topic-item">
+          <h4>Path Planning</h4>
+          <p>A*, RRT, sampling-based planners, ROS navigation stack</p>
+          <div class="topic-links">
+            <a href="#" class="topic-link">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+            <a href="#" class="topic-link">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+        <div class="topic-item">
+          <h4>SLAM</h4>
+          <p>EKF-SLAM, visual SLAM, graph optimization, loop closure detection</p>
+          <div class="topic-links">
+            <a href="#" class="topic-link">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+            <a href="#" class="topic-link">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+        <div class="topic-item">
+          <h4>Control Systems</h4>
+          <p>PID control, state-space methods, optimal and adaptive control</p>
+          <div class="topic-links">
+            <a href="#" class="topic-link">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+            <a href="#" class="topic-link">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+        <div class="topic-item">
+          <h4>Machine Learning</h4>
+          <p>Deep reinforcement learning, policy gradients, robot learning</p>
+          <div class="topic-links">
+            <a href="#" class="topic-link">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+            <a href="#" class="topic-link">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+        <div class="topic-item">
+          <h4>Manipulation</h4>
+          <p>Kinematics, dynamics, grasping, motion planning, force control</p>
+          <div class="topic-links">
+            <a href="#" class="topic-link">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+            <a href="#" class="topic-link">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Intermediate Section -->
+    <div class="notebook-section">
+      <h2><i class="fa fa-cogs"></i> Intermediate Notebooks</h2>
+      <p>Dive deeper into specific robotics domains with these intermediate-level notebooks covering core algorithms and techniques.</p>
+      
+      <div class="notebook-grid">
+        <div class="notebook-item">
+          <div class="notebook-title">Computer Vision for Robotics</div>
+          <div class="notebook-desc">Comprehensive course from Stanford CS 231A. Feature detection, stereo vision, optical flow, object recognition, and deep learning applications.</div>
+          <div class="notebook-tags">
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Feature Detection</span>
+            <span class="tag">Deep Learning</span>
+            <span class="tag">Object Recognition</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+          </div>
+        </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Path Planning Algorithms</div>
+          <div class="notebook-desc">Interactive implementation of classical and modern path planning algorithms: A*, RRT, RRT*, and sampling-based planners with ROS integration.</div>
+          <div class="notebook-tags">
+            <span class="tag">Path Planning</span>
+            <span class="tag">A* Algorithm</span>
+            <span class="tag">RRT</span>
+            <span class="tag">ROS Navigation</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">SLAM Fundamentals</div>
+          <div class="notebook-desc">Complete SLAM coverage from CMU 16-833. EKF-SLAM, FastSLAM, graph-based SLAM, and modern visual SLAM systems with real sensor data.</div>
+          <div class="notebook-tags">
+            <span class="tag">SLAM</span>
+            <span class="tag">EKF</span>
+            <span class="tag">Visual SLAM</span>
+            <span class="tag">Graph Optimization</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+          </div>
+        </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Robot Control Systems</div>
+          <div class="notebook-desc">Advanced control theory from UC Berkeley ME 320. PID control, state-space methods, optimal control, and adaptive control with MATLAB/Simulink.</div>
+          <div class="notebook-tags">
+            <span class="tag">Control Systems</span>
+            <span class="tag">PID Control</span>
+            <span class="tag">State Space</span>
+            <span class="tag">Optimal Control</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Seminar Section -->
+    <div class="notebook-section">
+      <h2><i class="fa fa-rocket"></i> Seminars</h2>
+      <p>Cutting-edge topics and research-level implementations for advanced students and researchers. Includes state-of-the-art algorithms and experimental frameworks.</p>
+      
+      <div class="notebook-grid">
+        <div class="notebook-item">
+          <div class="notebook-title">Deep RL for Robotics</div>
+          <div class="notebook-desc">Advanced applications from UC Berkeley CS 287. Policy gradient methods, actor-critic algorithms, model-based RL with robot manipulation and navigation projects.</div>
+          <div class="notebook-tags">
+            <span class="tag">Deep RL</span>
+            <span class="tag">Policy Gradients</span>
+            <span class="tag">Actor-Critic</span>
+            <span class="tag">Robot Learning</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+          </div>
+        </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Robot Manipulation</div>
+          <div class="notebook-desc">Comprehensive study from MIT 6.881. Kinematics, dynamics, motion planning, grasping, force control, and manipulation planning using MoveIt! and Drake.</div>
+          <div class="notebook-tags">
+            <span class="tag">Manipulation</span>
+            <span class="tag">Kinematics</span>
+            <span class="tag">Grasping</span>
+            <span class="tag">Motion Planning</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+          </div>
+        </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Multi-Robot Systems</div>
+          <div class="notebook-desc">Advanced coordination algorithms, distributed consensus, swarm robotics, and multi-agent planning. Implementation with simulation frameworks and real robot experiments.</div>
+          <div class="notebook-tags">
+            <span class="tag">Multi-Robot</span>
+            <span class="tag">Swarm Robotics</span>
+            <span class="tag">Distributed Systems</span>
+            <span class="tag">Coordination</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+          </div>
+        </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Autonomous Driving</div>
+          <div class="notebook-desc">Complete autonomous vehicle pipeline: perception, prediction, planning, and control. Includes sensor fusion, object tracking, and decision making algorithms.</div>
+          <div class="notebook-tags">
+            <span class="tag">Autonomous Driving</span>
+            <span class="tag">Sensor Fusion</span>
+            <span class="tag">Object Tracking</span>
+            <span class="tag">Decision Making</span>
+          </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+<footer class="site-footer" style="border: 2px solid lightgrey; margin-top: 50px;">
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col  footer-col-1">
+        <ul class="contact-list">
+          <li><strong>Zihan Wang</strong></li>
+          <li>Robotics Research</li>
+        </ul>
+      </div>
+      <div class="footer-col  footer-col-2">
+        <ul class="social-media-list">
+          <li>
+            <a href="mailto:zihanw@stanford.edu">
+              <i class="fa fa-envelope" style="font-size:1.2em"></i>
+              zihanw@stanford.edu
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

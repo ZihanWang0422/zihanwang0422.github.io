@@ -1257,35 +1257,7 @@
       <h2><i class="fa fa-rocket"></i> Seminars</h2>
       
       <div class="seminar-list">
-        <!-- Deep RL Seminar -->
-        <div class="seminar-item">
-          <div class="seminar-title"><i class="fa fa-lightbulb-o"></i> Deep Reinforcement Learning</div>
-          <a href="https://example.com/deeprl-seminar" class="seminar-link"><i class="fa fa-globe"></i> Visit website</a>
-        </div>
-        
-        <!-- Robot Manipulation Seminar -->
-        <div class="seminar-item">
-          <div class="seminar-title"><i class="fa fa-hand-paper-o"></i> Robot Manipulation</div>
-          <a href="https://example.com/robot-manipulation-seminar" class="seminar-link"><i class="fa fa-globe"></i> Visit website</a>
-        </div>
-        
-        <!-- Multi-Robot Systems Seminar -->
-        <div class="seminar-item">
-          <div class="seminar-title"><i class="fa fa-cubes"></i> Multi-Robot Systems</div>
-          <a href="https://example.com/multi-robot-seminar" class="seminar-link"><i class="fa fa-globe"></i> Visit website</a>
-        </div>
-        
-        <!-- Autonomous Driving Seminar -->
-        <div class="seminar-item">
-          <div class="seminar-title"><i class="fa fa-car"></i> Autonomous Driving</div>
-          <a href="https://example.com/autonomous-driving-seminar" class="seminar-link"><i class="fa fa-globe"></i> Visit website</a>
-        </div>
-        
-        <!-- Control Systems Seminar -->
-        <div class="seminar-item">
-          <div class="seminar-title"><i class="fa fa-sliders"></i> Control Systems</div>
-          <a href="https://example.com/control-systems-seminar" class="seminar-link"><i class="fa fa-globe"></i> Visit website</a>
-        </div>
+      <!-- Deep RL Category -->
       <div class="course-category">
         <h3><i class="fa fa-lightbulb-o"></i> Deep Reinforcement Learning</h3>
         <div class="course-grid">
@@ -1539,9 +1511,32 @@
     });
   });
 
-  // 处理seminar部分（现在不需要任何特殊处理，因为使用了新的结构）
+  // 处理seminar部分的按钮
   const seminarSection = document.querySelector('.course-section:nth-of-type(2)');
-  // 新的seminar结构已经在HTML中定义
+  if (seminarSection) {
+    const seminarActionDivs = seminarSection.querySelectorAll('.course-actions');
+    
+    seminarActionDivs.forEach(actionDiv => {
+      // 清除现有的按钮
+      while (actionDiv.firstChild) {
+        actionDiv.removeChild(actionDiv.firstChild);
+      }
+      
+      // 添加Videos按钮（左侧）
+      const videoBtn = document.createElement('a');
+      videoBtn.href = '#';
+      videoBtn.className = 'action-btn video-btn';
+      videoBtn.innerHTML = '<i class="fa fa-play-circle"></i> Videos';
+      actionDiv.appendChild(videoBtn);
+      
+      // 添加Website按钮（右侧）
+      const websiteBtn = document.createElement('a');
+      websiteBtn.href = '#';
+      websiteBtn.className = 'action-btn website-btn';
+      websiteBtn.innerHTML = '<i class="fa fa-globe"></i> Website';
+      actionDiv.appendChild(websiteBtn);
+    });
+  }
   
   // 处理Documents部分
   const documentsSection = document.querySelector('.course-section:nth-of-type(3)');

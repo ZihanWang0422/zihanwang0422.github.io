@@ -228,19 +228,6 @@
       color: #6b46c1;
     }
 
-    .website-btn {
-      background: linear-gradient(135deg, #b1e3ff 0%, #dfbdff 100%);
-      color: #2c5282;
-      border: 1px solid rgba(44, 82, 130, 0.2);
-    }
-
-    .website-btn:hover {
-      background: linear-gradient(135deg, #dfbdff 0%, #b1e3ff 100%);
-      transform: translateY(-2px);
-      text-decoration: none;
-      color: #2c5282;
-    }
-
     .topic-overview {
       background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
@@ -330,24 +317,8 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: center;
       margin-top: auto;
-      width: 100%;
-    }
-
-    /* Hide Materials button */
-    .action-btn.course-btn, .action-btn.notebook-btn {
-      display: none;
-    }
-
-    /* If there's no Video button, add spacing */
-    .course-actions:not(:has(.video-btn)) .slides-btn {
-      margin-left: auto;
-    }
-
-    /* If there's no Slides button, add spacing */
-    .course-actions:not(:has(.slides-btn)) .video-btn {
-      margin-right: auto;
     }
 
     /* Dark theme adjustments for new layout */
@@ -646,7 +617,7 @@
   <a href="../blog.html" class="back-to-blog">← Back to Blog List</a>
   
   <div class="blog-header">
-    <h1>Robotics Courses Collection</h1>
+    <h1>Robotics Course Collection</h1>
     <div class="update-date"><i class="fa fa-calendar"></i> September 2025</div>
   </div>
 
@@ -669,11 +640,11 @@
               <span class="tag">Tuning</span>
             </div>
             <div class="course-actions">
+              <a href="#" class="action-btn course-btn">
+                <i class="fa fa-book"></i> Materials
+              </a>
               <a href="#" class="action-btn video-btn">
                 <i class="fa fa-play-circle"></i> Videos
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
             </div>
           </div>
@@ -687,8 +658,8 @@
               <span class="tag">Kalman Filter</span>
             </div>
             <div class="course-actions">
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
+              <a href="#" class="action-btn course-btn">
+                <i class="fa fa-book"></i> Materials
               </a>
               <a href="#" class="action-btn slides-btn">
                 <i class="fa fa-file-powerpoint-o"></i> Slides
@@ -705,8 +676,8 @@
               <span class="tag">Robust Control</span>
             </div>
             <div class="course-actions">
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
+              <a href="#" class="action-btn course-btn">
+                <i class="fa fa-book"></i> Materials
               </a>
               <a href="#" class="action-btn slides-btn">
                 <i class="fa fa-file-powerpoint-o"></i> Slides
@@ -729,11 +700,11 @@
               <span class="tag">Policy Gradients</span>
             </div>
             <div class="course-actions">
+              <a href="#" class="action-btn course-btn">
+                <i class="fa fa-book"></i> Materials
+              </a>
               <a href="#" class="action-btn video-btn">
                 <i class="fa fa-play-circle"></i> Videos
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
             </div>
           </div>
@@ -1171,7 +1142,8 @@
     <!-- Seminars Section -->
     <div class="course-section">
       <h2><i class="fa fa-rocket"></i> Seminars</h2>
-     
+      <p>Cutting-edge topics and research-level implementations for advanced students and researchers. Includes state-of-the-art algorithms and experimental frameworks.</p>
+      
       <!-- Deep RL Category -->
       <div class="course-category">
         <h3><i class="fa fa-lightbulb-o"></i> Deep Reinforcement Learning</h3>
@@ -1395,64 +1367,7 @@
       </div>
     </div>
 
-<script>
-  // 确保每个课程方块都有Videos和Slides按钮
-  document.addEventListener('DOMContentLoaded', function() {
-    const courseActions = document.querySelectorAll('.course-actions');
-    
-    courseActions.forEach(function(actionDiv) {
-      // 检查是否有Video按钮
-      const hasVideo = actionDiv.querySelector('.video-btn') !== null;
-      // 检查是否有Slides按钮
-      const hasSlides = actionDiv.querySelector('.slides-btn') !== null;
-      
-      // 如果没有Video按钮，添加一个
-      if (!hasVideo) {
-        const videoBtn = document.createElement('a');
-        videoBtn.href = '#';
-        videoBtn.className = 'action-btn video-btn';
-        videoBtn.innerHTML = '<i class="fa fa-play-circle"></i> Videos';
-        actionDiv.insertBefore(videoBtn, actionDiv.firstChild);
-      }
-      
-      // 如果没有Slides按钮，添加一个
-      if (!hasSlides) {
-        const slidesBtn = document.createElement('a');
-        slidesBtn.href = '#';
-        slidesBtn.className = 'action-btn slides-btn';
-        slidesBtn.innerHTML = '<i class="fa fa-file-powerpoint-o"></i> Slides';
-        actionDiv.appendChild(slidesBtn);
-      }
-    });
-  });
 
-  // 处理seminar部分的按钮
-  const seminarSection = document.querySelector('.course-section:nth-of-type(2)');
-  if (seminarSection) {
-    const seminarActionDivs = seminarSection.querySelectorAll('.course-actions');
-    
-    seminarActionDivs.forEach(actionDiv => {
-      // 清除现有的按钮
-      while (actionDiv.firstChild) {
-        actionDiv.removeChild(actionDiv.firstChild);
-      }
-      
-      // 添加Videos按钮（左侧）
-      const videoBtn = document.createElement('a');
-      videoBtn.href = '#';
-      videoBtn.className = 'action-btn video-btn';
-      videoBtn.innerHTML = '<i class="fa fa-play-circle"></i> Videos';
-      actionDiv.appendChild(videoBtn);
-      
-      // 添加Website按钮（右侧）
-      const websiteBtn = document.createElement('a');
-      websiteBtn.href = '#';
-      websiteBtn.className = 'action-btn website-btn';
-      websiteBtn.innerHTML = '<i class="fa fa-globe"></i> Website';
-      actionDiv.appendChild(websiteBtn);
-    });
-  }
-</script>
 
 </body>
 </html>

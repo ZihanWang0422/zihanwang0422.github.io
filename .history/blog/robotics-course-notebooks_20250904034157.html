@@ -209,7 +209,7 @@
     }
 
     /* 在Documents部分，slides-btn实际上显示为Notes */
-    .course-section:nth-of-type(2) .slides-btn {
+    .course-section:nth-of-type(3) .slides-btn {
       background: linear-gradient(135deg, #e6fffa 0%, #ebf4ff 100%);
       color: #2c5282;
       border: 1px solid rgba(44, 82, 130, 0.2);
@@ -223,7 +223,7 @@
     }
 
     /* 在Documents部分，slides-btn hover效果 */
-    .course-section:nth-of-type(2) .slides-btn:hover {
+    .course-section:nth-of-type(3) .slides-btn:hover {
       background: linear-gradient(135deg, #ebf4ff 0%, #e6fffa 100%);
       transform: translateY(-2px);
       text-decoration: none;
@@ -231,13 +231,13 @@
     }
     
     /* 在Documents部分的website-btn样式 */
-    .course-section:nth-of-type(2) .website-btn {
+    .course-section:nth-of-type(3) .website-btn {
       background: linear-gradient(135deg, #b1e3ff 0%, #dfbdff 100%);
       color: #2c5282;
       border: 1px solid rgba(44, 82, 130, 0.2);
     }
     
-    .course-section:nth-of-type(2) .website-btn:hover {
+    .course-section:nth-of-type(3) .website-btn:hover {
       background: linear-gradient(135deg, #dfbdff 0%, #b1e3ff 100%);
       transform: translateY(-2px);
       text-decoration: none;
@@ -271,13 +271,13 @@
     }
     
     /* 确保seminar部分的slides-btn看起来像website-btn */
-    .course-section:nth-of-type(3) .slides-btn {
+    .course-section:nth-of-type(2) .slides-btn {
       background: linear-gradient(135deg, #b1e3ff 0%, #dfbdff 100%);
       color: #2c5282;
       border: 1px solid rgba(44, 82, 130, 0.2);
     }
 
-    .course-section:nth-of-type(3) .slides-btn:hover {
+    .course-section:nth-of-type(2) .slides-btn:hover {
       background: linear-gradient(135deg, #dfbdff 0%, #b1e3ff 100%);
       transform: translateY(-2px);
       text-decoration: none;
@@ -425,7 +425,7 @@
     }
 
     /* Documents section buttons should be centered */
-    .course-section:nth-of-type(2) .course-actions {
+    .course-section:nth-of-type(3) .course-actions {
       justify-content: center;
     }
 
@@ -1300,7 +1300,7 @@
 <script>
   // 确保每个课程方块都有Videos和Slides按钮
   document.addEventListener('DOMContentLoaded', function() {
-    const courseActions = document.querySelectorAll('.course-section:nth-of-type(1) .course-actions');
+    const courseActions = document.querySelectorAll('.course-actions');
     
     courseActions.forEach(function(actionDiv) {
       // 检查是否有Video按钮
@@ -1329,11 +1329,11 @@
   });
 
   // 处理seminar部分（现在不需要任何特殊处理，因为使用了新的结构）
-  const seminarSection = document.querySelector('.course-section:nth-of-type(3)');
+  const seminarSection = document.querySelector('.course-section:nth-of-type(2)');
   // 新的seminar结构已经在HTML中定义
   
   // 处理Documents部分
-  const documentsSection = document.querySelector('.course-section:nth-of-type(2)');
+  const documentsSection = document.querySelector('.course-section:nth-of-type(3)');
   if (documentsSection) {
     const documentActionDivs = documentsSection.querySelectorAll('.course-actions');
     

@@ -229,11 +229,6 @@
       text-decoration: none;
       color: #2c5282;
     }
-    
-    /* 在Documents部分，隐藏除slides-btn以外的所有按钮 */
-    .course-section:nth-of-type(3) .action-btn:not(.slides-btn) {
-      display: none;
-    }
 
     .video-btn {
       background: linear-gradient(135deg, #fad0c4 0%, #ffd1ff 100%);
@@ -367,11 +362,6 @@
       justify-content: space-between;
       margin-top: auto;
       width: 100%;
-    }
-
-    /* Documents section buttons should be centered */
-    .course-section:nth-of-type(3) .course-actions {
-      justify-content: center;
     }
 
     /* Hide Materials button */
@@ -1498,17 +1488,17 @@
     const documentActionDivs = documentsSection.querySelectorAll('.course-actions');
     
     documentActionDivs.forEach(actionDiv => {
-      // 清除所有现有按钮
-      while (actionDiv.firstChild) {
-        actionDiv.removeChild(actionDiv.firstChild);
+      // 移除video-btn
+      const videoBtn = actionDiv.querySelector('.video-btn');
+      if (videoBtn) {
+        actionDiv.removeChild(videoBtn);
       }
       
-      // 只添加Notes按钮
-      const notesBtn = document.createElement('a');
-      notesBtn.href = '#';
-      notesBtn.className = 'action-btn slides-btn';
-      notesBtn.innerHTML = '<i class="fa fa-file-text-o"></i> Notes';
-      actionDiv.appendChild(notesBtn);
+      // 修改slides-btn为notes
+      const slidesBtn = actionDiv.querySelector('.slides-btn');
+      if (slidesBtn) {
+        slidesBtn.innerHTML = '<i class="fa fa-file-text-o"></i> Notes';
+      }
     });
   }
 </script>

@@ -17,8 +17,6 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="../css/academicons.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
-  <!-- Font Awesome 5 for additional icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
 
   <script src="../js/jquery-2.1.3.min.js"> </script>
   <script src="../js/theme.js"> </script>
@@ -245,111 +243,6 @@
     .topic-overview h2 {
       color: white;
       margin-bottom: 20px;
-    }
-
-    /* New course layout styles */
-    .course-section {
-      margin-bottom: 40px;
-    }
-
-    .course-section h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-      color: #333;
-      padding-bottom: 10px;
-      border-bottom: 2px solid #667eea;
-    }
-
-    .course-category {
-      margin: 30px 0;
-      padding: 25px;
-      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-      border-radius: 12px;
-      border-left: 5px solid #667eea;
-    }
-
-    .course-category h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: #333;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .course-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 20px;
-    }
-
-    .course-item {
-      background: white;
-      padding: 25px;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-      transition: all 0.3s ease;
-      border: 1px solid #e1e8ed;
-    }
-
-    .course-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    }
-
-    .course-title {
-      font-size: 1.3rem;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 12px;
-    }
-
-    .course-desc {
-      color: #666;
-      margin-bottom: 15px;
-      line-height: 1.5;
-    }
-
-    .course-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 15px;
-    }
-
-    .course-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    /* Dark theme adjustments for new layout */
-    [data-theme="dark"] .course-section h2 {
-      color: #e0e0e0;
-      border-bottom-color: #4da6ff;
-    }
-
-    [data-theme="dark"] .course-category {
-      background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
-      border-left-color: #4da6ff;
-    }
-
-    [data-theme="dark"] .course-category h3 {
-      color: #ffffff;
-    }
-
-    [data-theme="dark"] .course-item {
-      background-color: #2d2d2d;
-      border-color: #404040;
-    }
-
-    [data-theme="dark"] .course-title {
-      color: #ffffff;
-    }
-
-    [data-theme="dark"] .course-desc {
-      color: #b0b0b0;
     }
 
     .topic-list {
@@ -1086,229 +979,88 @@
       </div>
     </div>
 
-    <!-- Seminars Section -->
-    <div class="course-section">
+    <!-- Seminar Section -->
+    <div class="notebook-section">
       <h2><i class="fa fa-rocket"></i> Seminars</h2>
       <p>Cutting-edge topics and research-level implementations for advanced students and researchers. Includes state-of-the-art algorithms and experimental frameworks.</p>
       
-      <!-- Deep RL Category -->
-      <div class="course-category">
-        <h3><i class="fa fa-lightbulb-o"></i> Deep Reinforcement Learning</h3>
-        <div class="course-grid">
-          <div class="course-item">
-            <div class="course-title">Policy Gradient Methods</div>
-            <div class="course-desc">REINFORCE, PPO, and SAC implementations for continuous control tasks in robotics.</div>
-            <div class="course-tags">
-              <span class="tag">REINFORCE</span>
-              <span class="tag">PPO</span>
-              <span class="tag">SAC</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
-              </a>
-            </div>
+      <div class="notebook-grid">
+        <div class="notebook-item">
+          <div class="notebook-title">Deep RL for Robotics</div>
+          <div class="notebook-desc">Advanced applications from UC Berkeley CS 287. Policy gradient methods, actor-critic algorithms, model-based RL with robot manipulation and navigation projects.</div>
+          <div class="notebook-tags">
+            <span class="tag">Deep RL</span>
+            <span class="tag">Policy Gradients</span>
+            <span class="tag">Actor-Critic</span>
+            <span class="tag">Robot Learning</span>
           </div>
-          
-          <div class="course-item">
-            <div class="course-title">Model-Based RL</div>
-            <div class="course-desc">World models, MPC with learned dynamics, and MBRL for sample-efficient robot learning.</div>
-            <div class="course-tags">
-              <span class="tag">World Models</span>
-              <span class="tag">MPC</span>
-              <span class="tag">Sample Efficiency</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
-              </a>
-            </div>
-          </div>
-          
-          <div class="course-item">
-            <div class="course-title">Multi-Agent RL</div>
-            <div class="course-desc">Cooperative and competitive multi-agent reinforcement learning for robot teams and swarms.</div>
-            <div class="course-tags">
-              <span class="tag">Multi-Agent</span>
-              <span class="tag">Cooperation</span>
-              <span class="tag">Game Theory</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
-              </a>
-            </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
           </div>
         </div>
-      </div>
-      
-      <!-- Robot Manipulation Category -->
-      <div class="course-category">
-        <h3><i class="fa fa-hand-paper-o"></i> Robot Manipulation</h3>
-        <div class="course-grid">
-          <div class="course-item">
-            <div class="course-title">Advanced Kinematics</div>
-            <div class="course-desc">Differential kinematics, redundant manipulators, and operational space control formulations.</div>
-            <div class="course-tags">
-              <span class="tag">Jacobian</span>
-              <span class="tag">Redundancy</span>
-              <span class="tag">Operational Space</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
-              </a>
-            </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Robot Manipulation</div>
+          <div class="notebook-desc">Comprehensive study from MIT 6.881. Kinematics, dynamics, motion planning, grasping, force control, and manipulation planning using MoveIt! and Drake.</div>
+          <div class="notebook-tags">
+            <span class="tag">Manipulation</span>
+            <span class="tag">Kinematics</span>
+            <span class="tag">Grasping</span>
+            <span class="tag">Motion Planning</span>
           </div>
-          
-          <div class="course-item">
-            <div class="course-title">Learning-Based Grasping</div>
-            <div class="course-desc">Deep learning approaches for robotic grasping, including point cloud and image-based methods.</div>
-            <div class="course-tags">
-              <span class="tag">Deep Grasping</span>
-              <span class="tag">Point Clouds</span>
-              <span class="tag">6-DOF Grasps</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
-              </a>
-            </div>
-          </div>
-          
-          <div class="course-item">
-            <div class="course-title">Dexterous Manipulation</div>
-            <div class="course-desc">In-hand manipulation, contact models, and hybrid force-position control for complex manipulations.</div>
-            <div class="course-tags">
-              <span class="tag">In-Hand</span>
-              <span class="tag">Contact Models</span>
-              <span class="tag">Force Control</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
-              </a>
-            </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
           </div>
         </div>
-      </div>
-      
-      <!-- Multi-Robot Systems Category -->
-      <div class="course-category">
-        <h3><i class="fa fa-cubes"></i> Multi-Robot Systems</h3>
-        <div class="course-grid">
-          <div class="course-item">
-            <div class="course-title">Distributed Coordination</div>
-            <div class="course-desc">Distributed consensus, formation control, and task allocation for multi-robot teams.</div>
-            <div class="course-tags">
-              <span class="tag">Consensus</span>
-              <span class="tag">Formation</span>
-              <span class="tag">Task Allocation</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
-              </a>
-            </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Multi-Robot Systems</div>
+          <div class="notebook-desc">Advanced coordination algorithms, distributed consensus, swarm robotics, and multi-agent planning. Implementation with simulation frameworks and real robot experiments.</div>
+          <div class="notebook-tags">
+            <span class="tag">Multi-Robot</span>
+            <span class="tag">Swarm Robotics</span>
+            <span class="tag">Distributed Systems</span>
+            <span class="tag">Coordination</span>
           </div>
-          
-          <div class="course-item">
-            <div class="course-title">Swarm Robotics</div>
-            <div class="course-desc">Emergent behaviors, bio-inspired algorithms, and scalable control for large robot swarms.</div>
-            <div class="course-tags">
-              <span class="tag">Swarm Intelligence</span>
-              <span class="tag">Bio-inspired</span>
-              <span class="tag">Scalability</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
-              </a>
-            </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn slides-btn">
+              <i class="fa fa-file-powerpoint-o"></i> Slides
+            </a>
           </div>
         </div>
-      </div>
-      
-      <!-- Autonomous Driving Category -->
-      <div class="course-category">
-        <h3><i class="fa fa-car"></i> Autonomous Driving</h3>
-        <div class="course-grid">
-          <div class="course-item">
-            <div class="course-title">Perception Pipeline</div>
-            <div class="course-desc">Sensor fusion, 3D object detection, and tracking for autonomous vehicles.</div>
-            <div class="course-tags">
-              <span class="tag">Sensor Fusion</span>
-              <span class="tag">3D Detection</span>
-              <span class="tag">Tracking</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
-              </a>
-            </div>
+
+        <div class="notebook-item">
+          <div class="notebook-title">Autonomous Driving</div>
+          <div class="notebook-desc">Complete autonomous vehicle pipeline: perception, prediction, planning, and control. Includes sensor fusion, object tracking, and decision making algorithms.</div>
+          <div class="notebook-tags">
+            <span class="tag">Autonomous Driving</span>
+            <span class="tag">Sensor Fusion</span>
+            <span class="tag">Object Tracking</span>
+            <span class="tag">Decision Making</span>
           </div>
-          
-          <div class="course-item">
-            <div class="course-title">Motion Planning & Control</div>
-            <div class="course-desc">Trajectory optimization, behavior planning, and vehicle control for autonomous driving.</div>
-            <div class="course-tags">
-              <span class="tag">Trajectory</span>
-              <span class="tag">Behavior Planning</span>
-              <span class="tag">Vehicle Control</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn video-btn">
-                <i class="fa fa-play-circle"></i> Videos
-              </a>
-            </div>
-          </div>
-          
-          <div class="course-item">
-            <div class="course-title">Decision Making</div>
-            <div class="course-desc">Rule-based and learning-based decision making for complex traffic scenarios.</div>
-            <div class="course-tags">
-              <span class="tag">Decision Trees</span>
-              <span class="tag">Reinforcement Learning</span>
-              <span class="tag">Prediction</span>
-            </div>
-            <div class="course-actions">
-              <a href="#" class="action-btn notebook-btn">
-                <i class="fa fa-book"></i> Notebook
-              </a>
-              <a href="#" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
-              </a>
-            </div>
+          <div class="notebook-actions">
+            <a href="#" class="action-btn notebook-btn">
+              <i class="fa fa-book"></i> Notebooks
+            </a>
+            <a href="#" class="action-btn video-btn">
+              <i class="fa fa-play-circle"></i> Videos
+            </a>
           </div>
         </div>
       </div>

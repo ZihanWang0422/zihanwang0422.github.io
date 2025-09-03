@@ -65,13 +65,22 @@
       margin-bottom: 10px;
     }
     
-    .blog-header .update-date {
+    .blog-header p {
       position: relative;
       z-index: 1;
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-top: 5px;
-      font-weight: normal;
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    .blog-meta {
+      color: #666;
+      font-size: 14px;
+      margin-bottom: 30px;
+      text-align: center;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      align-items: center;
     }
     
     .blog-content {
@@ -510,10 +519,6 @@
         background-color: #2d2d2d;
         color: #e0e0e0;
     }
-    
-    [data-theme="dark"] .update-date {
-        color: rgba(255, 255, 255, 0.8);
-    }
 
     [data-theme="dark"] .notebook-section {
         background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
@@ -618,7 +623,12 @@
   
   <div class="blog-header">
     <h1>Robotics Course Collection</h1>
-    <div class="update-date"><i class="fa fa-calendar"></i> September 2025</div>
+    <p>Comprehensive collection of robotics course seminars and interactive notebooks</p>
+  </div>
+
+  <div class="blog-meta">
+    <div><i class="fa fa-calendar"></i> Updated: September 2025</div>
+    <div><i class="fa fa-tags"></i> Robotics, Education, Interactive Learning</div>
   </div>
 
   <div class="blog-content">
@@ -626,6 +636,7 @@
     <!-- Overview Section -->
     <div class="course-section">
       <h2><i class="fa fa-graduation-cap"></i> Courses</h2>
+      <p>This comprehensive collection brings together robotics course materials from top universities including Stanford, MIT, CMU, and UC Berkeley. All notebooks are interactive and include practical implementations, theoretical background, and hands-on exercises covering the full spectrum of modern robotics.</p>
       
       <!-- Control Systems Category -->
       <div class="course-category">

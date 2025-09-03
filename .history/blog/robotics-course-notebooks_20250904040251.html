@@ -208,6 +208,28 @@
       border: 1px solid rgba(45, 55, 72, 0.2);
     }
 
+    /* 在Documents部分的Notes按钮样式 */
+    .course-section:nth-of-type(2) .notes-btn {
+      background-color: #e6f7fb;
+      color: #2c5282;
+      border: 1px solid rgba(44, 82, 130, 0.1);
+      border-radius: 25px;
+      padding: 8px 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 180px;
+      font-weight: normal;
+      box-shadow: none;
+    }
+
+    .course-section:nth-of-type(2) .notes-btn:hover {
+      background-color: #d6edf4;
+      transform: translateY(-1px);
+      text-decoration: none;
+      color: #2c5282;
+    }
+    
     /* 在Documents部分的Website按钮样式 */
     .course-section:nth-of-type(2) .website-btn {
       background-color: #dee8fc;
@@ -222,7 +244,6 @@
       width: 180px;
       font-weight: normal;
       box-shadow: none;
-      margin-top: 10px;
     }
     
     .course-section:nth-of-type(2) .website-btn:hover {
@@ -414,10 +435,7 @@
       padding: 25px 15px 15px;
       border-radius: 8px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
-      min-height: 130px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      min-height: 160px;
     }
 
     .course-item:hover {
@@ -466,9 +484,10 @@
     
     .course-section:nth-of-type(2) .course-actions {
       justify-content: center;
-      margin-top: 25px;
+      margin-top: 15px;
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      gap: 10px;
     }
 
     /* Hide Materials button */

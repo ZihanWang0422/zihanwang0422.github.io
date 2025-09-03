@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Robotics Course Notebooks</title>
+  <title>Robotics Course Notebooks - Zihan Wang</title>
   <meta name="description" lang="en" content="Comprehensive collection of robotics course seminars and interactive notebooks covering various topics in robotics.">
-  <meta name="keywords" lang="en" content="Robotics, Course, Seminar, Notebook, SLAM, Computer Vision, Machine Learning" />
+  <meta name="keywords" lang="en" content="Zihan Wang, Robotics, Course, Seminar, Notebook, SLAM, Computer Vision, Machine Learning" />
 
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
   <link rel="stylesheet" href="../main.css">
@@ -128,23 +128,18 @@
 
     .notebook-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 25px;
     }
 
     .notebook-item {
       background: white;
-      padding: 15px;
+      padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: all 0.3s ease;
       border: 1px solid #e1e8ed;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 120px;
-      text-align: center;
     }
 
     .notebook-item:hover {
@@ -153,19 +148,23 @@
     }
 
     .notebook-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
       color: #333;
-      margin-bottom: 15px;
-      text-align: center;
+      margin-bottom: 12px;
     }
 
     .notebook-desc {
-      display: none;
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
 
     .notebook-tags {
-      display: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
     }
 
     .tag {
@@ -182,8 +181,6 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-top: auto;
     }
 
     .action-btn {
@@ -282,23 +279,18 @@
 
     .course-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 25px;
       margin-top: 20px;
     }
 
     .course-item {
       background: white;
-      padding: 15px;
+      padding: 25px;
       border-radius: 10px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: all 0.3s ease;
       border: 1px solid #e1e8ed;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 120px;
-      text-align: center;
     }
 
     .course-item:hover {
@@ -307,27 +299,29 @@
     }
 
     .course-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
       color: #333;
-      margin-bottom: 15px;
-      text-align: center;
+      margin-bottom: 12px;
     }
 
     .course-desc {
-      display: none;
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
 
     .course-tags {
-      display: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
     }
 
     .course-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-top: auto;
     }
 
     /* Dark theme adjustments for new layout */
@@ -356,31 +350,6 @@
 
     [data-theme="dark"] .course-desc {
       color: #b0b0b0;
-    }
-    
-    /* Hide description and tags as requested */
-    .course-desc, .course-tags, .notebook-desc, .notebook-tags {
-      display: none;
-    }
-    
-    /* Adjust spacing for simplified layout */
-    .course-item, .notebook-item {
-      padding: 15px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 120px;
-    }
-    
-    .course-title, .notebook-title {
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-      text-align: center;
-    }
-    
-    .course-actions, .notebook-actions {
-      justify-content: center;
-      margin-top: auto;
     }
 
     .topic-list {
@@ -465,40 +434,6 @@
         transition: all 0.3s ease;
     }
 
-    /* Additional responsive styles */
-    @media (max-width: 768px) {
-      .course-grid, .notebook-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      }
-      
-      .course-title, .notebook-title {
-        font-size: 1.1rem;
-      }
-      
-      .action-btn {
-        padding: 6px 12px;
-        font-size: 12px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .course-grid, .notebook-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-      
-      .course-category {
-        padding: 15px;
-      }
-      
-      .course-category h3 {
-        font-size: 1.3rem;
-      }
-      
-      .course-item, .notebook-item {
-        min-height: 100px;
-      }
-    }
-    
     /* Dark Theme Styles */
     [data-theme="dark"] {
         background-color: #1a1a1a;
@@ -619,7 +554,7 @@
 </header>
 
 <div class="blog-container">
-  <a href="../blog.html" class="back-to-blog">← Back to Blog List</a>
+  <a href="../blog.html" class="back-to-blog">← Back to Blog</a>
   
   <div class="blog-header">
     <h1>Robotics Course Notebooks</h1>
@@ -629,6 +564,7 @@
   <div class="blog-meta">
     <div><i class="fa fa-calendar"></i> Updated: September 2025</div>
     <div><i class="fa fa-tags"></i> Robotics, Education, Interactive Learning</div>
+    <div><i class="fa fa-user"></i> Zihan Wang</div>
   </div>
 
   <div class="blog-content">

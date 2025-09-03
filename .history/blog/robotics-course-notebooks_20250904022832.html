@@ -153,19 +153,23 @@
     }
 
     .notebook-title {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: bold;
       color: #333;
-      margin-bottom: 15px;
-      text-align: center;
+      margin-bottom: 12px;
     }
 
     .notebook-desc {
-      display: none;
+      color: #666;
+      margin-bottom: 15px;
+      line-height: 1.5;
     }
 
     .notebook-tags {
-      display: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 15px;
     }
 
     .tag {
@@ -182,8 +186,6 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center;
-      margin-top: auto;
     }
 
     .action-btn {
@@ -465,40 +467,6 @@
         transition: all 0.3s ease;
     }
 
-    /* Additional responsive styles */
-    @media (max-width: 768px) {
-      .course-grid, .notebook-grid {
-        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      }
-      
-      .course-title, .notebook-title {
-        font-size: 1.1rem;
-      }
-      
-      .action-btn {
-        padding: 6px 12px;
-        font-size: 12px;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .course-grid, .notebook-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-      
-      .course-category {
-        padding: 15px;
-      }
-      
-      .course-category h3 {
-        font-size: 1.3rem;
-      }
-      
-      .course-item, .notebook-item {
-        min-height: 100px;
-      }
-    }
-    
     /* Dark Theme Styles */
     [data-theme="dark"] {
         background-color: #1a1a1a;

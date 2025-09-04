@@ -1432,29 +1432,6 @@
       websiteBtn.className = 'action-btn website-btn';
       websiteBtn.innerHTML = '<i class="fa fa-globe"></i> Website';
       actionDiv.appendChild(websiteBtn);
-      
-      // 添加一个保护机制，防止其他脚本再次添加按钮
-      const observer = new MutationObserver((mutations) => {
-        mutations.forEach((mutation) => {
-          if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
-            // 检查是否添加了非Website按钮
-            const nonWebsiteBtn = Array.from(mutation.addedNodes).find(node => 
-              node.nodeType === 1 && 
-              node.classList && 
-              node.classList.contains('action-btn') && 
-              !node.classList.contains('website-btn')
-            );
-            
-            if (nonWebsiteBtn) {
-              // 移除非Website按钮
-              nonWebsiteBtn.remove();
-            }
-          }
-        });
-      });
-      
-      // 配置观察器
-      observer.observe(actionDiv, { childList: true });
     });
   }
 </script>

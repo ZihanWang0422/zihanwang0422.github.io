@@ -1378,12 +1378,15 @@
     </div>
 
 <script>
-  // 在页面加载时执行
+  // 确保在DOM加载完成后执行
   document.addEventListener('DOMContentLoaded', function() {
-    // 处理Documents部分，只保留Website按钮
-    const documentsSection = document.querySelector('.course-section:nth-of-type(2)');
-    if (documentsSection) {
-      // 添加样式直接隐藏非Website按钮
+    // 禁用Documents部分（第二部分）中的所有按钮，除了Website按钮
+    function setupDocumentsSectionButtons() {
+      // 首先获取Documents部分的所有按钮容器
+      const documentsSection = document.querySelector('.course-section:nth-of-type(2)');
+      if (!documentsSection) return;
+      
+      // 隐藏Documents部分中的所有Video和Slides按钮（通过CSS）
       const style = document.createElement('style');
       style.textContent = `
         .course-section:nth-of-type(2) .action-btn.video-btn,
@@ -1400,18 +1403,15 @@
       `;
       document.head.appendChild(style);
       
-      // 移除Documents部分中的所有非Website按钮
-      const documentActionDivs = documentsSection.querySelectorAll('.course-actions');
-      documentActionDivs.forEach(actionDiv => {
-        // 移除所有按钮
-        const buttons = actionDiv.querySelectorAll('.action-btn');
-        buttons.forEach(btn => {
-          if (!btn.classList.contains('website-btn')) {
-            btn.remove();
-          }
+      // 处理每个按钮容器
+      const actionDivs = documentsSection.querySelectorAll('.course-actions');
+      actionDivs.forEach(actionDiv => {
+        // 移除所有现有按钮
+        Array.from(actionDiv.querySelectorAll('.action-btn:not(.website-btn)')).forEach(btn => {
+          btn.remove();
         });
         
-        // 添加Website按钮（如果没有）
+        // 确保有一个Website按钮
         if (!actionDiv.querySelector('.website-btn')) {
           const websiteBtn = document.createElement('a');
           websiteBtn.href = '#';
@@ -1422,13 +1422,20 @@
       });
     }
     
-    // 处理Courses部分，确保有Videos和Slides按钮
-    const coursesSection = document.querySelector('.course-section:nth-of-type(1)');
-    if (coursesSection) {
-      const courseActionDivs = coursesSection.querySelectorAll('.course-actions');
-      courseActionDivs.forEach(actionDiv => {
+    // 处理Courses部分（第一部分）的按钮
+    function setupCoursesSectionButtons() {
+      const coursesSection = document.querySelector('.course-section:nth-of-type(1)');
+      if (!coursesSection) return;
+      
+      const actionDivs = coursesSection.querySelectorAll('.course-actions');
+      actionDivs.forEach(actionDiv => {
         // 检查是否有Video按钮
-        if (!actionDiv.querySelector('.video-btn')) {
+        const hasVideo = actionDiv.querySelector('.video-btn') !== null;
+        // 检查是否有Slides按钮
+        const hasSlides = actionDiv.querySelector('.slides-btn') !== null;
+        
+        // 如果没有Video按钮，添加一个
+        if (!hasVideo) {
           const videoBtn = document.createElement('a');
           videoBtn.href = '#';
           videoBtn.className = 'action-btn video-btn';
@@ -1436,8 +1443,8 @@
           actionDiv.insertBefore(videoBtn, actionDiv.firstChild);
         }
         
-        // 检查是否有Slides按钮
-        if (!actionDiv.querySelector('.slides-btn')) {
+        // 如果没有Slides按钮，添加一个
+        if (!hasSlides) {
           const slidesBtn = document.createElement('a');
           slidesBtn.href = '#';
           slidesBtn.className = 'action-btn slides-btn';
@@ -1446,8 +1453,17 @@
         }
       });
     }
-  });
-</script>
+    
+    // 先设置Documents部分
+    setupDocumentsSectionButtons();
+    
+    // 再设置Courses部分
+    setupCoursesSectionButtons();
+    
+    // 设置一个重复检查，确保设置不被其他脚本覆盖
+    setTimeout(setupDocumentsSectionButtons, 500);
+    setTimeout(setupDocumentsSectionButtons, 1000);
+    setTimeout(setupDocumentsSectionButtons, 2000);
       // 清除所有现有按钮
       while (actionDiv.firstChild) {
         actionDiv.removeChild(actionDiv.firstChild);

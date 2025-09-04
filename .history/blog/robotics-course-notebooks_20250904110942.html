@@ -1378,76 +1378,75 @@
     </div>
 
 <script>
-  // 在页面加载时执行
-  document.addEventListener('DOMContentLoaded', function() {
-    // 处理Documents部分，只保留Website按钮
-    const documentsSection = document.querySelector('.course-section:nth-of-type(2)');
-    if (documentsSection) {
-      // 添加样式直接隐藏非Website按钮
-      const style = document.createElement('style');
-      style.textContent = `
-        .course-section:nth-of-type(2) .action-btn.video-btn,
-        .course-section:nth-of-type(2) .action-btn.slides-btn,
-        .course-section:nth-of-type(2) .action-btn.notebook-btn,
-        .course-section:nth-of-type(2) .action-btn.course-btn {
-          display: none !important;
-        }
-        
-        .course-section:nth-of-type(2) .course-actions {
-          justify-content: center !important;
-          align-items: center !important;
-        }
-      `;
-      document.head.appendChild(style);
-      
-      // 移除Documents部分中的所有非Website按钮
-      const documentActionDivs = documentsSection.querySelectorAll('.course-actions');
-      documentActionDivs.forEach(actionDiv => {
-        // 移除所有按钮
-        const buttons = actionDiv.querySelectorAll('.action-btn');
-        buttons.forEach(btn => {
-          if (!btn.classList.contains('website-btn')) {
-            btn.remove();
-          }
-        });
-        
-        // 添加Website按钮（如果没有）
-        if (!actionDiv.querySelector('.website-btn')) {
-          const websiteBtn = document.createElement('a');
-          websiteBtn.href = '#';
-          websiteBtn.className = 'action-btn website-btn';
-          websiteBtn.innerHTML = '<i class="fa fa-globe"></i> Website';
-          actionDiv.appendChild(websiteBtn);
-        }
-      });
-    }
-    
-    // 处理Courses部分，确保有Videos和Slides按钮
-    const coursesSection = document.querySelector('.course-section:nth-of-type(1)');
-    if (coursesSection) {
-      const courseActionDivs = coursesSection.querySelectorAll('.course-actions');
-      courseActionDivs.forEach(actionDiv => {
-        // 检查是否有Video按钮
-        if (!actionDiv.querySelector('.video-btn')) {
-          const videoBtn = document.createElement('a');
-          videoBtn.href = '#';
-          videoBtn.className = 'action-btn video-btn';
-          videoBtn.innerHTML = '<i class="fa fa-play-circle"></i> Videos';
-          actionDiv.insertBefore(videoBtn, actionDiv.firstChild);
-        }
-        
-        // 检查是否有Slides按钮
-        if (!actionDiv.querySelector('.slides-btn')) {
-          const slidesBtn = document.createElement('a');
-          slidesBtn.href = '#';
-          slidesBtn.className = 'action-btn slides-btn';
-          slidesBtn.innerHTML = '<i class="fa fa-file-powerpoint-o"></i> Slides';
-          actionDiv.appendChild(slidesBtn);
-        }
-      });
-    }
-  });
-</script>
+   // 首先声明一个函数来处理Documents部分，确保只显示Website按钮
+   function setupDocumentSection() {
+     console.log("设置Documents部分...");
+     const documentsSection = document.querySelector('.course-section:nth-of-type(2)');
+     if (!documentsSection) return;
+     
+     const documentActionDivs = documentsSection.querySelectorAll('.course-actions');
+     
+     documentActionDivs.forEach(actionDiv => {
+       // 清除所有现有按钮
+       while (actionDiv.firstChild) {
+         actionDiv.removeChild(actionDiv.firstChild);
+       }
+       
+       // 设置容器为居中对齐
+       actionDiv.style.justifyContent = 'center';
+       actionDiv.style.alignItems = 'center';
+       
+       // 只添加Website按钮
+       const websiteBtn = document.createElement('a');
+       websiteBtn.href = '#';
+       websiteBtn.className = 'action-btn website-btn';
+       websiteBtn.innerHTML = '<i class="fa fa-globe"></i> Website';
+       actionDiv.appendChild(websiteBtn);
+     });
+   }
+   
+   // 确保每个课程方块都有Videos和Slides按钮（只针对第一个部分 - Courses部分）
+   document.addEventListener('DOMContentLoaded', function() {
+     // 先处理Documents部分，确保它优先执行
+     setupDocumentSection();
+     
+     // 然后再处理Courses部分
+     const coursesSection = document.querySelector('.course-section:nth-of-type(1)');
+     if (!coursesSection) return;
+     
+     const courseActions = coursesSection.querySelectorAll('.course-actions');
+     
+     courseActions.forEach(function(actionDiv) {
+       // 检查是否有Video按钮
+       const hasVideo = actionDiv.querySelector('.video-btn') !== null;
+       // 检查是否有Slides按钮
+       const hasSlides = actionDiv.querySelector('.slides-btn') !== null;
+       
+       // 如果没有Video按钮，添加一个
+       if (!hasVideo) {
+         const videoBtn = document.createElement('a');
+         videoBtn.href = '#';
+         videoBtn.className = 'action-btn video-btn';
+         videoBtn.innerHTML = '<i class="fa fa-play-circle"></i> Videos';
+         actionDiv.insertBefore(videoBtn, actionDiv.firstChild);
+       }
+       
+       // 如果没有Slides按钮，添加一个
+       if (!hasSlides) {
+         const slidesBtn = document.createElement('a');
+         slidesBtn.href = '#';
+         slidesBtn.className = 'action-btn slides-btn';
+         slidesBtn.innerHTML = '<i class="fa fa-file-powerpoint-o"></i> Slides';
+         actionDiv.appendChild(slidesBtn);
+       }
+     });
+     
+     // 处理seminar部分（现在不需要任何特殊处理，因为使用了新的结构）
+     const seminarSection = document.querySelector('.course-section:nth-of-type(3)');
+     // 新的seminar结构已经在HTML中定义
+     
+     // 再次调用setupDocumentSection，确保Documents部分的设置不被覆盖
+     setupDocumentSection();
       // 清除所有现有按钮
       while (actionDiv.firstChild) {
         actionDiv.removeChild(actionDiv.firstChild);
@@ -1487,7 +1486,7 @@
       // 配置观察器
       observer.observe(actionDiv, { childList: true });
     });
-  });
+  }
 </script>
 
 </body>

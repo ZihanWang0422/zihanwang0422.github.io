@@ -32,44 +32,10 @@
     .blog-header {
       text-align: center;
       margin-bottom: 40px;
-      padding: 50px 0;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 40px 0;
+      background: linear-gradient(135deg, #667eea 0%, #589dec 100%);
       color: white;
-      border-radius: 12px;
-      position: relative;
-      overflow: hidden;
-    }
-    
-    .blog-header::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      right: -50%;
-      width: 200%;
-      height: 200%;
-      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-      animation: float 6s ease-in-out infinite;
-    }
-    
-    @keyframes float {
-      0%, 100% { transform: translateY(0px) rotate(0deg); }
-      50% { transform: translateY(-20px) rotate(180deg); }
-    }
-    
-    .blog-header h1 {
-      position: relative;
-      z-index: 1;
-      font-size: 2.5rem;
-      margin-bottom: 10px;
-    }
-    
-    .blog-header .update-date {
-      position: relative;
-      z-index: 1;
-      font-size: 1rem;
-      color: rgba(255, 255, 255, 0.9);
-      margin-top: 5px;
-      font-weight: normal;
+      border-radius: 8px;
     }
     
     .blog-meta {
@@ -375,16 +341,11 @@
 
     [data-theme="dark"] .back-to-home {
         color: #4da6ff !important;
-        background: rgba(30, 30, 30, 0.9) !important;
-        border-color: rgba(77, 166, 255, 0.2) !important;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+        background: rgba(77, 166, 255, 0.1) !important;
     }
 
     [data-theme="dark"] .back-to-home:hover {
-        background: rgba(77, 166, 255, 0.15) !important;
-        border-color: #4da6ff !important;
-        color: #4da6ff !important;
-        box-shadow: 0 4px 12px rgba(77, 166, 255, 0.2) !important;
+        background: rgba(77, 166, 255, 0.2) !important;
     }
 
     [data-theme="dark"] .toc-container {

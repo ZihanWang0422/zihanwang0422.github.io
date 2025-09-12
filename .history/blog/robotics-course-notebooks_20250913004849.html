@@ -141,29 +141,24 @@
     }
     
     .back-to-blog {
-      display: inline-flex;
-      align-items: center;
+      display: inline-block;
       margin-bottom: 30px;
       color: #667eea;
       text-decoration: none;
-      font-weight: 500;
-      padding: 12px 24px;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(102, 126, 234, 0.2);
+      font-weight: bold;
+      padding: 10px 20px;
+      border-radius: 25px;
+      background: rgba(102, 126, 234, 0.1);
+      border: 2px solid rgba(102, 126, 234, 0.3);
       transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-      font-size: 14px;
     }
     
     .back-to-blog:hover {
-      background: rgba(102, 126, 234, 0.1);
+      background: rgba(102, 126, 234, 0.2);
       border-color: #667eea;
-      transform: translateX(-2px);
+      transform: translateX(-5px);
       text-decoration: none;
       color: #667eea;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
     }
 
     .notebook-section {
@@ -798,30 +793,19 @@
 
     [data-theme="dark"] .back-to-blog {
         color: #4da6ff;
-        background: rgba(30, 30, 30, 0.9);
-        border-color: rgba(77, 166, 255, 0.2);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        background: rgba(77, 166, 255, 0.1);
+        border-color: rgba(77, 166, 255, 0.3);
     }
 
     [data-theme="dark"] .back-to-blog:hover {
-        background: rgba(77, 166, 255, 0.15);
+        background: rgba(77, 166, 255, 0.2);
         border-color: #4da6ff;
         color: #4da6ff;
-        box-shadow: 0 4px 12px rgba(77, 166, 255, 0.2);
     }
 
     [data-theme="dark"] .theme-toggle {
-        background: rgba(30, 30, 30, 0.9);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    [data-theme="dark"] .theme-toggle:hover {
-        background: rgba(40, 40, 40, 1);
+        background: rgba(255, 255, 255, 0.1);
         border-color: rgba(255, 255, 255, 0.2);
-    }
-
-    [data-theme="dark"] .theme-toggle i {
-        color: #fff;
     }
 
     [data-theme="dark"] .theme-toggle:hover {

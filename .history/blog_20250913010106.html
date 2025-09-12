@@ -181,34 +181,25 @@
     }
     
     .back-to-home {
-      display: inline-flex;
-      align-items: center;
+      display: inline-block;
       margin-bottom: 30px;
-      color: #667eea;
+      color: #0066cc;
       text-decoration: none;
-      font-weight: 500;
-      padding: 12px 24px;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(102, 126, 234, 0.2);
+      font-weight: bold;
+      padding: 8px 16px;
+      border-radius: 20px;
+      background: rgba(0, 102, 204, 0.1);
       transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-      font-size: 14px;
     }
     
     .back-to-home:hover {
-      background: rgba(102, 126, 234, 0.1);
-      border-color: #667eea;
-      transform: translateX(-2px);
+      background: rgba(0, 102, 204, 0.2);
       text-decoration: none;
-      color: #667eea;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
     }
 
     /* Theme Toggle Button Styles - 月亮图标样式 */
     .theme-toggle {
-        position: absolute;
+        position: fixed;
         top: 20px;
         right: 20px;
         cursor: pointer;
@@ -295,16 +286,11 @@
 
     [data-theme="dark"] .back-to-home {
         color: #4da6ff;
-        background: rgba(30, 30, 30, 0.9);
-        border-color: rgba(77, 166, 255, 0.2);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+        background: rgba(77, 166, 255, 0.1);
     }
 
     [data-theme="dark"] .back-to-home:hover {
-        background: rgba(77, 166, 255, 0.15);
-        border-color: #4da6ff;
-        color: #4da6ff;
-        box-shadow: 0 4px 12px rgba(77, 166, 255, 0.2);
+        background: rgba(77, 166, 255, 0.2);
     }
 
     [data-theme="dark"] .theme-toggle {

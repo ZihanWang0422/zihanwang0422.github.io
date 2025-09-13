@@ -22,254 +22,223 @@
 
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    </script>
+  <![endif]-->
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      .projects-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+      }
+    
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        grid-auto-rows: auto;
+      }
+    
+      /* 让最后一个项目居中（如果是奇数个） */
+      .project-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin: 0 auto;
+      }
+    
+      /* 确保课程项目正确对齐 */
+      .course-projects-section {
+        display: contents;
+      }
+    
+      .project-card {
+    background: #fff;
+    border: 1px solid #e1e8ed;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    position: relative;
+      }
+    
+      .project-card:hover {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+      }
+    
+      .project-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+      }
+    
+      .project-image img {
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+        object-position: center;
+        border-radius: 4px;
+      }
+    
+      .project-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding-bottom: 60px;
+      }
+    
+      .project-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 15px;
+      }
+    
+      .project-description {
+        color: #555;
+        line-height: 1.6;
+        margin-bottom: 8px;
+        text-align: justify;
+        min-height: 100px;
+        flex: 1;
+      }
+    
+      .tldr-label {
+        font-weight: bold;
+        color: #333;
+        margin-right: 5px;
+      }
+    
+      .project-tags {
+        margin-bottom: 12px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: flex-start;
+        min-height: 60px;
+        align-content: flex-start;
+      }
+    
+      .tag {
+        display: inline-block;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-size: 12px;
+        font-weight: 500;
+        white-space: nowrap;
+        margin: 0;
+      }
+    
+      /* 硬件标签 - 蓝色底 */
+      .tag.hardware {
+        background: #2196F3;
+      }
+    
+      /* 软件标签 - 绿色底 */
+      .tag.software {
+        background: #4CAF50;
+      }
+    
+      /* 算法标签 - 黄色底 */
+      .tag.algorithm {
+        background: #FF9800;
+      }
+    
+      .project-links {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+      }
+    
+      .project-link {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 15px;
+        border: 2px solid #0066cc;
+        border-radius: 5px;
+        transition: all 0.3s ease;
+      }
+    
+      .project-link:hover {
+        background: #0066cc;
+        color: white;
+        text-decoration: none;
+      }
+    
+      .back-to-home {
+        display: inline-block;
+        margin-bottom: 30px;
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 8px 16px;
+        border-radius: 20px;
+        background: rgba(0, 102, 204, 0.1);
+        transition: all 0.3s ease;
+      }
+    
+      .back-to-home:hover {
+        background: rgba(0, 102, 204, 0.2);
+        text-decoration: none;
+      }
 
-  <title>Zihan Wang - Projects</title>
-  <meta name="description" lang="en" content="Projects by Zihan Wang">
-  <meta name="keywords" lang="en" content="Zihan Wang, Projects, Robotics, SLAM, Navigation" />
+      /* 双图片并排样式：左图保留完整高度（不裁剪），右图填满容器（可裁剪） */
+      .dual-image-container {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    background: #f8f9fa;
+      }
 
-  <link rel="shortcut icon" href="images/android-chrome-512x512.png">
-  <link rel="stylesheet" href="main.css">
-  <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/academicons.css"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+      /* 默认行为：不强制两图等宽，保持高度上限 */
+      .dual-image-container img {
+    flex: 0 1 auto;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 4px;
+      }
 
-  <script src="js/jquery-2.1.3.min.js"> </script>
+      /* 左侧图片（第一张）——保持完整高度，不裁剪 */
+      .dual-image-container img:first-child {
+    flex: 0 0 auto;
+    width: auto;
+    max-height: 100%;
+    object-fit: contain;
+    object-position: left center;
+      }
 
-  <!--[if lt IE 9]>
-<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
-</script>
-<![endif]-->
-
-  <style>
-    .projects-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-    }
+      /* 右侧图片（第二张）——占满剩余空间，允许裁剪以保证填充 */
+      .dual-image-container img:last-child {
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+      }
     
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 30px;
-      grid-auto-rows: auto;
-    }
     
-    /* 让最后一个项目居中（如果是奇数个） */
-    .project-card:last-child:nth-child(odd) {
-      grid-column: 1 / -1;
-      max-width: 50%;
-      margin: 0 auto;
-    }
-    
-    /* 确保课程项目正确对齐 */
-    .course-projects-section {
-      display: contents;
-    }
-    
-    .project-card {
-  background: #fff;
-  border: 1px solid #e1e8ed;
-  border-radius: 8px;
-  padding: 20px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: box-shadow 0.3s ease;
-  display: flex;
-  flex-direction: column;
-  min-height: 500px;
-  position: relative;
-    }
-    
-    .project-card:hover {
-      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-    }
-    
-    .project-image {
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  background: #f8f9fa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-    }
-    
-    .project-image img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 4px;
-    }
-    
-    /* 当项目图片容器中有两张图片时的样式 */
-    .project-image.dual-images {
-      display: flex;
-      gap: 8px;
-      justify-content: space-between;
-      align-items: center;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      background: #f8f9fa;
-      padding: 4px;
-    }
-    
-    .project-image.dual-images img {
-      width: calc(50% - 4px);
-      height: 192px;
-      max-height: 192px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 4px;
-      flex-shrink: 0;
-      background: #fff;
-    }
-    
-    .project-content {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      padding-bottom: 60px;
-    }
-    
-    .project-title {
-      font-size: 24px;
-      font-weight: bold;
-      color: #333;
-      margin-bottom: 15px;
-    }
-    
-    .project-description {
-      color: #555;
-      line-height: 1.6;
-      margin-bottom: 8px;
-      text-align: justify;
-      min-height: 100px;
-      flex: 1;
-    }
-    
-    .tldr-label {
-      font-weight: bold;
-      color: #333;
-      margin-right: 5px;
-    }
-    
-    .project-tags {
-      margin-bottom: 12px;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      align-items: flex-start;
-      min-height: 60px;
-      align-content: flex-start;
-    }
-    
-    .tag {
-      display: inline-block;
-      color: white;
-      padding: 4px 10px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 500;
-      white-space: nowrap;
-      margin: 0;
-    }
-    
-    /* 硬件标签 - 蓝色底 */
-    .tag.hardware {
-      background: #2196F3;
-    }
-    
-    /* 软件标签 - 绿色底 */
-    .tag.software {
-      background: #4CAF50;
-    }
-    
-    /* 算法标签 - 黄色底 */
-    .tag.algorithm {
-      background: #FF9800;
-    }
-    
-    .project-links {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-      position: absolute;
-      bottom: 20px;
-      left: 20px;
-      right: 20px;
-    }
-    
-    .project-link {
-      color: #0066cc;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 8px 15px;
-      border: 2px solid #0066cc;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    
-    .project-link:hover {
-      background: #0066cc;
-      color: white;
-      text-decoration: none;
-    }
-    
-    .back-to-home {
-      display: inline-flex;
-      align-items: center;
-      margin-bottom: 30px;
-      color: #667eea;
-      text-decoration: none;
-      font-weight: 500;
-      padding: 12px 24px;
-      border-radius: 50px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(102, 126, 234, 0.2);
-      transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
-      font-size: 14px;
-    }
-    
-    .back-to-home:hover {
-      background: rgba(102, 126, 234, 0.1);
-      border-color: #667eea;
-      transform: translateX(-2px);
-      text-decoration: none;
-      color: #667eea;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
-    }
-
-    /* 双图片并排样式 */
-    .dual-image-container {
-  display: flex;
-  gap: 15px;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 200px;
-  overflow: hidden;
-  border-radius: 8px;
-  margin-bottom: 15px;
-  background: #f8f9fa;
-    }
-    
-    .dual-image-container img {
-  width: 48%;
-  height: 180px;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 4px;
-    }
 
     /* 课程项目分隔条样式 */
     .section-divider {
@@ -305,20 +274,15 @@
         grid-template-columns: 1fr;
       }
       
-      .dual-image-container,
-      .project-image.dual-images {
+      .dual-image-container {
         flex-direction: column;
         height: auto;
-        gap: 6px;
-        padding: 4px;
+        gap: 10px;
       }
       
-      .dual-image-container img,
-      .project-image.dual-images img {
+      .dual-image-container img {
         width: 100%;
-        max-width: 100%;
-        height: 140px;
-        object-fit: contain;
+        height: 150px;
       }
       
       .section-bar {
@@ -405,6 +369,10 @@
         background: #404040 !important;
     }
 
+    [data-theme="dark"] .project-image img {
+        background: #404040 !important;
+    }
+
     [data-theme="dark"] .project-title {
         color: #ffffff !important;
     }
@@ -417,13 +385,12 @@
         color: #ffffff !important;
     }
 
-    [data-theme="dark"] .dual-image-container,
-    [data-theme="dark"] .project-image.dual-images {
+    [data-theme="dark"] .dual-image-container {
         background: #404040 !important;
     }
-    
-    [data-theme="dark"] .project-image.dual-images img {
-        background: #2d2d2d !important;
+
+    [data-theme="dark"] .dual-image-container img {
+        background: #404040 !important;
     }
 
     [data-theme="dark"] .section-bar {
@@ -597,7 +564,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Project 2: Plasma-propelled Ultra-quiet Flying Robot -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
       <img src="images/airship.jpg" alt="Plasma-propelled ultra-quiet flying robot interior">
     </div>
@@ -668,7 +635,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
   <!-- Project 2: Auto-tracking Car -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/yuyuan.jpg" alt="Auto-tracking Car">
       <img src="images/playground.png" alt="Auto-tracking Car">
     </div>
@@ -699,7 +666,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
   <!-- Project 3: VLN Car -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/vla_car.jpg" alt="VLN Car">
        <img src="images/NVBlox.png" alt="VLN Car">
     </div>
@@ -728,8 +695,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
   <!-- Project 4: Zhi Xing Robot -->
   <div class="project-card">
-    <div class="dual-image-container">
-      <img src="images/zhixing.png" alt="Zhi Xing Robot">
+    <div class="project-image">
       <img src="images/zhixing_video.gif" alt="Zhi Xing Robot">
     </div>
     <div class="project-content">

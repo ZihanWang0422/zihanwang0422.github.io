@@ -107,29 +107,18 @@
     }
     
     /* 当项目图片容器中有两张图片时的样式 */
-    .project-image.dual-images {
+    .project-image:has(img + img) {
       display: flex;
-      gap: 8px;
-      justify-content: space-between;
+      gap: 15px;
+      justify-content: center;
       align-items: center;
-      width: 100%;
-      height: 200px;
-      overflow: hidden;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      background: #f8f9fa;
-      padding: 4px;
     }
     
-    .project-image.dual-images img {
-      width: calc(50% - 4px);
-      height: 192px;
-      max-height: 192px;
-      object-fit: contain;
-      object-position: center;
-      border-radius: 4px;
+    .project-image:has(img + img) img {
+      width: 48%;
+      max-width: 48%;
+      height: 180px;
       flex-shrink: 0;
-      background: #fff;
     }
     
     .project-content {
@@ -305,20 +294,15 @@
         grid-template-columns: 1fr;
       }
       
-      .dual-image-container,
-      .project-image.dual-images {
+      .dual-image-container {
         flex-direction: column;
         height: auto;
-        gap: 6px;
-        padding: 4px;
+        gap: 10px;
       }
       
-      .dual-image-container img,
-      .project-image.dual-images img {
+      .dual-image-container img {
         width: 100%;
-        max-width: 100%;
-        height: 140px;
-        object-fit: contain;
+        height: 150px;
       }
       
       .section-bar {
@@ -417,13 +401,8 @@
         color: #ffffff !important;
     }
 
-    [data-theme="dark"] .dual-image-container,
-    [data-theme="dark"] .project-image.dual-images {
+    [data-theme="dark"] .dual-image-container {
         background: #404040 !important;
-    }
-    
-    [data-theme="dark"] .project-image.dual-images img {
-        background: #2d2d2d !important;
     }
 
     [data-theme="dark"] .section-bar {
@@ -597,7 +576,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
   <!-- Project 2: Plasma-propelled Ultra-quiet Flying Robot -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
       <img src="images/airship.jpg" alt="Plasma-propelled ultra-quiet flying robot interior">
     </div>
@@ -639,7 +618,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
     <!-- Project 1: Wheel-legged Robot -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/legged-wheel.jpg" alt="Wheel-legged Robot">
       <img src="images/legged-wheel.gif" alt="Wheel-legged Robot Simulation">
     </div>
@@ -668,7 +647,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
   <!-- Project 2: Auto-tracking Car -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/yuyuan.jpg" alt="Auto-tracking Car">
       <img src="images/playground.png" alt="Auto-tracking Car">
     </div>
@@ -699,7 +678,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
   <!-- Project 3: VLN Car -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/vla_car.jpg" alt="VLN Car">
        <img src="images/NVBlox.png" alt="VLN Car">
     </div>
@@ -728,7 +707,7 @@ two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop sl
 
   <!-- Project 4: Zhi Xing Robot -->
   <div class="project-card">
-    <div class="dual-image-container">
+    <div class="project-image">
       <img src="images/zhixing.png" alt="Zhi Xing Robot">
       <img src="images/zhixing_video.gif" alt="Zhi Xing Robot">
     </div>

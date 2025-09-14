@@ -306,10 +306,6 @@
         margin-bottom: 25px;
     }
 
-    .pub:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-    }
-
     /* Adjust image position to move left */
     .pub-left {
         float: left;
@@ -359,10 +355,6 @@
         box-shadow: 0 2px 8px rgba(0,0,0,0.3);
     }
 
-    [data-theme="dark"] .pub:hover {
-        box-shadow: 0 4px 16px rgba(0,0,0,0.4);
-    }
-
     /* Back to Top Button Styles */
     .back-to-top {
         position: fixed;
@@ -377,11 +369,9 @@
         font-size: 20px;
         cursor: pointer;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        transition: all 0.3s ease;
         z-index: 1000;
         opacity: 0;
         visibility: hidden;
-        transform: translateY(20px);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -390,21 +380,10 @@
     .back-to-top.show {
         opacity: 1;
         visibility: visible;
-        transform: translateY(0);
-    }
-
-    .back-to-top:hover {
-        background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
     }
 
     [data-theme="dark"] .back-to-top {
         background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
-    }
-
-    [data-theme="dark"] .back-to-top:hover {
-        background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
     }
 
     /* Profile title styling */

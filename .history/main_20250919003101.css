@@ -1756,30 +1756,25 @@ div.paginate-container li:nth-last-child(2) a:after {
     width: 200px;
     height: auto;
     transition: opacity 0.2s ease-in-out;
-    display: block;
 }
 
 .image-hover-container .static-image {
     opacity: 1;
     z-index: 2;
-    position: relative;
 }
 
 .image-hover-container .hover-image {
     opacity: 0;
     z-index: 1;
-    position: absolute;
-    top: 0;
-    left: 0;
 }
 
 /* When playing class is added by JavaScript */
 .image-hover-container.playing .static-image {
-    opacity: 0 !important;
+    opacity: 0;
 }
 
 .image-hover-container.playing .hover-image {
-    opacity: 1 !important;
+    opacity: 1;
 }
 
 .bio {

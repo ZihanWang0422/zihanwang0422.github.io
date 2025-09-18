@@ -682,9 +682,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
     <div class="pub">
         <div class="pub-left">
-          <a href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">
-            <img class="intro-img frame" src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
-          </a>
+          <div class="image-hover-container" onclick="startGifPlayback(this)" onmouseleave="stopGifPlayback(this)">
+            <img class="intro-img frame static-image" src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
+            <img class="intro-img frame hover-image" src="images/plasma.gif" alt="Plasma propulsion animation">
+          </div>
         </div>
         <div class="pub-right">
           <div class="title">
@@ -850,7 +851,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
 
       <div class="footer-col footer-col-2" style="flex: 2; display: flex; justify-content: center; gap: 15px;">
-        
+
    <a href="https://github.com/ZihanWang0422" target="_blank" class="icon-button github">
         <i class="fa fa-github icon-github"></i>
         <span></span>
@@ -924,4 +925,37 @@ document.addEventListener('DOMContentLoaded', function() {
 -->
 
 <!--<script src="custom-pub.js"></script>-->
+
+<script>
+function startGifPlayback(container) {
+    // 获取gif图片元素
+    const gifImg = container.querySelector('.hover-image');
+    
+    // 重新设置gif的src来从头开始播放
+    const gifSrc = gifImg.src;
+    gifImg.src = '';
+    
+    // 添加playing类来显示gif
+    container.classList.add('playing');
+    
+    // 短暂延迟后重新设置src，确保gif重新开始播放
+    setTimeout(() => {
+        gifImg.src = gifSrc;
+    }, 10);
+}
+
+function stopGifPlayback(container) {
+    // 移除playing类，回到静态图片
+    container.classList.remove('playing');
+    
+    // 重置gif到第一帧
+    const gifImg = container.querySelector('.hover-image');
+    const gifSrc = gifImg.src;
+    gifImg.src = '';
+    setTimeout(() => {
+        gifImg.src = gifSrc;
+    }, 10);
+}
+</script>
+
 </html>

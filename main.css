@@ -1651,7 +1651,7 @@ div.paginate-container li:nth-last-child(2) a:after {
 }
 
  .pub-left > .intro-img {
-     width: 180px; /* Set your desired width */
+     width: 200px; /* Set your desired width */
      height: auto; /* Maintain aspect ratio instead of fixed height */
      border: none; /* Remove border */
      object-fit: contain; /* Ensures the image fits within the container while maintaining aspect ratio */
@@ -1736,6 +1736,42 @@ div.paginate-container li:nth-last-child(2) a:after {
     .pub-right>.publish>.place {
         display: none
     }
+}
+
+/* Image click effect for publications */
+.image-hover-container {
+    position: relative;
+    display: inline-block;
+    width: 200px;
+    height: auto;
+    cursor: pointer;
+}
+
+.image-hover-container .static-image,
+.image-hover-container .hover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 200px;
+    height: auto;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.image-hover-container .static-image {
+    opacity: 1;
+}
+
+.image-hover-container .hover-image {
+    opacity: 0;
+}
+
+/* When playing class is added by JavaScript */
+.image-hover-container.playing .static-image {
+    opacity: 0;
+}
+
+.image-hover-container.playing .hover-image {
+    opacity: 1;
 }
 
 .bio {
@@ -2065,3 +2101,17 @@ div.paginate-container li:nth-last-child(2) a:after {
     height: 16px;
     margin-right: 4px;
   }
+
+/* Image hover effect for publications - duplicate removed for consistency */
+
+.image-hover-container .static-image {
+    opacity: 1;
+}
+
+.pub:hover .image-hover-container .static-image {
+    opacity: 0;
+}
+
+.pub:hover .image-hover-container .hover-image {
+    opacity: 1;
+}

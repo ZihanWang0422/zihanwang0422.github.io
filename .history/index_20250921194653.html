@@ -279,35 +279,35 @@
         color: #4a9eff !important;
     }
 
-    /* TL;DR Styles - flat design */
+    /* TL;DR Styles */
     .tldr {
-        background-color: transparent;
-        padding: 8px 0;
+        background-color: #f0f8ff;
+        padding: 10px;
         margin: 8px 0;
-        border: none;
+        border-left: 4px solid #0066cc;
         font-size: 10pt;
         font-style: italic;
-        border-radius: 0;
+        border-radius: 4px;
     }
 
     [data-theme="dark"] .tldr {
-        background-color: transparent !important;
-        border: none !important;
+        background-color: #1e2a3a !important;
+        border-left-color: #4a9eff !important;
         color: #d0d0d0 !important;
     }
 
-    /* Container Style Improvements - clean flat design */
+    /* Container Style Improvements - similar to projects.html */
     .pub {
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        padding: 20px 0;
-        box-shadow: none;
+        background: #fff;
+        border: 1px solid #e1e8ed;
+        border-radius: 12px;
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         margin-bottom: 25px;
     }
 
     .pub:hover {
-        box-shadow: none;
+        box-shadow: 0 4px 16px rgba(0,0,0,0.15);
     }
 
     /* Adjust image position to move left */
@@ -412,95 +412,6 @@
         text-align: center;
         margin-top: 10px;
     }
-
-    /* Experience card styles */
-    .experience-card {
-        display: flex;
-        align-items: flex-start;
-        background: transparent;
-        border: none;
-        border-radius: 0;
-        padding: 20px 0;
-        margin-bottom: 15px;
-        box-shadow: none;
-        transition: none;
-    }
-
-    .experience-card:hover {
-        box-shadow: none;
-        transform: none;
-    }
-
-    /* Dark theme for experience cards */
-    [data-theme="dark"] .experience-card {
-        background: transparent !important;
-        border: none !important;
-        box-shadow: none !important;
-    }
-
-    [data-theme="dark"] .experience-card:hover {
-        box-shadow: none !important;
-    }
-
-    [data-theme="dark"] .experience-card div[style*="color: #333"] {
-        color: #ffffff !important;
-    }
-
-    [data-theme="dark"] .experience-card div[style*="color: #666"] {
-        color: #b0b0b0 !important;
-    }
-
-    [data-theme="dark"] .experience-card div[style*="color: #555"] {
-        color: #d0d0d0 !important;
-    }
-
-    /* Global override to remove all shadows and borders for flat design */
-    .pub, .experience-card, .timeline-item, .intro-img, .frame, img {
-        box-shadow: none !important;
-        border-radius: 0 !important;
-    }
-    
-    .pub {
-        border: none !important;
-        background: transparent !important;
-    }
-    
-    .timeline-item {
-        border: none !important;
-        background: transparent !important;
-        box-shadow: none !important;
-    }
-
-    /* Paper title link styles to match tag colors */
-    .title a {
-        color: #2a7ae2 !important;
-        text-decoration: none !important;
-        transition: color 0.3s ease;
-    }
-
-    .title a:hover {
-        color: #1f5fb4 !important;
-        text-decoration: underline !important;
-    }
-
-    /* Dark theme support for paper title links */
-    [data-theme="dark"] .title a {
-        color: #4a9eff !important;
-    }
-
-    [data-theme="dark"] .title a:hover {
-        color: #66b3ff !important;
-    }
-
-    /* Section divider styles */
-    .section-divider {
-        border-top: 2px solid lightgrey;
-        margin: 30px 0;
-    }
-
-    [data-theme="dark"] .section-divider {
-        border-color: #404040 !important;
-    }
   </style>
   
 
@@ -535,7 +446,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="trigger">
     <a class="page-link" href="#bio"><b>Biography</b></a>
     <a class="page-link" href="#research"><b>Research</b></a>
-    <a class="page-link" href="projects.html"><b>Projects</b></a>
+    <a class="page-link" href="#projects"><b>Projects</b></a>
     <a class="page-link" href="#timeline"><b>Experiences</b></a>
     <a class="page-link" href="blog.html"><b>Blog</b></a>
     <!-- <a class="page-link" href="#academicservices"><b>Academic Services </b></a> -->
@@ -658,7 +569,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <p>
       Hi, there!
       I am currently a M.S. student in Robotics at the Chinese University of Hong Kong. Previously, I obtained my B.E. in Automation Engineering from Beihang University.<br>
-      <br>
+      
       My research interests mainly lie in robotic control systems, motion planning, reinforcement learning, and humanoid robots.
       <br>
     </p>
@@ -694,8 +605,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </div>
 
-<!-- Section Divider -->
-<div class="section-divider"></div>
 
 <!-- Research -->
 <div id="research" class="research">
@@ -740,9 +649,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
         <div class="pub-right">
           <div class="title">
-            <a href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer" style="color: #2a7ae2; text-decoration: none;">
-              PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
-            </a>
+            PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
           </div>
           <div class="authors">
             <span style="font-size: 11pt; font-weight: normal;">
@@ -758,16 +665,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             [<a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">Patent</a>]
           </div>
           <div class="tldr">
-            Silent aerial robot using plasma propulsion for ultra-quiet flight with helium-lift platform and two-DOF vector control, ideal for noise-sensitive environments.
+            <strong>TL;DR:</strong> Silent aerial robot using plasma propulsion for ultra-quiet flight with helium-lift platform and two-DOF vector control, ideal for noise-sensitive environments.
           </div>
         </div>
       </div>
         
     </div>
   </div>
-
-<!-- Section Divider -->
-<div class="section-divider"></div>
 
 <!-- Projects -->
 <div id="projects" class="projects">
@@ -791,7 +695,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         [<a class="tag" href="https://youtube.com/shorts/dZCjQW7pA4g?feature=share" target="_blank">Demo</a>]
           </div>
           <div class="tldr">
-            We designed a wheel-legged robot utilizing STM32H7 microcontroller with integrated PID and LQR controllers for locomotion and attitude control across complex terrain.
+            <strong>TL;DR:</strong> We designed a wheel-legged robot utilizing STM32H7 microcontroller with integrated PID and LQR controllers for locomotion and attitude control across complex terrain.
           </div>
         </div>
       </div>
@@ -849,7 +753,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             [<a class="tag" href="https://youtu.be/74ppMMNvv9I" target="_blank">Demo</a>]
           </div>
           <div class="tldr">
-            We designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning.
+            <strong>TL;DR:</strong> We designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning.
           </div>
         </div>
       </div>
@@ -857,59 +761,46 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div>
   </div>
 
-<!-- Section Divider -->
-<div class="section-divider"></div>
-
 <!-- Experiences -->
-<div id="timeline" class="timeline-brief" style="text-align: left;">
+<div id="timeline" class="timeline-brief">
   <h1 class="md-heading text-left">
     <i class="fa fa-tasks" aria-hidden="true"></i>
     Experiences
-  </h1>
-  
-  <div style="max-width: none; margin: 0; padding: 0; text-align: left;">
+  </h1>        
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <img class="social-icon" src="images/thu.jpg"/>
+            Mar, 2025 - Jul, 2025
+          </div>
+          <div class="timeline-title">
+            Research Intern @ <a href="https://brain.tsinghua.edu.cn/en/index.htm" target="_blank">THBI Lab, THU</a>
+          </div>
+          <div class="timeline-desc">
+            <div class="timeline-host">
+              Topic: VLN Car<br>
+              Advisor: <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank">Prof. Jia Liu</a>
+            </div>
+          </div>
+        </div>
     
-    <!-- THU Experience -->
-    <div class="experience-card" style="margin-left: 0; text-align: left;">
-      <div style="margin-right: 20px; flex-shrink: 0;">
-        <img src="images/thu.jpg" style="width: 80px; height: 80px; object-fit: contain; border-radius: 6px;">
-      </div>
-      <div style="flex: 1; text-align: left;">
-        <div style="font-size: 14pt; font-weight: bold; color: #333; margin-bottom: 5px; text-align: left;">
-          Research Assistant, THU
+        <div class="timeline-item">
+          <div class="timeline-date">
+            <img class="social-icon" src="images/nus.jpg"/>
+            Jul, 2023 - Dec, 2023
+          </div>
+          <div class="timeline-title">
+            Research Intern(Remote) @ <a href="https://arc.nus.edu.sg/" target="_blank">Advanced Robotics Centre, NUS</a>
+          </div>
+          <div class="timeline-desc">
+            <div class="timeline-host">
+              Topic: 6-Dof Grasp<br>
+              Advisor: <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank">Dr. Wenshuo Wang</a>
+            </div>
+          </div>
         </div>
-        <div style="font-size: 11pt; color: #666; margin-bottom: 8px; text-align: left;">
-          Mar. 2025 - Jul. 2025
-        </div>
-        <div style="font-size: 11pt; color: #555; text-align: left;">
-          <em>Advised by:</em> <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank" style="color: #0066cc; text-decoration: none;">Prof. Jia Liu</a>
-        </div>
-      </div>
-    </div>
-
-    <!-- NUS Experience -->
-    <div class="experience-card" style="margin-left: 0; text-align: left;">
-      <div style="margin-right: 20px; flex-shrink: 0;">
-        <img src="images/nus.jpg" style="width: 80px; height: 80px; object-fit: contain; border-radius: 6px;">
-      </div>
-      <div style="flex: 1; text-align: left;">
-        <div style="font-size: 14pt; font-weight: bold; color: #333; margin-bottom: 5px; text-align: left;">
-          Research Assistant, NUS
-        </div>
-        <div style="font-size: 11pt; color: #666; margin-bottom: 8px; text-align: left;">
-          Jul. 2023 - Dec. 2023
-        </div>
-        <div style="font-size: 11pt; color: #555; text-align: left;">
-          <em>Advised by:</em> <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank" style="color: #0066cc; text-decoration: none;">Dr. Wenshuo Wang</a>
-        </div>
-      </div>
-    </div>
-    
-  </div>
 
   <br>
 </div>
-
 
 <!-- JavaScript to handle button clicks -->
 <script>

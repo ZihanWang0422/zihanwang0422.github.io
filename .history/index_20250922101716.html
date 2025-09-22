@@ -501,11 +501,6 @@
     [data-theme="dark"] .section-divider {
         border-color: #404040 !important;
     }
-
-    /* Remove profile avatar border */
-    #profile-avatar {
-        border: none !important;
-    }
   </style>
   
 
@@ -554,7 +549,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="profile-cover" class="cover shallow-bg img-responsive"> 
     <div id="profile-namecard" class="profile-wrapper wrapper-light">
       <div id="my-pic" class="profile-col profile-col-1">
-        <img id="profile-avatar" src="images/han.jpeg" alt="Me" class="circle-img" />
+        <img id="profile-avatar" src="images/han.jpeg" alt="Me" class="circle-img border-dark" />
       </div>
       <div id="my-contact" class="profile-col profile-col-2">
         <div id="my-name" class="text-grey-dark">
@@ -613,6 +608,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function deepFeature()
     {
       $('#profile-avatar').attr('src', 'images/self-portrait/deep-me.jpg');
+      $('#profile-avatar').removeClass('border-dark');
+      $('#profile-avatar').addClass('border-bright');
 
       $('#profile-cover').removeClass('shallow-bg');
       $('#profile-cover').addClass('deep-bg');
@@ -628,6 +625,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function shallowFeature()
     {
       $('#profile-avatar').attr('src', 'images/self-portrait/me.jpg');
+      $('#profile-avatar').removeClass('border-bright');
+      $('#profile-avatar').addClass('border-dark');
 
       $('#profile-cover').removeClass('deep-bg');
       $('#profile-cover').addClass('shallow-bg');
@@ -733,35 +732,35 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     </div> -->
 
     <div class="pub">
-      <div class="pub-left">
-        <div class="image-hover-container" onmouseenter="startGifPlayback(this)" onmouseleave="stopGifPlayback(this)">
-        <img class="intro-img frame static-image" src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
-        <img class="intro-img frame hover-image" src="images/plasma.gif" alt="Plasma propulsion animation">
+        <div class="pub-left">
+          <div class="image-hover-container" onclick="startGifPlayback(this)" onmouseleave="stopGifPlayback(this)">
+            <img class="intro-img frame static-image" src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
+            <img class="intro-img frame hover-image" src="images/plasma.gif" alt="Plasma propulsion animation">
+          </div>
         </div>
-      </div>
-      <div class="pub-right">
-        <div class="title">
-        <a href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer" style="color: #2a7ae2; text-decoration: none;">
-          PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
-        </a>
+        <div class="pub-right">
+          <div class="title">
+            <a href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer" style="color: #2a7ae2; text-decoration: none;">
+              PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
+            </a>
+          </div>
+          <div class="authors">
+            <span style="font-size: 11pt; font-weight: normal;">
+            Yixing Zhang, <b>Zihan Wang</b>, Zhijun Li, Xuanlin Fan, Jiawei Zhang, Shaoping Wang
+            </span>
+            <br>
+            <span style="font-size: 11pt; font-weight: normal;">
+            	arXiv 2025
+            </span>
+          </div>
+          <div class="tags">
+            [<a class="tag" href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">Paper</a>]
+            [<a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">Patent</a>]
+          </div>
+          <div class="tldr">
+            Silent aerial robot using plasma propulsion for ultra-quiet flight with helium-lift platform and two-DOF vector control, ideal for noise-sensitive environments.
+          </div>
         </div>
-        <div class="authors">
-        <span style="font-size: 11pt; font-weight: normal;">
-        Yixing Zhang, <b>Zihan Wang</b>, Zhijun Li, Xuanlin Fan, Jiawei Zhang, Shaoping Wang
-        </span>
-        <br>
-        <span style="font-size: 11pt; font-weight: normal;">
-          arXiv 2025
-        </span>
-        </div>
-        <div class="tags">
-        [<a class="tag" href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">Paper</a>]
-        [<a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">Patent</a>]
-        </div>
-        <div class="tldr">
-        Silent aerial robot using plasma propulsion for ultra-quiet flight with helium-lift platform and two-DOF vector control, ideal for noise-sensitive environments.
-        </div>
-      </div>
       </div>
         
     </div>
@@ -1018,40 +1017,11 @@ document.addEventListener('DOMContentLoaded', function() {
             behavior: 'smooth'
         });
     });
-  });
-
-  // GIF animation control functions
-  function startGifPlayback(container) {
-    // 获取gif图片元素
-    const gifImg = container.querySelector('.hover-image');
-    
-    // 重新设置gif的src来从头开始播放
-    const gifSrc = gifImg.src;
-    gifImg.src = '';
-    
-    // 添加playing类来显示gif
-    container.classList.add('playing');
-    
-    // 短暂延迟后重新设置src，确保gif重新开始播放
-    setTimeout(() => {
-        gifImg.src = gifSrc;
-    }, 10);
-  }
-
-  function stopGifPlayback(container) {
-    // 移除playing类，回到静态图片
-    container.classList.remove('playing');
-    
-    // 重置gif到第一帧
-    const gifImg = container.querySelector('.hover-image');
-    const gifSrc = gifImg.src;
-    gifImg.src = '';
-    setTimeout(() => {
-        gifImg.src = gifSrc;
-    }, 10);
-  }
+});
 </script>
-  </body><!--
+  </body>
+
+<!--
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -1064,5 +1034,46 @@ document.addEventListener('DOMContentLoaded', function() {
 -->
 
 <!--<script src="custom-pub.js"></script>-->
+
+<script>
+function startGifPlayback(container) {
+    // 获取gif图片元素
+    const gifImg = container.querySelector('.hover-image');
+    const staticImg = container.querySelector('.static-image');
+    
+    if (gifImg) {
+        // 重新设置gif的src来从头开始播放
+        const gifSrc = gifImg.getAttribute('src');
+        if (gifSrc && gifSrc.includes('plasma.gif')) {
+            gifImg.src = '';
+            
+            // 添加playing类来显示gif
+            container.classList.add('playing');
+            
+            // 短暂延迟后重新设置src，确保gif重新开始播放
+            setTimeout(() => {
+                gifImg.src = gifSrc;
+            }, 50);
+        }
+    }
+}
+
+function stopGifPlayback(container) {
+    // 移除playing类，回到静态图片
+    container.classList.remove('playing');
+    
+    // 重置gif到第一帧
+    const gifImg = container.querySelector('.hover-image');
+    if (gifImg) {
+        const gifSrc = gifImg.getAttribute('src');
+        if (gifSrc && gifSrc.includes('plasma.gif')) {
+            gifImg.src = '';
+            setTimeout(() => {
+                gifImg.src = gifSrc;
+            }, 50);
+        }
+    }
+}
+</script>
 
 </html>

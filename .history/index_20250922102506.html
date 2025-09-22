@@ -501,11 +501,6 @@
     [data-theme="dark"] .section-divider {
         border-color: #404040 !important;
     }
-
-    /* Remove profile avatar border */
-    #profile-avatar {
-        border: none !important;
-    }
   </style>
   
 
@@ -554,7 +549,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div id="profile-cover" class="cover shallow-bg img-responsive"> 
     <div id="profile-namecard" class="profile-wrapper wrapper-light">
       <div id="my-pic" class="profile-col profile-col-1">
-        <img id="profile-avatar" src="images/han.jpeg" alt="Me" class="circle-img" />
+        <img id="profile-avatar" src="images/han.jpeg" alt="Me" class="circle-img border-dark" />
       </div>
       <div id="my-contact" class="profile-col profile-col-2">
         <div id="my-name" class="text-grey-dark">
@@ -613,6 +608,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function deepFeature()
     {
       $('#profile-avatar').attr('src', 'images/self-portrait/deep-me.jpg');
+      $('#profile-avatar').removeClass('border-dark');
+      $('#profile-avatar').addClass('border-bright');
 
       $('#profile-cover').removeClass('shallow-bg');
       $('#profile-cover').addClass('deep-bg');
@@ -628,6 +625,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function shallowFeature()
     {
       $('#profile-avatar').attr('src', 'images/self-portrait/me.jpg');
+      $('#profile-avatar').removeClass('border-bright');
+      $('#profile-avatar').addClass('border-dark');
 
       $('#profile-cover').removeClass('deep-bg');
       $('#profile-cover').addClass('shallow-bg');

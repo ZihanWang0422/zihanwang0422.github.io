@@ -501,11 +501,6 @@
     [data-theme="dark"] .section-divider {
         border-color: #404040 !important;
     }
-
-    /* Remove profile avatar border */
-    #profile-avatar {
-        border: none !important;
-    }
   </style>
   
 
@@ -628,6 +623,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     function shallowFeature()
     {
       $('#profile-avatar').attr('src', 'images/self-portrait/me.jpg');
+      $('#profile-avatar').removeClass('border-bright');
+      $('#profile-avatar').addClass('border-dark');
 
       $('#profile-cover').removeClass('deep-bg');
       $('#profile-cover').addClass('shallow-bg');

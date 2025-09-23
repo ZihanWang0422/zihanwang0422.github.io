@@ -1,0 +1,1389 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFR2GFKT75"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-RFR2GFKT75');
+  </script> -->
+  <!-- Google Tag Manager -->
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  })(window,document,'script','dataLayer','GTM-NC38VTD');</script> -->
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta http-equiv="refresh" content="0; URL=https://cs.stanford.edu/~leoyuan/"> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+	<!-- <meta name="google-site-verification" content="u_--0s_Uw50r4zCgRrzltkmFhNCduYOJwPGlKVTuNJU" /> -->
+
+  <title>Zihan Wang</title>
+  <meta name="description" lang="en" content="This is an academic website for Zihan Wang">
+  <meta name="keywords" lang="en" content="Zihan Wang" />
+  <!-- Google Scholar citation metadata to help crawlers find the PDF -->
+  <meta name="citation_title" content="PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting">
+  <meta name="citation_author" content="Zihan Wang">
+  <meta name="citation_pdf_url" content="https://zihanwang0422.github.io/work/PUB.pdf">
+  <link rel="alternate" href="https://zihanwang0422.github.io/work/PUB.pdf" type="application/pdf" />
+  
+
+  <link rel="shortcut icon" href="images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/academicons.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+
+  <script src="js/jquery-2.1.3.min.js"> </script>
+  <script src="js/theme.js"> </script>
+
+  <!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+</script>
+<![endif]-->
+
+  <script type="text/javascript">
+    function ShowHide(divId, linkDivId) {
+        if(document.getElementById(divId).style.display == 'none') {
+            document.getElementById(divId).style.display='block';
+            document.getElementById(linkDivId).style.display='none'; // Hide the "read more" link
+        }
+        else {
+            document.getElementById(divId).style.display = 'none';
+        }
+    }
+  </script>
+
+  <style>
+    /* 为所有列表项设置样式 */
+    li.indented {
+        position: relative;
+        padding-left: 90px; /* 这是对齐效果的关键，可以根据实际内容调整这个值 */
+    }
+
+    li.indented::before {
+        content: attr(data-date);
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+    }
+
+    /* Theme Toggle Button Styles - 月亮图标样式 */
+    .theme-toggle {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Dark Theme Styles */
+    [data-theme="dark"] {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .page-content {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .wrapper {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .page-link {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .page-link:hover {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] #profile-cover {
+        background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%) !important;
+    }
+
+    [data-theme="dark"] #my-name {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] #my-title {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] #my-email {
+        color: #888888 !important;
+    }
+
+    [data-theme="dark"] .md-heading {
+        color: #ffffff !important;
+    }
+
+    /* Section styling with alternating backgrounds */
+    .section {
+        padding: 60px 0;
+        margin: 0;
+    }
+
+    .section-white {
+        background-color: #ffffff;
+    }
+
+    .section-gray {
+        background-color: #f8f9fa;
+    }
+
+    /* Enhanced heading styles */
+    .md-heading {
+        text-align: center;
+        font-size: 48px;
+        font-weight: 700;
+        color: #2c3e50;
+        margin: 0 0 50px 0;
+        padding: 0 20px;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .section-gray .md-heading {
+        color: #2c3e50;
+    }
+
+    .section-white .md-heading {
+        color: #2c3e50;
+    }
+
+    [data-theme="dark"] .bio-body p,
+    [data-theme="dark"] .bio-body li,
+    [data-theme="dark"] .bio-body h3 {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .bio {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .timeline-brief {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .research {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .projects {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .timeline-item {
+        background-color: #2d2d2d !important;
+        border-left-color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .timeline-title a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .timeline-desc {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .pub {
+        background-color: #2d2d2d !important;
+        border: 1px solid #404040 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+
+    [data-theme="dark"] .pub:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+    }
+
+    [data-theme="dark"] .title {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .authors {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .tag {
+        background-color: #404040 !important;
+        color: #e0e0e0 !important;
+        border-color: #555555 !important;
+    }
+
+    [data-theme="dark"] .tag:hover {
+        background-color: #4a9eff !important;
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .site-footer {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .contact-list a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(30, 30, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(40, 40, 40, 1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #fff;
+    }
+
+    [data-theme="dark"] li.indented::before {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .site-nav {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .social-media a {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .footer-col p {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .footer-col a {
+        color: #4a9eff !important;
+    }
+
+    /* TL;DR Styles - flat design */
+    .tldr {
+        background-color: transparent;
+        padding: 8px 0;
+        margin: 8px 0;
+        border: none;
+        font-size: 10pt;
+        font-style: italic;
+        border-radius: 0;
+    }
+
+    [data-theme="dark"] .tldr {
+        background-color: transparent !important;
+        border: none !important;
+        color: #d0d0d0 !important;
+    }
+
+    /* Container Style Improvements - clean flat design */
+    .pub {
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 20px 0;
+        box-shadow: none;
+        margin-bottom: 25px;
+    }
+
+    .pub:hover {
+        box-shadow: none;
+    }
+
+    /* Adjust image position to move left */
+    .pub-left {
+        float: left;
+        width: 25%; /* Compact image area */
+        text-align: left;
+        margin-right: 10px; /* Add some margin to prevent overlap */
+    }
+
+    .pub-right {
+        float: left; /* Ensure proper alignment */
+        width: calc(75% - 10px); /* Adjust for margin */
+    }
+
+    /* Additional optimization for tighter layout */
+    .pub-left img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+    }
+
+    /* Ensure proper clearfix for pub containers */
+    .pub::after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    /* Fix social icon distortion in timeline */
+    .timeline-item .social-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain; /* Maintain aspect ratio */
+        object-position: center;
+        border-radius: 4px;
+        background: white;
+        padding: 2px;
+    }
+
+    [data-theme="dark"] .timeline-item .social-icon {
+        background: #f0f0f0;
+    }
+
+    /* Dark theme updates for new container styles */
+    [data-theme="dark"] .pub {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    [data-theme="dark"] .pub:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    /* Back to Top Button Styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-top {
+        background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+    }
+
+    [data-theme="dark"] .back-to-top:hover {
+        background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    }
+
+    /* Profile title styling */
+    #my-title {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    /* Experience card styles */
+    .experience-card {
+        display: flex;
+        align-items: flex-start;
+        background: transparent;
+        border: none;
+        border-radius: 0;
+        padding: 20px 0;
+        margin-bottom: 15px;
+        box-shadow: none;
+        transition: none;
+    }
+
+    .experience-card:hover {
+        box-shadow: none;
+        transform: none;
+    }
+
+    /* Dark theme for experience cards */
+    [data-theme="dark"] .experience-card {
+        background: transparent !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+
+    [data-theme="dark"] .experience-card:hover {
+        box-shadow: none !important;
+    }
+
+    [data-theme="dark"] .experience-card div[style*="color: #333"] {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .experience-card div[style*="color: #666"] {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .experience-card div[style*="color: #555"] {
+        color: #d0d0d0 !important;
+    }
+
+    /* Global override to remove all shadows and borders for flat design */
+    .pub, .experience-card, .timeline-item, .intro-img, .frame, img {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+    
+    .pub {
+        border: none !important;
+        background: transparent !important;
+    }
+    
+    .timeline-item {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    /* Paper title link styles to match tag colors */
+    .title a {
+        color: #2a7ae2 !important;
+        text-decoration: none !important;
+        transition: color 0.3s ease;
+    }
+
+    .title a:hover {
+        color: #1f5fb4 !important;
+        text-decoration: underline !important;
+    }
+
+    /* Dark theme support for paper title links */
+    [data-theme="dark"] .title a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .title a:hover {
+        color: #66b3ff !important;
+    }
+
+    /* Section divider styles */
+    .section-divider {
+        border-top: 2px solid lightgrey;
+        margin: 30px 0;
+    }
+
+    [data-theme="dark"] .section-divider {
+        border-color: #404040 !important;
+    }
+
+    /* Remove profile avatar border */
+    #profile-avatar {
+        border: none !important;
+    }
+
+    /* Enhanced Profile Cover Styles */
+    #profile-cover {
+        position: relative;
+        height: 100vh;
+        min-height: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 40px;
+        box-sizing: border-box;
+    }
+
+    /* Add overlay for better text readability */
+    #profile-cover::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 1;
+    }
+
+    /* Main Layout Container */
+    .profile-layout {
+        display: flex;
+        width: 100%;
+        max-width: 1000px;
+        align-items: flex-start;
+        gap: 50px;
+        z-index: 10;
+        position: relative;
+        padding: 40px;
+    }
+
+    /* Left Side - Profile Card */
+    .profile-left {
+        flex: 0 0 250px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+    .profile-avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 4px solid rgba(255, 255, 255, 0.8);
+        margin-bottom: 20px;
+        object-fit: cover;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .profile-name {
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-title {
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 5px 0;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    .profile-location {
+        color: #ffffff;
+        font-size: 16px;
+        margin: 0 0 30px 0;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Social Icons */
+    .profile-social {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .social-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #2c3e50;
+        text-decoration: none;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        background: #ffffff;
+        color: #2c3e50;
+        text-decoration: none;
+    }
+
+    .cv-icon {
+        font-size: 12px;
+        font-weight: 700;
+    }
+
+    /* Right Side - About Content */
+    .profile-right {
+        flex: 1;
+        color: #ffffff;
+        padding: 30px;
+        background: none;
+    }
+
+    .about-title {
+        color: #ffffff;
+        font-size: 36px;
+        font-weight: 700;
+        margin: 0 0 25px 0;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    }
+
+    .about-text {
+        color: #ffffff;
+        font-size: 15px;
+        line-height: 1.7;
+        margin-bottom: 18px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+        text-align: justify;
+    }
+
+    .about-text strong {
+        color: #ffffff;
+        font-weight: normal;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .scholar-link {
+        color: #ffffff !important;
+        text-decoration: underline;
+        font-weight: 500;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+    }
+
+    .scholar-link:hover {
+        color: #1d4ed8 !important;
+        text-decoration: underline;
+    }
+
+    .download-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #87ceeb;
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        margin: 20px 0 35px 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+        background: #6bb8e8;
+        color: #ffffff;
+        text-decoration: none;
+    }
+
+    /* Bottom Sections */
+    .bottom-sections {
+        display: flex;
+        gap: 40px;
+        margin-top: 25px;
+    }
+
+    .interests, .education {
+        flex: 1;
+    }
+
+    .interests h3, .education h3 {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
+
+    .interests ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .interests li {
+        color: #ffffff;
+        padding: 6px 0;
+        font-size: 15px;
+        position: relative;
+        padding-left: 18px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .interests li::before {
+        content: '•';
+        color: #ffffff;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .edu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        color: #374151;
+        text-shadow: none;
+    }
+
+    .edu-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .edu-item strong {
+        color: #2c3e50;
+        display: block;
+        font-weight: 600;
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1200px) {
+        .profile-layout {
+            gap: 40px;
+            max-width: 900px;
+        }
+        
+        .profile-left {
+            flex: 0 0 220px;
+        }
+        
+        .about-title {
+            font-size: 32px;
+        }
+        
+        .bottom-sections {
+            gap: 30px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        #profile-cover {
+            padding: 30px 20px;
+        }
+        
+        .profile-layout {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .profile-left {
+            flex: none;
+        }
+        
+        .profile-right {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .about-title {
+            font-size: 32px;
+        }
+        
+        .bottom-sections {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #profile-cover {
+            height: auto;
+            min-height: 100vh;
+            padding: 20px 15px;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+        }
+        
+        .profile-name {
+            font-size: 24px;
+        }
+        
+        .profile-title {
+            font-size: 16px;
+        }
+        
+        .profile-location {
+            font-size: 14px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+        
+        .profile-right {
+            padding: 20px;
+        }
+        
+        .about-title {
+            font-size: 28px;
+        }
+        
+        .about-text {
+            font-size: 15px;
+        }
+        
+        .interests h3, .education h3 {
+            font-size: 18px;
+        }
+        
+        .interests li {
+            font-size: 14px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+        }
+        
+        .profile-social {
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+        
+        .cv-icon {
+            font-size: 10px;
+        }
+        
+        .profile-right {
+            padding: 18px;
+        }
+        
+        .about-title {
+            font-size: 24px;
+        }
+        
+        .about-text {
+            font-size: 14px;
+        }
+    }
+
+    /* Dark theme compatibility - minimal changes since text is already white */
+    [data-theme="dark"] .social-icon {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="dark"] .download-btn {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Hide original profile wrapper */
+    .profile-wrapper {
+        display: none !important;
+    }
+  </style>
+  
+
+  
+</head>
+
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC38VTD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+<!-- End Google Tag Manager (noscript) -->
+
+    <header class="site-header" style="border: 2px solid lightgrey;">
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" id="theme-icon"></i>
+  </div>
+
+  <div class="trigger">
+    <a class="page-link" href="index.html"><b>Home</b></a>
+    <a class="page-link" href="#research"><b>Research</b></a>
+    <a class="page-link" href="projects.html"><b>Projects</b></a>
+    <a class="page-link" href="#timeline"><b>Experiences</b></a>
+    <a class="page-link" href="blog.html"><b>Blog</b></a>
+    <!-- <a class="page-link" href="#academicservices"><b>Academic Services </b></a> -->
+
+    <!-- Button for Posts -->
+  </div>
+</nav>
+  </div>
+</header>
+
+  <div id="profile-cover" class="cover shallow-bg img-responsive"> 
+    <!-- Left-Right Layout Overlay -->
+    <div class="profile-layout">
+      <!-- Left Side: Profile Card -->
+      <div class="profile-left">
+        <img src="images/han.jpeg" alt="Zihan Wang" class="profile-avatar" />
+        <h2 class="profile-name">Zihan WANG</h2>
+        
+        <!-- Social Icons -->
+        <div class="profile-social">
+          <a href="mailto:zhw0422@link.cuhk.edu.hk" target="_blank" class="social-icon">
+            <i class="fa fa-envelope"></i>
+          </a>
+          <a href="https://github.com/ZihanWang0422" target="_blank" class="social-icon">
+            <i class="fa fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/zihanwang0422/" target="_blank" class="social-icon">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a href="https://scholar.google.cz/citations?user=W6U-U80AAAAJ&hl=en" target="_blank" class="social-icon">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Right Side: About Content -->
+      <div class="profile-right">
+        <h1 class="about-title">About Me</h1>
+        
+        <p class="about-text">
+          My name is <strong>Zihan Wang</strong> and I am a M.S. student in the <strong>Robotics</strong> at the <strong>Chinese University of Hong Kong</strong>. Previously, I obtained my B.E. in <strong>Automation Engineering</strong> from <strong>Beihang University</strong>. My research focuses on <strong>Motion Planning</strong>, <strong>Humanoid Robots</strong>, and <strong>Reinforcement Learning</strong>.
+        </p>
+
+        <a href="work/resume.pdf" target="_blank" class="download-btn">
+          <i class="fa fa-download"></i> Download CV
+        </a>
+
+        <!-- Interests and Education -->
+        <div class="bottom-sections">
+          <div class="interests">
+            <h3>Interests</h3>
+            <ul>
+              <li>Motion Planning</li>
+              <li>Humanoid Robots</li>
+              <li>Reinforcement Learning</li>
+            </ul>
+          </div>
+
+    
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="page-content">
+<div class="wrapper">
+
+<!-- Research -->
+<div class="section section-white">
+<div id="research" class="research">
+  <h1 class="md-heading">
+    Research
+  </h1>
+
+  <div class="pub-list" style="max-width: 1000px; margin: 0 auto;">
+
+    <!-- <div class="pub" data-selected="true">
+      <div class="pub-left">
+  <img class="intro-img frame" src="images/worldvla.png">
+      </div>
+      <div class="pub-right">
+        <div class="title">
+          WorldVLA: Towards Autoregressive Action World Model
+        </div>
+        <div class="authors">
+          <font style="font-size: 11pt;">
+            <b>Zihan Wang</b>, Chaohui Yu, Hangjie Yuan, Yuming Jiang, Siteng Huang, Jiayan Guo, Xin Li, Yibing Song, Hao Luo, Fan Wang, Deli Zhao, Hao Chen
+          </font>
+        </div>
+        <div class="publish">
+          <span class="place">Arxiv 2025</span>
+          <span class="place"></span>
+        </div>
+        <div class="tags">
+          [<a class="tag" href="https://arxiv.org/pdf/2506.21539" target="_blank">Paper</a>]
+          [<a class="tag" href="https://github.com/alibaba-damo-academy/WorldVLA" target="_blank">Code</a>]
+        </div>
+      </div>
+    </div> -->
+
+    <div class="pub">
+      <div class="pub-left">
+        <div class="image-hover-container" onmouseenter="startGifPlayback(this)" onmouseleave="stopGifPlayback(this)">
+        <img class="intro-img frame static-image" src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
+        <img class="intro-img frame hover-image" src="images/plasma.gif" alt="Plasma propulsion animation">
+        </div>
+      </div>
+      <div class="pub-right">
+        <div class="title">
+        <a href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer" style="color: #2a7ae2; text-decoration: none;">
+          PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
+        </a>
+        </div>
+        <div class="authors">
+        <span style="font-size: 11pt; font-weight: normal;">
+        Yixing Zhang, <b>Zihan Wang</b>, Zhijun Li, Xuanlin Fan, Jiawei Zhang, Shaoping Wang
+        </span>
+        <br>
+        <span style="font-size: 11pt; font-weight: normal;">
+          arXiv 2025
+        </span>
+        </div>
+        <div class="tags">
+        [<a class="tag" href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">Paper</a>]
+        [<a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">Patent</a>]
+        </div>
+        <div class="tldr">
+        Silent aerial robot using plasma propulsion for ultra-quiet flight with helium-lift platform and two-DOF vector control, ideal for noise-sensitive environments.
+        </div>
+      </div>
+      </div>
+        
+    </div>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="section section-gray">
+<div id="projects" class="projects">
+  <h1 class="md-heading">
+    Selected Projects
+  </h1>
+  <p style="text-align: center; margin-bottom: 40px;">
+    <a href="projects.html" style="color: #0066cc; text-decoration: none; font-weight: bold; font-size: 18px;">View All Projects →</a>
+  </p>
+
+  <div class="pub-list" style="max-width: 1000px; margin: 0 auto;">
+
+      <div class="pub" style="text-align: justify; text-justify: inter-word;">
+        <div class="pub-left">
+          <img class="intro-img frame" src="images/legged-wheel.jpg">
+        </div>
+        <div class="pub-right">
+          <div class="title">
+         Wheel-legged Robot
+          </div>
+          <div class="tags">
+        [<a class="tag" href="https://github.com/ZihanWang0422/wheel-legged-master" target="_blank">Code</a>]
+        [<a class="tag" href="https://youtube.com/shorts/dZCjQW7pA4g?feature=share" target="_blank">Demo</a>]
+          </div>
+          <div class="tldr">
+            We designed a wheel-legged robot utilizing STM32H7 microcontroller with integrated PID and LQR controllers for locomotion and attitude control across complex terrain.
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="pub" style="text-align: justify; text-justify: inter-word;">
+        <div class="pub-left">
+          <img class="intro-img frame" src="images/vla_car.jpg">
+        </div>
+        <div class="pub-right">
+          <div class="title">
+            VLN Car
+          </div>
+          <div class="authors">
+            <font style="font-size: 11pt;">
+              ★ ESDF Mapping ＆ Navigation2 
+            </font>
+          </div>
+          <div class="tags">
+            [<a class="tag" href="https://github.com/EmbodiedLLM/roadRunner" target="_blank">Code</a>]
+          </div>
+          <p style="text-align: justify; text-justify: inter-word; font-weight: normal; font-size: 11pt;">We designed and implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for navigation on NVIDIA Jetson®. We also leveraged ESDF mapping for 3D SLAM, achieving precise environmental reconstruction and optimized path planning.</p>
+        </div>
+      </div>
+
+      <div class="pub" style="text-align: justify; text-justify: inter-word;">
+        <div class="pub-left">
+          <img class="intro-img frame" src="images/yuyuan.jpg">
+        </div>
+        <div class="pub-right">
+          <div class="title">
+            Auto-tracking Car
+          </div>
+          <div class="authors">
+            <font style="font-size: 11pt;">
+              ★ A* Search Algorithm
+            </font>
+          </div>
+          <div class="tags">
+            [<a class="tag" href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a>]
+            [<a class="tag" href="https://youtube.com/shorts/R3W2jP_Io_M?feature=share" target="_blank">Demo</a>]
+          </div>
+          <p style="text-align: justify; text-justify: inter-word; font-weight: normal; font-size: 11pt;">We designed an efficient motion planning algorithm using PID and A* search algorithms that enables the car to avoid randomly positioned obstacles.</p>
+        </div>
+      </div> -->
+
+      <div class="pub" style="text-align: justify; text-justify: inter-word;">
+        <div class="pub-left">
+          <img class="intro-img frame" src="images/zhixing_video.gif">
+        </div>
+        <div class="pub-right">
+          <div class="title">
+            Zhi Xing Robot
+          </div>
+          <div class="tags">
+            [<a class="tag" href="https://youtu.be/74ppMMNvv9I" target="_blank">Demo</a>]
+          </div>
+          <div class="tldr">
+            We designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+<!-- Section Divider -->
+<div class="section-divider"></div>
+
+<!-- Experiences -->
+<div class="section section-white">
+<div id="timeline" class="timeline-brief" style="text-align: left;">
+  <h1 class="md-heading">
+    Experiences
+  </h1>
+  
+  <div style="max-width: none; margin: 0; padding: 0; text-align: left;">
+    
+    <!-- THU Experience -->
+    <div class="experience-card" style="margin-left: 0; text-align: left;">
+      <div style="margin-right: 20px; flex-shrink: 0;">
+        <img src="images/thu.jpg" style="width: 80px; height: 80px; object-fit: contain; border-radius: 6px;">
+      </div>
+      <div style="flex: 1; text-align: left;">
+        <div style="font-size: 14pt; font-weight: bold; color: #333; margin-bottom: 5px; text-align: left;">
+          Research Assistant, THU
+        </div>
+        <div style="font-size: 11pt; color: #666; margin-bottom: 8px; text-align: left;">
+          Mar. 2025 - Jul. 2025
+        </div>
+        <div style="font-size: 11pt; color: #555; text-align: left;">
+          <em>Advised by:</em> <a href="https://brain.tsinghua.edu.cn/en/info/1010/1010.htm" target="_blank" style="color: #0066cc; text-decoration: none;">Prof. Jia Liu</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NUS Experience -->
+    <div class="experience-card" style="margin-left: 0; text-align: left;">
+      <div style="margin-right: 20px; flex-shrink: 0;">
+        <img src="images/nus.jpg" style="width: 80px; height: 80px; object-fit: contain; border-radius: 6px;">
+      </div>
+      <div style="flex: 1; text-align: left;">
+        <div style="font-size: 14pt; font-weight: bold; color: #333; margin-bottom: 5px; text-align: left;">
+          Research Assistant(Remote), NUS
+        </div>
+        <div style="font-size: 11pt; color: #666; margin-bottom: 8px; text-align: left;">
+          Jul. 2023 - Dec. 2023
+        </div>
+        <div style="font-size: 11pt; color: #555; text-align: left;">
+          <em>Advised by:</em> <a href="https://ieeexplore.ieee.org/author/37089168198" target="_blank" style="color: #0066cc; text-decoration: none;">Dr. Wenshuo Wang</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+
+  <br>
+</div>
+
+</div>
+</div>
+
+<!-- JavaScript to handle button clicks -->
+<script>
+  // Get the buttons and publications
+  const showSelectedBtn = document.getElementById('show-selected-btn');
+  const showAllBtn = document.getElementById('show-all-btn');
+  const publications = document.querySelectorAll('.pub');
+
+  // Add event listener to 'Show Selected Publication' button
+  showSelectedBtn.addEventListener('click', function() {
+    publications.forEach(pub => {
+      if (pub.getAttribute('data-selected') === 'true') {
+        pub.style.display = 'block';  // Show selected publication
+      } else {
+        pub.style.display = 'none';  // Hide other publications
+      }
+    });
+  });
+
+  // Add event listener to 'Show All' button
+  showAllBtn.addEventListener('click', function() {
+    publications.forEach(pub => {
+      pub.style.display = 'block';  // Show all publications
+    });
+  });
+</script>
+
+<!-- SiteMap -->
+<!-- <div style="display: flex; justify-content: center; align-items: center;">
+  <div style="max-width: 400px; width: 100%;">
+   <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI'></script>
+  </div>
+</div> -->
+
+
+<!-- Footer -->
+<footer class="site-footer" style="border-top: 2px solid lightgrey;">
+  <div class="wrapper">
+    <div class="footer-col-wrapper" style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+      <div class="footer-col footer-col-1" style="flex: 1; text-align: left;">
+        <div>
+          <a href="https://www.easycounter.com/">
+            <img src="https://www.easycounter.com/counter.php?zihanwang"
+                 border="0" alt="Website Hit Counters">
+          </a>
+          <br>
+        </div>
+      </div>
+
+      <div class="footer-col footer-col-2" style="flex: 2; display: flex; justify-content: center; gap: 15px;">
+        <!-- Social media section removed -->
+      </div>
+	<div class="footer-col footer-col-3" style="flex: 1; text-align: right;">
+		<p class="text">Last updated: Aug, 2025<br></p>
+	</div>
+  </div>
+  </div>
+
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+<script type="text/javascript">
+// Back to Top Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+  });
+
+  // GIF animation control functions
+  function startGifPlayback(container) {
+    // 获取gif图片元素
+    const gifImg = container.querySelector('.hover-image');
+    
+    // 重新设置gif的src来从头开始播放
+    const gifSrc = gifImg.src;
+    gifImg.src = '';
+    
+    // 添加playing类来显示gif
+    container.classList.add('playing');
+    
+    // 短暂延迟后重新设置src，确保gif重新开始播放
+    setTimeout(() => {
+        gifImg.src = gifSrc;
+    }, 10);
+  }
+
+  function stopGifPlayback(container) {
+    // 移除playing类，回到静态图片
+    container.classList.remove('playing');
+    
+    // 重置gif到第一帧
+    const gifImg = container.querySelector('.hover-image');
+    const gifSrc = gifImg.src;
+    gifImg.src = '';
+    setTimeout(() => {
+        gifImg.src = gifSrc;
+    }, 10);
+  }
+</script>
+  </body><!--
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60071442-1', 'auto');
+  ga('send', 'pageview');
+</script>
+-->
+
+<!--<script src="custom-pub.js"></script>-->
+
+</html>

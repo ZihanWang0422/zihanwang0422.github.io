@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFR2GFKT75"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-RFR2GFKT75');
+  </script> -->
+  <!-- Google Tag Manager -->
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  })(window,document,'script','dataLayer','GTM-NC38VTD');</script> -->
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Zihan Wang - Projects</title>
+  <meta name="description" lang="en" content="Projects by Zihan Wang">
+  <meta name="keywords" lang="en" content="Zihan Wang, Projects, Robotics, SLAM, Navigation" />
+
+  <link rel="shortcut icon" href="images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/academicons.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <script src="js/jquery-2.1.3.min.js"> </script>
+
+  <!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+</script>
+<![endif]-->
+
+  <style>
+    .projects-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      grid-auto-rows: auto;
+    }
+    
+    /* 让最后一个项目居中（如果是奇数个） */
+    .project-card:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+      max-width: 50%;
+      margin: 0 auto;
+    }
+    
+    /* 确保课程项目正确对齐 */
+    .course-projects-section {
+      display: contents;
+    }
+    
+    .project-card {
+  background: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  display: flex;
+  flex-direction: column;
+  min-height: 500px;
+  position: relative;
+    }
+    
+    .project-card:hover {
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    
+    .project-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+    }
+    
+    .project-image img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 4px;
+    }
+    
+    /* 当项目图片容器中有两张图片时的样式 */
+    .project-image.dual-images {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      background: #f8f9fa;
+      padding: 4px;
+    }
+    
+    .project-image.dual-images img {
+      width: calc(50% - 4px);
+      height: 192px;
+      max-height: 192px;
+      object-fit: contain;
+      object-position: center;
+      border-radius: 4px;
+      flex-shrink: 0;
+      background: #fff;
+    }
+    
+    .project-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding-bottom: 60px;
+    }
+    
+    .project-title {
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 15px;
+    }
+    
+    .project-description {
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 8px;
+      text-align: justify;
+      min-height: 100px;
+      flex: 1;
+    }
+    
+    .tldr-label {
+      font-weight: bold;
+      color: #333;
+      margin-right: 5px;
+    }
+    
+    .project-tags {
+      margin-bottom: 12px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: flex-start;
+      min-height: 60px;
+      align-content: flex-start;
+    }
+    
+    .tag {
+      display: inline-block;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 500;
+      white-space: nowrap;
+      margin: 0;
+    }
+    
+    /* 硬件标签 - 蓝色底 */
+    .tag.hardware {
+      background: #2196F3;
+    }
+    
+    /* 软件标签 - 绿色底 */
+    .tag.software {
+      background: #4CAF50;
+    }
+    
+    /* 算法标签 - 黄色底 */
+    .tag.algorithm {
+      background: #FF9800;
+    }
+    
+    .project-links {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      right: 20px;
+    }
+    
+    .project-link {
+      color: #0066cc;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 8px 15px;
+      border: 2px solid #0066cc;
+      border-radius: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .project-link:hover {
+      background: #0066cc;
+      color: white;
+      text-decoration: none;
+    }
+    
+    .back-to-home {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 30px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+      font-size: 14px;
+    }
+    
+    .back-to-home:hover {
+      background: rgba(102, 126, 234, 0.1);
+      border-color: #667eea;
+      transform: translateX(-2px);
+      text-decoration: none;
+      color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    }
+
+    /* 双图片并排样式 */
+    .dual-image-container {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  background: #f8f9fa;
+    }
+    
+    .dual-image-container img {
+  width: 48%;
+  height: 180px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 4px;
+    }
+
+    /* 课程项目分隔条样式 */
+    .section-divider {
+      grid-column: 1 / -1;
+      margin: 20px 0 15px 0;
+      text-align: center;
+    }
+    
+    .section-bar {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 10px 25px;
+      border-radius: 8px;
+      display: inline-block;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+    
+    .section-bar:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+    
+    .section-title {
+      font-size: 24px;
+      font-weight: bold;
+      margin: 0;
+      letter-spacing: 0.5px;
+    }
+
+    @media (max-width: 768px) {
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .dual-image-container,
+      .project-image.dual-images {
+        flex-direction: column;
+        height: auto;
+        gap: 6px;
+        padding: 4px;
+      }
+      
+      .dual-image-container img,
+      .project-image.dual-images img {
+        width: 100%;
+        max-width: 100%;
+        height: 140px;
+        object-fit: contain;
+      }
+      
+      .section-bar {
+        padding: 12px 20px;
+      }
+      
+      .section-title {
+        font-size: 20px;
+      }
+    }
+
+    /* Theme Toggle Button Styles - 月亮图标样式 */
+    .theme-toggle {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Dark Theme Styles for Projects Page */
+    [data-theme="dark"] {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .page-link {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .page-link:hover {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .projects-container {
+        background-color: #1a1a1a !important;
+    }
+
+    [data-theme="dark"] .project-card {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .project-card:hover {
+        box-shadow: 0 4px 8px rgba(255,255,255,0.1) !important;
+    }
+
+    [data-theme="dark"] .project-image {
+        background: #404040 !important;
+    }
+
+    [data-theme="dark"] .project-title {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .project-description {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .tldr-label {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .dual-image-container,
+    [data-theme="dark"] .project-image.dual-images {
+        background: #404040 !important;
+    }
+    
+    [data-theme="dark"] .project-image.dual-images img {
+        background: #2d2d2d !important;
+    }
+
+    [data-theme="dark"] .section-bar {
+        background: linear-gradient(135deg, #4a9eff 0%, #667eea 100%) !important;
+    }
+
+  [data-theme="dark"] .back-to-home {
+    color: #4da6ff;
+    background: rgba(30, 30, 30, 0.9);
+    border-color: rgba(77, 166, 255, 0.2);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  }
+
+  [data-theme="dark"] .back-to-home:hover {
+    background: rgba(77, 166, 255, 0.15);
+    border-color: #4da6ff;
+    color: #4da6ff;
+    box-shadow: 0 4px 12px rgba(77, 166, 255, 0.2);
+  }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(30, 30, 30, 0.9) !important;
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(40, 40, 40, 1) !important;
+        border-color: rgba(255, 255, 255, 0.2) !important;
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #fff !important;
+    }
+
+    [data-theme="dark"] footer {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .site-nav .page-link {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .site-nav .page-link:hover {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0 !important;
+    }
+
+    /* Back to Top Button Styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-top {
+        background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+    }
+
+    [data-theme="dark"] .back-to-top:hover {
+        background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC38VTD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+<!-- End Google Tag Manager (noscript) -->
+
+    <header class="site-header" style="border: 2px solid lightgrey;">
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" id="theme-icon"></i>
+  </div>
+
+  <div class="trigger">
+    <a class="page-link" href="index.html#bio"><b>Biography</b></a>
+    <a class="page-link" href="index.html#research"><b>Research</b></a>
+    <a class="page-link" href="projects.html"><b>Projects</b></a>
+    <a class="page-link" href="index.html#timeline"><b>Experiences</b></a>
+    <a class="page-link" href="blog.html"><b>Blog</b></a>
+  </div>
+</nav>
+  </div>
+</header>
+
+<div class="projects-container">
+  <a href="index.html" class="back-to-home">← Back to Home</a>
+  
+  <div class="projects-grid">
+<!-- Section Divider: Research Projects -->
+<div class="section-divider">
+  <div class="section-bar">
+    <h3 class="section-title">Research Projects</h3>
+  </div>
+</div>
+
+    <!-- Project 1: 6DoF Grasping
+  <div class="project-card">
+    <div class="dual-image-container">
+      <img src="images/6dof_grasp1.png" alt="6DoF Occluded Target Object Grasping Architecture">
+      <img src="images/6dof_grasp2.png" alt="6DoF Multi-Modal Approach">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">6-DoF Occluded Target Object Grasping</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        We developed a novel approach for 6-DoF grasping of occluded target objects using vision-language models (VLM) and multi-modal learning. Our system integrates textual prompts, visual perception, and point cloud data through a multi-head attention mechanism to achieve robust grasp affordance prediction and occupancy estimation. The approach combines predefined templates with modal fusion techniques, enabling precise target object identification and grasping in cluttered environments with partial occlusion scenarios.
+      </div>
+      <div class="project-tags">
+        <span class="tag algorithm">6-DoF Grasping</span>
+        <span class="tag algorithm">Vision-Language Model</span>
+
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Project 2: Plasma-propelled Ultra-quiet Flying Robot -->
+  <div class="project-card">
+    <div class="dual-image-container">
+      <img src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
+      <img src="images/plasma.gif" alt="Plasma-propelled ultra-quiet flying robot interior">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Plasma-Propelled Blimp with Two-DOF Vector Thrusting</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        We proposed the design and control of a Plasma-propelled Ultra-silence Blimp
+(PUB), a novel aerial robot employing plasma vector propulsion for ultra-quiet flight without
+mechanical propellers. The system utilizes a helium-lift platform for extended endurance
+and a four-layer ring asymmetric capacitor to generate ionic wind thrust. The modular
+propulsion units allow flexible configuration to meet mission-specific requirements, while a
+two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop slip control scheme is implemented for stable maneuvering.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">ESP32</span>
+        <span class="tag hardware">AC Boost Circuit (Electrical System Design)</span>
+        <span class="tag software">Comsol</span>
+        <span class="tag algorithm">Sliding Mode Control</span>
+
+      </div>
+      <div class="project-links">
+        <a href="https://arxiv.org/pdf/2508.12395" target="_blank" class="project-link">
+          <i class="fa fa-file-text"></i> Paper
+        </a>
+        <a href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" class="project-link">
+          <i class="fa fa-file-text"></i> Patent
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+<!-- Project 6: Building 3D Point Cloud Modeling -->
+<div class="project-card">
+    <div class="dual-image-container">
+        <img src="images/LiDAR.png" alt="3D Point Cloud Building Model 2">
+        <img src="images/pointcloud.png" alt="3D Point Cloud Building Model 1">
+   
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">3D Building Reconstruction</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+       We developed a building fine modeling method based on point cloud segmentation and pointcloud ICP algorithm. Using handheld LiDAR scanners, we generated 3D point clouds of buildings and applied a semantic segmentation model (PointNet++) to improve accuracy and robustness in complex scenes. A geometry–semantic constrained reconstruction algorithm was further designed to restore missing structures. The method achieves efficient and high-precision 3D building models, accurately representing details such as walls, roofs, doors, and windows.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">LiDAR Scanner</span>
+        <span class="tag software">CloudCompare(based on PCL)</span>
+        <span class="tag algorithm">Pointcloud ICP</span>
+
+      </div>
+    </div>
+  </div>
+
+<!-- Section Divider: Competition Projects -->
+<div class="section-divider">
+  <div class="section-bar">
+    <h3 class="section-title">Competition Projects</h3>
+  </div>
+</div>
+
+    <!-- Project 1: Wheel-legged Robot -->
+  <div class="project-card">
+    <div class="dual-image-container">
+      <img src="images/legged-wheel.jpg" alt="Wheel-legged Robot">
+      <img src="images/legged-wheel.gif" alt="Wheel-legged Robot Simulation">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Wheel-legged Robot</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        We designed a wheel-legged robot control system utilizing STM32H7 microcontroller with integrated PID and LQR algorithms for precise motion control and attitude stabilization across complex terrain. The robot combines the advantages of wheeled and legged locomotion, enabling it to navigate both smooth surfaces and rough terrain efficiently.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">STM32</span>
+        <span class="tag software">IsaacLab(Simulation)</span>
+        <span class="tag algorithm">LQR</span>
+        <span class="tag algorithm">PID</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/ZihanWang0422/wheel-legged-master" target="_blank" class="project-link">
+          <i class="fa fa-github"></i> Code
+        </a>
+        <a href="https://youtube.com/shorts/dZCjQW7pA4g?feature=share" target="_blank" class="project-link">
+          <i class="fa fa-play"></i> Video
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 2: Auto-tracking Car -->
+  <div class="project-card">
+    <div class="dual-image-container">
+      <img src="images/yuyuan.jpg" alt="Auto-tracking Car">
+      <img src="images/playground.png" alt="Auto-tracking Car">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Auto-tracking Car</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        We used OpenCV to rectify the camera-captured map and extract obstacle coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">Arduino</span>
+        <span class="tag hardware">ESP32</span>
+        <span class="tag software">PlatformIO</span>
+        <span class="tag algorithm">A* Search</span>
+        <span class="tag algorithm">OpenCV</span>
+        <span class="tag algorithm">PID</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank" class="project-link">
+          <i class="fa fa-github"></i> Code
+        </a>
+        <a href="https://youtube.com/shorts/R3W2jP_Io_M?feature=share" target="_blank" class="project-link">
+          <i class="fa fa-play"></i> Video
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 3: VLN Car -->
+  <div class="project-card">
+    <div class="dual-image-container">
+      <img src="images/vla_car.jpg" alt="VLN Car">
+       <img src="images/NVBlox.png" alt="VLN Car">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Zhi Xing Car II</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        We designed and deployed a SLAM system on NVIDIA Jetson®, integrating 2D LiDAR and Intel® RealSense™ depth camera for robust multi-sensor fusion. Implemented Google Cartographer for high-accuracy 2D localization and mapping, and extended to 3D ESDF-based mapping for precise environmental reconstruction and optimized path planning in real-world navigation tasks.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">NVIDIA Jetson Nano</span>
+        <span class="tag hardware">Intel Realsense D435</span>
+        <span class="tag hardware">MID-360 LiDAR</span>
+        <span class="tag software">ROS2</span>
+        <span class="tag algorithm">Navigation2</span>
+        <span class="tag algorithm">Cartographer</span>
+        <span class="tag algorithm">ESDF Mapping</span>
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/EmbodiedLLM/roadRunner" target="_blank" class="project-link">
+          <i class="fa fa-github"></i> Code
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Project 4: Zhi Xing Robot -->
+  <div class="project-card">
+    <div class="dual-image-container">
+      <img src="images/zhixing.png" alt="Zhi Xing Robot">
+      <img src="images/zhixing_video.gif" alt="Zhi Xing Robot">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Zhi Xing Car I</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        We designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning. The robot integrates multiple sensors and algorithms to achieve robust autonomous navigation in indoor environments.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">Car On-Board Computer</span>
+        <span class="tag software">ROS</span>
+        <span class="tag algorithm">Navigation</span>
+        <span class="tag algorithm">GMapping</span>
+      </div>
+      <div class="project-links">
+        <a href="/work/zhixingmini.pdf" target="_blank" class="project-link">
+          <i class="fa fa-file-pdf-o"></i> Document
+        </a>
+        <a href="https://youtu.be/74ppMMNvv9I" target="_blank" class="project-link">
+          <i class="fa fa-play"></i> Video
+        </a>
+      </div>
+      </div>
+    </div>
+
+<!-- Section Divider: Course Projects -->
+<div class="section-divider">
+  <div class="section-bar">
+    <h3 class="section-title">Course Projects</h3>
+  </div>
+</div>
+
+<div class="course-projects-section">
+<!-- Project 5: Timer Experiment -->
+<div class="project-card">
+    <div class="project-image">
+        <img src="images/timer_circuit.png" alt="Timer Simulation">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Intel 8253 Timer Simulation</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        I used the control word register of the Intel 8253 to write control words and initial count values, enabling read/write operations on the counter, mode selection, and number system determination. This was used for real-time detection, real-time display, and data processing.
+      </div>
+      <div class="project-tags">
+        <span class="tag hardware">Intel 8253</span>
+        <span class="tag hardware">Control Register</span>
+        <span class="tag software">Assembly Language</span>
+        <span class="tag software">Multisim</span>
+
+      </div>
+      <div class="project-links">
+        <a href="https://github.com/ZihanWang0422/Micro_Project" target="_blank" class="project-link">
+          <i class="fa fa-github"></i> Code
+        </a>
+        <a href="https://youtu.be/OVSuZ7Ja9ow" target="_blank" class="project-link">
+          <i class="fa fa-play"></i> Video
+        </a>
+      </div>
+    </div>
+  </div>
+
+<div class="project-card">
+      <div class="dual-image-container">
+        <img src="images/multi.png" alt="Multirotor UAV Control">
+        <img src="images/multi.png" alt="Multirotor UAV Control Simulation">
+    </div>
+    <div class="project-content">
+      <h2 class="project-title">Multirotor UAV Control</h2>
+      <div class="project-description">
+        <span class="tldr-label">TL;DR:</span>
+        In the Multirotor UAV Control course project, I completed the full workflow from system design to control algorithm implementation. Specifically, I designed a coaxial octocopter by selecting and analyzing motors, propellers, ESCs, and batteries to meet load, endurance, and stability requirements. I then built a quaternion-based dynamic model in MATLAB/Simulink and integrated it with FlightGear to achieve 3D flight simulation. Furthermore, I developed an improved artificial potential field controller for trajectory tracking and obstacle avoidance, and extended it to a region coverage planning task for agricultural spraying. These efforts demonstrated the capability of multirotor UAVs to perform autonomous navigation and decision-making in complex environments.
+      </div>
+      <div class="project-tags">
+        <span class="tag software">MATLAB/Simulink</span>
+      </div>
+         <div class="project-links">
+        <a href="https://github.com/ZihanWang0422/Multirotor-UAV-Control" target="_blank" class="project-link">
+          <i class="fa fa-github"></i> Code
+        </a>
+      </div>
+    </div>
+  </div>
+
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" title="返回顶部">
+  <i class="fa fa-arrow-up"></i>
+  <!-- 备用Unicode箭头，如果Font Awesome未加载会显示 -->
+  <span style="font-size: 16px; display: none;">↑</span>
+</button>
+
+<!-- Footer -->
+<footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
+  <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
+</footer>
+
+<script type="text/javascript">
+// Theme Toggle Functionality for Projects Page
+document.addEventListener('DOMContentLoaded', function() {
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+
+    // Check for saved theme preference or default to 'light'
+    const currentTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    
+    // Set initial icon
+    if (currentTheme === 'dark') {
+        themeIcon.className = 'fa fa-sun-o';
+    } else {
+        themeIcon.className = 'fa fa-moon-o';
+    }
+
+    // Theme toggle click handler
+    themeToggle.addEventListener('click', function() {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        document.documentElement.setAttribute('data-theme', newTheme);
+        localStorage.setItem('theme', newTheme);
+        
+        // Update icon
+        if (newTheme === 'dark') {
+            themeIcon.className = 'fa fa-sun-o';
+        } else {
+            themeIcon.className = 'fa fa-moon-o';
+        }
+    });
+});
+
+// Back to Top Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // 检查按钮是否存在
+    if (!backToTopButton) {
+        console.error('返回顶部按钮元素未找到！');
+        return;
+    }
+    
+    console.log('返回顶部按钮已找到，正在初始化...');
+    
+    // 检查Font Awesome是否加载
+    setTimeout(function() {
+        const icon = backToTopButton.querySelector('i.fa');
+        const fallbackSpan = backToTopButton.querySelector('span');
+        
+        if (icon && fallbackSpan) {
+            const iconStyle = window.getComputedStyle(icon);
+            const fontFamily = iconStyle.fontFamily;
+            
+            // 如果Font Awesome未加载，显示备用箭头
+            if (!fontFamily.includes('FontAwesome') && !fontFamily.includes('Font Awesome')) {
+                console.warn('Font Awesome未正确加载，使用备用箭头');
+                icon.style.display = 'none';
+                fallbackSpan.style.display = 'inline';
+            }
+        }
+    }, 1000);
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 100) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        console.log('返回顶部按钮被点击');
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+    
+    // 初始检查
+    if (window.pageYOffset > 100) {
+        backToTopButton.classList.add('show');
+    }
+});
+</script>
+
+</body>
+
+</html>

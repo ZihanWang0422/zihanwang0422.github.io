@@ -139,61 +139,6 @@
         border-color: #404040 !important;
     }
 
-    /* Dynamic navbar styles */
-    .site-header {
-        transition: all 0.3s ease !important;
-        /* Remove blur effects for fully transparent navbar */
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        /* Override default background - start transparent */
-        background-color: transparent !important;
-        border-color: transparent !important;
-        box-shadow: none !important;
-    }
-
-    /* Default page link styles for transparent state */
-    .page-link {
-        color: #333 !important;
-        font-weight: 600 !important;
-        text-shadow: 1px 1px 2px rgba(255,255,255,0.8) !important;
-    }
-
-    .page-link:hover {
-        color: #000 !important;
-    }
-
-    /* Transparent navbar when at top */
-    .site-header.transparent {
-        background-color: transparent !important;
-        border-color: transparent !important;
-        box-shadow: none !important;
-    }
-
-  .site-header.transparent .page-link {
-    color: #ffffff !important; /* White links on transparent navbar */
-    font-weight: 600;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Match about-title shadow */
-  }
-
-  .site-header.transparent .page-link:hover {
-    color: #f0f0f0 !important; /* Slightly lighter on hover */
-  }
-
-    /* Solid navbar when scrolled */
-    .site-header.solid {
-        background-color: rgba(249, 249, 249, 0.95) !important;
-        border-color: #ffffff !important; /* Changed from red to white */
-        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
-    }
-
-    .site-header.solid .page-link {
-        color: #002336 !important;
-    }
-
-    .site-header.solid .page-link:hover {
-        color: #9b3022 !important;
-    }
-
     [data-theme="dark"] .page-link {
         color: #e0e0e0 !important;
     }
@@ -492,9 +437,6 @@
         float: none !important;
         width: auto !important;
         box-sizing: border-box !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
     }
 
     .pub:hover {
@@ -583,9 +525,6 @@
     padding: 0 !important;
     border: none !important;
     z-index: 2 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: space-between !important;
   }
 
   .image-hover-container img,
@@ -769,20 +708,6 @@
         color: #333 !important;
     }
 
-    /* Inline All Projects link styling inside heading */
-    .projects-header .md-heading .projects-link {
-      font-size: 16px;
-      color: #2a7ae2 !important;
-      font-weight: normal;
-      text-decoration: none !important;
-      margin-left: 0 !important;
-      padding-left: 0 !important;
-    }
-
-    .projects-header .md-heading .projects-link:hover {
-      text-decoration: underline !important;
-    }
-
     .research .authors,
     .projects .authors {
         font-size: 14px !important;
@@ -803,36 +728,22 @@
   .research .tldr {
     font-size: 14px !important;
     color: #555 !important;
-    line-height: 1.6 !important; /* Increased for better readability */
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
+    line-height: 1.2 !important;
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
     text-align: justify !important;
-    font-style: italic !important; /* Keep abstract italic */
-    font-weight: normal !important; /* Match surrounding text weight */
   }
 
-  .projects-header {
-    display: flex !important;
-    align-items: center !important;
-    max-width: 900px;
-    margin: 0 auto 0 auto;
-    padding: 0 24px;
+  .projects .tldr {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.2 !important;
+    margin-top: 3px !important;
+    margin-bottom: 0px !important;
+    text-align: justify !important;
   }
 
-  /* Keep the Projects heading visually centered while allowing the link to sit on the right */
-  .projects-header .md-heading {
-    margin: 0 0 12px 0;
-    text-align: center;
-    flex: 1 1 auto;
-    display: flex !important;
-    justify-content: center !important;
-  }
-
-  .projects-link {
-    margin-left: auto !important;
-    white-space: nowrap;
-  }
-  
+  /* Make research title/authors/publish have consistent size/line-height */
   .research .title,
   .research .authors,
   .research .publish {
@@ -898,12 +809,7 @@
         font-size: 14px !important;
         margin-bottom: 3px !important;
         margin-top: 2px !important;
-    line-height: 1.1 !important;
-    margin-top: 0 !important;
-    margin-bottom: 0 !important;
-    margin-left: 0 !important;
-    padding-top: 8px !important;
-    margin-top: auto !important; /* push tags to bottom */
+        line-height: 1.1 !important;
     }
 
     .research .tags a,
@@ -935,16 +841,13 @@
     /* Enhanced Profile Cover Styles */
   #profile-cover {
     position: relative;
-    min-height: 100vh; /* Use full viewport height to ensure complete image display */
+    min-height: 600px;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 40px;
     box-sizing: border-box;
-    /* Remove top margin/padding and extend behind navbar */
-    margin-top: -80px;
-    padding-top: 120px;
   }
 
   /* Add overlay for better text readability (reduced opacity) */
@@ -962,7 +865,7 @@
   /* Restore original background display */
   #profile-cover.shallow-bg {
     background-size: cover !important;
-    background-position: center top !important; /* Changed from center center to center top */
+    background-position: center center !important;
     background-repeat: no-repeat !important;
     background-attachment: scroll !important;
     background-color: transparent !important;
@@ -991,7 +894,7 @@
         width: 150px;
         height: 150px;
         border-radius: 50%;
-    border: 1px solid rgba(0, 0, 0, 0.8);
+        border: 4px solid rgba(255, 255, 255, 0.8);
         margin-bottom: 20px;
         object-fit: cover;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
@@ -1074,8 +977,8 @@
     }
 
     .about-text {
-    color: #ffffff;
-    font-size: 18px;
+        color: #ffffff;
+        font-size: 15px;
         line-height: 1.7;
         margin-bottom: 18px;
         text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
@@ -1135,13 +1038,13 @@
         flex: 1;
     }
 
-  .interests h3, .education h3 {
-    color: #ffffff;
-    font-size: 20px !important; /* Restore original smaller size */
-    font-weight: 600 !important;
-    margin-bottom: 12px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  }
+    .interests h3, .education h3 {
+        color: #ffffff;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 12px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+    }
 
     .interests ul {
         list-style: none;
@@ -1149,15 +1052,14 @@
         margin: 0;
     }
 
-  .interests li {
-    color: #ffffff;
-    padding: 6px 0;
-    font-size: 18px !important; /* Match about-text size */
-    line-height: 1.7 !important;
-    position: relative;
-    padding-left: 18px;
-    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
-  }
+    .interests li {
+        color: #ffffff;
+        padding: 6px 0;
+        font-size: 15px;
+        position: relative;
+        padding-left: 18px;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
 
     .interests li::before {
         content: '•';
@@ -1575,10 +1477,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </span>
         </div>
   <div class="tags">
-  <a class="tag" href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">paper</a> |
-  <a class="tag abstract-toggle" href="javascript:void(0)" onclick="toggleAbstract(this)">abstract</a> |
-  <a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">patent</a> |
-  <a class="tag" href="https://github.com/ZihanWang0422/plasma_propelled_aircraft" target="_blank" rel="noopener noreferrer">code</a>
+  <a class="tag" href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">PDF</a> |
+  <a class="tag abstract-toggle" href="javascript:void(0)" onclick="toggleAbstract(this)">Abstract</a> |
+  <a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">Patent</a>
   </div>
   <div class="tldr" style="display: none;">
         This study presents the design and control of a Plasma-propelled Ultra-silence Blimp
@@ -1602,7 +1503,8 @@ applications.
 <div class="section section-gray">
 <div id="projects" class="projects">
   <div class="projects-header">
-    <h1 class="md-heading">Projects<a class="projects-link" href="projects.html">All Projects</a></h1>
+    <h1 class="md-heading">Projects</h1>
+    <a class="projects-link" href="projects.html">All Projects</a>
   </div>
 
   <div class="pub-list">
@@ -1622,11 +1524,54 @@ applications.
             We designed a wheel-legged robot utilizing STM32H7 microcontroller with integrated PID and LQR controllers for locomotion and attitude control across complex terrain.
           </div>
               <div class="tags">
-        <a class="tag" href="https://github.com/ZihanWang0422/wheel-legged-master" target="_blank">code</a> |
-        <a class="tag" href="https://youtube.com/shorts/dZCjQW7pA4g?feature=share" target="_blank">video</a>
+        <a class="tag" href="https://github.com/ZihanWang0422/wheel-legged-master" target="_blank">Code</a> |
+        <a class="tag" href="https://youtube.com/shorts/dZCjQW7pA4g?feature=share" target="_blank">Demo</a>
           </div>
         </div>
       </div>
+
+      <!-- <div class="pub" style="text-align: justify; text-justify: inter-word;">
+        <div class="pub-left">
+          <img class="intro-img frame" src="images/vla_car.jpg">
+        </div>
+        <div class="pub-right">
+          <div class="title">
+            VLN Car
+          </div>
+          <div class="authors">
+            <font style="font-size: 11pt;">
+              ★ ESDF Mapping ＆ Navigation2 
+            </font>
+          </div>
+          <div class="tags">
+            [<a class="tag" href="https://github.com/EmbodiedLLM/roadRunner" target="_blank">Code</a>]
+          </div>
+          <div class="tldr">
+            We designed and implemented 2D SLAM with Cartographer, enabling high-accuracy localization and mapping for navigation on NVIDIA Jetson®. We also leveraged ESDF mapping for 3D SLAM, achieving precise environmental reconstruction and optimized path planning.
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-left">
+          <img class="intro-img frame" src="images/yuyuan.jpg">
+        </div>
+        <div class="pub-right">
+          <div class="title">
+            Auto-tracking Car
+          </div>
+          <div class="authors">
+            <font style="font-size: 11pt;">
+              ★ A* Search Algorithm
+            </font>
+          </div>
+          <div class="tags">
+            <a class="tag" href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a> |
+            <a class="tag" href="https://youtube.com/shorts/R3W2jP_Io_M?feature=share" target="_blank">Demo</a>
+          </div>
+          <p style="text-align: justify; text-justify: inter-word; font-weight: normal; font-size: 11pt;">We designed an efficient motion planning algorithm using PID and A* search algorithms that enables the car to avoid randomly positioned obstacles.</p>
+        </div>
+      </div> -->
 
       <div class="pub">
         <div class="pub-left">
@@ -1643,7 +1588,7 @@ applications.
             We designed and developed an autonomous navigation robot system based on ROS, supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning.
           </div>
           <div class="tags">
-            <a class="tag" href="https://youtu.be/74ppMMNvv9I" target="_blank">video</a>
+            <a class="tag" href="https://youtu.be/74ppMMNvv9I" target="_blank">Demo</a>
           </div>
         </div>
       </div>
@@ -1705,37 +1650,16 @@ applications.
 </button>
 
 <script type="text/javascript">
-// Back to Top Button Functionality and Dynamic Navbar
+// Back to Top Button Functionality
 document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
-    const siteHeader = document.querySelector('.site-header');
     
-    // Initialize navbar as transparent at page load
-    if (window.pageYOffset <= 100) {
-        siteHeader.classList.add('transparent');
-        siteHeader.classList.remove('solid');
-    }
-    
-    // Show/hide button and control navbar based on scroll position
+    // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
-        const scrollY = window.pageYOffset;
-        
-        // Back to top button logic
-        if (scrollY > 300) {
+        if (window.pageYOffset > 300) {
             backToTopButton.classList.add('show');
         } else {
             backToTopButton.classList.remove('show');
-        }
-        
-        // Dynamic navbar logic
-        if (scrollY <= 100) {
-            // At top - transparent navbar
-            siteHeader.classList.add('transparent');
-            siteHeader.classList.remove('solid');
-        } else {
-            // Scrolled down - solid navbar
-            siteHeader.classList.add('solid');
-            siteHeader.classList.remove('transparent');
         }
     });
     
@@ -1757,11 +1681,11 @@ document.addEventListener('DOMContentLoaded', function() {
     if (tldrDiv.style.display === 'none' || tldrDiv.style.display === '') {
       // Show tldr
       tldrDiv.style.display = 'block';
-      element.textContent = 'abstract';
+      element.textContent = 'Abstract';
     } else {
       // Hide tldr
       tldrDiv.style.display = 'none';
-      element.textContent = 'abstract';
+      element.textContent = 'Abstract';
     }
   }
 

@@ -250,11 +250,12 @@ pre>code {
     font-weight: 400;
     color: #002336;
     line-height: 1.5;
-    font-size: 16px; /* ensure consistent size across pages */
-    padding: 12px 14px; /* give consistent click area */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 18px !important; /* ensure consistent size across pages */
+    padding: 14px 18px !important; /* give consistent click area */
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-height: 56px !important; /* match header height */
 }
 
 .site-nav .page-link:not(:first-child) {

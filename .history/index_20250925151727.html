@@ -1787,18 +1787,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // Only handle same-page anchors or links that point to projects.html when we're on the index page
       const isAnchor = href && href.startsWith('#');
       const isProjectsPageLink = href && href.indexOf('projects.html') !== -1;
-      const isHomeLink = href && (href === '#' || href.indexOf('index.html') !== -1);
       const isIndex = location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname === '';
 
-      // Handle Home links on the index page: smooth-scroll to top/profile-cover
-      if ((isHomeLink && isIndex) || isAnchor || (isProjectsPageLink && isIndex)) {
+      if (isAnchor || (isProjectsPageLink && isIndex)) {
         ev.preventDefault();
 
-        // Determine target id: Home -> profile-cover/top, direct anchor, or map projects.html -> #projects
-        let targetId = null;
-        if (isHomeLink) targetId = 'profile-cover';
-        else if (isAnchor) targetId = href.slice(1);
-        else if (isProjectsPageLink) targetId = 'projects';
+        // Determine target id: direct anchor or map projects.html -> #projects
+        const targetId = isAnchor ? href.slice(1) : 'projects';
         const targetEl = document.getElementById(targetId);
         if (!targetEl) return; // nothing to scroll to
 
@@ -1815,106 +1810,71 @@ document.addEventListener('DOMContentLoaded', function() {
   
   // Scrollspy: highlight nav link for the section currently in view
   (function() {
+  // Collect sections that have an id (common pattern in this page)
+  // include section elements and common page blocks like .section, .research, .projects that carry an id
+  const sections = Array.from(document.querySelectorAll('section[id], .section[id], .research[id], .projects[id]'));
     const header = document.querySelector('.site-header');
-    
-    // Define sections in order with their IDs and corresponding nav links
-    const sectionConfig = [
-      { id: 'profile-cover', navText: 'Home' },      // Home section
-      { id: 'research', navText: 'Research' },       // Research section  
-      { id: 'projects', navText: 'Projects' }        // Projects section
-    ];
 
-    // Build mapping: section element -> nav link
-    const sectionToLink = new Map();
-    
-    sectionConfig.forEach(config => {
-      const sectionEl = document.getElementById(config.id);
-      if (sectionEl) {
-        // Find nav link by text content or href
-        const navLink = Array.from(navLinks).find(link => {
-          const linkText = link.textContent.trim();
-          const href = link.getAttribute('href') || '';
-          
-          return linkText.includes(config.navText) || 
-                 (config.id === 'research' && href.includes('#research')) ||
-                 (config.id === 'projects' && href.includes('projects.html'));
-        });
-        
-        if (navLink) {
-          sectionToLink.set(sectionEl, navLink);
-        }
+    // Map section id -> nav link
+    const idToLink = {};
+    navLinks.forEach(link => {
+      const href = link.getAttribute('href') || '';
+      if (href.startsWith('#')) {
+        idToLink[href.slice(1)] = link;
+      } else if (href.indexOf('projects.html') !== -1) {
+        // treat projects.html as linking to #projects on the index
+        idToLink['projects'] = link;
+      } else if (href.indexOf('index.html') !== -1 && href.indexOf('#') !== -1) {
+        const parts = href.split('#');
+        idToLink[parts[1]] = link;
       }
     });
 
     function onScrollSpy() {
       const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      const headerHeight = header ? header.getBoundingClientRect().height : 60;
-      const viewportHeight = window.innerHeight;
-      
-      // Clear all active states and remove focus to prevent clicked links from staying highlighted
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        link.classList.remove('current');
-        link.removeAttribute('aria-current');
-        try { link.blur(); } catch (e) { /* ignore */ }
-      });
+      const offset = header ? Math.round(header.getBoundingClientRect().height) : 0;
+      const checkpoint = scrollPos + offset + 10; // small padding to trigger earlier
 
-      let activeLink = null;
-
-      // Check each section to see which one is most visible
-      sectionToLink.forEach((navLink, sectionEl) => {
-        const rect = sectionEl.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionBottom = rect.bottom;
-        const sectionHeight = rect.height;
-        
-        // Calculate how much of the section is visible
-        const visibleTop = Math.max(0, Math.min(sectionTop + headerHeight, viewportHeight));
-        const visibleBottom = Math.max(0, Math.min(sectionBottom, viewportHeight));
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        const visibilityRatio = visibleHeight / Math.min(sectionHeight, viewportHeight - headerHeight);
-        
-        // Section is considered active if:
-        // 1. More than 30% is visible, OR
-        // 2. Section top is near the header (within 100px below header)
-        const isActive = visibilityRatio > 0.3 || 
-                        (sectionTop >= -headerHeight && sectionTop <= headerHeight + 100);
-        
-        if (isActive) {
-          activeLink = navLink;
-        }
-      });
-
-      // If no section is clearly active, use fallback logic
-      if (!activeLink) {
-        if (scrollPos < 200) {
-          // Near top of page - highlight Home
-          const homeLink = Array.from(navLinks).find(link => 
-            link.textContent.trim().includes('Home'));
-          activeLink = homeLink;
+      let activeId = null;
+      for (let i = 0; i < sections.length; i++) {
+        const sec = sections[i];
+        const top = sec.offsetTop;
+        const bottom = top + sec.offsetHeight;
+        if (checkpoint >= top && checkpoint < bottom) {
+          activeId = sec.id || null;
+          break;
         }
       }
 
-      // Ensure any currently focused nav item doesn't force styling; blur it
-      try {
-        const af = document.activeElement;
-        if (af && af.classList && af.classList.contains('page-link')) af.blur();
-      } catch (e) {}
+      // Clear previous
+      navLinks.forEach(l => {
+        l.classList.remove('active');
+        l.classList.remove('current');
+        l.removeAttribute('aria-current');
+      });
 
-      // Apply active state
-      if (activeLink) {
-        activeLink.classList.add('active');
-        activeLink.classList.add('current');
-        activeLink.setAttribute('aria-current', 'page');
-        try { activeLink.focus({ preventScroll: true }); } catch (e) {}
+      if (activeId && idToLink[activeId]) {
+        const link = idToLink[activeId];
+        link.classList.add('active');
+        link.classList.add('current');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        // Optionally, when near top, highlight Home if present (href="#top" or index link)
+        if (scrollPos < 120) {
+          const home = navLinks[0];
+          if (home) {
+            home.classList.add('active');
+            home.setAttribute('aria-current', 'page');
+          }
+        }
       }
     }
 
-    // Throttled scroll handler
+    // Run on load and on scroll (throttle using requestAnimationFrame)
     let ticking = false;
     function onScroll() {
       if (!ticking) {
-        window.requestAnimationFrame(() => {
+        window.requestAnimationFrame(function() {
           onScrollSpy();
           ticking = false;
         });
@@ -1922,10 +1882,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     }
 
-    // Initialize and bind events
-    setTimeout(onScrollSpy, 100); // Small delay to ensure layout is complete
+    // Initialize
+    onScrollSpy();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
   })();
 
   });

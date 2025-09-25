@@ -1787,18 +1787,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // Only handle same-page anchors or links that point to projects.html when we're on the index page
       const isAnchor = href && href.startsWith('#');
       const isProjectsPageLink = href && href.indexOf('projects.html') !== -1;
-      const isHomeLink = href && (href === '#' || href.indexOf('index.html') !== -1);
       const isIndex = location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname === '';
 
-      // Handle Home links on the index page: smooth-scroll to top/profile-cover
-      if ((isHomeLink && isIndex) || isAnchor || (isProjectsPageLink && isIndex)) {
+      if (isAnchor || (isProjectsPageLink && isIndex)) {
         ev.preventDefault();
 
-        // Determine target id: Home -> profile-cover/top, direct anchor, or map projects.html -> #projects
-        let targetId = null;
-        if (isHomeLink) targetId = 'profile-cover';
-        else if (isAnchor) targetId = href.slice(1);
-        else if (isProjectsPageLink) targetId = 'projects';
+        // Determine target id: direct anchor or map projects.html -> #projects
+        const targetId = isAnchor ? href.slice(1) : 'projects';
         const targetEl = document.getElementById(targetId);
         if (!targetEl) return; // nothing to scroll to
 
@@ -1851,12 +1846,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const headerHeight = header ? header.getBoundingClientRect().height : 60;
       const viewportHeight = window.innerHeight;
       
-      // Clear all active states and remove focus to prevent clicked links from staying highlighted
+      // Clear all active states
       navLinks.forEach(link => {
         link.classList.remove('active');
         link.classList.remove('current');
         link.removeAttribute('aria-current');
-        try { link.blur(); } catch (e) { /* ignore */ }
       });
 
       let activeLink = null;
@@ -1895,18 +1889,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
-      // Ensure any currently focused nav item doesn't force styling; blur it
-      try {
-        const af = document.activeElement;
-        if (af && af.classList && af.classList.contains('page-link')) af.blur();
-      } catch (e) {}
-
       // Apply active state
       if (activeLink) {
         activeLink.classList.add('active');
         activeLink.classList.add('current');
         activeLink.setAttribute('aria-current', 'page');
-        try { activeLink.focus({ preventScroll: true }); } catch (e) {}
       }
     }
 

@@ -1779,7 +1779,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // Intercept navigation link clicks to provide offset smooth scrolling
   // This keeps current hrefs (e.g., projects.html) but provides a smoother UX when on the index page.
-  const navLinks = document.querySelectorAll('.page-link');
+  const navLinks = document.querySelectorAll('.page-link, .projects-link');
   navLinks.forEach(function(link) {
     link.addEventListener('click', function(ev) {
       const href = link.getAttribute('href');
@@ -1787,18 +1787,13 @@ document.addEventListener('DOMContentLoaded', function() {
       // Only handle same-page anchors or links that point to projects.html when we're on the index page
       const isAnchor = href && href.startsWith('#');
       const isProjectsPageLink = href && href.indexOf('projects.html') !== -1;
-      const isHomeLink = href && (href === '#' || href.indexOf('index.html') !== -1);
       const isIndex = location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname === '';
 
-      // Handle Home links on the index page: smooth-scroll to top/profile-cover
-      if ((isHomeLink && isIndex) || isAnchor || (isProjectsPageLink && isIndex)) {
+      if (isAnchor || (isProjectsPageLink && isIndex)) {
         ev.preventDefault();
 
-        // Determine target id: Home -> profile-cover/top, direct anchor, or map projects.html -> #projects
-        let targetId = null;
-        if (isHomeLink) targetId = 'profile-cover';
-        else if (isAnchor) targetId = href.slice(1);
-        else if (isProjectsPageLink) targetId = 'projects';
+        // Determine target id: direct anchor or map projects.html -> #projects
+        const targetId = isAnchor ? href.slice(1) : 'projects';
         const targetEl = document.getElementById(targetId);
         if (!targetEl) return; // nothing to scroll to
 
@@ -1812,122 +1807,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
-  
-  // Scrollspy: highlight nav link for the section currently in view
-  (function() {
-    const header = document.querySelector('.site-header');
-    
-    // Define sections in order with their IDs and corresponding nav links
-    const sectionConfig = [
-      { id: 'profile-cover', navText: 'Home' },      // Home section
-      { id: 'research', navText: 'Research' },       // Research section  
-      { id: 'projects', navText: 'Projects' }        // Projects section
-    ];
-
-    // Build mapping: section element -> nav link
-    const sectionToLink = new Map();
-    
-    sectionConfig.forEach(config => {
-      const sectionEl = document.getElementById(config.id);
-      if (sectionEl) {
-        // Find nav link by text content or href
-        const navLink = Array.from(navLinks).find(link => {
-          const linkText = link.textContent.trim();
-          const href = link.getAttribute('href') || '';
-          
-          return linkText.includes(config.navText) || 
-                 (config.id === 'research' && href.includes('#research')) ||
-                 (config.id === 'projects' && href.includes('projects.html'));
-        });
-        
-        if (navLink) {
-          sectionToLink.set(sectionEl, navLink);
-        }
-      }
-    });
-
-    function onScrollSpy() {
-      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      const headerHeight = header ? header.getBoundingClientRect().height : 60;
-      const viewportHeight = window.innerHeight;
-      
-      // Clear all active states and remove focus to prevent clicked links from staying highlighted
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        link.classList.remove('current');
-        link.removeAttribute('aria-current');
-        try { link.blur(); } catch (e) { /* ignore */ }
-      });
-
-      let activeLink = null;
-
-      // Check each section to see which one is most visible
-      sectionToLink.forEach((navLink, sectionEl) => {
-        const rect = sectionEl.getBoundingClientRect();
-        const sectionTop = rect.top;
-        const sectionBottom = rect.bottom;
-        const sectionHeight = rect.height;
-        
-        // Calculate how much of the section is visible
-        const visibleTop = Math.max(0, Math.min(sectionTop + headerHeight, viewportHeight));
-        const visibleBottom = Math.max(0, Math.min(sectionBottom, viewportHeight));
-        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
-        const visibilityRatio = visibleHeight / Math.min(sectionHeight, viewportHeight - headerHeight);
-        
-        // Section is considered active if:
-        // 1. More than 30% is visible, OR
-        // 2. Section top is near the header (within 100px below header)
-        const isActive = visibilityRatio > 0.3 || 
-                        (sectionTop >= -headerHeight && sectionTop <= headerHeight + 100);
-        
-        if (isActive) {
-          activeLink = navLink;
-        }
-      });
-
-      // If no section is clearly active, use fallback logic
-      if (!activeLink) {
-        if (scrollPos < 200) {
-          // Near top of page - highlight Home
-          const homeLink = Array.from(navLinks).find(link => 
-            link.textContent.trim().includes('Home'));
-          activeLink = homeLink;
-        }
-      }
-
-      // Ensure any currently focused nav item doesn't force styling; blur it
-      try {
-        const af = document.activeElement;
-        if (af && af.classList && af.classList.contains('page-link')) af.blur();
-      } catch (e) {}
-
-      // Apply active state
-      if (activeLink) {
-        activeLink.classList.add('active');
-        activeLink.classList.add('current');
-        activeLink.setAttribute('aria-current', 'page');
-        try { activeLink.focus({ preventScroll: true }); } catch (e) {}
-      }
-    }
-
-    // Throttled scroll handler
-    let ticking = false;
-    function onScroll() {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          onScrollSpy();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }
-
-    // Initialize and bind events
-    setTimeout(onScrollSpy, 100); // Small delay to ensure layout is complete
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll, { passive: true });
-  })();
-
   });
 
   // Abstract toggle functionality

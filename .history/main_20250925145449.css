@@ -250,7 +250,7 @@ pre>code {
     font-weight: 400;
     color: #002336;
     line-height: 1.5;
-    font-size: 16px; /* ensure consistent size across pages */
+    font-size: 13px; /* reduced by 3px per user request */
     padding: 12px 14px; /* give consistent click area */
     display: inline-flex;
     align-items: center;

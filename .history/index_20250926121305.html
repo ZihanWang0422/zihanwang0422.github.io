@@ -859,20 +859,13 @@
   overflow-wrap: break-word !important;
   }
 
-  /* Projects tldr (abstract) should match Research styling: justify and max-width */
+  /* Ensure projects summaries are justified and support hyphenation */
   .projects .tldr,
   .projects .abstract {
-    font-size: 14px !important;
-    color: #555 !important;
-    line-height: 1.6 !important;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
     text-align: justify !important;
-    font-style: italic !important; /* keep same emphasis */
-    font-weight: normal !important;
-    max-width: 60ch !important; /* match research */
-    width: 100% !important;
-    box-sizing: border-box !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
     overflow-wrap: break-word !important;
   }
 

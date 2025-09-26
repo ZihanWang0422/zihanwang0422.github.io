@@ -853,27 +853,37 @@
     font-style: italic !important; /* Keep abstract italic */
     font-weight: normal !important; /* Match surrounding text weight */
   /* limit line length for improved readability and prevent overflow */
-  max-width: 60ch !important;
+  max-width: 70ch !important;
   width: 100% !important;
   box-sizing: border-box !important;
   overflow-wrap: break-word !important;
   }
 
-  /* Projects tldr (abstract) should match Research styling: justify and max-width */
-  .projects .tldr,
-  .projects .abstract {
-    font-size: 14px !important;
-    color: #555 !important;
-    line-height: 1.6 !important;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
+  /* Ensure projects summaries match research constraints and support hyphenation */
+  .projects .tldr {
     text-align: justify !important;
-    font-style: italic !important; /* keep same emphasis */
-    font-weight: normal !important;
-    max-width: 60ch !important; /* match research */
+    -webkit-text-size-adjust: 100% !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
+    overflow-wrap: break-word !important;
+  /* match research line-length and wrapping */
+  max-width: 70ch !important;
     width: 100% !important;
     box-sizing: border-box !important;
+    font-style: italic !important; /* keep tldr italic like research */
+  }
+
+  .projects .abstract {
+    text-align: justify !important;
+    -webkit-text-size-adjust: 100% !important;
+    text-justify: inter-word !important;
+    hyphens: auto !important;
     overflow-wrap: break-word !important;
+  /* match research abstract constraints */
+  max-width: 70ch !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    font-style: normal !important;
   }
 
   .projects-header {
@@ -939,7 +949,7 @@
   /* Constrain abstract width and ensure it wraps inside flex container */
   .pub-right .abstract,
   .research .abstract {
-    max-width: 60ch !important;
+    max-width: 70ch !important;
     width: 100% !important;
     box-sizing: border-box !important;
     overflow-wrap: break-word !important;

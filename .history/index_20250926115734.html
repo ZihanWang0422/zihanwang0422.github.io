@@ -501,11 +501,9 @@
         padding: 12px 0 !important;
         box-shadow: none !important;
         margin-bottom: 12px !important;
-    display: flex !important;
-    align-items: flex-start !important;
+        display: flex !important;
+        align-items: flex-start !important;
   gap: 115px !important;
-    /* allow items to wrap on small viewports so right column doesn't get clipped */
-    flex-wrap: wrap !important;
         width: 100% !important;
         box-sizing: border-box !important;
     }
@@ -524,9 +522,7 @@
     }
     
   .pub-right {
-  flex: 1 !important;
-  /* allow flex children to shrink below their content width (prevents overflow/clipping) */
-  min-width: 0 !important;
+    flex: 1 !important;
     padding-left: calc(20px + 1ch) !important;
         padding-right: 0 !important;
         padding-top: 0 !important;
@@ -852,28 +848,6 @@
     text-align: justify !important;
     font-style: italic !important; /* Keep abstract italic */
     font-weight: normal !important; /* Match surrounding text weight */
-  /* limit line length for improved readability and prevent overflow */
-  max-width: 60ch !important;
-  width: 100% !important;
-  box-sizing: border-box !important;
-  overflow-wrap: break-word !important;
-  }
-
-  /* Projects tldr (abstract) should match Research styling: justify and max-width */
-  .projects .tldr,
-  .projects .abstract {
-    font-size: 14px !important;
-    color: #555 !important;
-    line-height: 1.6 !important;
-    margin-top: 6px !important;
-    margin-bottom: 6px !important;
-    text-align: justify !important;
-    font-style: italic !important; /* keep same emphasis */
-    font-weight: normal !important;
-    max-width: 60ch !important; /* match research */
-    width: 100% !important;
-    box-sizing: border-box !important;
-    overflow-wrap: break-word !important;
   }
 
   .projects-header {
@@ -932,18 +906,12 @@
         font-style: normal;
         transition: all 0.3s ease;
         overflow: hidden;
+        max-width: 300px;
+        margin-left: auto;
+        margin-right: auto;
         max-height: 0;
         opacity: 0;
     }
-
-  /* Constrain abstract width and ensure it wraps inside flex container */
-  .pub-right .abstract,
-  .research .abstract {
-    max-width: 60ch !important;
-    width: 100% !important;
-    box-sizing: border-box !important;
-    overflow-wrap: break-word !important;
-  }
 
     .abstract.show {
         max-height: 300px;

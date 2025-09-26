@@ -71,11 +71,12 @@
   margin-top: 5px;
   font-weight: normal;
     }
-    /* 强制覆盖：标题下方整体日期区域（.blog-meta）为白色，包括图标 */
-    .blog-header .blog-meta, .blog-header .blog-meta, .blog-header .blog-meta * {
-      color: #ffffff !important;
-      fill: #ffffff !important;
-    }
+
+      /* 强制覆盖：确保标题下方的日期和内部图标为白色（优先级更高） */
+      .blog-header .update-date, .blog-header .update-date * {
+        color: #ffffff !important;
+        fill: #ffffff !important; /* 针对 svg 图标 */
+      }
     
     .blog-meta {
       color: #666;

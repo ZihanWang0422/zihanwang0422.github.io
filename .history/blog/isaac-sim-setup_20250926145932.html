@@ -19,10 +19,11 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 
   <script src="../js/jquery-2.1.3.min.js"> </script>
+  <script src="../js/theme.js"> </script>
 
   <style>
     .blog-container {
-      max-width: 800px;
+      max-width: 1000px;
       margin: 0 auto;
       padding: 20px;
       line-height: 1.6;
@@ -31,10 +32,49 @@
     .blog-header {
       text-align: center;
       margin-bottom: 40px;
-      padding: 40px 0;
-      background: linear-gradient(135deg, #667eea 0%, #177bcc 100%);
+      padding: 50px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
       color: white;
-      border-radius: 8px;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    
+    .blog-header h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .blog-header .update-date {
+  position: relative;
+  z-index: 1;
+  font-size: 1rem;
+  color: #ffffff; /* 强制白色日期 */
+  margin-top: 5px;
+  font-weight: normal;
+    }
+    /* 强制覆盖：标题下方整体日期区域（.blog-meta）为白色，包括图标 */
+    .blog-header .blog-meta, .blog-header .blog-meta * {
+      color: #ffffff !important;
+      fill: #ffffff !important;
     }
     
     .blog-meta {
@@ -139,16 +179,30 @@
       margin-bottom: 5px;
     }
     
-    .back-to-blog {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: #0066cc;
+    .back-to-home {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 30px;
+      color: #667eea;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+      font-size: 14px;
     }
     
-    .back-to-blog:hover {
-      text-decoration: underline;
+    .back-to-home:hover {
+      background: rgba(102, 126, 234, 0.1);
+      border-color: #667eea;
+      transform: translateX(-2px);
+      text-decoration: none;
+      color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
     }
     
     .blog-tags {
@@ -171,8 +225,9 @@
     /* Table of Contents Styles */
     .toc-container {
       position: fixed;
-      top: 20px;
+      top: 35%;
       right: 20px;
+      transform: translateY(-50%);
       width: 280px;
       max-height: 80vh;
       background: rgba(255, 255, 255, 0.95);
@@ -265,13 +320,203 @@
     html {
       scroll-behavior: smooth;
     }
+
+    /* Theme Toggle Button Styles */
+    .theme-toggle {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Dark Theme Styles */
+    [data-theme="dark"] {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .blog-container {
+        background-color: #1a1a1a !important;
+    }
+
+    [data-theme="dark"] .blog-header {
+        background: linear-gradient(135deg, #2d5aa0 0%, #1e3a5f 100%) !important;
+    }
+
+    [data-theme="dark"] .blog-content {
+        background-color: #2d2d2d !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .back-to-home {
+        color: #4da6ff !important;
+        background: rgba(30, 30, 30, 0.9) !important;
+        border-color: rgba(77, 166, 255, 0.2) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
+    }
+
+    [data-theme="dark"] .back-to-home:hover {
+        background: rgba(77, 166, 255, 0.15) !important;
+        border-color: #4da6ff !important;
+        color: #4da6ff !important;
+        box-shadow: 0 4px 12px rgba(77, 166, 255, 0.2) !important;
+    }
+
+    [data-theme="dark"] .toc-container {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .toc-header {
+        background-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .toc-link {
+        color: #d0d0d0 !important;
+    }
+
+    [data-theme="dark"] .toc-link:hover {
+        color: #4da6ff !important;
+    }
+
+    [data-theme="dark"] h1, [data-theme="dark"] h2, [data-theme="dark"] h3 {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .highlight {
+        background-color: #404040 !important;
+    }
+
+    [data-theme="dark"] pre {
+        background-color: #2d2d2d !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] code {
+        background-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(30, 30, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(40, 40, 40, 1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #fff;
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link:hover {
+        color: #4da6ff;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0;
+    }
+
+    /* Back to Top Button Styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-top {
+        background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+    }
+
+    [data-theme="dark"] .back-to-top:hover {
+        background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    }
   </style>
 
 </head>
 
 <body>
 
-    <header class="site-header" style="border: 2px solid lightgrey;">
+    <header class="site-header" style="border: 2px solid lightgrey; position: relative;">
+
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" aria-hidden="true" id="theme-icon"></i>
+  </div>
 
   <div class="wrapper">
 <nav class="site-nav">
@@ -284,10 +529,9 @@
   </a>
 
   <div class="trigger">
-    <a class="page-link" href="../index.html#bio"><b>Biography</b></a>
-    <a class="page-link" href="../index.html#timeline"><b>Experiences</b></a>
+    <a class="page-link" href="../index.html"><b>Home</b></a>
     <a class="page-link" href="../index.html#research"><b>Research</b></a>
-    <a class="page-link" href="../index.html#projects"><b>Projects</b></a>
+    <a class="page-link" href="../projects.html"><b>Projects</b></a>
     <a class="page-link" href="../blog.html"><b>Blog</b></a>
   </div>
 </nav>
@@ -295,7 +539,7 @@
 </header>
 
 <div class="blog-container">
-  <a href="../blog.html" class="back-to-blog">← Back to Blog List</a>
+  <a href="../blog.html" class="back-to-home">← Back to Blog List</a>
   
   <div class="blog-header">
     <h1>IsaacSim Environment Setup</h1>
@@ -348,48 +592,48 @@
 
     <p><a href="https://www.nvidia.com/en-us/geforce/drivers/">Official GeForce Drivers NVIDIA</a></p>
 
-    <p><a href="https://blog.csdn.net/qq_34972053/article/details/127689332">ubuntu22.04安装nvidia驱动/CUDA/cudnn_</a></p>
+    <p><a href="https://blog.csdn.net/qq_34972053/article/details/127689332">Ubuntu 22.04 NVIDIA Driver/CUDA/cuDNN Installation</a></p>
 
-    <h3 id="cuda-installation">Cuda安装相关</h3>
+    <h3 id="cuda-installation">CUDA Installation</h3>
 
     <p>1. Nvidia Driver</p>
 
     <div class="code-block-container">
-      <pre><code>#卸载nvidia driver
+      <pre><code># Uninstall NVIDIA driver
 sudo apt-get --purge remove "*nvidia*"
 sudo apt autoremove
-#安装指定版本driver
-sudo add-apt-repository ppa:graphics-drivers/ppa  # 加入官方ppa源
-sudo apt update  # 检查软件包更新列表
-apt list --upgradable  # 查看可更新的软件包列表
-sudo apt upgrade  # 更新所有可更新的软件包
-#下载driver
-ubuntu-drivers devices    # ubuntu检测n卡的可选驱动
-sudo apt install nvidia-driver-5xx  # 根据自己的n卡可选驱动下载显卡驱动</code></pre>
+# Install specific version driver
+sudo add-apt-repository ppa:graphics-drivers/ppa  # Add official PPA source
+sudo apt update  # Check package update list
+apt list --upgradable  # View upgradable package list
+sudo apt upgrade  # Update all upgradable packages
+# Download driver
+ubuntu-drivers devices    # Ubuntu detects available drivers for NVIDIA card
+sudo apt install nvidia-driver-5xx  # Install graphics driver based on your NVIDIA card</code></pre>
     </div>
 
-    <p>2. 下载cuda</p>
+    <p>2. Download CUDA</p>
 
     <div class="code-block-container">
-      <pre><code>#下载链接https://developer.nvidia.com/cuda-toolkit-archive</code></pre>
+      <pre><code># Download link: https://developer.nvidia.com/cuda-toolkit-archive</code></pre>
     </div>
 
-    <p>3. 切换cuda版本：</p>
+    <p>3. Switch CUDA version:</p>
 
     <div class="code-block-container">
-      <pre><code>#查看已安装的cuda
+      <pre><code># Check installed CUDA versions
 ls -l /usr/local | grep cuda
-#打开环境变量
+# Open environment variables
 vim ~/.bashrc
-#按i进入编辑模式，粘贴下方命令。Esc，输入:wq保存并退出
+# Press 'i' to enter edit mode, paste the following commands. Press Esc, type :wq to save and exit
 export PATH=/usr/local/cuda-12.6/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LD_LIBRARY_PATH
 export LIBRARY_PATH=/usr/local/cuda-12.6/lib64:$LIBRARY_PATH
-#保存环境变量
+# Save environment variables
 source ~/.bashrc</code></pre>
     </div>
 
-    <p>4. cuda卸载：</p>
+    <p>4. CUDA uninstall:</p>
 
     <div class="code-block-container">
       <pre><code>cd /usr/local/cuda-xx.x/bin/
@@ -397,11 +641,11 @@ sudo ./cuda-uninstaller
 sudo rm -rf /usr/local/cuda-xx.x</code></pre>
     </div>
 
-    <h3 id="docker-config">Docker 配置：</h3>
+    <h3 id="docker-config">Docker Configuration:</h3>
 
     <p><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/install_container.html">Container Installation — Isaac Sim Documentation</a></p>
 
-    <p>1. Docker卸载</p>
+    <p>1. Docker uninstall</p>
 
     <div class="code-block-container">
       <pre><code>sudo systemctl stop docker
@@ -412,7 +656,7 @@ sudo rm -rf /var/run/docker.sock
 sudo groupdel docker</code></pre>
     </div>
 
-    <p>2. Docker 下载：</p>
+    <p>2. Docker download:</p>
 
     <div class="code-block-container">
       <pre><code>curl -fsSL https://get.docker.com -o get-docker.sh
@@ -422,17 +666,17 @@ sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 
-#设置开机自启动docker
+# Set Docker to start automatically on boot
 systemctl enable docker
 sudo systemctl restart docker
 
-#验证docker
+# Verify Docker
 docker run hello-world
-#查看docker里面安装的镜像文件
+# View installed Docker images
 docker images</code></pre>
     </div>
 
-    <p>3. 下载NVIDIA Container Toolkit：</p>
+    <p>3. Download NVIDIA Container Toolkit:</p>
 
     <div class="code-block-container">
       <pre><code>curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
@@ -442,27 +686,27 @@ docker images</code></pre>
     && \
     sudo apt-get update
     
-#Install the NVIDIA Container Toolkit packages
+# Install the NVIDIA Container Toolkit packages
 sudo apt-get install -y nvidia-container-toolkit
 sudo systemctl restart docker
 
-#Configure the container runtime
+# Configure the container runtime
 sudo nvidia-ctk runtime configure --runtime=docker
 sudo systemctl restart docker
 
-#查看nvidia-smi
+# Check nvidia-smi
 docker run --rm --runtime=nvidia --gpus all ubuntu nvidia-smi
 docker run --rm -it --gpus all ubuntu:22.04 /bin/bash
-#启动docker里面的cuda时，需要对应好本机的ubuntu版本
-#查看对应版本如下：https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/supported-tags.md</code></pre>
+# When starting CUDA in Docker, make sure to match the Ubuntu version of your host machine
+# Check corresponding versions here: https://gitlab.com/nvidia/container-images/cuda/blob/master/doc/supported-tags.md</code></pre>
     </div>
 
     <ul>
-      <li>Docker + Nvidia container toolkit: <a href="https://www.cnblogs.com/li508q/p/18444582">使用 NVIDIA Container Toolkit 和 Docker 配置 GPU 深度学习环境 - 溺死在幸福里的猪 - 博客园</a></li>
-      <li><a href="https://blog.csdn.net/guoqingru0311/article/details/145926492">Ubuntu22.04安装docker、nvidia-docker、NVIDIA Container Toolkit亲自安装必有效_ubuntu22.04安装nvidia-docker-CSDN博客</a></li>
-      <li>问题解决记录1：nvidia-container-cli: initialization error: load library failed</li>
-      <li><a href="https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393">ocker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · NVIDIA/nvidia-docker</a></li>
-      <li>一些package可以从https://hub.docker.com/search进行pull</li>
+      <li>Docker + Nvidia container toolkit: <a href="https://www.cnblogs.com/li508q/p/18444582">Configure GPU Deep Learning Environment with NVIDIA Container Toolkit and Docker</a></li>
+      <li><a href="https://blog.csdn.net/guoqingru0311/article/details/145926492">Ubuntu22.04 Install Docker, nvidia-docker, NVIDIA Container Toolkit - Effective Installation Guide</a></li>
+      <li>Issue Resolution Record 1: nvidia-container-cli: initialization error: load library failed</li>
+      <li><a href="https://github.com/NVIDIA/nvidia-docker/issues/1648#issuecomment-1785033393">Docker: Error response from daemon: failed to create shim task: OCI runtime create failed: runc create failed · Issue #1648 · NVIDIA/nvidia-docker</a></li>
+      <li>Some packages can be pulled from https://hub.docker.com/search</li>
     </ul>
 
     <h3 id="isaac-ros-workspace">Isaac Ros Workspace Setup</h3>
@@ -535,13 +779,13 @@ fi</code></pre>
 
     <h2 id="isaac-sim">Isaac Sim</h2>
 
-    <h3 id="installization-workstation">Installization（Workstation）</h3>
+    <h3 id="installization-workstation">Installation (Workstation)</h3>
 
     <p>1. Download</p>
 
     <p><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/installation/download.html">Download Isaac Sim — Isaac Sim Documentation</a></p>
 
-    <p>2. Workstation Installiation</p>
+    <p>2. Workstation Installation</p>
 
     <div class="code-block-container">
       <pre><code>mkdir ~/isaacsim
@@ -549,24 +793,24 @@ cd ~/Downloads
 
 cd ~/isaacsim
 ./post_install.sh
-#运行这个命令会打开app selector，可以选择内置ros环境和ros bridge
+# Running this command will open the app selector, where you can choose built-in ROS environment and ROS bridge
 ./isaac-sim.selector.sh
 
-#运行这个命令会直接唤起程序
+# Running this command will directly launch the program
  ./isaac-sim.sh</code></pre>
     </div>
 
-    <p>3. ROS2 Installization</p>
+    <p>3. ROS2 Installation</p>
 
     <ul>
-      <li>本地下载：ROS2 humble<br/>
-        注意source ros2空间！！<br/>
+      <li>Local download: ROS2 humble<br/>
+        Note: Source ROS2 workspace!!<br/>
         source /opt/ros/humble/setup.bash</li>
-      <li>ROS bridge extnesion<br/>
+      <li>ROS bridge extension<br/>
         <strong>Window->Extensions</strong> and search for ROS 2 bridge</li>
       <li>Set up Isaac Sim ROS Workspaces<br/>
-        下载ws：<a href="https://github.com/isaac-sim/IsaacSim-ros_workspaces">isaac-sim/IsaacSim-ros_workspaces: Isaac Sim ROS Workspaces</a><br/>
-        下载相关包：</li>
+        Download workspace: <a href="https://github.com/isaac-sim/IsaacSim-ros_workspaces">isaac-sim/IsaacSim-ros_workspaces: Isaac Sim ROS Workspaces</a><br/>
+        Download related packages:</li>
     </ul>
 
     <div class="code-block-container">
@@ -580,7 +824,7 @@ rosdep install -i --from-path src --rosdistro humble -y
 
 colcon build
 
-#每次启动isaac sim前均需要运行source
+# Need to run source before starting Isaac Sim each time
 source install/local_setup.bash</code></pre>
     </div>
 
@@ -588,7 +832,7 @@ source install/local_setup.bash</code></pre>
 
     <p><a href="https://docs.isaacsim.omniverse.nvidia.com/latest/ros2_tutorials/tutorial_ros2_navigation.html#ros2-navigation">ROS2 Navigation — Isaac Sim Documentation</a></p>
 
-    <p>1. Installization</p>
+    <p>1. Installation</p>
 
     <div class="code-block-container">
       <pre><code>sudo apt install ros-&lt;ros2-distro&gt;-navigation2
@@ -602,15 +846,15 @@ sudo apt install ros-&lt;ros2-distro&gt;-nav2-bringup</code></pre>
     <p>3. Running</p>
 
     <ul>
-      <li>启动流程：</li>
+      <li>Startup process:</li>
     </ul>
 
     <div class="code-block-container">
-      <pre><code>#Terminal1
+      <pre><code># Terminal 1
 cd ~/isaacsim
 ./isaac-sim.selector.sh
 
-#Terminal2
+# Terminal 2
 cd ~/IsaacSim-ros_workspaces
 cd humble_ws
 source install/local_setup.bash
@@ -619,7 +863,7 @@ ros2 launch carter_navigation carter_navigation.launch.py</code></pre>
 
     <ul>
       <li>Load example:<br/>
-        <strong>Window > Examples > Robotics Examples然后打开ROS2 > Navigation > Carter</strong><br/>
+        <strong>Window > Examples > Robotics Examples then open ROS2 > Navigation > Carter</strong><br/>
         <strong>Play</strong></li>
       <li>Pose Estimate</li>
       <li>Nav2 Goal</li>
@@ -627,16 +871,16 @@ ros2 launch carter_navigation carter_navigation.launch.py</code></pre>
 
     <h3 id="nvblox">NVBlox:</h3>
 
-    <p>1. 首先完成前置环境配置：</p>
+    <p>1. First complete the prerequisite environment configuration:</p>
 
     <p>[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)</p>
 
-    <p>2. isaac_ros_nvblox：</p>
+    <p>2. isaac_ros_nvblox:</p>
 
     <div class="code-block-container">
-      <pre><code>#Launch docker container 
+      <pre><code># Launch docker container 
 cd $ISAAC_ROS_WS && ./src/isaac_ros_common/scripts/run_dev.sh
-#Install isaac_ros_nvblox and its dependencies.(重新启动docker时可能需要再运行下这个进行source)
+# Install isaac_ros_nvblox and its dependencies. (May need to run this again for sourcing when restarting Docker)
 sudo apt-get update
 sudo apt update &&
 sudo apt-get install -y ros-humble-isaac-ros-nvblox && \
@@ -653,7 +897,7 @@ navigation:=False</code></pre>
     <p>3. Reconstruction + Nav2</p>
 
     <ul>
-      <li>跑launch之前的source应该运行这个：[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-DrtGdxZGSoVHnLxUbGecTRFTnab)</li>
+      <li>The source before running launch should use this: [ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-DrtGdxZGSoVHnLxUbGecTRFTnab)</li>
     </ul>
 
     <div class="code-block-container">
@@ -667,76 +911,76 @@ ros2 launch nvblox_examples_bringup isaac_sim_example.launch.py</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code>#建议先启动isaac-sim-selector
+      <pre><code># It's recommended to start isaac-sim-selector first
 ./isaac-sim.selector.sh
-#在selector gui界面内先Clear cache，然后Open in terminal
+# In the selector GUI interface, first Clear cache, then Open in terminal
 ./isaac-sim.sh</code></pre>
     </div>
 
-    <p>⚠️Crash：</p>
+    <p>⚠️Crash:</p>
 
-    <p>点击play后会出现crash提示或者在运行一段Nav2后会出现 llvm: out of memory</p>
+    <p>After clicking play, a crash prompt may appear or after running Nav2 for a while, you may see: llvm: out of memory</p>
 
-    <p>此时需要对Nvidia Driver版本进行降级，根据官方推荐为 >= <strong>535.129.03</strong></p>
+    <p>At this time, you need to downgrade the NVIDIA Driver version. According to official recommendations, it should be >= <strong>535.129.03</strong></p>
 
-    <p>如果运行时再出现crash，保留nvblox终端，再次运行isaacsim</p>
+    <p>If crash occurs again during runtime, keep the nvblox terminal and restart IsaacSim</p>
 
-    <p>⚠️Error：</p>
+    <p>⚠️Error:</p>
 
     <div class="code-block-container">
       <pre><code>[Error] [omni.sensors.nv.lidar.lidar_core.plugin] CUDA Driver CALL FAILED at line 522: the provided PTX was compiled with an unsupported toolchain.
 [Error] [omni.sensors.nv.lidar.lidar_core.plugin] CUDA Driver CALL FAILED at line 548: named symbol not found
-#&lt;/path/to/isaac_sim_installation&gt;为isaacsim文件的下载路径
+# &lt;/path/to/isaac_sim_installation&gt; is the download path of IsaacSim files
 export LD_LIBRARY_PATH=&lt;/path/to/isaac_sim_installation&gt;/extscache/omni.sensors.nv.common-2.5.0-coreapi+lx64.r.cp310/bin:$LD_LIBRARY_PATH</code></pre>
     </div>
 
     <ul>
       <li>RVIZ2:<br/>
-        选中3d LiDAR可以感知较大范围的物体，可以辅助Nav时Goal的选择</li>
+        Selecting 3D LiDAR can perceive objects in a large range, which can assist in goal selection during navigation</li>
     </ul>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620079173-1.png" alt="img" style="zoom:33%;" />
 
-    <p>4. Reconstruction + Segmantic image</p>
+    <p>4. Reconstruction + Semantic image</p>
 
     <img src="../images/blog/2025-06-11-IsaacSim-Setup.assets/1749620099261-4.png" alt="img" style="zoom:33%;" />
 
-    <h3 id="visual-slam">Visual Slam</h3>
+    <h3 id="visual-slam">Visual SLAM</h3>
 
-    <p>1. 首先完成前置环境配置：</p>
+    <p>1. First complete the prerequisite environment configuration:</p>
 
     <p>[ IsaacSim 4.5 Workstation - Nav2/VSlam](https://c1afcru08q1.feishu.cn/docx/GOsVd7UgWoW4HtxKCtWcPhIdnBc#share-IanndP7T0ou8wLxZ014cOsOonud)</p>
 
     <p>⚠️Error: <a href="https://forums.developer.nvidia.com/t/failed-to-initialize-cuvslam-tracker-4-x86-64-zed-camera/321998">[Failed to initialize CUVSLAM tracker: 4]</a></p>
 
-    <p>2. isaac_ros_visual_slam 环境配置</p>
+    <p>2. isaac_ros_visual_slam environment configuration</p>
 
     <div class="code-block-container">
       <pre><code>cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
 
 sudo apt-get update
-#每次launch前要用这个source一下
+# Need to source with this before each launch
 sudo apt-get install -y ros-humble-isaac-ros-visual-slam</code></pre>
     </div>
 
     <p>3. Run Launch File</p>
 
     <div class="code-block-container">
-      <pre><code>#Terminal 1
+      <pre><code># Terminal 1
 sudo apt-get update
 sudo apt-get install -y ros-humble-isaac-ros-examples
-#使用quickstart
+# Using quickstart
 ros2 launch isaac_ros_examples isaac_ros_examples.launch.py launch_fragments:=visual_slam \
 interface_specs_file:=${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_interface_specs.json \
 rectified_images:=false</code></pre>
     </div>
 
     <div class="code-block-container">
-      <pre><code>#Terminal 2
+      <pre><code># Terminal 2
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
 ./scripts/run_dev.sh
-#这个用来启动摄像头，在运行完Terminal3后运行
+# This is used to start the camera, run after Terminal 3 is complete
 ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_bag --remap  \
 /front_stereo_camera/left/image_raw:=/left/image_rect \
 /front_stereo_camera/left/camera_info:=/left/camera_info_rect \
@@ -749,10 +993,10 @@ ros2 bag play ${ISAAC_ROS_WS}/isaac_ros_assets/isaac_ros_visual_slam/quickstart_
     </div>
 
     <div class="code-block-container">
-      <pre><code>#Terminal
+      <pre><code># Terminal 3
 cd ${ISAAC_ROS_WS}/src/isaac_ros_common && \
    ./scripts/run_dev.sh
-#run rviz   
+# Run RViz   
 rviz2 -d $(ros2 pkg prefix isaac_ros_visual_slam --share)/rviz/default.cfg.rviz</code></pre>
     </div>
 
@@ -767,6 +1011,11 @@ rviz2 -d $(ros2 pkg prefix isaac_ros_visual_slam --share)/rviz/default.cfg.rviz<
   </div>
 </div>
 
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fa fa-arrow-up"></i>
+</button>
+
 <!-- Footer -->
 <footer style="text-align: center; margin-top: 50px; padding: 20px; border-top: 1px solid #e1e8ed; color: #666;">
   <p>&copy; 2025 Zihan Wang. All rights reserved.</p>
@@ -779,16 +1028,18 @@ function updateActiveSection() {
   const tocLinks = document.querySelectorAll('.toc-link');
   
   let currentSection = '';
-  const scrollPosition = window.scrollY + 100; // Add offset for better UX
+  const scrollPosition = window.scrollY + 100;
   
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop;
-    const sectionHeight = section.offsetHeight;
+  // Find the current section based on scroll position
+  for (let i = sections.length - 1; i >= 0; i--) {
+    const section = sections[i];
+    const sectionTop = section.offsetTop - 150; // Offset for better detection
     
-    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight + 200) {
+    if (scrollPosition >= sectionTop) {
       currentSection = section.id;
+      break;
     }
-  });
+  }
   
   // Remove active class from all links
   tocLinks.forEach(link => {
@@ -886,6 +1137,29 @@ function copyToClipboard(codeBlock, button) {
     }, 2000);
   });
 }
+
+// Back to Top Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
 </script>
 
 </body>

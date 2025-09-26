@@ -184,21 +184,32 @@
       font-weight: 500;
       padding: 12px 24px;
       border-radius: 50px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(102, 126, 234, 0.2);
+      background: transparent !important;
+      border: none !important;
       transition: all 0.3s ease;
-      backdrop-filter: blur(10px);
-      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+      backdrop-filter: none !important;
+      box-shadow: none !important;
       font-size: 14px;
     }
-    
+
     .back-to-home:hover {
-      background: rgba(102, 126, 234, 0.1);
-      border-color: #667eea;
+      background: transparent !important;
+      border-color: transparent !important;
       transform: translateX(-2px);
       text-decoration: none;
       color: #667eea;
-      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+      box-shadow: none !important;
+    }
+
+    /* 强制移除顶部白色方块：主题切换器 */
+    .theme-toggle {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+    }
+    [data-theme="dark"] .theme-toggle {
+      background: transparent !important;
+      border: none !important;
     }
     
     .blog-tags {

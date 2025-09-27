@@ -1963,39 +1963,6 @@ document.addEventListener('DOMContentLoaded', function() {
     window.addEventListener('resize', onScroll, { passive: true });
   })();
 
-  // Update footer "Last updated" element from document.lastModified or fallback
-  try {
-    (function() {
-      const el = document.getElementById('last-updated');
-      if (!el) return;
-
-      // Helper to pad month/day
-      function pad(n) { return n < 10 ? '0' + n : String(n); }
-
-      // Try to parse document.lastModified, fallback to current date
-      let modDate = null;
-      try {
-        const lm = document.lastModified;
-        if (lm && lm.trim().length > 0 && lm !== '0') {
-          const parsed = new Date(lm);
-          if (!isNaN(parsed.getTime())) modDate = parsed;
-        }
-      } catch (e) { /* ignore */ }
-
-      if (!modDate) modDate = new Date();
-
-      // Format as English month name, e.g. "September 27, 2025"
-      const y = modDate.getFullYear();
-      const day = modDate.getDate();
-      const monthNames = [
-        'January','February','March','April','May','June',
-        'July','August','September','October','November','December'
-      ];
-      const monthName = monthNames[modDate.getMonth()] || (modDate.getMonth() + 1);
-      el.textContent = monthName + ' ' + day + ', ' + y;
-    })();
-  } catch (e) { /* non-fatal */ }
-
   });
 
   // Abstract toggle functionality

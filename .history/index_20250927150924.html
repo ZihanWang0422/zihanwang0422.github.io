@@ -1984,15 +1984,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
       if (!modDate) modDate = new Date();
 
-      // Format as English month name, e.g. "September 27, 2025"
       const y = modDate.getFullYear();
-      const day = modDate.getDate();
-      const monthNames = [
-        'January','February','March','April','May','June',
-        'July','August','September','October','November','December'
-      ];
-      const monthName = monthNames[modDate.getMonth()] || (modDate.getMonth() + 1);
-      el.textContent = monthName + ' ' + day + ', ' + y;
+      const m = pad(modDate.getMonth() + 1);
+      const d = pad(modDate.getDate());
+      el.textContent = y + '年' + m + '月' + d + '日';
     })();
   } catch (e) { /* non-fatal */ }
 

@@ -196,10 +196,20 @@
 
     /* Enable native smooth scrolling for in-page anchors as a baseline */
     html {
-      scroll-behavior: smooth;
+        scroll-behavior: smooth;
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        overflow-x: hidden; /* Prevent horizontal scroll */
     }
 
-    /* Solid navbar when scrolled */
+    /* Ensure body covers full height without gaps */
+    body {
+        margin: 0;
+        padding: 0;
+        min-height: 100vh;
+        overflow-x: hidden;
+    }    /* Solid navbar when scrolled */
     .site-header.solid {
         background-color: rgba(249, 249, 249, 0.95) !important;
         border-color: #ffffff !important; /* Changed from red to white */
@@ -1009,8 +1019,9 @@
     /* Enhanced Profile Cover Styles */
   #profile-cover {
     position: relative;
-    min-height: 102.5vh; /* Use full viewport height to ensure complete image display */
-    height: auto;
+    min-height: 100vh; /* Use full viewport height to ensure complete image display */
+    height: 100vh; /* Set fixed viewport height */
+    width: 100vw; /* Full viewport width */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1018,7 +1029,9 @@
     box-sizing: border-box;
     /* Remove top margin/padding and extend behind navbar */
     margin-top: -80px;
+    margin-left: calc(-50vw + 50%); /* Center and extend to full width */
     padding-top: 120px;
+    overflow: hidden; /* Prevent content overflow */
   }
 
   /* Add overlay for better text readability (reduced opacity) */
@@ -1036,10 +1049,12 @@
   /* Restore original background display */
   #profile-cover.shallow-bg {
     background-size: cover !important;
-    background-position: center top !important; /* Changed from center center to center top */
+    background-position: center center !important; /* Center the background image */
     background-repeat: no-repeat !important;
-    background-attachment: scroll !important;
-    background-color: transparent !important;
+    background-attachment: fixed !important; /* Keep background fixed for better coverage */
+    background-color: #333 !important; /* Fallback background color */
+    width: 100vw !important; /* Full viewport width */
+    margin-left: calc(-50vw + 50%) !important; /* Center the full-width container */
   }
 
     /* Main Layout Container */

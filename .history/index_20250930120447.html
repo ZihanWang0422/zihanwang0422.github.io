@@ -1009,8 +1009,8 @@
     /* Enhanced Profile Cover Styles */
   #profile-cover {
     position: relative;
-    min-height: 102.5vh; /* Use full viewport height to ensure complete image display */
-    height: auto;
+    min-height: 100vh; /* Use full viewport height to ensure complete image display */
+    height: 100vh; /* Set fixed viewport height */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1019,6 +1019,7 @@
     /* Remove top margin/padding and extend behind navbar */
     margin-top: -80px;
     padding-top: 120px;
+    overflow: hidden; /* Prevent content overflow */
   }
 
   /* Add overlay for better text readability (reduced opacity) */

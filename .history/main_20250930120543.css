@@ -732,7 +732,12 @@ pre>code {
     background-image: url("images/background/background_robo.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center
+    background-position: center center;
+    background-attachment: fixed; /* Keep background fixed */
+    height: 100vh; /* Set the height to fill the viewport */
+    width: 100vw; /* Full viewport width */
+    position: relative;
+    margin-left: calc(-50vw + 50%); /* Center the full-width container */
 }
 
 .deep-bg {

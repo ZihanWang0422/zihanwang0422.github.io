@@ -414,7 +414,7 @@
     }
 
     [data-theme="dark"] .authors {
-        color: #000 !important; /* changed to black */
+        color: #b0b0b0 !important;
     }
 
     [data-theme="dark"] .tag {
@@ -805,10 +805,11 @@
     /* Unified text styles for research and projects */
     .research .title,
     .projects .title {
-        font-size: 16px !important;
+        font-size: 18px !important;
         font-weight: 600 !important;
-        line-height: 1.3 !important;
-        margin-bottom: 3px !important;
+        line-height: 1.4 !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
         color: #333 !important;
     }
 
@@ -828,19 +829,21 @@
 
     .research .authors,
     .projects .authors {
-        font-size: 16px !important;
+        font-size: 14px !important;
         font-weight: normal !important;
-        color: #000 !important; /* changed to black */
-        margin-bottom: 3px !important;
-        line-height: 1.3 !important;
+        color: #666 !important;
+        margin-top: 0 !important;
+        margin-bottom: 6px !important;
+        line-height: 1.4 !important;
     }
 
     .research .publish,
     .projects .publish {
-        font-size: 16px !important;
-        color: #000 !important; /* changed to black */
-        margin-bottom: 3px !important;
-        line-height: 1.3 !important;
+        font-size: 14px !important;
+        color: #666 !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+        line-height: 1.4 !important;
     }
 
   .research .tldr {
@@ -898,7 +901,7 @@
     white-space: nowrap;
   }
   
-  /* Removed duplicate research styles to avoid conflicts - styles defined above */
+  /* Research specific additional styles - deleted duplicated definitions to avoid conflicts */
 
     /* Abstract toggle and display styles */
     .abstract-toggle {
@@ -1485,38 +1488,6 @@
     line-height: 1.1 !important;
     font-size: 13px !important;
   }
-
-  /* Disable pop-up animation for profile social icons */
-    .profile-social .social-icon,
-    .social-icon {
-      transform: none !important;
-      transition: none !important;
-      -webkit-transform: none !important;
-      -webkit-transition: none !important;
-    }
-
-    .profile-social .social-icon:hover,
-    .social-icon:hover {
-      transform: none !important;
-      -webkit-transform: none !important;
-      box-shadow: none !important;
-    }
-
-    /* Dark theme variants */
-    [data-theme="dark"] .profile-social .social-icon,
-    [data-theme="dark"] .social-icon {
-      transform: none !important;
-      transition: none !important;
-      -webkit-transform: none !important;
-      -webkit-transition: none !important;
-    }
-
-    [data-theme="dark"] .profile-social .social-icon:hover,
-    [data-theme="dark"] .social-icon:hover {
-      transform: none !important;
-      -webkit-transform: none !important;
-      box-shadow: none !important;
-    }
   </style>
   
 

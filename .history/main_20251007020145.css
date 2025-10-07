@@ -797,6 +797,14 @@ pre>code {
     align-items: stretch; /* allow both columns to be the same height */
     padding: 10px 20px;
     box-sizing: border-box;
+    /* background constrained to this box and scrolls with it */
+    background-image: url("images/background/background2.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: scroll;
+    border-radius: 16px;
+    overflow: hidden; /* clip background and overlay to rounded box */
 }
 
 .profile-left,

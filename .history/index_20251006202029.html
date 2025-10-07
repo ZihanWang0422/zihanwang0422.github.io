@@ -41,7 +41,6 @@
   <link rel="shortcut icon" href="images/android-chrome-512x512.png">
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="css/profile-cover.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/academicons.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
@@ -243,13 +242,12 @@
     }
 
     [data-theme="dark"] #profile-cover {
-        background-image: url('images/background/background2.jpg');
+        background-image: url('images/background/background2.JPG');
     }
 
-  [data-theme="dark"] #profile-cover::before {
-    /* overlay disabled per user request */
-    display: none !important;
-  }
+    [data-theme="dark"] #profile-cover::before {
+        background-color: rgba(26, 26, 26, 0.85) !important;
+    }
 
     [data-theme="dark"] .about-title {
         color: #ffffff !important;
@@ -1027,11 +1025,11 @@
     justify-content: center;
     padding: 100px 40px 60px 40px;
     box-sizing: border-box;
-    background-image: url('images/background/background2.jpg');
+    background-image: url('images/background/background2.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     margin-top: 0;
   }
 
@@ -1043,14 +1041,13 @@
     left: 0;
     right: 0;
     bottom: 0;
-    /* Reduced alpha from 0.85 -> 0.6 for a more transparent overlay */
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: rgba(255, 255, 255, 0.85);
     z-index: 1;
   }
 
   /* Override background image class */
   #profile-cover.shallow-bg {
-    background-image: url('images/background/background2.jpg') !important;
+    background-image: url('images/background/background2.JPG') !important;
   }
 
     /* Main Layout Container - Left-Right Layout */
@@ -1060,7 +1057,7 @@
         width: 100%;
         max-width: 1000px;
         align-items: stretch;
-        gap: 10px;
+        gap: 40px;
         z-index: 10;
         position: relative;
         padding: 0;
@@ -1079,8 +1076,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        border-radius: 8px !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .profile-name {
@@ -1134,13 +1131,13 @@
         font-size: 1rem;
         margin: 0 0 25px 0;
         font-weight: 400;
-        text-align: center;
+        text-align: left;
         font-family: 'Courier New', monospace;
     }
 
     .about-text {
         color: #333333;
-        font-size: 16px;
+        font-size: 1.05rem;
         line-height: 1.7;
         margin-bottom: 15px;
         text-shadow: none;
@@ -1165,14 +1162,14 @@
         text-decoration: underline;
     }
 
-  .about-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px; /* reduced gap between social links */
-    margin-top: 20px;
-    font-size: 16px;
-  }
+    .about-links {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 8px;
+        margin-top: 20px;
+        font-size: 16px;
+    }
 
     .about-links a {
         color: #0066cc;
@@ -1403,8 +1400,6 @@
         .profile-avatar {
             width: 100%;
             height: auto;
-            border-radius: 8px !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
         }
         
         .profile-name {
@@ -1472,8 +1467,6 @@
         .profile-avatar {
             width: 100%;
             height: auto;
-            border-radius: 8px !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
         }
         
         .profile-name {
@@ -1613,7 +1606,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-  <div id="profile-cover" class="cover img-responsive"> 
+  <div id="profile-cover" class="cover shallow-bg img-responsive"> 
     <!-- Left-Right Layout Overlay -->
     <div class="profile-layout">
       <!-- Left Side: Profile Photo -->
@@ -1624,10 +1617,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <!-- Right Side: About Content -->
       <div class="profile-right">
         <h1 class="about-title">Zihan Wang</h1>
-        <p class="about-email">zihanw600 [at] gmail.com</p>
+        <p class="about-email">zhw0422 [at] link.cuhk.edu.hk</p>
         
         <p class="about-text">
-          I am a M.S. student in Robotics at the Chinese University of Hong Kong. 
+          I am a M.S. student in <strong>Robotics</strong> at the <strong>Chinese University of Hong Kong</strong>. I have had the opportunity to work with advisors during my studies. I build real-world robot systems.
         </p>
         <p class="about-text">
           My research interests lie in <strong>Motion Planning</strong>, <strong>Humanoid Robots</strong>, and <strong>Reinforcement Learning</strong>.
@@ -1637,7 +1630,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="about-links">
           <a href="work/resume.pdf" target="_blank">CV</a>
           <span class="link-separator">|</span>
-          <a href="https://github.com/ZihanWang0422" target="_blank">Github</a>
+          <a href="https://github.com/ZihanWang0422" target="_blank">GitHub</a>
           <span class="link-separator">|</span>
           <a href="https://scholar.google.cz/citations?user=W6U-U80AAAAJ&hl=en" target="_blank">Google Scholar</a>
           <span class="link-separator">|</span>
@@ -1730,7 +1723,7 @@ applications.
 </div>
 
 <!-- Projects -->
-<div class="section section-white">
+<div class="section section-gray">
 <div id="projects" class="projects">
   <div class="projects-header">
     <h1 class="md-heading">Projects<a class="projects-link" href="projects.html">All Projects</a></h1>

@@ -1,23 +1,3 @@
-/* About section overlay: only inside .profile-right, not fixed, moves with content */
-.profile-layout {
-    position: relative; /* ensure pseudo-element is positioned relative to layout */
-}
-.profile-layout::before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    background: rgba(255,255,255,0.6);
-    z-index: 0;
-    pointer-events: none;
-    border-radius: 16px;
-}
-.profile-layout > * {
-    position: relative;
-    z-index: 1;
-}
 body,
 h1,
 h2,
@@ -764,7 +744,7 @@ pre>code {
 
 /* Stronger rules for profile cover to ensure background overrides and controlled height */
 #profile-cover {
-    background-image: url("images/background/background2.jpg") !important;
+    background-image: url("images/background/background2.JPG") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
@@ -776,14 +756,18 @@ pre>code {
     padding: 30px 0; /* give some vertical breathing room */
     box-sizing: border-box;
     position: relative;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1); /* 添加内阴影增强视觉效果 */
 }
 
-/* Overlay to slightly dim background for text readability
-   Disabled by user request: completely remove overlay so background image shows through */
+/* Overlay to slightly dim background for text readability */
 #profile-cover::before {
-    /* overlay disabled */
-    display: none !important;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.6); /* lighter translucent overlay so background image remains visible */
+    z-index: 1;
 }
 
 /* Layout inside the cover: keep content centered and on top of overlay */
@@ -823,8 +807,47 @@ pre>code {
 .profile-left .profile-avatar {
      width: 220px; /* fixed width to match research thumbnails */
      height: auto; /* maintain aspect ratio */
-     border-radius: 8px !important; /* Add rounded corners to match research images */
-     box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; /* Add subtle shadow like research images */
+ 
+
+}
+
+/* Decorative arc border around avatar using a pseudo-element.
+   Uses a CSS variable --avatar-size so media queries can override the size.
+   The pseudo-element draws a conic-gradient border ring and sits behind the image. */
+.profile-left {
+    position: relative;
+    --avatar-size: 220px; /* default avatar size; overridden in media queries */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-left .profile-avatar {
+    width: var(--avatar-size);
+    height: var(--avatar-size);
+    object-fit: cover;
+    border-radius: 50%;
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+.profile-left::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: calc(var(--avatar-size) + 18px); /* ring is slightly larger than avatar */
+    height: calc(var(--avatar-size) + 18px);
+    border-radius: 50%;
+    z-index: 1;
+    pointer-events: none;
+    /* Create an arc-style border using border-image with a conic gradient */
+    border: 6px solid transparent;
+    -webkit-border-image: conic-gradient(from 200deg, #9b3022 0deg 60deg, #2a7ae2 60deg 140deg, #9b3022 140deg 220deg, transparent 220deg 360deg) 1;
+    border-image: conic-gradient(from 200deg, #9b3022 0deg 60deg, #2a7ae2 60deg 140deg, #9b3022 140deg 220deg, transparent 220deg 360deg) 1;
+    opacity: 0.95;
 }
 
 /* Name centered above the about text */
@@ -875,7 +898,7 @@ pre>code {
     #profile-cover { min-height: 360px; }
     .profile-layout { flex-direction: column; gap: 10px; padding: 20px; }
     .profile-left { flex: none; width: 100%; }
-    .profile-left .profile-avatar { width: 168px; height: 168px; border-radius: 8px !important; margin: 0 auto; }
+    .profile-left .profile-avatar { width: 168px; height: 168px; border-radius: 50%; margin: 0 auto; }
     .profile-right .about-title { text-align: center; }
 }
 

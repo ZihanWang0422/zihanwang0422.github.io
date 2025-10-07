@@ -1,23 +1,3 @@
-/* About section overlay: only inside .profile-right, not fixed, moves with content */
-.profile-layout {
-    position: relative; /* ensure pseudo-element is positioned relative to layout */
-}
-.profile-layout::before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    background: rgba(255,255,255,0.6);
-    z-index: 0;
-    pointer-events: none;
-    border-radius: 16px;
-}
-.profile-layout > * {
-    position: relative;
-    z-index: 1;
-}
 body,
 h1,
 h2,
@@ -331,7 +311,8 @@ pre>code {
 
 .site-footer {
     border-top: none;
-    padding: 30px 0
+    padding: 30px 0;
+    /* 移除背景色，因为整个区域已经是灰色 */
 }
 
 .footer-heading {
@@ -404,19 +385,19 @@ pre>code {
 
 .sm-heading {
     font-size: 20px;
-    font-color: #9b3022;
+    color: #9b3022;
     font-weight: 300
 }
 
 .md-heading {
     font-size: 24px;
-    font-color: #9b3022;
+    color: #9b3022;
     font-weight: 400
 }
 
 .lg-heading {
     font-size: 30px;
-    font-color: #9b3022;
+    color: #9b3022;
     font-weight: 600
 }
 
@@ -779,11 +760,16 @@ pre>code {
     box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1); /* 添加内阴影增强视觉效果 */
 }
 
-/* Overlay to slightly dim background for text readability
-   Disabled by user request: completely remove overlay so background image shows through */
+/* Overlay to slightly dim background for text readability */
 #profile-cover::before {
-    /* overlay disabled */
-    display: none !important;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.7); /* 增加不透明度使背景更清晰 */
+    z-index: 1;
 }
 
 /* Layout inside the cover: keep content centered and on top of overlay */

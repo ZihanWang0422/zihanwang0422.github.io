@@ -41,7 +41,6 @@
   <link rel="shortcut icon" href="images/android-chrome-512x512.png">
   <link rel="stylesheet" href="main.css">
   <link rel="stylesheet" href="css/custom.css">
-  <link rel="stylesheet" href="css/profile-cover.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css/academicons.css"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
@@ -243,36 +242,19 @@
     }
 
     [data-theme="dark"] #profile-cover {
-        background-image: url('images/background/background2.jpg');
+        background: linear-gradient(135deg, #2d2d2d 0%, #1a1a1a 100%) !important;
     }
 
-  [data-theme="dark"] #profile-cover::before {
-    /* overlay disabled per user request */
-    display: none !important;
-  }
-
-    [data-theme="dark"] .about-title {
+    [data-theme="dark"] #my-name {
         color: #ffffff !important;
     }
 
-    [data-theme="dark"] .about-email {
+    [data-theme="dark"] #my-title {
         color: #b0b0b0 !important;
     }
 
-    [data-theme="dark"] .about-text {
-        color: #e0e0e0 !important;
-    }
-
-    [data-theme="dark"] .about-text strong {
-        color: #ffffff !important;
-    }
-
-    [data-theme="dark"] .about-links a {
-        color: #4a9eff !important;
-    }
-
-    [data-theme="dark"] .link-separator {
-        color: #666666 !important;
+    [data-theme="dark"] #my-email {
+        color: #888888 !important;
     }
 
     [data-theme="dark"] .md-heading {
@@ -1017,207 +999,192 @@
         border: none !important;
     }
 
-    /* Enhanced Profile Cover Styles - With Background Image */
+    /* Enhanced Profile Cover Styles - Simple White Background */
   #profile-cover {
     position: relative;
-    min-height: 45vh;
+    min-height: auto;
     height: auto;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px 40px 60px 40px;
+    padding: 100px 40px 80px 40px;
     box-sizing: border-box;
-    background-image: url('images/background/background2.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-color: #ffffff !important;
     margin-top: 0;
   }
 
-  /* White overlay */
+  /* Remove overlay */
   #profile-cover::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    /* Reduced alpha from 0.85 -> 0.6 for a more transparent overlay */
-    background-color: rgba(255, 255, 255, 0.6);
-    z-index: 1;
+    display: none;
   }
 
-  /* Override background image class */
+  /* Remove background image */
   #profile-cover.shallow-bg {
-    background-image: url('images/background/background2.jpg') !important;
+    background: none !important;
+    background-color: #ffffff !important;
   }
 
-    /* Main Layout Container - Left-Right Layout */
+    /* Main Layout Container */
     .profile-layout {
         display: flex;
-        flex-direction: row;
         width: 100%;
         max-width: 1000px;
-        align-items: stretch;
-        gap: 10px;
+        align-items: flex-start;
+        gap: 50px;
         z-index: 10;
         position: relative;
-        padding: 0;
+        padding: 40px;
     }
 
-    /* Left Side - Profile Photo */
+    /* Left Side - Profile Card */
     .profile-left {
-        display: flex;
-        flex-shrink: 0;
-        width: 250px;
-        align-items: stretch;
+        flex: 0 0 250px;
+        text-align: center;
+        color: #ffffff;
     }
 
     .profile-avatar {
-        display: block;
-        width: 100%;
-        height: 100%;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.8);
+        margin-bottom: 20px;
         object-fit: cover;
-        border-radius: 8px !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     }
 
     .profile-name {
-        display: none;
+        color: #ffffff;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0 0 10px 0;
+        line-height: 1.2;
+        text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
     }
 
     .profile-title {
-        display: none;
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        margin: 5px 0;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     }
 
     .profile-location {
-        display: none;
+        color: #ffffff;
+        font-size: 16px;
+        margin: 0 0 30px 0;
+        text-shadow: 0 1px 5px rgba(0, 0, 0, 0.5);
     }
 
     /* Social Icons */
     .profile-social {
-        display: none;
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+        flex-wrap: wrap;
     }
 
     .social-icon {
-        display: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 45px;
+        height: 45px;
+        background: rgba(255, 255, 255, 0.9);
+        color: #2c3e50;
+        text-decoration: none;
+        border-radius: 50%;
+        font-size: 18px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-icon:hover {
+        transform: translateY(-3px) scale(1.1);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        background: #ffffff;
+        color: #2c3e50;
+        text-decoration: none;
     }
 
     .cv-icon {
-        display: none;
+        font-size: 12px;
+        font-weight: 700;
     }
 
     /* Right Side - About Content */
     .profile-right {
         flex: 1;
-        color: #333333;
-        padding: 0;
+        color: #ffffff;
+        padding: 30px;
         background: none;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
     }
 
     .about-title {
-        color: #1a1a1a;
-        font-size: 2.5rem;
+        color: #ffffff;
+        font-size: 36px;
         font-weight: 700;
-        margin: 0 0 8px 0;
-        text-shadow: none;
-        font-family: 'Arial', 'Helvetica', sans-serif;
-        text-align: left;
-    }
-
-    .about-email {
-        color: #555555;
-        font-size: 1rem;
         margin: 0 0 25px 0;
-        font-weight: 400;
-        text-align: center;
-        font-family: 'Courier New', monospace;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
     }
 
     .about-text {
-        color: #333333;
-        font-size: 16px;
+    color: #ffffff;
+    font-size: 18px;
         line-height: 1.7;
-        margin-bottom: 15px;
-        text-shadow: none;
+        margin-bottom: 18px;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
         text-align: justify;
     }
 
     .about-text strong {
-        color: #333333;
-        font-weight: 600;
-        text-shadow: none;
+        color: #ffffff;
+        font-weight: normal;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .scholar-link {
-        color: #0066cc !important;
-        text-decoration: none;
-        font-weight: 400;
-        text-shadow: none;
+        color: #ffffff !important;
+        text-decoration: underline;
+        font-weight: 500;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
     }
 
     .scholar-link:hover {
-        color: #0052a3 !important;
+        color: #1d4ed8 !important;
         text-decoration: underline;
-    }
-
-  .about-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 4px; /* reduced gap between social links */
-    margin-top: 20px;
-    font-size: 16px;
-  }
-
-    .about-links a {
-        color: #0066cc;
-        text-decoration: none;
-        font-weight: 400;
-    }
-
-    .about-links a:hover {
-        color: #0052a3;
-        text-decoration: underline;
-    }
-
-    .link-separator {
-        color: #999999;
-        font-weight: 300;
     }
 
     .download-btn {
-        display: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: #87ceeb;
+        color: #ffffff;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 14px;
+        margin: 20px 0 35px 0;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(135, 206, 235, 0.3);
+    }
+
+    .download-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(135, 206, 235, 0.4);
+        background: #6bb8e8;
+        color: #ffffff;
+        text-decoration: none;
     }
 
     /* Bottom Sections */
     .bottom-sections {
-        display: none;
-    }
-
-    /* Highlights Section */
-    .highlights-section {
-        max-width: 800px;
-        margin: 0 auto;
-        text-align: center;
-        padding: 0 40px;
-    }
-
-    .highlights-heading {
-        color: #1a1a1a;
-        font-size: 28px;
-        font-weight: 700;
-        margin: 0;
-        padding: 0;
-        font-family: 'Arial', 'Helvetica', sans-serif;
-    }
-
-    [data-theme="dark"] .highlights-heading {
-        color: #ffffff !important;
+        display: flex;
+        gap: 40px;
+        margin-top: 25px;
     }
 
     .interests, .education {
@@ -1386,25 +1353,13 @@
     @media screen and (max-width: 768px) {
         #profile-cover {
             height: auto;
-            min-height: auto;
-            padding: 80px 20px 50px 20px;
-        }
-        
-        .profile-layout {
-            flex-direction: column;
-            align-items: center;
-            gap: 30px;
-        }
-        
-        .profile-left {
-            width: 200px;
+            min-height: 600px;
+            padding: 20px 15px;
         }
         
         .profile-avatar {
-            width: 100%;
-            height: auto;
-            border-radius: 8px !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            width: 120px;
+            height: 120px;
         }
         
         .profile-name {
@@ -1426,27 +1381,15 @@
         }
         
         .profile-right {
-            padding: 0;
-            text-align: center;
+            padding: 20px;
         }
         
         .about-title {
-            font-size: 2rem;
-            text-align: center;
-        }
-        
-        .about-email {
-            font-size: 0.95rem;
-            text-align: center;
+            font-size: 28px;
         }
         
         .about-text {
-            font-size: 0.95rem;
-            text-align: left;
-        }
-        
-        .about-links {
-            justify-content: center;
+            font-size: 15px;
         }
         
         .interests h3, .education h3 {
@@ -1465,15 +1408,9 @@
     }
 
     @media screen and (max-width: 480px) {
-        .profile-left {
-            width: 160px;
-        }
-        
         .profile-avatar {
-            width: 100%;
-            height: auto;
-            border-radius: 8px !important;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+            width: 100px;
+            height: 100px;
         }
         
         .profile-name {
@@ -1495,15 +1432,15 @@
         }
         
         .profile-right {
-            padding: 0;
+            padding: 18px;
         }
         
         .about-title {
-            font-size: 1.75rem;
+            font-size: 24px;
         }
         
         .about-text {
-            font-size: 0.9rem;
+            font-size: 14px;
         }
     }
 
@@ -1613,35 +1550,49 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   </div>
 </header>
 
-  <div id="profile-cover" class="cover img-responsive"> 
+  <div id="profile-cover" class="cover shallow-bg img-responsive"> 
     <!-- Left-Right Layout Overlay -->
     <div class="profile-layout">
-      <!-- Left Side: Profile Photo -->
+      <!-- Left Side: Profile Card -->
       <div class="profile-left">
         <img src="images/han.jpeg" alt="Zihan Wang" class="profile-avatar" />
+        <h2 class="profile-name">Zihan WANG</h2>
+        
+        <!-- Social Icons -->
+        <div class="profile-social">
+          <a href="mailto:zhw0422@link.cuhk.edu.hk" target="_blank" class="social-icon">
+            <i class="fa fa-envelope"></i>
+          </a>
+          <a href="https://github.com/ZihanWang0422" target="_blank" class="social-icon">
+            <i class="fa fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/zihanwang0422/" target="_blank" class="social-icon">
+            <i class="fa fa-linkedin"></i>
+          </a>
+          <a href="https://scholar.google.cz/citations?user=W6U-U80AAAAJ&hl=en" target="_blank" class="social-icon">
+            <i class="ai ai-google-scholar"></i>
+          </a>
+        </div>
       </div>
 
       <!-- Right Side: About Content -->
       <div class="profile-right">
-        <h1 class="about-title">Zihan Wang</h1>
-        <p class="about-email">zihanw600 [at] gmail.com</p>
+        <h1 class="about-title">About Me</h1>
         
-        <p class="about-text">
-          I am a M.S. student in Robotics at the Chinese University of Hong Kong. 
+        <p class="about-text" style="margin-bottom:18px;">
+          My name is <strong>Zihan Wang</strong> and I am a M.S. student in the <strong>Robotics</strong> at the <strong>Chinese University of Hong Kong</strong>. Previously, I obtained my B.E. in <strong>Automation Engineering</strong> from <strong>Beihang University</strong>.
         </p>
         <p class="about-text">
           My research interests lie in <strong>Motion Planning</strong>, <strong>Humanoid Robots</strong>, and <strong>Reinforcement Learning</strong>.
         </p>
 
-        <!-- Social Links -->
-        <div class="about-links">
-          <a href="work/resume.pdf" target="_blank">CV</a>
-          <span class="link-separator">|</span>
-          <a href="https://github.com/ZihanWang0422" target="_blank">Github</a>
-          <span class="link-separator">|</span>
-          <a href="https://scholar.google.cz/citations?user=W6U-U80AAAAJ&hl=en" target="_blank">Google Scholar</a>
-          <span class="link-separator">|</span>
-          <a href="https://www.linkedin.com/in/zihanwang0422/" target="_blank">LinkedIn</a>
+        <a href="work/resume.pdf" target="_blank" class="download-btn">
+          <i class="fa fa-download"></i> Download CV
+        </a>
+
+        <!-- Interests and Education -->
+        <div class="bottom-sections">
+          <!-- Interests removed per request -->
         </div>
       </div>
     </div>
@@ -1730,7 +1681,7 @@ applications.
 </div>
 
 <!-- Projects -->
-<div class="section section-white">
+<div class="section section-gray">
 <div id="projects" class="projects">
   <div class="projects-header">
     <h1 class="md-heading">Projects<a class="projects-link" href="projects.html">All Projects</a></h1>
@@ -1842,11 +1793,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
     const siteHeader = document.querySelector('.site-header');
     
-    // Initialize navbar as solid (not transparent) for white background
-    siteHeader.classList.add('solid');
-    siteHeader.classList.remove('transparent');
+    // Initialize navbar as transparent at page load
+    if (window.pageYOffset <= 100) {
+        siteHeader.classList.add('transparent');
+        siteHeader.classList.remove('solid');
+    }
     
-    // Show/hide button based on scroll position
+    // Show/hide button and control navbar based on scroll position
     window.addEventListener('scroll', function() {
         const scrollY = window.pageYOffset;
         
@@ -1857,9 +1810,16 @@ document.addEventListener('DOMContentLoaded', function() {
             backToTopButton.classList.remove('show');
         }
         
-        // Keep navbar solid at all times (no transparency)
-        siteHeader.classList.add('solid');
-        siteHeader.classList.remove('transparent');
+        // Dynamic navbar logic
+        if (scrollY <= 100) {
+            // At top - transparent navbar
+            siteHeader.classList.add('transparent');
+            siteHeader.classList.remove('solid');
+        } else {
+            // Scrolled down - solid navbar
+            siteHeader.classList.add('solid');
+            siteHeader.classList.remove('transparent');
+        }
     });
     
     // Smooth scroll to top when clicked

@@ -1,20 +1,20 @@
 /* About section overlay: only inside .profile-right, not fixed, moves with content */
-.profile-layout {
-    position: relative; /* ensure pseudo-element is positioned relative to layout */
+.profile-right {
+    position: relative;
 }
-.profile-layout::before {
+.profile-right::before {
     content: "";
     position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: rgba(255,255,255,0.6);
     z-index: 0;
     pointer-events: none;
     border-radius: 16px;
 }
-.profile-layout > * {
+.profile-right > * {
     position: relative;
     z-index: 1;
 }

@@ -1,23 +1,3 @@
-/* About section overlay: only inside .profile-right, not fixed, moves with content */
-.profile-layout {
-    position: relative; /* ensure pseudo-element is positioned relative to layout */
-}
-.profile-layout::before {
-    content: "";
-    position: absolute;
-    top: -8px;
-    left: -8px;
-    right: -8px;
-    bottom: -8px;
-    background: rgba(255,255,255,0.6);
-    z-index: 0;
-    pointer-events: none;
-    border-radius: 16px;
-}
-.profile-layout > * {
-    position: relative;
-    z-index: 1;
-}
 body,
 h1,
 h2,
@@ -749,14 +729,14 @@ pre>code {
 
 .shallow-bg {
     /* background-image: url("images/background/background1.JPG"); */
-    background-image: url("images/background/background2.jpg");
+    background-image: url("images/background/background2.JPG");
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: center center
 }
 
 .deep-bg {
-    background-image: url("images/background/background2.jpg");
+    background-image: url("images/background/background2.JPG");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center
@@ -764,7 +744,7 @@ pre>code {
 
 /* Stronger rules for profile cover to ensure background overrides and controlled height */
 #profile-cover {
-    background-image: url("images/background/background2.jpg") !important;
+    background-image: url("images/background/background2.JPG") !important;
     background-size: cover !important;
     background-repeat: no-repeat !important;
     background-position: center center !important;
@@ -776,14 +756,18 @@ pre>code {
     padding: 30px 0; /* give some vertical breathing room */
     box-sizing: border-box;
     position: relative;
-    box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.1); /* 添加内阴影增强视觉效果 */
 }
 
-/* Overlay to slightly dim background for text readability
-   Disabled by user request: completely remove overlay so background image shows through */
+/* Overlay to slightly dim background for text readability */
 #profile-cover::before {
-    /* overlay disabled */
-    display: none !important;
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.6); /* lighter translucent overlay so background image remains visible */
+    z-index: 1;
 }
 
 /* Layout inside the cover: keep content centered and on top of overlay */
@@ -793,7 +777,7 @@ pre>code {
     width: 100%;
     max-width: 1000px;
     display: flex;
-    gap: 20px; /* reduce gap between photo and text */
+    gap: 0; /* remove gap to match research layout */
     align-items: stretch; /* allow both columns to be the same height */
     padding: 10px 20px;
     box-sizing: border-box;
@@ -806,25 +790,25 @@ pre>code {
 }
 
 .profile-left {
-    width: calc(30% - 15px); /* Reduce left column width to give more space to text */
-    flex: 0 0 calc(30% - 15px);
+    width: calc(40% - 15px); /* Match research .pub-left ratio */
+    flex: 0 0 calc(40% - 15px);
     align-items: center; /* center the photo horizontally within left column */
     justify-content: center; /* center the photo vertically */
-    margin-left: 85px; /* Move image container slightly to the right (reduced to shift left) */
 }
 
 .profile-right {
-    width: calc(70% - 15px); /* Increase right column width for more text space */
-    flex: 0 0 calc(70% - 15px);
-    margin-right: 90px; /* Small right margin for breathing room */
+    width: calc(60% - 15px); /* Match research .pub-right ratio */
+    flex: 0 0 calc(60% - 15px);
 }
 
 /* Make profile image width consistent with research .intro-img (200px) and center it */
 .profile-left .profile-avatar {
-     width: 220px; /* fixed width to match research thumbnails */
-     height: auto; /* maintain aspect ratio */
-     border-radius: 8px !important; /* Add rounded corners to match research images */
-     box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important; /* Add subtle shadow like research images */
+    width: 200px; /* fixed width to match research thumbnails */
+    height: auto; /* maintain aspect ratio */
+    object-fit: contain; /* match research image style */
+    object-position: center; /* center the image */
+    display: block;
+    border-radius: 6px; /* subtle rounded corners */
 }
 
 /* Name centered above the about text */
@@ -863,10 +847,10 @@ pre>code {
 .about-links a {
     color: #2a7ae2;
     text-decoration: none;
-    margin-right: 4px; /* reduced spacing */
+    margin-right: 8px;
 }
 .link-separator {
-    margin: 0 4px; /* reduced separator spacing */
+    margin: 0 8px;
     color: #9b9b9b;
 }
 
@@ -875,7 +859,7 @@ pre>code {
     #profile-cover { min-height: 360px; }
     .profile-layout { flex-direction: column; gap: 10px; padding: 20px; }
     .profile-left { flex: none; width: 100%; }
-    .profile-left .profile-avatar { width: 168px; height: 168px; border-radius: 8px !important; margin: 0 auto; }
+    .profile-left .profile-avatar { width: 168px; height: 168px; border-radius: 50%; margin: 0 auto; }
     .profile-right .about-title { text-align: center; }
 }
 

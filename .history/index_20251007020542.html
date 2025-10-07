@@ -1842,25 +1842,36 @@ document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
     const siteHeader = document.querySelector('.site-header');
     
-    // Initialize navbar as solid (not transparent) for white background
-    siteHeader.classList.add('solid');
-    siteHeader.classList.remove('transparent');
-    
-    // Show/hide button based on scroll position
-    window.addEventListener('scroll', function() {
-        const scrollY = window.pageYOffset;
-        
-        // Back to top button logic
-        if (scrollY > 300) {
-            backToTopButton.classList.add('show');
-        } else {
-            backToTopButton.classList.remove('show');
-        }
-        
-        // Keep navbar solid at all times (no transparency)
-        siteHeader.classList.add('solid');
-        siteHeader.classList.remove('transparent');
-    });
+  // Dynamic navbar: transparent at top, solid after scrolling past threshold
+  const NAV_TRANSITION_Y = 200; // px to switch between transparent and solid
+
+  function updateNavbarState(scrollY) {
+    if (scrollY > NAV_TRANSITION_Y) {
+      siteHeader.classList.add('solid');
+      siteHeader.classList.remove('transparent');
+    } else {
+      siteHeader.classList.add('transparent');
+      siteHeader.classList.remove('solid');
+    }
+  }
+
+  // Initialize based on current position
+  updateNavbarState(window.pageYOffset || document.documentElement.scrollTop);
+
+  // Show/hide button and update navbar on scroll
+  window.addEventListener('scroll', function() {
+    const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+
+    // Back to top button logic
+    if (scrollY > 300) {
+      backToTopButton.classList.add('show');
+    } else {
+      backToTopButton.classList.remove('show');
+    }
+
+    // Update navbar transparency/solid state
+    updateNavbarState(scrollY);
+  }, { passive: true });
     
     // Smooth scroll to top when clicked
     backToTopButton.addEventListener('click', function() {

@@ -14,7 +14,6 @@
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
   <link rel="stylesheet" href="../main.css">
   <link rel="stylesheet" href="../css/custom.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="../js/jquery-2.1.3.min.js"> </script>
   <script src="../js/theme.js"> </script>
@@ -147,8 +146,7 @@
       border: 1px solid #e1e8ed;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* align content to top so titles line up */
-      align-items: stretch;    /* allow full-width title and actions */
+      justify-content: space-between;
       min-height: 120px;
       text-align: center;
     }
@@ -162,9 +160,8 @@
       font-size: 1.2rem;
       font-weight: bold;
       color: #333;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       text-align: center;
-      min-height: 48px;
     }
 
     .notebook-desc {
@@ -189,8 +186,8 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center; /* center buttons horizontally */
-      margin-top: 12px;
+      justify-content: center;
+      margin-top: auto;
     }
 
     /* Simple button styles - 统一的按钮样式 */
@@ -291,10 +288,6 @@
     /* Course section layout */
     .course-section {
       margin-bottom: 40px;
-    }
-
-    /* Only Courses section has background frame */
-    .course-section:first-child {
       padding: 30px;
       background: #fafafa;
       border-radius: 8px;
@@ -307,7 +300,6 @@
       color: #333;
       padding-bottom: 10px;
       border-bottom: 2px solid #4a90e2;
-      text-align: center;
     }
 
     .course-category {
@@ -323,7 +315,6 @@
       margin-bottom: 20px;
       color: #555;
       font-weight: 600;
-      text-align: center;
     }
 
     .course-grid {
@@ -339,11 +330,6 @@
       border-radius: 6px;
       border: 1px solid #e0e0e0;
       transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; /* align content to top so titles line up */
-      align-items: stretch;    /* allow full-width title and actions */
-      min-height: 120px;
     }
 
     .course-item:hover {
@@ -355,52 +341,15 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: #333;
-      margin-bottom: 10px;
-      line-height: 1.2;
-      min-height: 72px; /* increased to align multi-line titles */
-      display: block;
-    }
-
-    /* Ensure titles are centered and take full width inside the card */
-    .course-title, .book-title, .notebook-title {
-      text-align: center;
-      width: 100%;
-      box-sizing: border-box;
-      padding-left: 8px;
-      padding-right: 8px;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
     .course-actions {
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      justify-content: center; /* center action buttons */
-      margin-top: 8px; /* slightly reduced to compensate larger title */
-    }
-    /* For specific cards that need a 2x2 button layout */
-    .course-item.two-by-two .course-actions {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      justify-items: center;
-      align-items: center;
-    }
-
-    .course-item.two-by-two .course-actions .action-btn {
-      width: 100%;
-      justify-content: center;
-      box-sizing: border-box; /* ensure padding counted in width */
-      min-width: 0; /* allow shrinking inside grid */
-    }
-
-    /* On very small screens, stack the 2x2 into a single column to avoid overlap */
-    @media (max-width: 480px) {
-      .course-item.two-by-two .course-actions {
-        grid-template-columns: 1fr;
-      }
-      .course-item.two-by-two .course-actions .action-btn {
-        width: 100%;
-      }
+      margin-top: 15px;
     }
     /* Seminar section styles */
     .seminar-list {
@@ -446,11 +395,6 @@
       border-radius: 6px;
       border: 1px solid #e0e0e0;
       transition: all 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start; /* align content to top so titles line up */
-      align-items: stretch;    /* allow full-width title and actions */
-      min-height: 120px;
     }
 
     .book-item:hover {
@@ -462,15 +406,14 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: #333;
-      margin-bottom: 12px;
-      line-height: 1.2;
-      min-height: 48px;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
 
 
     /* Dark theme section styles - 统一的暗色主题 */
-    [data-theme="dark"] .course-section:first-child {
+    [data-theme="dark"] .course-section {
         background: #2d2d2d;
         border-color: #404040;
     }
@@ -630,18 +573,11 @@
       
       .seminar-item {
         flex-direction: column;
-        align-items: center; /* center title and link */
-        text-align: center;
+        align-items: flex-start;
       }
       
       .seminar-link {
         margin-top: 10px;
-      }
-
-      /* Ensure action buttons remain centered on small screens */
-      .course-actions, .notebook-actions {
-        justify-content: center;
-        gap: 8px;
       }
     }
     
@@ -775,43 +711,6 @@
     [data-theme="dark"] .menu-icon svg path {
         fill: #e0e0e0;
     }
-
-    /* Center section and category titles */
-.course-section h2, .course-category h3 {
-  text-align: center;
-  display: block;
-}
-
-/* Center icon within h3 if any */
-.course-category h3 svg, .course-section h2 svg {
-  vertical-align: middle;
-  margin-right: 8px;
-}
-
-/* Make action buttons align items center and support svg icons */
-.action-btn, .seminar-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.action-btn svg, .seminar-link svg {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  flex: 0 0 16px;
-}
-
-/* Ensure theme toggle svg and back-to-top svg inherit color */
-.theme-toggle svg, .back-to-top-icon, .menu-icon svg {
-  display: block;
-  color: inherit;
-  fill: currentColor;
-}
-
-/* Small adjustments for PDF and Videos icons spacing */
-.download-btn svg { margin-right: 8px; }
-.video-btn svg { margin-right: 8px; }
   </style>
 
 </head>
@@ -820,11 +719,8 @@
 
     <header class="site-header" style="border: 2px solid lightgrey; position: relative;">
 
-  <div class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" role="button">
-    <!-- Inline SVG moon icon; uses currentColor so it follows theme-toggle color -->
-    <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
-    </svg>
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" id="theme-icon"></i>
   </div>
 
   <div class="wrapper">
@@ -863,12 +759,12 @@
       
       <!-- Control Systems Category -->
       <div class="course-category">
-        <h3>Robot Dynamics</h3>
+        <h3>Control Systems</h3>
         <div class="course-grid">
           <div class="course-item">
             <div class="course-title">CMU Convex Optimization</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.bilibili.com/video/BV1Uf4y1J7fi/?vd_source=41ecf2720f0aef9d6e7aadbcb46c655f" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://www.stat.cmu.edu/~ryantibs/convexopt/" class="action-btn slides-btn">
@@ -880,7 +776,7 @@
           <div class="course-item">
             <div class="course-title">CMU Optimal Control</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://optimalcontrol.ri.cmu.edu/" class="action-btn slides-btn">
@@ -892,7 +788,7 @@
            <div class="course-item">
             <div class="course-title">CMU Robotic Dynamics</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLZnJoM76RM6ItAfZIxJYNKdaR_BobleLY" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://github.com/dynamics-simulation-16-715/lecture-notebooks/tree/main" class="action-btn slides-btn">
@@ -907,7 +803,7 @@
         <div class="course-item">
             <div class="course-title">UCB Introduction to Robotics</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLZnJoM76RM6IAJfMXd1PgGNXn3dxhkVgI" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://ucb-ee106.github.io/eecs106a-fa23site/" class="action-btn slides-btn">
@@ -919,7 +815,7 @@
           <div class="course-item">
             <div class="course-title">MIT Underactuated Robotics</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/watch?v=uyyBT-MHhLE&list=PLkx8KyIQkMfU5szP43GlE_S1QGSPQfL9s" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://underactuated.csail.mit.edu/Spring2024/" class="action-btn slides-btn">
@@ -934,7 +830,7 @@
           <div class="course-item">
             <div class="course-title">ETH Zurich Robot Dynamics</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://rsl.ethz.ch/education-students/lectures/robotdynamics.html" class="action-btn video-btn">
                 Videos
               </a>
                <a href="https://ethz.ch/content/dam/ethz/special-interest/mavt/robotics-n-intelligent-systems/rsl-dam/documents/RobotDynamics2016/RD2016script.pdf" class="action-btn slides-btn">
@@ -952,7 +848,7 @@
           <div class="course-item">
             <div class="course-title">UCB Deep Reinforcement Learning</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PL_iWQOsE6TfVYGEGiAOMaOzzv41Jfm_Ps" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://rail.eecs.berkeley.edu/deeprlcourse/" class="action-btn slides-btn">
@@ -964,7 +860,7 @@
           <div class="course-item">
             <div class="course-title">Stanford Deep Reinforcement Learning</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rN4wG6Nk6sNpTEbuOSosZdX" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://cs224r.stanford.edu/" class="action-btn slides-btn">
@@ -973,10 +869,10 @@
             </div>
           </div>
 
-          <div class="course-item two-by-two">
+          <div class="course-item">
             <div class="course-title">Stanford Large Language Models</div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOY23Y0BoGoBGgQ1zmU_MT_" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://stanford-cs336.github.io/spring2025/" class="action-btn slides-btn">
@@ -1007,7 +903,7 @@
               <span class="tag">GAIL</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="#" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://16-831.github.io/spring25/" class="action-btn slides-btn">
@@ -1028,7 +924,7 @@
               <span class="tag">GAIL</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLPaC96j0xdLcYLTSoSk9PO1Yg-1udJd-S" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://robots-that-learn.github.io/" class="action-btn slides-btn">
@@ -1046,7 +942,7 @@
               <span class="tag">GAIL</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLPaC96j0xdLcYLTSoSk9PO1Yg-1udJd-S" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://web.stanford.edu/class/cs331b/" class="action-btn slides-btn">
@@ -1064,7 +960,7 @@
               <span class="tag">Computer Vision</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOmsNzYBMe0gJY2XS8AQg16" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://cs231n.stanford.edu/index.html" class="action-btn slides-btn">
@@ -1089,7 +985,7 @@
               <span class="tag">RNN</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="#" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://www.cs.cmu.edu/~maxim/classes/robotplanning/" class="action-btn slides-btn">
@@ -1107,7 +1003,7 @@
               <span class="tag">Probabilistic</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="#" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://www.cs.cmu.edu/~maxim/classes/robotplanning_grad/" class="action-btn slides-btn">
@@ -1125,7 +1021,7 @@
               <span class="tag">Probabilistic</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhE007XQu707Dy52qXiZGV" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://stanfordasl.github.io/PoRA-I/aa174a_aut2425/" class="action-btn slides-btn">
@@ -1143,7 +1039,7 @@
               <span class="tag">Probabilistic</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rOhE007XQu707Dy52qXiZGV" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://web.stanford.edu/class/cs237b/" class="action-btn slides-btn">
@@ -1161,7 +1057,7 @@
               <span class="tag">Probabilistic</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.bilibili.com/video/BV13Q4y1V7AS/?vd_source=41ecf2720f0aef9d6e7aadbcb46c655f" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://github.com/qiaoxu123/Self-Driving-Cars" class="action-btn slides-btn">
@@ -1205,7 +1101,7 @@
               <span class="tag">Transformations</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.bilibili.com/video/av59243185/?vd_source=41ecf2720f0aef9d6e7aadbcb46c655f" class="action-btn video-btn">
                 Videos
               </a>
               <a href="http://peichunlin.me.ntu.edu.tw/homepage/Intro2Robotics/" class="action-btn slides-btn">
@@ -1224,7 +1120,7 @@
               <span class="tag">Transformations</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href=" https://www.bilibili.com/video/av54047883/?vd_source=41ecf2720f0aef9d6e7aadbcb46c655f" class="action-btn video-btn">
                 Videos
               </a>
               <a href="http://peichunlin.me.ntu.edu.tw/homepage/Intro2Robotics/" class="action-btn slides-btn">
@@ -1242,7 +1138,7 @@
               <span class="tag">Transformations</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://robotacademy.net.au/" class="action-btn video-btn">
                 Videos
               </a>
           </div>
@@ -1258,7 +1154,7 @@
               <span class="tag">Transformations</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLkx8KyIQkMfWr191lqbN8WfV08j-ui8WX" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://manipulation.csail.mit.edu/Fall2024/schedule.html" class="action-btn slides-btn">
@@ -1279,7 +1175,7 @@
               <span class="tag">Transformations</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn video-btn">
+              <a href="https://www.youtube.com/playlist?list=PLggLP4f-rq01mRDqf_Gc57KTSGkNHzxQE" class="action-btn video-btn">
                 Videos
               </a>
               <a href="https://hades.mech.northwestern.edu/index.php/Modern_Robotics" class="action-btn slides-btn">
@@ -1322,7 +1218,7 @@
               <span class="tag">Control</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn download-btn">
+              <a href="http://hades.mech.northwestern.edu/images/7/7f/MR.pdf" class="action-btn download-btn">
                 PDF
               </a>
               <a href="http://modernrobotics.northwestern.edu/" class="action-btn website-btn">
@@ -1340,7 +1236,7 @@
               <span class="tag">Control</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
+              <a href="#" class="action-btn download-btn">
                 PDF
               </a>
               <a href="https://www.springer.com/gp/book/9781846286414" class="action-btn website-btn">
@@ -1358,7 +1254,7 @@
               <span class="tag">Control</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
+              <a href="#" class="action-btn download-btn">
                 PDF
               </a>
               <a href="https://www.pearson.com/us/higher-education/program/Craig-Introduction-to-Robotics-Mechanics-and-Control-4th-Edition/PGM179800.html" class="action-btn website-btn">
@@ -1382,7 +1278,7 @@
               <span class="tag">Fundamentals</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
+              <a href="http://incompleteideas.net/book/RLbook2020.pdf" class="action-btn download-btn">
                 PDF
               </a>
               <a href="http://incompleteideas.net/book/the-book.html" class="action-btn website-btn">
@@ -1400,7 +1296,7 @@
               <span class="tag">Implementation</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
+              <a href="https://sites.ualberta.ca/~szepesva/papers/RLAlgsInMDPs.pdf" class="action-btn download-btn">
                 PDF
               </a>
               <a href="https://sites.ualberta.ca/~szepesva/RLBook.html" class="action-btn website-btn">
@@ -1418,8 +1314,8 @@
               <span class="tag">Practical</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
-                Slides
+              <a href="#" class="action-btn download-btn">
+                PDF
               </a>
               <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994" class="action-btn website-btn">
                 Website
@@ -1442,8 +1338,8 @@
               <span class="tag">Sampling</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
-                Slides
+              <a href="http://planning.cs.uiuc.edu/book.pdf" class="action-btn download-btn">
+                PDF
               </a>
               <a href="http://planning.cs.uiuc.edu/" class="action-btn website-btn">
                 Website
@@ -1460,8 +1356,8 @@
               <span class="tag">Classical Methods</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
-                Slides
+              <a href="#" class="action-btn download-btn">
+                PDF
               </a>
               <a href="https://mitpress.mit.edu/books/principles-robot-motion" class="action-btn website-btn">
                 Website
@@ -1478,8 +1374,8 @@
               <span class="tag">Control</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
-                Slides
+              <a href="https://homepages.laas.fr/jpl/book.html" class="action-btn download-btn">
+                PDF
               </a>
               <a href="https://homepages.laas.fr/jpl/book.html" class="action-btn website-btn">
                 Website
@@ -1502,8 +1398,8 @@
               <span class="tag">Autonomous Systems</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
-                Slides
+              <a href="#" class="action-btn download-btn">
+                PDF
               </a>
               <a href="https://petercorke.com/rvc/" class="action-btn website-btn">
                 Website
@@ -1520,7 +1416,7 @@
               <span class="tag">Theory</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
+              <a href="http://www.cds.caltech.edu/~murray/books/MLS/pdf/mls94-complete.pdf" class="action-btn download-btn">
                 PDF
               </a>
               <a href="http://www.cds.caltech.edu/~murray/books/MLS/" class="action-btn website-btn">
@@ -1538,8 +1434,8 @@
               <span class="tag">Manipulation</span>
             </div>
             <div class="course-actions">
-              <a href="" class="action-btn slides-btn">
-                <i class="fa fa-file-powerpoint-o"></i> Slides
+              <a href="#" class="action-btn download-btn">
+                PDF
               </a>
               <a href="https://www.springer.com/gp/book/9783319325507" class="action-btn website-btn">
                 Website
@@ -1639,7 +1535,9 @@
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="backToTop" title="返回顶部">
-  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  <i class="fa fa-arrow-up"></i>
+  <!-- 备用Unicode箭头，如果Font Awesome未加载会显示 -->
+  <span style="font-size: 16px; display: none;">↑</span>
 </button>
 
 <style>
@@ -1719,29 +1617,6 @@
     outline: 2px solid #4a9eff;
     outline-offset: 2px;
 }
-/* Ensure the svg inside the back-to-top button keeps an appropriate size
-   and isn't reduced by other svg rules (action-btn svg etc.) */
-.back-to-top .back-to-top-icon {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px; /* keep it from shrinking inside flex */
-}
-
-@media (max-width: 768px) {
-  .back-to-top .back-to-top-icon {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .back-to-top .back-to-top-icon {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
-  }
-}
 </style>
 
 <script>
@@ -1749,9 +1624,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
     
+    // 检查按钮是否存在
+    if (!backToTopButton) {
+        console.error('返回顶部按钮元素未找到！');
+        return;
+    }
+    
+    console.log('返回顶部按钮已找到，正在初始化...');
+    
+    // 检查Font Awesome是否加载
+    setTimeout(function() {
+        const icon = backToTopButton.querySelector('i.fa');
+        const fallbackSpan = backToTopButton.querySelector('span');
+        
+        if (icon && fallbackSpan) {
+            const iconStyle = window.getComputedStyle(icon);
+            const fontFamily = iconStyle.fontFamily;
+            
+            // 如果Font Awesome未加载，显示备用箭头
+            if (!fontFamily.includes('FontAwesome') && !fontFamily.includes('Font Awesome')) {
+                console.warn('Font Awesome未正确加载，使用备用箭头');
+                icon.style.display = 'none';
+                fallbackSpan.style.display = 'inline';
+            }
+        }
+    }, 1000);
+    
     // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
+        if (window.pageYOffset > 100) {
             backToTopButton.classList.add('show');
         } else {
             backToTopButton.classList.remove('show');
@@ -1760,15 +1661,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scroll to top when clicked
     backToTopButton.addEventListener('click', function() {
+        console.log('返回顶部按钮被点击');
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+    
+    // 初始检查
+    if (window.pageYOffset > 100) {
+        backToTopButton.classList.add('show');
+    }
 });
 </script>
 
 </body>
-
 </html>
-

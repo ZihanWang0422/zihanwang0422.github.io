@@ -14,7 +14,6 @@
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
   <link rel="stylesheet" href="../main.css">
   <link rel="stylesheet" href="../css/custom.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="../js/jquery-2.1.3.min.js"> </script>
   <script src="../js/theme.js"> </script>
@@ -355,9 +354,9 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: #333;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       line-height: 1.2;
-      min-height: 72px; /* increased to align multi-line titles */
+      min-height: 48px; /* ensure first line baseline aligns across cards */
       display: block;
     }
 
@@ -366,8 +365,8 @@
       text-align: center;
       width: 100%;
       box-sizing: border-box;
-      padding-left: 8px;
-      padding-right: 8px;
+      padding-left: 4px;
+      padding-right: 4px;
     }
 
     .course-actions {
@@ -375,7 +374,7 @@
       gap: 10px;
       flex-wrap: wrap;
       justify-content: center; /* center action buttons */
-      margin-top: 8px; /* slightly reduced to compensate larger title */
+      margin-top: 12px;
     }
     /* For specific cards that need a 2x2 button layout */
     .course-item.two-by-two .course-actions {
@@ -1323,7 +1322,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn download-btn">
-                PDF
+                Slides
               </a>
               <a href="http://modernrobotics.northwestern.edu/" class="action-btn website-btn">
                 Website
@@ -1341,7 +1340,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                Slides
               </a>
               <a href="https://www.springer.com/gp/book/9781846286414" class="action-btn website-btn">
                 Website
@@ -1359,7 +1358,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                Slides
               </a>
               <a href="https://www.pearson.com/us/higher-education/program/Craig-Introduction-to-Robotics-Mechanics-and-Control-4th-Edition/PGM179800.html" class="action-btn website-btn">
                 Website
@@ -1383,7 +1382,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                Slides
               </a>
               <a href="http://incompleteideas.net/book/the-book.html" class="action-btn website-btn">
                 Website
@@ -1401,7 +1400,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                Slides
               </a>
               <a href="https://sites.ualberta.ca/~szepesva/RLBook.html" class="action-btn website-btn">
                 Website
@@ -1521,7 +1520,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="http://www.cds.caltech.edu/~murray/books/MLS/" class="action-btn website-btn">
                 Website
@@ -1639,7 +1638,12 @@
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="backToTop" title="返回顶部">
-  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  <!-- Inline SVG arrow icon (uses currentColor) -->
+  <svg class="back-to-top-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12 12 4z" />
+  </svg>
+  <!-- 备用Unicode箭头，如果SVG未显示会显示（保持隐藏以防视觉干扰） -->
+  <span style="font-size: 16px; display: none;">↑</span>
 </button>
 
 <style>
@@ -1719,29 +1723,6 @@
     outline: 2px solid #4a9eff;
     outline-offset: 2px;
 }
-/* Ensure the svg inside the back-to-top button keeps an appropriate size
-   and isn't reduced by other svg rules (action-btn svg etc.) */
-.back-to-top .back-to-top-icon {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px; /* keep it from shrinking inside flex */
-}
-
-@media (max-width: 768px) {
-  .back-to-top .back-to-top-icon {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .back-to-top .back-to-top-icon {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
-  }
-}
 </style>
 
 <script>
@@ -1749,9 +1730,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
     
+    // 检查按钮是否存在
+    if (!backToTopButton) {
+        console.error('返回顶部按钮元素未找到！');
+        return;
+    }
+    
+    console.log('返回顶部按钮已找到，正在初始化...');
+    
+    // 检查Font Awesome是否加载
+    setTimeout(function() {
+        const icon = backToTopButton.querySelector('i.fa');
+        const fallbackSpan = backToTopButton.querySelector('span');
+        
+        if (icon && fallbackSpan) {
+            const iconStyle = window.getComputedStyle(icon);
+            const fontFamily = iconStyle.fontFamily;
+            
+            // 如果Font Awesome未加载，显示备用箭头
+            if (!fontFamily.includes('FontAwesome') && !fontFamily.includes('Font Awesome')) {
+                console.warn('Font Awesome未正确加载，使用备用箭头');
+                icon.style.display = 'none';
+                fallbackSpan.style.display = 'inline';
+            }
+        }
+    }, 1000);
+    
     // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
+        if (window.pageYOffset > 100) {
             backToTopButton.classList.add('show');
         } else {
             backToTopButton.classList.remove('show');
@@ -1760,15 +1767,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scroll to top when clicked
     backToTopButton.addEventListener('click', function() {
+        console.log('返回顶部按钮被点击');
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+    
+    // 初始检查
+    if (window.pageYOffset > 100) {
+        backToTopButton.classList.add('show');
+    }
 });
 </script>
 
 </body>
-
 </html>
-

@@ -14,7 +14,6 @@
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
   <link rel="stylesheet" href="../main.css">
   <link rel="stylesheet" href="../css/custom.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="../js/jquery-2.1.3.min.js"> </script>
   <script src="../js/theme.js"> </script>
@@ -147,8 +146,8 @@
       border: 1px solid #e1e8ed;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* align content to top so titles line up */
-      align-items: stretch;    /* allow full-width title and actions */
+      justify-content: center; /* vertically center content */
+      align-items: center;    /* horizontally center content */
       min-height: 120px;
       text-align: center;
     }
@@ -162,9 +161,8 @@
       font-size: 1.2rem;
       font-weight: bold;
       color: #333;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
       text-align: center;
-      min-height: 48px;
     }
 
     .notebook-desc {
@@ -341,8 +339,8 @@
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* align content to top so titles line up */
-      align-items: stretch;    /* allow full-width title and actions */
+      justify-content: center; /* vertically center content */
+      align-items: center;    /* horizontally center content */
       min-height: 120px;
     }
 
@@ -355,19 +353,14 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: #333;
-      margin-bottom: 10px;
-      line-height: 1.2;
-      min-height: 72px; /* increased to align multi-line titles */
-      display: block;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
     /* Ensure titles are centered and take full width inside the card */
     .course-title, .book-title, .notebook-title {
       text-align: center;
       width: 100%;
-      box-sizing: border-box;
-      padding-left: 8px;
-      padding-right: 8px;
     }
 
     .course-actions {
@@ -375,7 +368,7 @@
       gap: 10px;
       flex-wrap: wrap;
       justify-content: center; /* center action buttons */
-      margin-top: 8px; /* slightly reduced to compensate larger title */
+      margin-top: 15px;
     }
     /* For specific cards that need a 2x2 button layout */
     .course-item.two-by-two .course-actions {
@@ -448,8 +441,8 @@
       transition: all 0.2s ease;
       display: flex;
       flex-direction: column;
-      justify-content: flex-start; /* align content to top so titles line up */
-      align-items: stretch;    /* allow full-width title and actions */
+      justify-content: center; /* vertically center content */
+      align-items: center;    /* horizontally center content */
       min-height: 120px;
     }
 
@@ -462,9 +455,8 @@
       font-size: 1.1rem;
       font-weight: 600;
       color: #333;
-      margin-bottom: 12px;
-      line-height: 1.2;
-      min-height: 48px;
+      margin-bottom: 15px;
+      line-height: 1.4;
     }
 
 
@@ -863,7 +855,7 @@
       
       <!-- Control Systems Category -->
       <div class="course-category">
-        <h3>Robot Dynamics</h3>
+        <h3>Control Systems</h3>
         <div class="course-grid">
           <div class="course-item">
             <div class="course-title">CMU Convex Optimization</div>
@@ -1108,7 +1100,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="https://www.cs.cmu.edu/~maxim/classes/robotplanning_grad/" class="action-btn slides-btn">
                 Slides
@@ -1126,8 +1118,8 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
-              </a>
+<i class="fa fa-play-circle"></i> Videos
+</a>
               <a href="https://stanfordasl.github.io/PoRA-I/aa174a_aut2425/" class="action-btn slides-btn">
                 Slides
               </a>
@@ -1144,7 +1136,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="https://web.stanford.edu/class/cs237b/" class="action-btn slides-btn">
                 Slides
@@ -1162,7 +1154,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="https://github.com/qiaoxu123/Self-Driving-Cars" class="action-btn slides-btn">
                 Slides
@@ -1206,7 +1198,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="http://peichunlin.me.ntu.edu.tw/homepage/Intro2Robotics/" class="action-btn slides-btn">
                 Slides
@@ -1225,7 +1217,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="http://peichunlin.me.ntu.edu.tw/homepage/Intro2Robotics/" class="action-btn slides-btn">
                 Slides
@@ -1243,7 +1235,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
           </div>
         </div>
@@ -1259,7 +1251,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="https://manipulation.csail.mit.edu/Fall2024/schedule.html" class="action-btn slides-btn">
                 Slides
@@ -1280,7 +1272,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn video-btn">
-                Videos
+                <i class="fa fa-play-circle"></i> Videos
               </a>
               <a href="https://hades.mech.northwestern.edu/index.php/Modern_Robotics" class="action-btn slides-btn">
                 Slides
@@ -1323,8 +1315,8 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn download-btn">
-                PDF
-              </a>
+<i class="fa fa-file-powerpoint-o"></i> Slides
+</a>
               <a href="http://modernrobotics.northwestern.edu/" class="action-btn website-btn">
                 Website
               </a>
@@ -1341,7 +1333,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://www.springer.com/gp/book/9781846286414" class="action-btn website-btn">
                 Website
@@ -1359,7 +1351,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://www.pearson.com/us/higher-education/program/Craig-Introduction-to-Robotics-Mechanics-and-Control-4th-Edition/PGM179800.html" class="action-btn website-btn">
                 Website
@@ -1383,7 +1375,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="http://incompleteideas.net/book/the-book.html" class="action-btn website-btn">
                 Website
@@ -1401,7 +1393,7 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://sites.ualberta.ca/~szepesva/RLBook.html" class="action-btn website-btn">
                 Website
@@ -1419,10 +1411,10 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                Slides
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1443,10 +1435,10 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                Slides
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="http://planning.cs.uiuc.edu/" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1461,10 +1453,10 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                Slides
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://mitpress.mit.edu/books/principles-robot-motion" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1479,10 +1471,10 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                Slides
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://homepages.laas.fr/jpl/book.html" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1503,10 +1495,10 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                Slides
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://petercorke.com/rvc/" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1521,10 +1513,10 @@
             </div>
             <div class="course-actions">
               <a href="" class="action-btn slides-btn">
-                PDF
+                <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="http://www.cds.caltech.edu/~murray/books/MLS/" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1542,7 +1534,7 @@
                 <i class="fa fa-file-powerpoint-o"></i> Slides
               </a>
               <a href="https://www.springer.com/gp/book/9783319325507" class="action-btn website-btn">
-                Website
+                <i class="fa fa-globe"></i> Website
               </a>
             </div>
           </div>
@@ -1639,7 +1631,12 @@
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="backToTop" title="返回顶部">
-  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  <!-- Inline SVG arrow icon (uses currentColor) -->
+  <svg class="back-to-top-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" aria-hidden="true">
+    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12 12 4z" />
+  </svg>
+  <!-- 备用Unicode箭头，如果SVG未显示会显示（保持隐藏以防视觉干扰） -->
+  <span style="font-size: 16px; display: none;">↑</span>
 </button>
 
 <style>
@@ -1719,29 +1716,6 @@
     outline: 2px solid #4a9eff;
     outline-offset: 2px;
 }
-/* Ensure the svg inside the back-to-top button keeps an appropriate size
-   and isn't reduced by other svg rules (action-btn svg etc.) */
-.back-to-top .back-to-top-icon {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px; /* keep it from shrinking inside flex */
-}
-
-@media (max-width: 768px) {
-  .back-to-top .back-to-top-icon {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .back-to-top .back-to-top-icon {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
-  }
-}
 </style>
 
 <script>
@@ -1749,9 +1723,35 @@
 document.addEventListener('DOMContentLoaded', function() {
     const backToTopButton = document.getElementById('backToTop');
     
+    // 检查按钮是否存在
+    if (!backToTopButton) {
+        console.error('返回顶部按钮元素未找到！');
+        return;
+    }
+    
+    console.log('返回顶部按钮已找到，正在初始化...');
+    
+    // 检查Font Awesome是否加载
+    setTimeout(function() {
+        const icon = backToTopButton.querySelector('i.fa');
+        const fallbackSpan = backToTopButton.querySelector('span');
+        
+        if (icon && fallbackSpan) {
+            const iconStyle = window.getComputedStyle(icon);
+            const fontFamily = iconStyle.fontFamily;
+            
+            // 如果Font Awesome未加载，显示备用箭头
+            if (!fontFamily.includes('FontAwesome') && !fontFamily.includes('Font Awesome')) {
+                console.warn('Font Awesome未正确加载，使用备用箭头');
+                icon.style.display = 'none';
+                fallbackSpan.style.display = 'inline';
+            }
+        }
+    }, 1000);
+    
     // Show/hide button based on scroll position
     window.addEventListener('scroll', function() {
-        if (window.pageYOffset > 300) {
+        if (window.pageYOffset > 100) {
             backToTopButton.classList.add('show');
         } else {
             backToTopButton.classList.remove('show');
@@ -1760,15 +1760,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Smooth scroll to top when clicked
     backToTopButton.addEventListener('click', function() {
+        console.log('返回顶部按钮被点击');
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+    
+    // 初始检查
+    if (window.pageYOffset > 100) {
+        backToTopButton.classList.add('show');
+    }
 });
 </script>
 
 </body>
-
 </html>
-

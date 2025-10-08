@@ -14,7 +14,6 @@
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
   <link rel="stylesheet" href="../main.css">
   <link rel="stylesheet" href="../css/custom.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <script src="../js/jquery-2.1.3.min.js"> </script>
   <script src="../js/theme.js"> </script>
@@ -1639,7 +1638,12 @@
 
 <!-- Back to Top Button -->
 <button class="back-to-top" id="backToTop" title="返回顶部">
-  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+  <!-- Inline SVG arrow icon (uses currentColor) -->
+  <svg class="back-to-top-icon" viewBox="0 0 24 24" width="24" height="54" fill="currentColor" aria-hidden="true">
+    <path d="M4 12l1.41 1.41L11 7.83V20h2V7.83l5.59 5.58L20 12 12 4z" />
+  </svg>
+  <!-- 备用Unicode箭头，如果SVG未显示会显示（保持隐藏以防视觉干扰） -->
+  <span style="font-size: 16px; display: none;">↑</span>
 </button>
 
 <style>
@@ -1718,29 +1722,6 @@
 .back-to-top:focus {
     outline: 2px solid #4a9eff;
     outline-offset: 2px;
-}
-/* Ensure the svg inside the back-to-top button keeps an appropriate size
-   and isn't reduced by other svg rules (action-btn svg etc.) */
-.back-to-top .back-to-top-icon {
-  width: 24px;
-  height: 24px;
-  flex: 0 0 24px; /* keep it from shrinking inside flex */
-}
-
-@media (max-width: 768px) {
-  .back-to-top .back-to-top-icon {
-    width: 20px;
-    height: 20px;
-    flex: 0 0 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .back-to-top .back-to-top-icon {
-    width: 18px;
-    height: 18px;
-    flex: 0 0 18px;
-  }
 }
 </style>
 

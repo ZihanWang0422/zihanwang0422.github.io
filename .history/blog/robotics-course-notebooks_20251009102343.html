@@ -1,0 +1,1800 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Robotics Course Notebooks</title>
+  <meta name="description" lang="en" content="Comprehensive collection of robotics course seminars and interactive notebooks covering various topics in robotics.">
+  <meta name="keywords" lang="en" content="Robotics, Course, Seminar, Notebook, SLAM, Computer Vision, Machine Learning" />
+
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/custom.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <script src="../js/jquery-2.1.3.min.js"> </script>
+  <script src="../js/theme.js"> </script>
+
+  <!-- 简化的文档按钮控制脚本 -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // 处理所有course-actions容器
+      const allActionDivs = document.querySelectorAll('.course-actions');
+      allActionDivs.forEach(actionDiv => {
+        // 移除不需要的按钮类型
+        const nonValidButtons = actionDiv.querySelectorAll('.course-btn, .notebook-btn');
+        nonValidButtons.forEach(btn => btn.remove());
+      });
+    });
+  </script>
+
+  <style>
+    .blog-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      line-height: 1.6;
+    }
+    
+    .blog-header {
+      text-align: center;
+      margin-bottom: 40px;
+      padding: 50px 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-radius: 12px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .blog-header::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(180deg); }
+    }
+    
+    .blog-header h1 {
+      position: relative;
+      z-index: 1;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    
+    .blog-header .update-date {
+      position: relative;
+      z-index: 1;
+      font-size: 1rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin-top: 5px;
+      font-weight: normal;
+    }
+    
+    .blog-content {
+      background: #fff;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+    
+    .back-to-blog {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 30px;
+      color: #667eea;
+      text-decoration: none;
+      font-weight: 500;
+      padding: 12px 24px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(102, 126, 234, 0.2);
+      transition: all 0.3s ease;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+      font-size: 14px;
+    }
+    
+    .back-to-blog:hover {
+      background: rgba(102, 126, 234, 0.1);
+      border-color: #667eea;
+      transform: translateX(-2px);
+      text-decoration: none;
+      color: #667eea;
+      box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    }
+
+    .notebook-section {
+      margin: 40px 0;
+      padding: 30px;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-radius: 12px;
+      border-left: 5px solid #667eea;
+    }
+
+    .notebook-section h2 {
+      color: #333;
+      margin-bottom: 20px;
+      font-size: 1.8rem;
+    }
+
+    .notebook-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .notebook-item {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      transition: all 0.3s ease;
+      border: 1px solid #e1e8ed;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* align content to top so titles line up */
+      align-items: stretch;    /* allow full-width title and actions */
+      min-height: 120px;
+      text-align: center;
+    }
+
+    .notebook-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+
+    .notebook-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #333;
+      margin-bottom: 12px;
+      text-align: center;
+      min-height: 48px;
+    }
+
+    .notebook-desc {
+      display: none;
+    }
+
+    .notebook-tags {
+      display: none;
+    }
+
+    .tag {
+      background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+      color: #8b4513;
+      padding: 4px 12px;
+      border-radius: 15px;
+      font-size: 12px;
+      font-weight: 500;
+      border: 1px solid rgba(139, 69, 19, 0.2);
+    }
+
+    .notebook-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center; /* center buttons horizontally */
+      margin-top: 12px;
+    }
+
+    /* Simple button styles - 统一的按钮样式 */
+    .action-btn {
+      text-decoration: none;
+      font-weight: 500;
+      padding: 8px 16px;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid;
+      text-align: center;
+      color: #555;
+    }
+
+    .video-btn {
+      background: #f8f9fa;
+      color: #555;
+      border-color: #dee2e6;
+    }
+
+    .video-btn:hover {
+      background: #e9ecef;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .slides-btn {
+      background: #f8f9fa;
+      color: #555;
+      border-color: #dee2e6;
+    }
+
+    .slides-btn:hover {
+      background: #e9ecef;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .website-btn {
+      background: #f8f9fa;
+      color: #555;
+      border-color: #dee2e6;
+    }
+
+    .website-btn:hover {
+      background: #e9ecef;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .download-btn {
+      background: #f8f9fa;
+      color: #555;
+      border-color: #dee2e6;
+    }
+
+    .download-btn:hover {
+      background: #e9ecef;
+      color: #555;
+      text-decoration: none;
+    }
+
+    /* Seminar link styles - 统一颜色 */
+    .seminar-link {
+      text-decoration: none;
+      color: #555;
+      font-weight: 500;
+      padding: 6px 12px;
+      border: 1px solid #dee2e6;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      background: #f8f9fa;
+    }
+    
+    .seminar-link:hover {
+      background: #e9ecef;
+      color: #555;
+      text-decoration: none;
+    }
+
+    .topic-overview {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .topic-overview h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    /* Course section layout */
+    .course-section {
+      margin-bottom: 40px;
+    }
+
+    /* Only Courses section has background frame */
+    .course-section:first-child {
+      padding: 30px;
+      background: #fafafa;
+      border-radius: 8px;
+      border: 1px solid #e0e0e0;
+    }
+
+    .course-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      color: #333;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #4a90e2;
+      text-align: center;
+    }
+
+    .course-category {
+      margin: 30px 0;
+      padding: 20px;
+      background: white;
+      border-radius: 6px;
+      border: 1px solid #e8e8e8;
+    }
+
+    .course-category h3 {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+      color: #555;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .course-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .course-item {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* align content to top so titles line up */
+      align-items: stretch;    /* allow full-width title and actions */
+      min-height: 120px;
+    }
+
+    .course-item:hover {
+      border-color: #4a90e2;
+      box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+    }
+
+    .course-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 10px;
+      line-height: 1.2;
+      min-height: 72px; /* increased to align multi-line titles */
+      display: block;
+    }
+
+    /* Ensure titles are centered and take full width inside the card */
+    .course-title, .book-title, .notebook-title {
+      text-align: center;
+      width: 100%;
+      box-sizing: border-box;
+      padding-left: 8px;
+      padding-right: 8px;
+    }
+
+    .course-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center; /* center action buttons */
+      margin-top: 8px; /* slightly reduced to compensate larger title */
+    }
+    /* For specific cards that need a 2x2 button layout */
+    .course-item.two-by-two .course-actions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      justify-items: center;
+      align-items: center;
+    }
+
+    .course-item.two-by-two .course-actions .action-btn {
+      width: 100%;
+      justify-content: center;
+      box-sizing: border-box; /* ensure padding counted in width */
+      min-width: 0; /* allow shrinking inside grid */
+    }
+
+    /* On very small screens, stack the 2x2 into a single column to avoid overlap */
+    @media (max-width: 480px) {
+      .course-item.two-by-two .course-actions {
+        grid-template-columns: 1fr;
+      }
+      .course-item.two-by-two .course-actions .action-btn {
+        width: 100%;
+      }
+    }
+    /* Seminar section styles */
+    .seminar-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    
+    .seminar-item {
+      background: white;
+      padding: 15px 20px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.2s ease;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .seminar-item:hover {
+      border-color: #4a90e2;
+      box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+    }
+    
+    .seminar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    /* Books section - use same layout as courses */
+    .book-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .book-item {
+      background: white;
+      padding: 20px;
+      border-radius: 6px;
+      border: 1px solid #e0e0e0;
+      transition: all 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start; /* align content to top so titles line up */
+      align-items: stretch;    /* allow full-width title and actions */
+      min-height: 120px;
+    }
+
+    .book-item:hover {
+      border-color: #4a90e2;
+      box-shadow: 0 2px 8px rgba(74, 144, 226, 0.1);
+    }
+
+    .book-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #333;
+      margin-bottom: 12px;
+      line-height: 1.2;
+      min-height: 48px;
+    }
+
+
+
+    /* Dark theme section styles - 统一的暗色主题 */
+    [data-theme="dark"] .course-section:first-child {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    [data-theme="dark"] .course-section h2 {
+        color: #e0e0e0;
+        border-bottom-color: #4a90e2;
+    }
+
+    [data-theme="dark"] .course-category {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    [data-theme="dark"] .course-category h3 {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .course-item {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    [data-theme="dark"] .course-item:hover {
+        border-color: #4a90e2;
+        box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+    }
+
+    [data-theme="dark"] .course-title {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .seminar-item {
+        background: #2d2d2d;
+        border-color: #404040;
+    }
+
+    [data-theme="dark"] .seminar-item:hover {
+        border-color: #4a90e2;
+        box-shadow: 0 2px 8px rgba(74, 144, 226, 0.2);
+    }
+
+    [data-theme="dark"] .seminar-title {
+        color: #e0e0e0;
+    }
+    /* Hide description and tags as requested */
+    .course-desc, .course-tags, .notebook-desc, .notebook-tags {
+      display: none;
+    }
+
+    .topic-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .topic-item {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+      backdrop-filter: blur(10px);
+    }
+
+    .topic-item h4 {
+      color: #ffffff;
+      margin-bottom: 8px;
+      font-size: 1.1rem;
+    }
+
+    .topic-item p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: 0.9rem;
+      margin: 0 0 12px 0;
+    }
+
+    .topic-links {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .topic-link {
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .topic-link:hover {
+      background: rgba(255, 255, 255, 0.3);
+      color: white;
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    /* Theme Toggle Button Styles - 月亮图标样式 */
+    .theme-toggle {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Additional responsive styles */
+    @media (max-width: 768px) {
+      .course-grid, .notebook-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      }
+      
+      .course-title, .notebook-title {
+        font-size: 1rem;
+      }
+      
+      .action-btn {
+        padding: 6px 12px;
+        font-size: 13px;
+      }
+      
+      .seminar-item {
+        flex-direction: column;
+        align-items: center; /* center title and link */
+        text-align: center;
+      }
+      
+      .seminar-link {
+        margin-top: 10px;
+      }
+
+      /* Ensure action buttons remain centered on small screens */
+      .course-actions, .notebook-actions {
+        justify-content: center;
+        gap: 8px;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      .course-grid, .notebook-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .course-category {
+        padding: 15px;
+      }
+      
+      .course-category h3 {
+        font-size: 1.2rem;
+      }
+    }
+    
+    /* Dark Theme Styles */
+    [data-theme="dark"] {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d;
+        border-color: #404040 !important;
+    }
+
+    [data-theme="dark"] .blog-content {
+        background-color: #2d2d2d;
+        color: #e0e0e0;
+    }
+    
+    [data-theme="dark"] .update-date {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="dark"] .notebook-section {
+        background: linear-gradient(135deg, #2d2d2d 0%, #404040 100%);
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .notebook-item {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .notebook-title {
+        color: #ffffff;
+    }
+
+    [data-theme="dark"] .notebook-desc {
+        color: #b0b0b0;
+    }
+
+    [data-theme="dark"] .tag {
+        background: linear-gradient(135deg, #4a4a4a 0%, #6a6a6a 100%);
+        color: #e0e0e0;
+        border-color: rgba(224, 224, 224, 0.2);
+    }
+
+    /* Dark theme button styles - 统一的暗色主题按钮 */
+    [data-theme="dark"] .action-btn,
+    [data-theme="dark"] .seminar-link {
+        background: #404040;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+
+    [data-theme="dark"] .action-btn:hover,
+    [data-theme="dark"] .seminar-link:hover {
+        background: #555;
+        color: #e0e0e0;
+        text-decoration: none;
+    }
+
+    [data-theme="dark"] .topic-overview {
+        background: linear-gradient(135deg, #4a9eff 0%, #667eea 100%);
+    }
+
+    [data-theme="dark"] .back-to-blog {
+        color: #4da6ff;
+        background: rgba(30, 30, 30, 0.9);
+        border-color: rgba(77, 166, 255, 0.2);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-blog:hover {
+        background: rgba(77, 166, 255, 0.15);
+        border-color: #4da6ff;
+        color: #4da6ff;
+        box-shadow: 0 4px 12px rgba(77, 166, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(30, 30, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(40, 40, 40, 1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #fff;
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link {
+        color: #e0e0e0;
+    }
+
+    [data-theme="dark"] .site-nav .page-link:hover {
+        color: #4da6ff;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0;
+    }
+
+    /* Center section and category titles */
+.course-section h2, .course-category h3 {
+  text-align: center;
+  display: block;
+}
+
+/* Center icon within h3 if any */
+.course-category h3 svg, .course-section h2 svg {
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+/* Make action buttons align items center and support svg icons */
+.action-btn, .seminar-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn svg, .seminar-link svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  flex: 0 0 16px;
+}
+
+/* Ensure theme toggle svg and back-to-top svg inherit color */
+.theme-toggle svg, .back-to-top-icon, .menu-icon svg {
+  display: block;
+  color: inherit;
+  fill: currentColor;
+}
+
+/* Small adjustments for PDF and Videos icons spacing */
+.download-btn svg { margin-right: 8px; }
+.video-btn svg { margin-right: 8px; }
+  </style>
+
+</head>
+
+<body>
+
+    <header class="site-header" style="border: 2px solid lightgrey; position: relative;">
+
+  <div class="theme-toggle" id="theme-toggle" aria-label="Toggle theme" role="button">
+    <!-- Inline SVG moon icon; uses currentColor so it follows theme-toggle color -->
+    <svg id="theme-icon" viewBox="0 0 24 24" width="18" height="18" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+    </svg>
+  </div>
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <div class="trigger">
+    <a class="page-link" href="../index.html"><b>Home</b></a>
+    <a class="page-link" href="../index.html#research"><b>Research</b></a>
+    <a class="page-link" href="../projects.html"><b>Projects</b></a>
+    <a class="page-link" href="../blog.html"><b>Blog</b></a>
+  </div>
+</nav>
+  </div>
+</header>
+
+<div class="blog-container">
+  <a href="../blog.html" class="back-to-blog">← Back to Blog List</a>
+  
+  <div class="blog-header">
+    <h1>Robotics Courses Collection</h1>
+    <div class="update-date">September 2025</div>
+  </div>
+
+  <div class="blog-content">
+    
+    <!-- Overview Section -->
+    <div class="course-section">
+      <h2>Courses</h2>
+      
+      <!-- Control Systems Category -->
+      <div class="course-category">
+        <h3>Robot Dynamics</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">CMU Convex Optimization</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://www.stat.cmu.edu/~ryantibs/convexopt/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+          
+          <div class="course-item">
+            <div class="course-title">CMU Optimal Control</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://optimalcontrol.ri.cmu.edu/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+           <div class="course-item">
+            <div class="course-title">CMU Robotic Dynamics</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://github.com/dynamics-simulation-16-715/lecture-notebooks/tree/main" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+               <a href=" https://github.com/jc-bao/CMU16-715-Robot-Dynamics?tab=readme-ov-file" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> PDF
+              </a>
+            </div>
+          </div>
+
+        <div class="course-item">
+            <div class="course-title">UCB Introduction to Robotics</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://ucb-ee106.github.io/eecs106a-fa23site/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">MIT Underactuated Robotics</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://underactuated.csail.mit.edu/Spring2024/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+               <a href="https://underactuated.csail.mit.edu/" class="action-btn pdf-btn">
+                <i class="fa fa-globe"></i> PDF
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">ETH Zurich Robot Dynamics</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+               <a href="https://ethz.ch/content/dam/ethz/special-interest/mavt/robotics-n-intelligent-systems/rsl-dam/documents/RobotDynamics2016/RD2016script.pdf" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> PDF
+              </a>
+               <a href="https://daomingchen.gitbook.io/autonomous-mobile-robots" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <!-- Reinforcement Learning Category -->
+      <div class="course-category">
+        <h3>RL&LLM</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">UCB Deep Reinforcement Learning</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://rail.eecs.berkeley.edu/deeprlcourse/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+          
+          <div class="course-item">
+            <div class="course-title">Stanford Deep Reinforcement Learning</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://cs224r.stanford.edu/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item two-by-two">
+            <div class="course-title">Stanford Large Language Models</div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://stanford-cs336.github.io/spring2025/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website(cs336)
+              </a>
+              <a href="https://stanford-cs324.github.io/winter2022/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website(cs324)
+              </a>
+              <a href="https://web.stanford.edu/class/cs25/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website(cs25)
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      
+      <!-- Robot Learning Category -->
+      <div class="course-category">
+        <h3>Robot Learning</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">CMU Introduction to Robot Learning</div>
+            <div class="course-desc">Behavior cloning, inverse reinforcement learning, and GAIL with real-robot demonstrations and transfer learning.</div>
+            <div class="course-tags">
+              <span class="tag">Behavior Cloning</span>
+              <span class="tag">IRL</span>
+              <span class="tag">GAIL</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://16-831.github.io/spring25/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+              <a href="https://sites.google.com/view/16-831-cmu/project" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website(Project)
+              </a>
+            </div>
+          </div>
+
+        <div class="course-item">
+            <div class="course-title">UCB Robots That Learn</div>
+            <div class="course-desc">Behavior cloning, inverse reinforcement learning, and GAIL with real-robot demonstrations and transfer learning.</div>
+            <div class="course-tags">
+              <span class="tag">Behavior Cloning</span>
+              <span class="tag">IRL</span>
+              <span class="tag">GAIL</span>
+            </div>
+            <div class="course-actions">
+            <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://robots-that-learn.github.io/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+            <div class="course-item">
+            <div class="course-title">Stanford Interactive Simulation for Robot Learning</div>
+            <div class="course-desc">Behavior cloning, inverse reinforcement learning, and GAIL with real-robot demonstrations and transfer learning.</div>
+            <div class="course-tags">
+              <span class="tag">Behavior Cloning</span>
+              <span class="tag">IRL</span>
+              <span class="tag">GAIL</span>
+            </div>
+            <div class="course-actions">
+             <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://web.stanford.edu/class/cs331b/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Stanford CS231n: Convolutional Neural Networks for Visual Recognition</div>
+            <div class="course-desc">Deep learning for computer vision, covering CNNs, RNNs, and more.</div>
+            <div class="course-tags">
+              <span class="tag">CNN</span>
+              <span class="tag">RNN</span>
+              <span class="tag">Computer Vision</span>
+            </div>
+            <div class="course-actions">
+          <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://cs231n.stanford.edu/index.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Machine Learning Category -->
+      <div class="course-category">
+        <h3>Autonomous Car</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">CMU Planning Techniques for Robotics</div>
+            <div class="course-desc"></div>
+            <div class="course-tags">
+              <span class="tag">Deep Learning</span>
+              <span class="tag">CNN</span>
+              <span class="tag">RNN</span>
+            </div>
+            <div class="course-actions">
+             <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://www.cs.cmu.edu/~maxim/classes/robotplanning/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+          
+          <div class="course-item">
+            <div class="course-title">CMU Planning and Decision-making in Robotics</div>
+            <div class="course-desc">Probabilistic models, Bayesian inference, and uncertainty estimation for robust robot learning.</div>
+            <div class="course-tags">
+              <span class="tag">Bayesian Methods</span>
+              <span class="tag">Uncertainty</span>
+              <span class="tag">Probabilistic</span>
+            </div>
+            <div class="course-actions">
+           <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://www.cs.cmu.edu/~maxim/classes/robotplanning_grad/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+           <div class="course-item">
+            <div class="course-title">Stanford Principles of Robot Autonomy I</div>
+            <div class="course-desc">Probabilistic models, Bayesian inference, and uncertainty estimation for robust robot learning.</div>
+            <div class="course-tags">
+              <span class="tag">Bayesian Methods</span>
+              <span class="tag">Uncertainty</span>
+              <span class="tag">Probabilistic</span>
+            </div>
+            <div class="course-actions">
+           <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://stanfordasl.github.io/PoRA-I/aa174a_aut2425/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+           <div class="course-item">
+            <div class="course-title">Stanford Principles of Robot Autonomy II</div>
+            <div class="course-desc">Probabilistic models, Bayesian inference, and uncertainty estimation for robust robot learning.</div>
+            <div class="course-tags">
+              <span class="tag">Bayesian Methods</span>
+              <span class="tag">Uncertainty</span>
+              <span class="tag">Probabilistic</span>
+            </div>
+            <div class="course-actions">
+           <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://web.stanford.edu/class/cs237b/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+              <div class="course-item">
+            <div class="course-title">ZJU Mobile Car</div>
+            <div class="course-desc">Probabilistic models, Bayesian inference, and uncertainty estimation for robust robot learning.</div>
+            <div class="course-tags">
+              <span class="tag">Bayesian Methods</span>
+              <span class="tag">Uncertainty</span>
+              <span class="tag">Probabilistic</span>
+            </div>
+            <div class="course-actions">
+           <a href="https://www.bilibili.com/video/BV15MKFeFEPm?spm_id_from=333.788.videopod.sections&vd_source=41ecf2720f0aef9d6e7aadbcb46c655f" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://blog.csdn.net/qq_37746927?type=blog" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          
+
+           <div class="course-item">
+            <div class="course-title"> UoT Autonomous Driving Car</div>
+            <div class="course-desc">Probabilistic models, Bayesian inference, and uncertainty estimation for robust robot learning.</div>
+            <div class="course-tags">
+              <span class="tag">Bayesian Methods</span>
+              <span class="tag">Uncertainty</span>
+              <span class="tag">Probabilistic</span>
+            </div>
+            <div class="course-actions">
+           <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://github.com/qiaoxu123/Self-Driving-Cars" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title"> ETH Autonomous Mobile Robots</div>
+            <div class="course-desc">Probabilistic models, Bayesian inference, and uncertainty estimation for robust robot learning.</div>
+            <div class="course-tags">
+              <span class="tag">Bayesian Methods</span>
+              <span class="tag">Uncertainty</span>
+              <span class="tag">Probabilistic</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://asl.ethz.ch/education/lectures/autonomous_mobile_robots/spring-2021.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+                <a href="https://daomingchen.gitbook.io/autonomous-mobile-robots" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Manipulation Category -->
+      <div class="course-category">
+        <h3>Manipulation</h3>
+        <div class="course-grid">
+
+             <div class="course-item">
+            <div class="course-title">台大機器人學(运动学)</div>
+            <div class="course-desc">Forward and inverse kinematics, Jacobians, and differential motion for robotic manipulators.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Jacobian</span>
+              <span class="tag">Transformations</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="http://peichunlin.me.ntu.edu.tw/homepage/Intro2Robotics/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+          </div>
+        </div>
+
+
+             <div class="course-item">
+            <div class="course-title">台大機器人學(动力学)</div>
+            <div class="course-desc">Forward and inverse kinematics, Jacobians, and differential motion for robotic manipulators.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Jacobian</span>
+              <span class="tag">Transformations</span>
+            </div>
+            <div class="course-actions">
+            <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="http://peichunlin.me.ntu.edu.tw/homepage/Intro2Robotics/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+          </div>
+        </div>
+
+         <div class="course-item">
+            <div class="course-title">QUT Robotics Course</div>
+            <div class="course-desc">Forward and inverse kinematics, Jacobians, and differential motion for robotic manipulators.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Jacobian</span>
+              <span class="tag">Transformations</span>
+            </div>
+            <div class="course-actions">
+            <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+          </div>
+        </div>
+       
+
+          <div class="course-item">
+            <div class="course-title">MIT Robotic Manipulation</div>
+            <div class="course-desc">Forward and inverse kinematics, Jacobians, and differential motion for robotic manipulators.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Jacobian</span>
+              <span class="tag">Transformations</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+               <a href="https://manipulation.csail.mit.edu/Fall2024/schedule.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+               <a href="https://manipulation.mit.edu/" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Northwestern Modern Robotics</div>
+            <div class="course-desc">Forward and inverse kinematics, Jacobians, and differential motion for robotic manipulators.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Jacobian</span>
+              <span class="tag">Transformations</span>
+            </div>
+            <div class="course-actions">
+             <a href="" class="action-btn video-btn">
+                <i class="fa fa-youtube-play"></i> Videos
+              </a>
+              <a href="https://hades.mech.northwestern.edu/index.php/Modern_Robotics" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+          </div>
+        </div>
+
+           <div class="course-item">
+            <div class="course-title">PKU Embodied AI</div>
+            <div class="course-desc">Forward and inverse kinematics, Jacobians, and differential motion for robotic manipulators.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Jacobian</span>
+              <span class="tag">Transformations</span>
+            </div>
+            <div class="course-actions">
+              <a href="https://github.com/zhuozhiyongde/Embodied-Artificial-Intelligence-2025Spring-PKU/tree/main" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a> 
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Books Section -->
+    <div class="course-section">
+      <h2>Books</h2>
+      
+      <!-- Robot Dynamics Category -->
+      <div class="course-category">
+        <h3>Robot Dynamics</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">Modern Robotics</div>
+            <div class="course-desc">Comprehensive coverage of robot kinematics, dynamics, motion planning, and control with modern mathematical tools.</div>
+            <div class="course-tags">
+              <span class="tag">Kinematics</span>
+              <span class="tag">Dynamics</span>
+              <span class="tag">Control</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="http://modernrobotics.northwestern.edu/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Robotics: Modelling, Planning and Control</div>
+            <div class="course-desc">Advanced treatment of robot modeling, planning algorithms, and control strategies with practical applications.</div>
+            <div class="course-tags">
+              <span class="tag">Modeling</span>
+              <span class="tag">Planning</span>
+              <span class="tag">Control</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://www.springer.com/gp/book/9781846286414" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Introduction to Robotics</div>
+            <div class="course-desc">Classic textbook covering fundamental concepts of robot mechanics, dynamics, and control systems.</div>
+            <div class="course-tags">
+              <span class="tag">Fundamentals</span>
+              <span class="tag">Mechanics</span>
+              <span class="tag">Control</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://www.pearson.com/us/higher-education/program/Craig-Introduction-to-Robotics-Mechanics-and-Control-4th-Edition/PGM179800.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Reinforcement Learning Category -->
+      <div class="course-category">
+        <h3>Reinforcement Learning</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">Reinforcement Learning: An Introduction</div>
+            <div class="course-desc">Comprehensive introduction to reinforcement learning covering fundamental algorithms and theoretical foundations.</div>
+            <div class="course-tags">
+              <span class="tag">RL Theory</span>
+              <span class="tag">Algorithms</span>
+              <span class="tag">Fundamentals</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="http://incompleteideas.net/book/the-book.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+          
+          <div class="course-item">
+            <div class="course-title">Algorithms for Reinforcement Learning</div>
+            <div class="course-desc">Focused treatment of key RL algorithms with mathematical rigor and practical implementation details.</div>
+            <div class="course-tags">
+              <span class="tag">Algorithms</span>
+              <span class="tag">Theory</span>
+              <span class="tag">Implementation</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://sites.ualberta.ca/~szepesva/RLBook.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Deep Reinforcement Learning Hands-On</div>
+            <div class="course-desc">Practical guide to implementing deep RL algorithms with Python and PyTorch for real-world applications.</div>
+            <div class="course-tags">
+              <span class="tag">Deep RL</span>
+              <span class="tag">PyTorch</span>
+              <span class="tag">Practical</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://www.packtpub.com/product/deep-reinforcement-learning-hands-on-second-edition/9781838826994" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Motion Planning Category -->
+      <div class="course-category">
+        <h3>Motion Planning</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">Planning Algorithms</div>
+            <div class="course-desc">Comprehensive coverage of motion planning algorithms from basic search to advanced sampling-based methods.</div>
+            <div class="course-tags">
+              <span class="tag">Path Planning</span>
+              <span class="tag">Algorithms</span>
+              <span class="tag">Sampling</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="http://planning.cs.uiuc.edu/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+          
+          <div class="course-item">
+            <div class="course-title">Principles of Robot Motion</div>
+            <div class="course-desc">Theory and algorithms for robot motion planning, covering both classical and modern approaches.</div>
+            <div class="course-tags">
+              <span class="tag">Motion Theory</span>
+              <span class="tag">Algorithms</span>
+              <span class="tag">Classical Methods</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://mitpress.mit.edu/books/principles-robot-motion" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Mobile Robotics: Mathematics, Models, and Methods</div>
+            <div class="course-desc">Advanced techniques for robot motion planning and control in complex environments with obstacles.</div>
+            <div class="course-tags">
+              <span class="tag">Advanced Planning</span>
+              <span class="tag">Obstacles</span>
+              <span class="tag">Control</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://www.cs.cmu.edu/~alonzo/pubs/pubs.html" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Manipulation Category -->
+      <div class="course-category">
+        <h3>Manipulation</h3>
+        <div class="course-grid">
+          <div class="course-item">
+            <div class="course-title">Robotics: Vision and Control</div>
+            <div class="course-desc">Integration of computer vision and robotics for intelligent manipulation and autonomous systems.</div>
+            <div class="course-tags">
+              <span class="tag">Computer Vision</span>
+              <span class="tag">Control</span>
+              <span class="tag">Autonomous Systems</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://petercorke.com/rvc/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">A Mathematical Introduction to Robotic Manipulation</div>
+            <div class="course-desc">Mathematical foundations of robotic manipulation including kinematics, dynamics, and control theory.</div>
+            <div class="course-tags">
+              <span class="tag">Mathematics</span>
+              <span class="tag">Manipulation</span>
+              <span class="tag">Theory</span>
+            </div>
+            <div class="course-actions">
+               <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="http://www.cds.caltech.edu/~murray/books/MLS/" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+
+          <div class="course-item">
+            <div class="course-title">Handbook of Robotics</div>
+            <div class="course-desc">Comprehensive reference covering all aspects of robotics including manipulation, sensing, and control.</div>
+            <div class="course-tags">
+              <span class="tag">Reference</span>
+              <span class="tag">Comprehensive</span>
+              <span class="tag">Manipulation</span>
+            </div>
+            <div class="course-actions">
+              <a href="" class="action-btn slides-btn">
+                <i class="fa fa-file-pdf-o"></i> PDF
+              </a>
+              <a href="https://www.springer.com/gp/book/9783319325507" class="action-btn website-btn">
+                <i class="fa fa-globe"></i> Website
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Seminars Section -->
+    <div class="course-section">
+      <h2>Seminars</h2>
+      
+      <div class="seminar-list">
+        <!-- Deep RL Seminar -->
+        <div class="seminar-item">
+          <div class="seminar-title">MIT Robotics Seminar</div>
+          <a href="https://robotics.mit.edu/robotics-seminar/" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+        
+        <!-- Robot Manipulation Seminar -->
+        <div class="seminar-item">
+          <div class="seminar-title">MIT Embodied Intelligence Seminar</div>
+          <a href="https://ei.csail.mit.edu/seminars.html" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+        
+        <!-- Multi-Robot Systems Seminar -->
+        <div class="seminar-item">
+          <div class="seminar-title">CMU Robotics Institute Seminar</div>
+          <a href="https://www.youtube.com/playlist?list=PLCFD85BC79FE703DF" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">Stanford Robotics Seminar</div>
+          <a href="https://www.youtube.com/playlist?list=PLoROMvodv4rMeercb-kvGLUrOq4HR6BZD" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+          <a href="https://stanfordasl.github.io/robotics_seminar/" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <!-- Autonomous Driving Seminar -->
+        <div class="seminar-item">
+          <div class="seminar-title">Northwestern Robotics Seminar</div>
+          <a href="https://www.youtube.com/playlist?list=PLggLP4f-rq03mRDqf_Gc57KTSGkNHzxQE" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+        
+        <!-- Control Systems Seminar -->
+        <div class="seminar-item">
+          <div class="seminar-title">Upenn Grasp Robotics Seminar</div>
+          <a href="https://www.youtube.com/@grasplab/videos" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">UofT AI Robotics Seminar</div>
+          <a href="https://www.youtube.com/@AIRoboticsSeminar-UofT/videos" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">UMich Robotics Seminar</div>
+          <a href="https://www.youtube.com/playlist?list=PLdPQZLMHRjDLgcTcHEqzgC8V5XK9BBVTI" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">UW CSE Robotics Seminar</div>
+          <a href="https://www.youtube.com/@uwcse/playlists" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">UMD Robotics Seminar</div>
+          <a href="https://www.youtube.com/@UMDRobotics/videos" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">Hermes Multi-Bot Seminar</div>
+          <a href="https://www.youtube.com/@hermes_multibot/videos" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">Robot Learning Seminar</div>
+          <a href="https://www.youtube.com/@robotlearning514/videos" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">Robotics Today Seminar</div>
+          <a href="https://www.youtube.com/@RoboticsTodaySeminar/videos" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+
+        <div class="seminar-item">
+          <div class="seminar-title">Control Meets Learning Seminar</div>
+          <a href="https://www.youtube.com/@controlmeetslearning/streams" class="seminar-link"><i class="fa fa-youtube-play"></i> Videos</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop" title="返回顶部">
+  <i class="fa fa-arrow-up" aria-hidden="true"></i>
+</button>
+
+<style>
+/* Back to Top Button Styles */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+    border: none;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.back-to-top.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+}
+
+.back-to-top:active {
+    transform: translateY(-1px);
+    transition: all 0.1s ease;
+}
+
+/* Dark Theme Support */
+[data-theme="dark"] .back-to-top {
+    background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+}
+
+[data-theme="dark"] .back-to-top:hover {
+    background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .back-to-top {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .back-to-top {
+        bottom: 15px;
+        right: 15px;
+        width: 40px;
+        height: 40px;
+        font-size: 16px;
+    }
+}
+
+/* Accessibility */
+.back-to-top:focus {
+    outline: 2px solid #4a9eff;
+    outline-offset: 2px;
+}
+/* Ensure the svg inside the back-to-top button keeps an appropriate size
+   and isn't reduced by other svg rules (action-btn svg etc.) */
+.back-to-top .back-to-top-icon {
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px; /* keep it from shrinking inside flex */
+}
+
+@media (max-width: 768px) {
+  .back-to-top .back-to-top-icon {
+    width: 20px;
+    height: 20px;
+    flex: 0 0 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .back-to-top .back-to-top-icon {
+    width: 18px;
+    height: 18px;
+    flex: 0 0 18px;
+  }
+}
+</style>
+
+<script>
+// Back to Top Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+</script>
+
+</body>
+
+</html>
+

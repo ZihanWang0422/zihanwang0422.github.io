@@ -605,21 +605,6 @@
     transform: none !important;
   }
 
-  /* Dual image container for projects with two preview images side-by-side */
-  .dual-image-container {
-    display: flex !important;
-    gap: 8px !important;
-    height: 160px !important;
-    align-items: stretch !important;
-  }
-
-  .dual-image-container img {
-    width: 50% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    border-radius: 8px !important;
-  }
-
   /* Force projects containers to align with research visual frame */
   .image-hover-container {
     /* match research container frame so left edges align */
@@ -1795,23 +1780,6 @@ for real-world deployment.
           </div>
           <div class="tags">
             <a class="tag" href="https://youtu.be/74ppMMNvv9I" target="_blank">video</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pub">
-        <div class="pub-left">
-          <div class="dual-image-container">
-            <img src="images/pointcloud.png" alt="3D Point Cloud Building Model 1">
-          </div>
-        </div>
-        <div class="pub-right">
-          <div class="title">Building PointCloud Reconstruction</div>
-          <div class="tldr">
-            We developed a building fine modeling method based on point cloud segmentation and pointcloud ICP algorithm. Using handheld LiDAR scanners, we generated 3D point clouds of buildings and applied a semantic segmentation model (PointNet++) to improve accuracy and robustness in complex scenes. A geometry–semantic constrained reconstruction algorithm was further designed to restore missing structures. The method achieves efficient and high-precision 3D building models, accurately representing details such as walls, roofs, doors, and windows.
-          </div>
-          <div class="tags">
-            <a class="tag" href="" target="_blank">pdf</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Building PointCloud Reconstruction - Zihan Wang</title>
+  <meta name="description" content="Zhi Xing Robot Project by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    /* spacing between link groups (keeps no trailing gap for a single group) */
+    .links .link-group + .link-group {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../projects.html"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+   <center><h1>Building PointCloud Reconstruction</h1></center>
+  <nobr><b>Zihan Wang</b></nobr><br>
+  <nobr>Dec. 2024 - Jun. 2025</nobr><br>
+  <br>
+   <img src="../images/pointcloud.png" alt="Building Point Cloud Reconstruction"/>
+</div>
+
+<hr>
+<h3 style="margin-bottom:10px;">Abstract</h3>
+We developed a building fine modeling method based on point cloud segmentation and the Iterative Closest Point 
+(ICP) algorithm. Using handheld LiDAR scanners, we generated 3D point clouds of buildings and applied a semantic 
+segmentation model (PointNet++) to improve accuracy and robustness in complex scenes. A geometry-semantic 
+constrained reconstruction algorithm was further designed to restore missing structures and refine building 
+details. The method achieves efficient and high-precision 3D building models, accurately representing details 
+such as walls, roofs, doors, and windows. This approach addresses the challenges of incomplete data and 
+structural complexity in real-world building reconstruction tasks.
+
+<h3 class="links"><span class="link-group">Paper: [<a href="" target="_blank">Manuscript</a>]</span><span class="link-group">Database: [<a href="" target="_blank">Drive</a>]</span></h3>
+
+<hr>
+
+<h3 style="margin-bottom:10px;">Key Features</h3>
+<ul>
+  <li><strong>Handheld LiDAR Scanning:</strong> Portable and flexible data acquisition for building exteriors and interiors</li>
+  <li><strong>Deep Learning Segmentation:</strong> PointNet++ for semantic understanding of building components</li>
+  <li><strong>ICP Registration:</strong> Precise alignment of multiple point cloud scans</li>
+  <li><strong>Geometry-Semantic Constraints:</strong> Intelligent reconstruction using both geometric and semantic information</li>
+  <li><strong>Missing Structure Recovery:</strong> Automatic completion of incomplete building features</li>
+  <li><strong>High-Precision Modeling:</strong> Detailed representation of architectural elements</li>
+</ul>
+
+<h3 style="margin-bottom:10px;">Technical Approach</h3>
+<p>
+<strong>1. Data Acquisition:</strong> We employ handheld LiDAR scanners to capture dense point clouds of building structures. The portable nature 
+of handheld devices allows for comprehensive scanning of both exterior facades and interior spaces, including 
+hard-to-reach areas. Multiple scans from different viewpoints ensure complete coverage of the building geometry.
+</p>
+<p>
+<strong>2. Point Cloud Segmentation:</strong> The semantic segmentation module utilizes PointNet++, a deep learning architecture specifically designed for 
+point cloud understanding. The network classifies each point into architectural categories such as walls, 
+roofs, windows, doors, floors, and ceilings. This semantic information is crucial for guiding the subsequent 
+reconstruction process and ensuring structural coherence.
+</p>
+<p>
+<strong>3. Point Cloud Registration:</strong> Multiple scans are aligned using the Iterative Closest Point (ICP) algorithm, which finds the optimal rigid 
+transformation to minimize the distance between corresponding points. We employ a coarse-to-fine registration 
+strategy, starting with feature-based initial alignment followed by fine-tuning with ICP. This ensures 
+accurate merging of overlapping scans into a unified coordinate system.
+</p>
+<p>
+<strong>4. Geometry-Semantic Constrained Reconstruction:</strong> The reconstruction algorithm combines geometric constraints (planarity, orthogonality, parallelism) with 
+semantic information from the segmentation results. For example, walls are constrained to be planar and 
+vertical, while windows must be embedded within wall surfaces. This constraint-based approach produces 
+structurally valid and visually coherent building models.
+</p>
+<p>
+<strong>5. Missing Structure Recovery:</strong> Occlusions and scanning limitations often result in incomplete point clouds. Our method identifies missing 
+regions through semantic analysis and reconstructs them using shape priors and symmetry detection. For 
+instance, if only half of a window is visible, the system can infer and complete the missing portion based 
+on typical window characteristics and building symmetry patterns.
+</p>
+
+<h3 style="margin-bottom:10px;">Applications</h3>
+<p>
+This building reconstruction technology has wide-ranging applications in:
+</p>
+<ul>
+  <li><strong>Architecture and Construction:</strong> Digital twins for renovation planning and progress monitoring</li>
+  <li><strong>Cultural Heritage Preservation:</strong> High-fidelity 3D documentation of historical buildings</li>
+  <li><strong>Urban Planning:</strong> Large-scale city modeling and spatial analysis</li>
+  <li><strong>Real Estate:</strong> Virtual property tours and accurate floor plan generation</li>
+  <li><strong>Building Information Modeling (BIM):</strong> Automated as-built model creation</li>
+  <li><strong>Disaster Assessment:</strong> Rapid structural evaluation after natural disasters</li>
+</ul>
+
+<h3 style="margin-bottom:10px;">Advantages</h3>
+<ul>
+  <li><strong>Efficiency:</strong> Rapid data collection with handheld devices compared to traditional surveying</li>
+  <li><strong>Accuracy:</strong> Millimeter-level precision in reconstructed models</li>
+  <li><strong>Completeness:</strong> Intelligent recovery of missing data ensures comprehensive representation</li>
+  <li><strong>Robustness:</strong> Deep learning segmentation handles complex scenes and varying conditions</li>
+  <li><strong>Detail Preservation:</strong> Fine architectural features are accurately captured and modeled</li>
+</ul>
+<hr>
+</div>
+
+
+</body>
+</html>

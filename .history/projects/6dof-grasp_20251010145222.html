@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>6-DOF Robotic Grasping - Zihan Wang</title>
+  <meta name="description" content="6-DOF Robotic Grasping Project by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 30px;
+      font-weight: normal;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 20px;
+      margin: 30px auto;
+      max-width: 100%;
+    }
+
+    .image-grid img {
+      width: 100%;
+      margin: 0;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<a href="../index.html#projects" class="back-link">← Back to Home</a>
+
+<center><h1>6-DOF Robotic Grasping</h1></center>
+
+<div class="info-section">
+  <nobr><b>Zihan Wang</b></nobr><br>
+  <br>
+  <nobr>Tsinghua University</nobr><br>
+  <br>
+  <div class="image-grid">
+    <img src="../images/6dof_grasp1.png" alt="6-DOF Grasp Example 1"/>
+    <img src="../images/6dof_grasp2.png" alt="6-DOF Grasp Example 2"/>
+  </div>
+</div>
+
+<br>
+
+<hr>
+<h3 style="margin-bottom:10px;">Abstract</h3>
+We present a comprehensive approach to 6-degree-of-freedom (6-DOF) robotic grasping that enables robots to 
+grasp objects with arbitrary poses in three-dimensional space. Unlike traditional planar grasping methods 
+that are limited to top-down approaches, our system considers the full six dimensions of object pose: 
+three translational (x, y, z) and three rotational (roll, pitch, yaw) degrees of freedom. This capability 
+is crucial for manipulating objects in cluttered and unstructured environments. Our method combines deep 
+learning-based grasp detection with geometric reasoning and motion planning to achieve robust and reliable 
+grasping performance across diverse object categories.
+
+<h3 class="links">Links: [<a href="#" target="_blank">Paper (Coming Soon)</a>] &nbsp; &nbsp; &nbsp; [<a href="#" target="_blank">Code (Coming Soon)</a>]</h3>
+
+<br>
+
+<h3 style="margin-bottom:10px;">Key Features</h3>
+<ul>
+  <li><strong>Full 6-DOF Pose Estimation:</strong> Complete spatial orientation and position for optimal grasping</li>
+  <li><strong>Deep Learning Detection:</strong> Neural network-based grasp candidate generation</li>
+  <li><strong>Point Cloud Processing:</strong> Direct operation on 3D sensor data for spatial understanding</li>
+  <li><strong>Multi-Object Scenes:</strong> Capable of handling cluttered environments with multiple objects</li>
+  <li><strong>Real-time Performance:</strong> Efficient computation for practical robotic applications</li>
+  <li><strong>Generalization:</strong> Works across diverse object shapes and categories</li>
+</ul>
+
+<h3 style="margin-bottom:10px;">Technical Approach</h3>
+<p>
+<strong>1. 3D Perception:</strong> The system begins with 3D perception using depth cameras or RGB-D sensors to capture the scene geometry. 
+Point cloud data is processed to segment individual objects and extract relevant geometric features. This 
+spatial information forms the foundation for grasp planning in three-dimensional space.
+</p>
+<p>
+<strong>2. Grasp Pose Generation:</strong> A deep neural network analyzes the point cloud to generate multiple grasp pose candidates. Each candidate 
+is represented as a full 6-DOF pose: position (x, y, z) and orientation (represented as a rotation matrix 
+or quaternion). The network learns to propose grasps that are geometrically feasible and likely to succeed 
+based on training data from successful grasps.
+</p>
+<p>
+<strong>6-DOF Representation:</strong> Each grasp is defined by:
+<ul style="margin-left: 40px;">
+  <li><strong>Translation:</strong> (x, y, z) position of the gripper center</li>
+  <li><strong>Rotation:</strong> (roll, pitch, yaw) orientation of the gripper approach</li>
+  <li><strong>Width:</strong> Gripper opening distance for the specific object</li>
+  <li><strong>Quality Score:</strong> Predicted success probability for each grasp</li>
+</ul>
+</p>
+<p>
+<strong>3. Grasp Quality Evaluation:</strong> Each generated grasp candidate is evaluated using multiple criteria including collision checking, force 
+closure analysis, and reachability assessment. The system considers gripper geometry, object shape, and 
+surrounding obstacles to rank grasps by their likelihood of success. Physics-based simulation can be used 
+to validate top candidates before execution.
+</p>
+<p>
+<strong>4. Motion Planning and Execution:</strong> Once an optimal grasp is selected, the robot plans a collision-free trajectory from its current configuration 
+to the pre-grasp pose, then to the final grasp pose. The motion planner considers the full kinematic chain 
+of the robot arm, ensuring smooth and safe motion. After grasping, the robot lifts the object and transports 
+it to the desired location.
+</p>
+<p>
+<strong>5. Adaptive Re-planning:</strong> If the initial grasp attempt fails or if the object slips during manipulation, the system can quickly 
+re-evaluate the scene and generate alternative grasp strategies. This adaptive capability enhances robustness 
+in real-world scenarios where sensor noise and object property uncertainties are common.
+</p>
+
+<h3 style="margin-bottom:10px;">Advantages of 6-DOF Grasping</h3>
+<ul>
+  <li><strong>Versatility:</strong> Can grasp objects from any angle, not just top-down approaches</li>
+  <li><strong>Cluttered Scenes:</strong> Better handles densely packed objects by approaching from optimal angles</li>
+  <li><strong>Object Variety:</strong> Adapts to diverse object shapes, sizes, and orientations</li>
+  <li><strong>Human-like Manipulation:</strong> More natural and flexible grasping strategies</li>
+  <li><strong>Task Efficiency:</strong> Reduces the need for object repositioning before grasping</li>
+  <li><strong>Shelf and Bin Picking:</strong> Essential for grasping objects in constrained spaces</li>
+</ul>
+
+<h3 style="margin-bottom:10px;">Applications</h3>
+<p>
+6-DOF robotic grasping technology has broad applications across multiple domains:
+</p>
+<ul>
+  <li><strong>Warehouse Automation:</strong> Picking arbitrary items from shelves and bins for order fulfillment</li>
+  <li><strong>Manufacturing:</strong> Assembly tasks requiring precise part manipulation from various orientations</li>
+  <li><strong>Service Robots:</strong> Household robots fetching and manipulating everyday objects</li>
+  <li><strong>Agriculture:</strong> Harvesting fruits and vegetables with delicate grasping</li>
+  <li><strong>Healthcare:</strong> Assistive robots helping patients with object retrieval tasks</li>
+  <li><strong>Waste Sorting:</strong> Robotic systems for recycling and waste management facilities</li>
+</ul>
+
+<h3 style="margin-bottom:10px;">Challenges and Solutions</h3>
+<p>
+<strong>Occlusion Handling:</strong> Partial object visibility due to occlusions is addressed through learned shape completion networks that 
+infer the complete object geometry from partial observations. This enables grasp planning even when 
+significant portions of objects are hidden.
+</p>
+<p>
+<strong>Real-time Computation:</strong> Computational efficiency is achieved through optimized neural network architectures and GPU acceleration. 
+The system processes point clouds and generates grasp candidates within seconds, suitable for interactive 
+robotic applications.
+</p>
+<p>
+<strong>Generalization to Novel Objects:</strong> Training on diverse datasets and using data augmentation techniques enables the system to generalize to 
+previously unseen objects. The learned features capture fundamental grasp affordances that transfer across 
+different object categories.
+</p>
+
+<br>
+<a href="../index.html#projects" class="back-link">← Back to Home</a>
+
+</body>
+</html>

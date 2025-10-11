@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>PUB: Plasma-Propelled Ultra-Quiet Blimp - Zihan Wang</title>
+  <meta name="description" content="PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0;
+    }
+
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links .link-group + .link-group {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 70%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    .section-image {
+      max-width: 80%;
+      margin: 25px auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+    /* figure and caption styles */
+    figure.fig {
+      margin: 20px auto;
+      max-width: 800px;
+      padding: 0;
+    }
+    figure.fig img {
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 4px;
+      background: #fff;
+    }
+    figure.fig figcaption {
+      text-align: center;
+      font-size: 0.95em;
+      color: #555;
+      margin-top: 6px;
+    }
+    /* specifically center Figure 1 */
+    figure#fig1 { text-align: center; }
+  </style>
+  <!-- MathJax for rendering LaTeX formulas in the page -->
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['\\[', '\\]']],
+        processEscapes: true,
+        processEnvironments: true
+      },
+      options: {
+        skipHtmlTags: ['noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      chtml: { scale: 1 },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../projects.html"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+<div class="info-section">
+   <center><h1>Reconstruction of Buildings Models Using Handheld Laser Scanner</h1></center>
+  <nobr><b>Zihan Wang</b></nobr><br>
+  <nobr>Undergraduate Thesis</nobr><br>
+  <nobr>Jan. 2025 - Jun. 2025</nobr><br>
+  <br>
+  <figure>
+    <img src="../images/pointcloud.png" alt="Building Point Cloud Reconstruction"/>
+    <!-- Top image: no caption per user request -->
+  </figure>
+</div>
+
+
+<h3 class="links"><span class="link-group">Paper: [<a href="../work/03_21371393_汪子涵.pdf" target="_blank">Thesis</a>]</span></h3>
+
+
+<!-- Section 1: Abstract -->
+<h2>Abstract</h2>
+<p>
+This thesis focuses on the refined 3D point cloud modeling requirements of buildings within the Multi-Aircraft 
+Intelligent Collaborative Test Platform project. By employing handheld Slam scanners to generate 3D point cloud 
+images of buildings, we propose a high-precision and efficient refined modeling method based on point cloud segmentation. 
+This approach addresses existing challenges such as insufficient segmentation accuracy in complex scenarios and 
+difficulties in integrating geometric and semantic information in current methods.
+</p>
+<p>
+During implementation, we establish a segmentation model that combines multi-feature fusion with deep learning 
+(PointNet++) to enhance segmentation accuracy and robustness in complex environments (e.g., vegetation occlusion 
+and irregular structures). Simultaneously, we design a model reconstruction algorithm with joint geometric-semantic 
+constraints that supplements missing or incomplete external structural features, achieving high-fidelity representation 
+of architectural details including walls, roofs, doors, and windows.
+</p>
+<p>
+This research provides standardized and reusable methods for refined building point cloud modeling, effectively 
+resolving structural issues like missing and incomplete point cloud data. The system completes fine data acquisition 
+and refined modeling tasks for the near-field portion of the real scene acquisition system, addressing the problem 
+of low scene modeling granularity.
+</p>
+
+
+
+<!-- Section 2: Point Cloud Filtering (点云滤波) -->
+<h2>1. Point Cloud Filtering</h2>
+
+<h3>1.1 Data Acquisition</h3>
+<p>
+The project utilizes the SLAM-K120 handheld 3D laser scanner, which employs SLAM (Simultaneous Localization 
+and Mapping) technology for real-time positioning and incremental 3D mapping in both indoor and outdoor 
+unknown environments. The scanner obtains spatial 3D information of the surrounding environment while 
+moving, with key specifications including:
+</p>
+<ul>
+  <li><strong>System Accuracy:</strong> 1cm precision</li>
+  <li><strong>Measurement Distance:</strong> 0.05m ~ 120m</li>
+  <li><strong>Horizontal Field of View:</strong> 360°</li>
+  <li><strong>Data Format:</strong> LAS format point cloud data</li>
+</ul>
+
+<figure id="fig1" class="fig">
+  <img src="../images/building_pointcloud/scanner.png" alt="SLAM-K120 Handheld Scanner" style="width:60%">
+  <figcaption>Figure 1: SLAM-K120 handheld 3D laser scanner (used for data acquisition).</figcaption>
+</figure>
+
+<!-- Elevation coloring explanation and side-by-side figures (English with LaTeX) -->
+<p>
+Figure 2.3 shows the point cloud colored by class labels, and Figure 2.4 shows the point cloud colored by elevation. The elevation-based coloring is implemented as follows: each point's elevation (the $z$ coordinate) is mapped to a continuous colormap. First determine the elevation range of the entire point cloud or the region of interest, with a minimum $Z_{\min}$ and maximum $Z_{\max}$. Then normalize each point's elevation by
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ t = \frac{z - Z_{\min}}{Z_{\max} - Z_{\min}}, \qquad t\in[0,1]. \]</p>
+<p>
+Choose a colormap (for example: blue for low elevation &rarr; green &rarr; yellow &rarr; red for high elevation). The color for a point is obtained by sampling/interpolating the colormap at $t$:
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ \mathrm{Color}(z) = \mathrm{Colormap}\big(t\big). \]</p>
+<p>
+A simple linear RGB interpolation between a low color $\mathrm{RGB}_{\mathrm{low}}$ and a high color $\mathrm{RGB}_{\mathrm{high}}$ can be written as
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ \mathrm{RGB}(z) = (1 - t)\,\mathrm{RGB}_{\mathrm{low}} + t\,\mathrm{RGB}_{\mathrm{high}}. \]</p>
+<p>
+More generally, the colormap may be defined by multiple control colors and interpolated piecewise; finally assign the resulting RGB value to each point to produce the elevation-colored point cloud visualization.
+</p>
+
+<div style="display:flex;gap:16px;justify-content:center;align-items:flex-start;flex-wrap:wrap;margin-top:12px;">
+  <figure class="fig" style="max-width:48%;margin:0;">
+    <img src="../images/building_pointcloud/initial_point.png" alt="initial point coloring" style="width:100%;height:auto;border:1px solid #ddd;border-radius:4px;padding:4px;">
+    <figcaption>Figure 2: Initial point cloud colored by elevation (normalized).</figcaption>
+  </figure>
+  <figure class="fig" style="max-width:48%;margin:0;">
+    <img src="../images/building_pointcloud/high_point.png" alt="high point coloring" style="width:100%;height:auto;border:1px solid #ddd;border-radius:4px;padding:4px;">
+    <figcaption>Figure 3: High-elevation points highlighted in the color mapping.</figcaption>
+  </figure>
+</div>
+
+<h3>1.2 Filtering Algorithms</h3>
+<p>
+<p>
+    <strong>Statistical Outlier Removal (SOR):</strong> To remove isolated noise and measurement outliers, we
+    apply a Statistical Outlier Removal (SOR) filter. For each point i in the point cloud, find its k nearest
+    neighbors and compute the Euclidean distances to those neighbors. Let \(d_{ij}\) denote the distance from point i to its j-th nearest neighbor (\(j=1,\dots,k\)). Let \(N\) be the total
+</p>
+number of points in the cloud. We estimate the global mean distance \(\mu\) and the standard deviation
+\(\sigma\) over all point-to-neighbor distances as
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ \mu = \frac{1}{N k} \sum_{i=1}^N \sum_{j=1}^k d_{ij}, \qquad
+\sigma = \sqrt{ \frac{1}{N k} \sum_{i=1}^N \sum_{j=1}^k (d_{ij} - \mu)^2 } \]</p>
+<p>
+For each point i compute its mean neighbor distance
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ \bar{d}_i = \frac{1}{k} \sum_{j=1}^k d_{ij}. \]</p>
+<p>
+The SOR criterion marks points as outliers when their mean neighbor distance is significantly larger
+or smaller than the global statistics. Using a user-defined multiplier \(n_{\sigma}\) (often called
+"nSigma"), the common rule is to remove points that satisfy
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ \bar{d}_i > \mu + n_{\sigma}\,\sigma \quad\text{or}\quad
+\bar{d}_i < \mu - n_{\sigma}\,\sigma. \]</p>
+<p>
+In practice the filter is typically applied only to the upper tail (large distances) to remove sparse
+isolated points; for example, setting \(k=50\) and \(n_{\sigma}=1.0\) removes points whose neighborhood
+distance is more than one standard deviation above the global mean.
+</p>
+<p>
+Key parameters include:
+</p>
+<ul>
+  <li><strong>k_neighbors:</strong> Number of nearest neighbors used to compute \(\bar{d}_i\) (e.g. 50).</li>
+  <li><strong>nSigma (\(n_{\sigma}\)):</strong> Standard deviation multiplier controlling the strictness of the filter (e.g. 1.0).</li>
+  <li><strong>mode:</strong> Upper-tail only or symmetric removal (whether to remove only large-distance outliers or both tails).</li>
+</ul>
+
+<p>
+In CloudCompare's SOR implementation, the filter exposes a convenient threshold \(d_{\max}\) computed from
+the global mean and standard deviation of neighbor distances. The maximum allowed distance is often set as
+</p>
+<p style="text-align:center; font-size:1.05em;">\[ d_{\max} = \bar{d}_i\ + n_{\sigma} \, \sigma. \]</p>
+<p>
+If a point's mean neighbor distance \(\bar{d}_i\) exceeds \(d_{\max}\), it is classified as an outlier and removed.
+Choosing a small \(n_{\sigma}\) (e.g. 1) makes the filter stricter and removes more points, which may eliminate
+borderline inliers; choosing a larger \(n_{\sigma}\) (e.g. 2 or 3) relaxes the filter and preserves more points but
+may leave some noisy points. For large-scale building scans we found that setting \(k=50\) and
+\(n_{\sigma}=1.0\) gives a good balance between removing isolated noise and keeping structural details.
+</p>
+
+
+<h3>2.2 Segmentation Results</h3>
+<p>
+We performed segmentation experiments on the building-component point clouds described in Section 3.2.1. The
+training configuration (including number of classes and training hyperparameters) was adjusted to fit the dataset.
+Training was carried out on a notebook equipped with an NVIDIA GeForce RTX 3060: the model was trained on the
+training set for 20 hours and further trained on the test set for 10 hours. The resulting segmentation visualization
+is shown in Figure 5. Scene-level evaluation metrics are reported in Table 3.3. The mean Intersection-over-Union
+(mIoU) is 0.540, indicating that most building components are correctly recognized, although boundary details
+may be coarse. The overall accuracy (OA) is 0.836, meaning a high proportion of points are classified correctly.
+</p>
+<p>
+The relatively low mIoU on this dataset is likely caused by missing point samples for high-elevation building parts,
+which results in inaccurate component boundaries and misclassification. To address these issues, Chapter 3's
+refined modeling section applies targeted strategies to complete missing geometry and improve segmentation
+accuracy.
+</p>
+
+<figure class="fig">
+  <img src="../images/building_pointcloud/segmentation_result.png" alt="Segmentation Results" class="section-image">
+  <figcaption>Figure 5: Visualization of semantic segmentation results after training.</figcaption>
+</figure>
+
+<div style="text-align:center; margin-top:12px;">
+  <table style="display:inline-table; border-collapse:collapse; border:1px solid #ccc;">
+    <caption style="caption-side:top; text-align:center; font-weight:700; margin-bottom:6px;">Table 3.3 — Scene-level overall metrics</caption>
+    <thead>
+      <tr>
+        <th style="border:1px solid #ccc; padding:8px 12px; text-align:left;">Metric</th>
+        <th style="border:1px solid #ccc; padding:8px 12px; text-align:right;">Value</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="border:1px solid #ccc; padding:8px 12px;">mIoU</td>
+        <td style="border:1px solid #ccc; padding:8px 12px; text-align:right;">0.540</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #ccc; padding:8px 12px;">mAcc</td>
+        <td style="border:1px solid #ccc; padding:8px 12px; text-align:right;">0.639</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #ccc; padding:8px 12px;">OA</td>
+        <td style="border:1px solid #ccc; padding:8px 12px; text-align:right;">0.836</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<hr>
+  <li><strong>Attention Weighting:</strong> Channel-spatial dual attention (PAConv) mechanism to enhance key 
+  structures (walls, roofs) while suppressing noise.</li>
+  <li><strong>Multi-scale Feature Fusion:</strong> KPConv-based feature pyramid combining local details with 
+  global semantics through skip connections and 1×1 convolutions.</li>
+  <li><strong>Boundary Optimization:</strong> BADet module for joint geometric edge detection and semantic 
+  rule prediction using curvature and normal vector differences.</li>
+</ul>
+
+
+<h3>2.2 Segmentation Results</h3>
+<p>
+对 3.2.1 节中获取的建筑物部件点云，我们对点云分割进行了实验。训练时修改了训练参数和标签类别数以适配本文数据，在配备 Nvidia 3060 的笔记本上对训练集训练 20 小时，并在测试集上训练 10 小时后得到的分割可视化结果如图 3.5 所示。分割结果的场景级评价指标列于表 3.3，可以看出平均交并比（mIoU）为 0.540，表明模型能识别大部分建筑部件，但分割边缘可能不够精细；总体精度（OA）为 0.836，说明模型在多数点上分类正确。
+</p>
+<p>
+针对本文数据较低的 mIoU，主要原因可能是场景中较高处建筑部件的点云存在缺失，导致部件边界不准确并发生误判。因此在第 3 章的精细化建模部分将继续针对点云缺失和不完整的问题进行优化，以提高分割精度。
+</p>
+
+<figure class="fig">
+  <img src="../images/building_pointcloud/segment.png" alt="Segmentation Results" class="section-image">
+  <figcaption>Figure 5: Semantic segmentation results demonstrating class labels (visualization after training).</figcaption>
+</figure>
+
+<h4>Table 3.3 Scene-level overall metrics</h4>
+<table style="width:300px; border-collapse:collapse; margin-top:10px;">
+  <thead>
+    <tr>
+      <th style="border:1px solid #ccc; padding:6px; text-align:left;">Metric</th>
+      <th style="border:1px solid #ccc; padding:6px; text-align:right;">Value</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="border:1px solid #ccc; padding:6px;">mIoU</td>
+      <td style="border:1px solid #ccc; padding:6px; text-align:right;">0.540</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #ccc; padding:6px;">mAcc</td>
+      <td style="border:1px solid #ccc; padding:6px; text-align:right;">0.639</td>
+    </tr>
+    <tr>
+      <td style="border:1px solid #ccc; padding:6px;">OA</td>
+      <td style="border:1px solid #ccc; padding:6px; text-align:right;">0.836</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr>
+
+<!-- Section 4: Point Cloud Refined Modeling (点云精细化建模) -->
+<h2>3. Point Cloud Refined Modeling</h2>
+
+<h3>3.1 Challenges</h3>
+<p>
+Deep learning segmentation may produce unstable component boundaries, leading to uneven sizing and layout 
+of similar components. Additionally, occlusions from vegetation or other buildings can cause incomplete 
+segmentation results with missing or fragmented features. These issues affect the final modeling quality.
+</p>
+
+<h3>3.2 Component Information Extraction</h3>
+<p>
+Building component information is defined by four elements:
+</p>
+<ul>
+  <li><strong>Height and Width:</strong> Bounding box dimensions of the component</li>
+  <li><strong>Position:</strong> Centroid coordinates (average of four vertices) and relative position in the scene</li>
+  <li><strong>Spacing:</strong> Distance between similar components</li>
+</ul>
+<p>
+K-Means clustering is applied to classify components based on these features, grouping similar windows, 
+doors, and structural elements for standardization and reuse.
+</p>
+
+<h3>3.3 Component Regularization and Reuse</h3>
+<p>
+<strong>Clustering-based Regularization:</strong> Components with similar geometric properties are grouped 
+and standardized to a representative prototype, enforcing consistency across the model.
+</p>
+<p>
+<strong>ICP-based Component Reuse:</strong> The Iterative Closest Point algorithm aligns segmented component 
+point clouds with templates from a semantic library. Missing or occluded components are completed by:
+</p>
+<ol>
+  <li>Detecting gaps in the building facade through semantic analysis</li>
+  <li>Matching expected component types based on surrounding context</li>
+  <li>Inserting and aligning template components using ICP registration</li>
+  <li>Refining boundaries with geometry-semantic constraints</li>
+</ol>
+
+<h3>3.4 Geometry-Semantic Constrained Reconstruction</h3>
+<p>
+The reconstruction algorithm combines:
+</p>
+<ul>
+  <li><strong>Geometric Constraints:</strong> Planarity, orthogonality, and parallelism rules (e.g., walls 
+  must be vertical and planar)</li>
+  <li><strong>Semantic Constraints:</strong> Type-specific rules (e.g., windows must embed within wall surfaces, 
+  doors align with floor level)</li>
+  <li><strong>Symmetry Detection:</strong> Exploits building symmetry patterns to infer and complete missing 
+  portions</li>
+</ul>
+<p>
+This constraint-based approach produces structurally valid and visually coherent building models, successfully 
+recovering missing doors, windows, and other architectural features even under partial occlusion.
+</p>
+
+<hr>
+
+</div>
+
+<script>
+  // Ensure MathJax renders math after the page content is loaded
+  document.addEventListener('DOMContentLoaded', function () {
+    if (window.MathJax && MathJax.typesetPromise) {
+      MathJax.typesetPromise().catch(function (err) {
+        console && console.error && console.error('MathJax typeset error:', err);
+      });
+    } else {
+      // If MathJax not ready yet, try again shortly
+      var retries = 0;
+      var tid = setInterval(function () {
+        if (window.MathJax && MathJax.typesetPromise) {
+          clearInterval(tid);
+          MathJax.typesetPromise().catch(function (err) { console && console.error && console.error('MathJax typeset error:', err); });
+        }
+        retries += 1;
+        if (retries > 25) clearInterval(tid);
+      }, 200);
+    }
+  });
+</script>
+
+<script>
+  // Diagnostic: log MathJax status/version after a short delay
+  setTimeout(function () {
+    if (window.MathJax) {
+      try {
+        var v = MathJax && MathJax.startup && MathJax.startup.version ? MathJax.startup.version : 'unknown';
+        console.log('MathJax loaded, version:', v);
+      } catch (e) {
+        console.log('MathJax present but version read failed', e);
+      }
+    } else {
+      console.warn('MathJax not found on page.');
+    }
+  }, 500);
+</script>
+
+</body>
+</html>

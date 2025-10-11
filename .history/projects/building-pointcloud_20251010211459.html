@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Building PointCloud Reconstruction - Zihan Wang</title>
+  <meta name="description" content="Building PointCloud Reconstruction Project by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-top: 40px;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 5px;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0;
+    }
+
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links .link-group + .link-group {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 70%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 5px;
+    }
+
+    .section-image {
+      max-width: 80%;
+      margin: 25px auto;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../projects.html"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<div class="container">
+<div class="info-section">
+   <center><h1>基于手持激光扫描仪的地面建筑三维模型构建<br>Reconstruction of Buildings Models Using Handheld Laser Scanner</h1></center>
+  <nobr><b>Zihan Wang</b></nobr><br>
+  <nobr>Undergraduate Thesis</nobr><br>
+  <nobr>Jan. 2025 - Jun. 2025</nobr><br>
+  <br>
+   <img src="../images/pointcloud.png" alt="Building Point Cloud Reconstruction"/>
+</div>
+
+<hr>
+
+<!-- Section 1: Abstract -->
+<h2>Abstract</h2>
+<p>
+This thesis focuses on the refined 3D point cloud modeling requirements of buildings within the Multi-Aircraft 
+Intelligent Collaborative Test Platform project. By employing handheld Slam scanners to generate 3D point cloud 
+images of buildings, we propose a high-precision and efficient refined modeling method based on point cloud segmentation. 
+This approach addresses existing challenges such as insufficient segmentation accuracy in complex scenarios and 
+difficulties in integrating geometric and semantic information in current methods.
+</p>
+<p>
+During implementation, we establish a segmentation model that combines multi-feature fusion with deep learning 
+(PointNet++) to enhance segmentation accuracy and robustness in complex environments (e.g., vegetation occlusion 
+and irregular structures). Simultaneously, we design a model reconstruction algorithm with joint geometric-semantic 
+constraints that supplements missing or incomplete external structural features, achieving high-fidelity representation 
+of architectural details including walls, roofs, doors, and windows.
+</p>
+<p>
+This research provides standardized and reusable methods for refined building point cloud modeling, effectively 
+resolving structural issues like missing and incomplete point cloud data. The system completes fine data acquisition 
+and refined modeling tasks for the near-field portion of the real scene acquisition system, addressing the problem 
+of low scene modeling granularity.
+</p>
+
+<img src="../images/building_pointcloud/tech_pipeline.png" alt="Technical Pipeline" class="section-image">
+
+<h3 class="links"><span class="link-group">Paper: [<a href="../work/03_21371393_汪子涵.pdf" target="_blank">Thesis</a>]</span></h3>
+
+<hr>
+
+<!-- Section 2: Point Cloud Filtering (点云滤波) -->
+<h2>1. Point Cloud Filtering (点云滤波)</h2>
+
+<h3>1.1 Data Acquisition</h3>
+<p>
+The project utilizes the SLAM-K120 handheld 3D laser scanner, which employs SLAM (Simultaneous Localization 
+and Mapping) technology for real-time positioning and incremental 3D mapping in both indoor and outdoor 
+unknown environments. The scanner obtains spatial 3D information of the surrounding environment while 
+moving, with key specifications including:
+</p>
+<ul>
+  <li><strong>System Accuracy:</strong> 1cm precision</li>
+  <li><strong>Measurement Distance:</strong> 0.05m ~ 120m</li>
+  <li><strong>Horizontal Field of View:</strong> 360°</li>
+  <li><strong>Data Format:</strong> LAS format point cloud data</li>
+</ul>
+
+<img src="../images/building_pointcloud/scanner.png" alt="SLAM-K120 Handheld Scanner" class="section-image">
+
+<h3>1.2 Filtering Algorithms</h3>
+<p>
+<strong>Statistical Outlier Removal (SOR):</strong> The SOR filter removes outliers by analyzing the distribution 
+of point-to-neighbors distances. For each point, it computes the average distance to its k nearest neighbors. 
+Points whose average distance exceeds a threshold (mean + n×std_dev) are classified as outliers and removed.
+</p>
+<p>
+Key parameters include:
+</p>
+<ul>
+  <li><strong>k_neighbors:</strong> Number of nearest neighbors (set to 50 for large-scale building point clouds)</li>
+  <li><strong>nSigma:</strong> Standard deviation multiplier (set to 1.0 for strict filtering)</li>
+</ul>
+
+<h3>1.3 Filtering Results</h3>
+<p>
+Using CloudCompare software, we processed a building point cloud dataset containing 74,331,016 points. 
+After applying SOR filtering with k=50 and σ=1.0, the cleaned dataset contained 67,921,156 points, 
+effectively removing noise and outliers while preserving structural details. The processing time for 
+this large-scale dataset was approximately 10 minutes.
+</p>
+
+<img src="../images/building_pointcloud/filtering.png" alt="Point Cloud Filtering Results" class="section-image">
+
+<h3>1.4 Feature Extraction</h3>
+<p>
+After filtering, we extract geometric features from the point cloud:
+</p>
+<ul>
+  <li><strong>Normal Vectors:</strong> Computed using Principal Component Analysis (PCA) on local neighborhoods, 
+  providing surface orientation information for each point.</li>
+  <li><strong>Curvature:</strong> Calculated as the ratio of the smallest eigenvalue to the sum of all eigenvalues 
+  from the covariance matrix, indicating local surface flatness (σ ≈ 0) or curvature (σ > 0).</li>
+  <li><strong>PFH/FPFH Descriptors:</strong> Point Feature Histograms encode geometric relationships in point 
+  neighborhoods, with FPFH (Fast PFH) reducing computational complexity from O(nk²) to O(nk).</li>
+</ul>
+
+<img src="../images/building_pointcloud/normal_vector.png" alt="Normal Vector Extraction" class="section-image">
+
+<hr>
+
+<!-- Section 3: Point Cloud Semantic Segmentation (点云语义分割) -->
+<h2>2. Point Cloud Semantic Segmentation (点云语义分割)</h2>
+
+<h3>2.1 Segmentation Architecture</h3>
+<p>
+We propose a hybrid network architecture combining local geometric features, global semantic context, and 
+attention mechanisms to optimize segmentation boundary precision in sparse regions. The pipeline consists of:
+</p>
+<ul>
+  <li><strong>Local Geometric Encoding:</strong> Dynamic Graph CNN (DGCNN) with EdgeConv operations to capture 
+  local feature relationships through k-nearest neighbor graphs.</li>
+  <li><strong>Global Context Aggregation:</strong> Point Transformer with multi-head self-attention to establish 
+  long-range dependencies and capture overall semantic structure.</li>
+  <li><strong>Attention Weighting:</strong> Channel-spatial dual attention (PAConv) mechanism to enhance key 
+  structures (walls, roofs) while suppressing noise.</li>
+  <li><strong>Multi-scale Feature Fusion:</strong> KPConv-based feature pyramid combining local details with 
+  global semantics through skip connections and 1×1 convolutions.</li>
+  <li><strong>Boundary Optimization:</strong> BADet module for joint geometric edge detection and semantic 
+  rule prediction using curvature and normal vector differences.</li>
+</ul>
+
+<h3>2.2 PointNet++ Implementation</h3>
+<p>
+PointNet++ implements hierarchical feature learning through:
+</p>
+<ol>
+  <li><strong>Sampling Layer:</strong> Farthest Point Sampling (FPS) selects uniformly distributed keypoints</li>
+  <li><strong>Grouping Layer:</strong> Ball Query or K-NN constructs local neighborhoods with adaptive radius 
+  based on point density</li>
+  <li><strong>Feature Extraction:</strong> Mini-PointNet (shared MLPs) encodes local point sets, with max 
+  pooling aggregating features</li>
+</ol>
+
+<h3>2.3 Segmentation Results</h3>
+<p>
+We tested the segmentation framework on the S3DIS dataset (Stanford Large-Scale 3D Indoor Spaces) and our 
+acquired building point clouds. Training on Areas 1-5 for 22 hours and testing on Area 6 for 10 hours yielded:
+</p>
+<ul>
+  <li><strong>Mean IoU (mIoU):</strong> Varies by scene complexity (0.873 for simple hallways, 0.321 for 
+  cluttered storage rooms)</li>
+  <li><strong>Overall Accuracy (OA):</strong> High classification correctness across most points</li>
+  <li><strong>Class-level Performance:</strong> Best on large planar structures (floors: 0.972, ceilings: 0.890), 
+  challenging for small features (beams: 0.000, columns: 0.046)</li>
+</ul>
+
+<p>
+For our building dataset with 5 annotated classes (columns, doors, floor-to-ceiling windows, suspended windows, walls), 
+we achieved:
+</p>
+<ul>
+  <li><strong>mIoU:</strong> 0.540 (moderate segmentation quality with room for edge refinement)</li>
+  <li><strong>Overall Accuracy:</strong> 0.836 (correctly classified 83.6% of points)</li>
+</ul>
+
+<img src="../images/building_pointcloud/segmentation_result.png" alt="Segmentation Results" class="section-image">
+
+<hr>
+
+<!-- Section 4: Point Cloud Refined Modeling (点云精细化建模) -->
+<h2>3. Point Cloud Refined Modeling (点云精细化建模)</h2>
+
+<h3>3.1 Challenges</h3>
+<p>
+Deep learning segmentation may produce unstable component boundaries, leading to uneven sizing and layout 
+of similar components. Additionally, occlusions from vegetation or other buildings can cause incomplete 
+segmentation results with missing or fragmented features. These issues affect the final modeling quality.
+</p>
+
+<h3>3.2 Component Information Extraction</h3>
+<p>
+Building component information is defined by four elements:
+</p>
+<ul>
+  <li><strong>Height and Width:</strong> Bounding box dimensions of the component</li>
+  <li><strong>Position:</strong> Centroid coordinates (average of four vertices) and relative position in the scene</li>
+  <li><strong>Spacing:</strong> Distance between similar components</li>
+</ul>
+<p>
+K-Means clustering is applied to classify components based on these features, grouping similar windows, 
+doors, and structural elements for standardization and reuse.
+</p>
+
+<h3>3.3 Component Regularization and Reuse</h3>
+<p>
+<strong>Clustering-based Regularization:</strong> Components with similar geometric properties are grouped 
+and standardized to a representative prototype, enforcing consistency across the model.
+</p>
+<p>
+<strong>ICP-based Component Reuse:</strong> The Iterative Closest Point algorithm aligns segmented component 
+point clouds with templates from a semantic library. Missing or occluded components are completed by:
+</p>
+<ol>
+  <li>Detecting gaps in the building facade through semantic analysis</li>
+  <li>Matching expected component types based on surrounding context</li>
+  <li>Inserting and aligning template components using ICP registration</li>
+  <li>Refining boundaries with geometry-semantic constraints</li>
+</ol>
+
+<h3>3.4 Geometry-Semantic Constrained Reconstruction</h3>
+<p>
+The reconstruction algorithm combines:
+</p>
+<ul>
+  <li><strong>Geometric Constraints:</strong> Planarity, orthogonality, and parallelism rules (e.g., walls 
+  must be vertical and planar)</li>
+  <li><strong>Semantic Constraints:</strong> Type-specific rules (e.g., windows must embed within wall surfaces, 
+  doors align with floor level)</li>
+  <li><strong>Symmetry Detection:</strong> Exploits building symmetry patterns to infer and complete missing 
+  portions</li>
+</ul>
+<p>
+This constraint-based approach produces structurally valid and visually coherent building models, successfully 
+recovering missing doors, windows, and other architectural features even under partial occlusion.
+</p>
+
+<hr>
+
+<h2>Advantages and Applications</h2>
+
+<h3>Key Advantages</h3>
+<ul>
+  <li><strong>High Precision:</strong> Handheld LiDAR achieves millimeter-level point cloud resolution, 
+  far exceeding satellite remote sensing (>10cm) and aerial LiDAR limitations</li>
+  <li><strong>Robust Segmentation:</strong> Deep learning-based PointNet++ handles complex scenarios including 
+  vegetation occlusion and irregular structures with enhanced accuracy</li>
+  <li><strong>Intelligent Completion:</strong> Geometry-semantic constrained reconstruction automatically 
+  recovers missing structures and refines building details</li>
+  <li><strong>Efficient Processing:</strong> CloudCompare + PCL workflow enables rapid preprocessing of 
+  large-scale point clouds (70M+ points in ~10 minutes)</li>
+  <li><strong>Standardized Pipeline:</strong> Reproducible workflow from data acquisition through filtering, 
+  segmentation, to refined modeling</li>
+</ul>
+
+<h3>Applications</h3>
+<p>
+This building reconstruction technology has wide-ranging applications across multiple domains:
+</p>
+<ul>
+  <li><strong>Unmanned System Perception:</strong> Provides high-precision digital twins for multi-aircraft 
+  collaborative navigation and intelligent security systems</li>
+  <li><strong>Architecture and Construction:</strong> As-built BIM model creation, renovation planning, and 
+  construction progress monitoring</li>
+  <li><strong>Cultural Heritage Preservation:</strong> High-fidelity 3D documentation of historical buildings 
+  and monuments</li>
+  <li><strong>Urban Planning:</strong> Large-scale city modeling, spatial analysis, and infrastructure management</li>
+  <li><strong>Real Estate:</strong> Virtual property tours, accurate floor plan generation, and property 
+  assessment</li>
+  <li><strong>Disaster Assessment:</strong> Rapid structural evaluation and damage analysis after natural 
+  disasters or emergencies</li>
+</ul>
+
+<h3>Technical Contributions</h3>
+<ol>
+  <li><strong>Multi-feature Fusion:</strong> Combines geometric (normal vectors, curvature), semantic (material, 
+  intensity), and contextual features for enhanced segmentation</li>
+  <li><strong>Hierarchical Architecture:</strong> Integrates local geometric encoding (DGCNN), global context 
+  aggregation (Point Transformer), and attention mechanisms (PAConv)</li>
+  <li><strong>Boundary Optimization:</strong> Joint geometric-semantic edge detection significantly improves 
+  segmentation precision at building edges and complex structures</li>
+  <li><strong>Component Reuse Framework:</strong> Clustering-based classification and ICP-based template 
+  matching enable efficient completion of occluded or missing building elements</li>
+</ol>
+
+<h3>Future Directions</h3>
+<p>
+Future research will focus on:
+</p>
+<ul>
+  <li>Extending the framework to handle dynamic scenes and real-time processing</li>
+  <li>Incorporating multi-modal sensor fusion (LiDAR + RGB camera + IMU) for enhanced feature extraction</li>
+  <li>Developing lightweight models for embedded deployment on unmanned platforms</li>
+  <li>Expanding the semantic component library to cover more architectural styles and building types</li>
+  <li>Integrating with AR/VR visualization for interactive building inspection and design</li>
+</ul>
+
+<hr>
+
+<h2>Conclusion</h2>
+<p>
+This thesis presents a comprehensive pipeline for high-precision building reconstruction from handheld LiDAR 
+point clouds. By integrating state-of-the-art deep learning segmentation (PointNet++) with geometry-semantic 
+constrained reconstruction, the system achieves robust performance in complex scenarios with vegetation 
+occlusion and structural irregularities. The clustering-based component regularization and ICP-based reuse 
+mechanism effectively address missing data challenges, producing complete and detailed building models 
+suitable for unmanned intelligent equipment perception systems.
+</p>
+<p>
+Experimental results demonstrate the method's effectiveness: achieving 83.6% overall accuracy in building 
+component segmentation, successfully recovering missing architectural features, and processing large-scale 
+datasets (70M+ points) with high efficiency. This research provides a solid foundation for the "air-ground-indoor" 
+integrated intelligent perception system in the Multi-Aircraft Intelligent Collaborative Test Platform project.
+</p>
+
+<hr>
+</div>
+
+</body>
+</html>
+
+<h3 class="links"><span class="link-group">Paper: [<a href="" target="_blank">Manuscript</a>]</span><span class="link-group">Database: [<a href="" target="_blank">Drive</a>]</span></h3>
+
+<hr>
+
+
+<hr>
+</div>
+
+
+</body>
+</html>

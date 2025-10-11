@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>Building PointCloud Reconstruction - Zihan Wang</title>
+  <title>PUB: Plasma-Propelled Ultra-Quiet Blimp - Zihan Wang</title>
   <meta name="description" content="PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting by Zihan Wang">
   
   <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
@@ -190,7 +190,7 @@
    <center><h1>Reconstruction of Buildings Models Using Handheld Laser Scanner</h1></center>
   <nobr><b>Zihan Wang</b></nobr><br>
   <nobr>Undergraduate Thesis</nobr><br>
-  <nobr>Dec. 2024 - Jun. 2025</nobr><br>
+  <nobr>Jan. 2025 - Jun. 2025</nobr><br>
   <br>
   <figure>
     <img src="../images/pointcloud.png" alt="Building Point Cloud Reconstruction"/>
@@ -337,18 +337,21 @@ this large-scale dataset was approximately 10 minutes.
 </p>
 
 <figure class="fig">
-    <div style="display:flex;gap:16px;justify-content:center;align-items:flex-start;flex-wrap:wrap;">
-        <figure class="fig" style="max-width:48%;margin:0;">
-            <img src="../images/building_pointcloud/filter_before.png" alt="Before SOR" style="width:100%;height:auto;border:1px solid #ddd;border-radius:4px;padding:4px;">
-            <figcaption>Figure 4a: Before SOR (original point cloud)</figcaption>
-        </figure>
-        <figure class="fig" style="max-width:48%;margin:0;">
-            <img src="../images/building_pointcloud/filter_after.png" alt="After SOR" style="width:100%;height:auto;border:1px solid #ddd;border-radius:4px;padding:4px;">
-            <figcaption>Figure 4b: After SOR (filtered point cloud)</figcaption>
-        </figure>
-    </div>
+  <div style="display:flex;gap:16px;justify-content:center;align-items:flex-start;flex-wrap:wrap;">
+    <figure class="fig" style="max-width:48%;margin:0;">
+      <img src="../images/building_pointcloud/filter_before.png" alt="Before SOR" style="width:100%;height:auto;border:1px solid #ddd;border-radius:4px;padding:4px;">
+      <figcaption>Before SOR</figcaption>
+    </figure>
+    <figure class="fig" style="max-width:48%;margin:0;">
+      <img src="../images/building_pointcloud/filter_after.png" alt="After SOR" style="width:100%;height:auto;border:1px solid #ddd;border-radius:4px;padding:4px;">
+      <figcaption>After SOR</figcaption>
+    </figure>
+  </div>
+  <figcaption>Figure 4: Point cloud before (left) and after (right) Statistical Outlier Removal (SOR).</figcaption>
 </figure>
 
+
+<hr>
 
 <!-- Section 3: Point Cloud Semantic Segmentation (点云语义分割) -->
 <h2>2. Point Cloud Semantic Segmentation</h2>
@@ -373,48 +376,15 @@ attention mechanisms to optimize segmentation boundary precision in sparse regio
 
 
 <h3>2.2 Segmentation Results</h3>
-
 <p>
-We performed segmentation experiments on the building-component point clouds described in Section 3.2.1. The
-training configuration (including number of classes and training hyperparameters) was adjusted to fit the dataset.
-Training was carried out on a notebook equipped with an NVIDIA GeForce RTX 3060: the model was trained on the
-training set for 20 hours and further trained on the test set for 10 hours. The resulting segmentation visualization
-is shown in Figure 5. Scene-level evaluation metrics are reported in Table 3.3. The mean Intersection-over-Union
-(mIoU) is 0.540, indicating that most building components are correctly recognized, although boundary details
-may be coarse. The overall accuracy (OA) is 0.836, meaning a high proportion of points are classified correctly.
-</p>
+
+
 <figure class="fig">
-    <img src="../images/building_pointcloud/segment.png" alt="Segmentation Results" class="section-image"
-             style="height:400px; width:auto; object-fit:contain;">
-    <figcaption>Figure 5: Semantic segmentation results demonstrating class labels.</figcaption>
+  <img src="../images/building_pointcloud/segment.png" alt="Segmentation Results" class="section-image">
+  <figcaption>Figure 5: Semantic segmentation results demonstrating class labels.</figcaption>
 </figure>
 
-<div style="text-align:center; margin-top:12px;">
-  <table style="display:inline-table; border-collapse:collapse; border:1px solid #ccc; width:80%; max-width:720px;">
-    <caption style="caption-side:top; text-align:center; font-weight:700; margin-bottom:6px;">Table 1 — Scene-level overall metrics</caption>
-    <thead>
-      <tr>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Metric</th>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Value</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; width:50%; text-align:center;">mIoU</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center; width:50%;">0.540</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; width:50%; text-align:center;">mAcc</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center; width:50%;">0.639</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; width:50%; text-align:center;">OA</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center; width:50%;">0.836</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
+<hr>
 
 <!-- Section 4: Point Cloud Refined Modeling (点云精细化建模) -->
 <h2>3. Point Cloud Refined Modeling</h2>
@@ -435,189 +405,10 @@ Building component information is defined by four elements:
   <li><strong>Position:</strong> Centroid coordinates (average of four vertices) and relative position in the scene</li>
   <li><strong>Spacing:</strong> Distance between similar components</li>
 </ul>
-
-
-<!-- Table 4.1: Component information definitions -->
-<div style="text-align:center; margin-top:12px;">
-  <table style="display:inline-table; border-collapse:collapse; border:1px solid #ccc; width:80%; max-width:720px;">
-    <caption style="caption-side:top; text-align:center; font-weight:700; margin-bottom:6px;">Table 2 — Component information definitions</caption>
-    <thead>
-      <tr>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Component info</th>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Symbol</th>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Definition</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Height</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">H</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:left;">Distance between top and bottom vertices of the component along the vertical direction</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Width</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">W</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:left;">Distance between left and right vertices of the component along the horizontal direction</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Position</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">P</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:left;">Centroid coordinates of the component</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Spacing</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">S</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:left;">Distance between centroids of neighboring components of the same class</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<br>
-<p>
-The extracted information is shown in the table below:
-</p>
-
-<!-- Table 4.2: Component feature information -->
-<div style="text-align:center; margin-top:14px;">
-  <table style="display:inline-table; border-collapse:collapse; border:1px solid #ccc; width:90%; max-width:900px;">
-    <caption style="caption-side:top; text-align:center; font-weight:700; margin-bottom:6px;">Table 3 — Component feature information</caption>
-    <thead>
-      <tr>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Component</th>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">H (m)</th>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">W (m)</th>
-        <th style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Position P (m)</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Floor-to-ceiling window</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">8.37</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">15.19</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(20.375, -69.365, 4.290)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 1</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.50</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.80</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(26.684, -78.603, 13.255)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 2</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.47</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:ce
-
-<!-- Table 4.1: Component information definitions -->
-<divnter;">2.78</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(22.650, -76.680, 13.225)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 3</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.54</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.82</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(18.585, -76.813, 13.235)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 4</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.48</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.79</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(14.518, -76.920, 13.293)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 5</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.49</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.83</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(26.760, -76.683, 21.640)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 6</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.46</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.76</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(22.713, -76.678, 21.682)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 7</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.51</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.81</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(18.618, -76.873, 21.683)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Suspended window 8</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">7.49</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">2.78</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(14.620, -76.985, 21.680)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Door</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">3.36</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">9.22</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(20.426, -72.575, 1.883)</td>
-      </tr>
-      <tr>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">Column</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">8.26</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">0.95</td>
-        <td style="border:1px solid #ccc; padding:8px 12px; text-align:center;">(20.345, -69.540, 4.290)</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<br>
 <p>
 K-Means clustering is applied to classify components based on these features, grouping similar windows, 
 doors, and structural elements for standardization and reuse.
 </p>
-
-<p>
-According to the component definitions in Table 4.1, a component's height and width depend only on the
-component itself, while the spacing between components also depends on the component type and its position.
-Therefore, when classifying component information in this section, we treat components with similar heights
-and widths as the same class; components that share the same X coordinate are considered to be in the same
-row; and components that share the same Y coordinate are considered to be in the same column.
-</p>
-<p>
-Because the height and width of different component types are significantly different in this work, the
-classification problem can be converted into a two-dimensional K-Means clustering process, where K denotes
-the number of desired component clusters and each data point's X and Y coordinates represent the component's
-H and W values respectively. First, the collected (H, W) information is stored as an N×2 NumPy array. Then
-we train a K-Means model (for example using scikit-learn or a custom script) which outputs K cluster centers
-and cluster labels — these centers represent the mean feature values for each component class.
-</p>
-<p>
-For subsequently segmented components, we pass their (H, W) coordinates to the trained K-Means model's
-predict() function. The algorithm computes the Euclidean distance from the new point to each trained cluster
-center and assigns the point to the nearest cluster; the corresponding cluster label becomes the component's
-class. The pseudo-steps are: assemble (H, W) into an N×2 array, fit K-Means to obtain cluster centers and labels,
-then classify new components by calling predict() and using nearest-center assignment.
-</p>
-
-<div style="border:1px solid #333; padding:14px 18px; margin:24px auto; width:98%; max-width:1400px; background:#fafafa; font-family:monospace; font-size:0.92em; line-height:1.5;">
-  <div style="font-weight:700; margin-bottom:8px; font-family:Arial,sans-serif;">Algorithm 1: K-Means-based Building Component Information Extraction and Classification</div>
-  <div><strong>Input:</strong> Point cloud \(\mathcal{P}\) after facade or wall segmentation; aggregate cluster count \(K\) (expected number of component classes)</div>
-  <div><strong>Output:</strong> Component classification result \(\mathcal{C}\); each component is assigned a class label.</div>
-  <div style="margin-top:8px;">
-    <div><strong>1:</strong> Use CloudCompare's RANSAC plane detector to extract facade/wall plane point cloud \(\mathcal{P}_{facade}\);</div>
-    <div><strong>2:</strong> Extract candidate components (characterized by height \(H\), width \(W\), and position \(P\)) from \(\mathcal{P}_{facade}\) using CloudCompare selection tools;</div>
-    <div><strong>3:</strong> Store the collected \(N\) component (H, W) information as a NumPy 2D array \(\mathbf{D} \in \mathbb{R}^{N \times 2}\), where \(\mathbf{D}_{i,:} = [H_i, W_i]\);</div>
-    <div><strong>4:</strong> Initialize K-Means model with cluster count \(K\);</div>
-    <div><strong>5:</strong> Train K-Means model using component feature matrix \(\mathbf{D}\);</div>
-    <div><strong>6:</strong> Obtain trained cluster centers \(\mathbf{C} \in \mathbb{R}^{K \times 2}\);</div>
-    <div><strong>7:</strong> Obtain label vector for each training point \(\mathbf{L} \in \{1, 2, ..., K\}^N\);</div>
-    <div><strong>8:</strong> Initialize component classification result \(\mathcal{C} = \emptyset\);</div>
-    <div><strong>9:</strong> <strong>for</strong> \(i = 1\) to \(N\) <strong>do</strong></div>
-    <div style="padding-left:24px;"><strong>10:</strong> Add the \(i\)-th component and its corresponding cluster label \(L_i\) to classification result \(\mathcal{C}\);</div>
-    <div><strong>11:</strong> <strong>end for</strong></div>
-    <div><strong>12:</strong> <strong>while</strong> new components are detected <strong>do</strong></div>
-    <div style="padding-left:24px;"><strong>13:</strong> Extract new component's features from the newly segmented facade (height \(H_{new}\), width \(W_{new}\), position \(P_{new}\));</div>
-    <div style="padding-left:24px;"><strong>14:</strong> Input new component features \([H_{new}, W_{new}]\) into the trained K-Means model's <code>predict()</code> function;</div>
-    <div style="padding-left:24px;"><strong>15:</strong> Obtain the new component's predicted cluster label \(L_{new}\);</div>
-    <div style="padding-left:24px;"><strong>16:</strong> Add the new component and its predicted cluster label \(L_{new}\) to classification result \(\mathcal{C}\);</div>
-    <div><strong>17:</strong> <strong>end while</strong></div>
-    <div><strong>18:</strong> <strong>return</strong> \(\mathcal{C}\);</div>
-  </div>
-</div>
 
 <h3>3.3 Component Regularization and Reuse</h3>
 <p>
@@ -635,23 +426,22 @@ point clouds with templates from a semantic library. Missing or occluded compone
   <li>Refining boundaries with geometry-semantic constraints</li>
 </ol>
 
-
-<div style="display:flex; gap:12px; justify-content:center; align-items:flex-start; flex-wrap:wrap; margin-top:16px;">
-  <figure class="fig" style="max-width:32%; margin:0; display:flex; flex-direction:column; min-height:520px; box-sizing:border-box;">
-    <img src="../images/building_pointcloud/icp_before.png" alt="ICP before" style="width:100%; height:100%; object-fit:contain; border:1px solid #ddd; border-radius:4px; padding:4px; background:#fff; box-sizing:border-box;">
-    <figcaption style="margin-top:auto; text-align:center;">Figure 6a: Before ICP alignment.</figcaption>
-  </figure>
-  <figure class="fig" style="max-width:32%; margin:0; display:flex; flex-direction:column; min-height:520px; box-sizing:border-box;">
-    <img src="../images/building_pointcloud/icp_1.png" alt="ICP step 1" style="width:100%; height:100%; object-fit:contain; object-position:50% 75%; border:1px solid #ddd; border-radius:4px; padding:4px; background:#fff; box-sizing:border-box;">
-    <figcaption style="margin-top:auto; text-align:center;">Figure 6b: ICP intermediate alignment.</figcaption>
-  </figure>
-  <figure class="fig" style="max-width:32%; margin:0; display:flex; flex-direction:column; min-height:520px; box-sizing:border-box;">
-    <img src="../images/building_pointcloud/icp_2.png" alt="ICP final" style="width:100%; height:100%; object-fit:contain; border:1px solid #ddd; border-radius:4px; padding:4px; background:#fff; box-sizing:border-box;">
-    <figcaption style="margin-top:auto; text-align:center;">Figure 6c: After ICP refined alignment.</figcaption>
-  </figure>
-</div>
-
-
+<h3>3.4 Geometry-Semantic Constrained Reconstruction</h3>
+<p>
+The reconstruction algorithm combines:
+</p>
+<ul>
+  <li><strong>Geometric Constraints:</strong> Planarity, orthogonality, and parallelism rules (e.g., walls 
+  must be vertical and planar)</li>
+  <li><strong>Semantic Constraints:</strong> Type-specific rules (e.g., windows must embed within wall surfaces, 
+  doors align with floor level)</li>
+  <li><strong>Symmetry Detection:</strong> Exploits building symmetry patterns to infer and complete missing 
+  portions</li>
+</ul>
+<p>
+This constraint-based approach produces structurally valid and visually coherent building models, successfully 
+recovering missing doors, windows, and other architectural features even under partial occlusion.
+</p>
 
 <hr>
 

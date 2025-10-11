@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>PUB: Plasma-Propelled Ultra-Quiet Blimp - Zihan Wang</title>
+  <meta name="description" content="PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    /* keep the info-section centered (override the container-level justify) */
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../projects.html"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+  <center><h1>PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting</h1></center>
+  <nobr>Yixing Zhang, <b>Zihan Wang</b>, Zhijun Li, Xuanlin Fan, Jiawei Zhang, Shaoping Wang</nobr><br>
+  <nobr>arXiv 2025</nobr><br>
+  <br>
+  <img src="../images/aircraft.jpg" alt="Plasma-Propelled Ultra-Quiet Blimp"/>
+</div>
+
+<hr>
+<h3 style="margin-bottom:10px;">Abstract</h3>
+We present the design and control of a Plasma-propelled Ultra-silence Blimp (PUB), a novel aerial robot 
+employing plasma vector propulsion for ultra-quiet flight without mechanical propellers. The system utilizes 
+a helium-lift platform for extended endurance and a four-layer ring asymmetric capacitor to generate ionic 
+wind thrust. The modular propulsion units allow flexible configuration to meet mission-specific requirements, 
+while a two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop slip control scheme is 
+implemented for stable maneuvering. Flight experiments demonstrate full-envelope capability, including 
+take-off, climb, hover, descent, and smooth landing, confirming the feasibility of plasma vector propulsion, 
+the effectiveness of DOF vector control, and the stability of the control system. Owing to its low acoustic 
+signature, structural simplicity, and high maneuverability, PUB is well suited for noise-sensitive, enclosed, 
+and near-space applications.
+
+<h3 class="links">Links: [<a href="https://arxiv.org/pdf/2508.12395" target="_blank">Paper</a>] [<a href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank">Patent</a>] [<a href="https://github.com/ZihanWang0422/plasma_propelled_aircraft" target="_blank">Code</a>]</h3>
+
+<hr>
+
+<h3 style="margin-bottom:10px;">Key Features</h3>
+<ul>
+  <li><strong>Silent Propulsion:</strong> Plasma-based ionic wind propulsion eliminates mechanical noise from traditional propellers</li>
+  <li><strong>Extended Endurance:</strong> Helium-lift platform provides buoyancy for long-duration flights</li>
+  <li><strong>Vector Control:</strong> Two-degree-of-freedom thrust vectoring enables precise maneuvering</li>
+  <li><strong>Modular Design:</strong> Four-layer ring asymmetric capacitor allows flexible configuration</li>
+  <li><strong>Closed-loop Control:</strong> Slip control scheme ensures stable flight in various conditions</li>
+  <li><strong>Full-envelope Capability:</strong> Demonstrated take-off, hover, climb, descent, and landing operations</li>
+</ul>
+
+<h3 style="margin-bottom:10px;">Technical Architecture</h3>
+<p>
+<strong>Propulsion System:</strong> The PUB employs an innovative plasma propulsion system based on ionic wind generation. 
+A four-layer ring asymmetric capacitor creates a high-voltage electric field that ionizes air molecules, 
+producing thrust through ion acceleration. This eliminates the need for mechanical propellers, resulting in 
+virtually silent operation. The modular design allows for flexible arrangement of propulsion units to 
+accommodate different mission profiles and payload requirements.
+</p>
+<p>
+<strong>Lift and Buoyancy:</strong> The platform utilizes helium gas for primary lift, significantly reducing power requirements for 
+sustained flight. This approach enables extended mission durations compared to conventional multirotor 
+systems. The buoyancy-assisted design is particularly advantageous for applications requiring persistent 
+aerial presence, such as environmental monitoring and surveillance operations.
+</p>
+<p>
+<strong>Vector Control System:</strong> The two-degree-of-freedom thrust vectoring head provides precise control over flight direction and 
+attitude. By adjusting the orientation of plasma thrusters, the system achieves omnidirectional maneuverability 
+without the need for multiple fixed-direction propulsion units. This design reduces mechanical complexity 
+while maintaining high control authority across all flight regimes.
+</p>
+<p>
+<strong>Control Algorithm:</strong> A closed-loop slip control scheme is implemented to maintain stable flight characteristics. The 
+controller compensates for environmental disturbances and system uncertainties, ensuring robust performance 
+in variable conditions. Flight experiments have validated the effectiveness of this control approach across 
+the full flight envelope, from initial take-off through hover operations to smooth landing.
+</p>
+
+<h3 style="margin-bottom:10px;">Applications</h3>
+<p>
+The PUB platform is uniquely suited for applications requiring ultra-quiet operation and extended flight 
+duration. Key application domains include:
+</p>
+<ul>
+  <li><strong>Noise-sensitive Environments:</strong> Indoor inspections, library surveillance, hospital monitoring, and residential area operations</li>
+  <li><strong>Enclosed Spaces:</strong> Warehouse inventory, tunnel inspection, and underground facility monitoring</li>
+  <li><strong>Near-space Operations:</strong> High-altitude atmospheric research, stratospheric communications relay</li>
+  <li><strong>Wildlife Monitoring:</strong> Non-intrusive observation of noise-sensitive species and ecosystem studies</li>
+  <li><strong>Urban Surveillance:</strong> Covert security monitoring and law enforcement support</li>
+  <li><strong>Environmental Sensing:</strong> Air quality monitoring, gas detection, and atmospheric sampling</li>
+</ul>
+<p>
+The combination of silent operation, extended endurance, and precise maneuverability makes PUB an excellent 
+platform for applications where traditional propeller-based systems would be unsuitable or impractical.
+</p>
+<hr>
+</div>
+
+
+</body>
+</html>

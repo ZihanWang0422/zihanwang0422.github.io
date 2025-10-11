@@ -687,14 +687,14 @@
     object-fit: cover !important;
   }
 
-    /* Handle static and hover image transitions for projects */
-    .projects .image-hover-container .static-image {
+    /* Handle static and hover image transitions */
+    .research .image-hover-container .static-image {
         display: block !important;
         opacity: 1 !important;
         transition: opacity 0.3s ease !important;
     }
 
-    .projects .image-hover-container .hover-image {
+    .research .image-hover-container .hover-image {
         position: absolute !important;
         top: 0 !important;
         left: 0 !important;
@@ -703,13 +703,14 @@
         transition: opacity 0.3s ease !important;
     }
 
-    .projects .image-hover-container:hover .static-image,
-    .projects .image-hover-container.playing .static-image {
+
+    .research .image-hover-container:hover .static-image,
+    .research .image-hover-container.playing .static-image {
         opacity: 0 !important;
     }
 
-    .projects .image-hover-container:hover .hover-image,
-    .projects .image-hover-container.playing .hover-image {
+    .research .image-hover-container:hover .hover-image,
+    .research .image-hover-container.playing .hover-image {
         opacity: 1 !important;
         display: block !important;
     }
@@ -1710,7 +1711,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       </div>
       <div class="pub-right">
         <div class="title">
-        <a href="projects/pub-plasma-blimp.html" style="color: #2a7ae2; text-decoration: none;">
+        <a href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer" style="color: #2a7ae2; text-decoration: none;">
           PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
         </a>
         </div>
@@ -1800,7 +1801,7 @@ for real-world deployment.
         <div class="pub-right">
           <div class="title"><a href="projects/building-pointcloud.html">Building PointCloud Reconstruction</a></div>
           <div class="tldr">
-            We capture building point clouds with handheld LiDAR, apply PointNet++ for semantic segmentation, and refine alignment and detail with point-cloud ICP. A geometry–semantic constrained reconstruction then restores missing structures to produce high-precision 3D building models (walls, roofs, doors, windows).
+            We developed a building fine modeling method based on point cloud segmentation and pointcloud ICP algorithm. Using handheld LiDAR scanners, we generated 3D point clouds of buildings and applied a semantic segmentation model (PointNet++) to improve accuracy and robustness in complex scenes. A geometry–semantic constrained reconstruction algorithm was further designed to restore missing structures. The method achieves efficient and high-precision 3D building models, accurately representing details such as walls, roofs, doors, and windows.
           </div>
         </div>
       </div>

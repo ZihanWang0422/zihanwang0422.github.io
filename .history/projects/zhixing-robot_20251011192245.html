@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Mobile Car Projects - Zihan Wang</title>
+  <meta name="description" content="Mobile Car Projects: Zhi Xing Car I, Zhi Xing Car II, and Auto-tracking Car by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    /* keep the info-section centered (override the container-level justify) */
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    /* Project section styles */
+    section {
+      margin-bottom: 50px;
+      padding: 20px 0;
+    }
+
+    section h2 {
+      color: #2c3e50;
+      font-size: 1.8em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      gap: 30px;
+    }
+
+    .project-image {
+      flex-shrink: 0;
+      width: 300px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-info p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .project-header {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .project-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      section h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../projects.html"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+  <center><h1>Mobile Car Projects</h1></center>
+  <p style="text-align: center; margin-top: 20px; font-size: 1.1em;">
+    A collection of autonomous mobile car projects showcasing different approaches to robotic navigation, 
+    tracking, and mapping technologies.
+  </p>
+</div>
+
+<hr>
+
+<!-- Project 1: Zhi Xing Car I -->
+<section id="zhixing-car-1">
+  <div class="project-header">
+    <div class="project-image">
+      <img src="../images/zhixing.png" alt="Zhi Xing Car I">
+    </div>
+    <div class="project-info">
+      <h2>Zhi Xing Car I</h2>
+      <p>
+        <strong>TL;DR:</strong> We designed and developed an autonomous navigation robot system based on ROS, 
+        supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning. The robot integrates 
+        multiple sensors and algorithms to achieve robust autonomous navigation in indoor environments.
+      </p>
+      <div class="links">
+        <strong>Links:</strong> 
+        [<a href="#" target="_blank">Document</a>] 
+        [<a href="#" target="_blank">Video</a>]
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:10px;">Project Overview</h3>
+  <p>
+    Zhi Xing Car I represents our first venture into autonomous mobile robotics, focusing on fundamental 
+    navigation capabilities. The system was built from the ground up using ROS (Robot Operating System) 
+    as the core framework, enabling modular development and easy integration of different subsystems. 
+    The robot demonstrates essential autonomous navigation features including real-time obstacle detection, 
+    dynamic path planning, and precise localization.
+  </p>
+
+  <h3 style="margin-bottom:10px;">Key Technical Features</h3>
+  <ul>
+    <li><strong>ROS-based Architecture:</strong> Modular design using Robot Operating System for scalable development</li>
+    <li><strong>LiDAR Integration:</strong> Real-time 2D laser scanning for obstacle detection and avoidance</li>
+    <li><strong>SLAM Capabilities:</strong> Simultaneous localization and mapping for unknown environments</li>
+    <li><strong>Path Planning:</strong> Dynamic route calculation and obstacle avoidance algorithms</li>
+    <li><strong>Sensor Fusion:</strong> Integration of multiple sensors for robust navigation</li>
+    <li><strong>Real-time Processing:</strong> Low-latency control loop for responsive navigation</li>
+  </ul>
+
+  <h3 style="margin-bottom:10px;">Technical Implementation</h3>
+  <p>
+    The navigation stack implements both global and local path planning algorithms. The global planner 
+    uses Dijkstra's algorithm to find optimal paths in known environments, while the local planner 
+    employs the Dynamic Window Approach (DWA) for real-time obstacle avoidance. The SLAM system 
+    utilizes gmapping package to build 2D occupancy grid maps, enabling the robot to navigate in 
+    previously unknown environments while simultaneously building a map of the surroundings.
+  </p>
+</section>
+
+<hr>
+
+<!-- Project 2: Zhi Xing Car II -->
+<section id="zhixing-car-2">
+  <div class="project-header">
+    <div class="project-image">
+      <img src="../images/zhixing_video.gif" alt="Zhi Xing Car II">
+    </div>
+    <div class="project-info">
+      <h2>Zhi Xing Car II</h2>
+      <p>
+        <strong>TL;DR:</strong> We designed and deployed a SLAM system on NVIDIA Jetson®, integrating 2D LiDAR 
+        and Intel RealSense™ depth camera for robust multi-sensor fusion. Implemented Google Cartographer 
+        for high-accuracy 2D localization and mapping, and extended to 3D ESDF-based mapping for precise 
+        environmental reconstruction and optimized path planning in real-world navigation tasks.
+      </p>
+      <div class="links">
+        <strong>Links:</strong> 
+        [<a href="#" target="_blank">Code</a>] 
+        [<a href="https://www.youtube.com/embed/74ppMMNvv9I" target="_blank">Video</a>]
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:10px;">Advanced SLAM Implementation</h3>
+  <p>
+    Zhi Xing Car II represents a significant advancement in our mobile robotics research, featuring 
+    sophisticated SLAM capabilities powered by Google Cartographer and multi-sensor fusion. The system 
+    leverages the computational power of NVIDIA Jetson platform to perform real-time mapping and 
+    localization with exceptional accuracy. The integration of 2D LiDAR and Intel RealSense depth 
+    camera enables robust perception in diverse environments.
+  </p>
+
+  <h3 style="margin-bottom:10px;">Key Technical Innovations</h3>
+  <ul>
+    <li><strong>NVIDIA Jetson Platform:</strong> High-performance embedded computing for real-time processing</li>
+    <li><strong>Google Cartographer:</strong> Advanced SLAM algorithm for high-accuracy localization</li>
+    <li><strong>Multi-sensor Fusion:</strong> Combination of 2D LiDAR and Intel RealSense depth camera</li>
+    <li><strong>3D ESDF Mapping:</strong> Extended Signed Distance Field for precise environmental modeling</li>
+    <li><strong>Real-time Processing:</strong> Optimized algorithms for low-latency navigation</li>
+    <li><strong>Robust Localization:</strong> Enhanced position tracking in dynamic environments</li>
+  </ul>
+
+  <h3 style="margin-bottom:10px;">System Architecture</h3>
+  <p>
+    The system architecture integrates Google Cartographer's loop closure detection with multi-sensor 
+    data fusion to achieve superior mapping accuracy. The 2D LiDAR provides precise distance measurements 
+    for obstacle detection and map building, while the Intel RealSense camera adds depth information 
+    and visual features for enhanced localization. The 3D ESDF (Extended Signed Distance Field) mapping 
+    enables efficient path planning by providing continuous distance information throughout the environment.
+  </p>
+
+  <div class="video-container" style="margin: 20px 0;">
+    <h3 style="margin-bottom:10px;">Demonstration Video</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/74ppMMNvv9I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+</section>
+
+<hr>
+
+<!-- Project 3: Auto-tracking Car -->
+<section id="auto-tracking-car">
+  <div class="project-header">
+    <div class="project-image">
+      <img src="../images/mobild_car/auto_tracking.jpg" alt="Auto-tracking Car">
+    </div>
+    <div class="project-info">
+      <h2>Auto-tracking Car</h2>
+      <p>
+        <strong>TL;DR:</strong> We used OpenCV to rectify the camera-captured map and extract obstacle 
+        coordinates for path planning. Based on the map, we designed efficient motion planning algorithm 
+        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
+        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+      </p>
+      <div class="links">
+        <strong>Links:</strong> 
+        [<a href="#" target="_blank">Code</a>] 
+        [<a href="#" target="_blank">Video</a>]
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:10px;">Computer Vision-Based Navigation</h3>
+  <p>
+    The Auto-tracking Car project demonstrates a unique approach to autonomous navigation using computer 
+    vision and path planning algorithms. Unlike traditional sensor-based approaches, this system relies 
+    on camera input and image processing to understand the environment and plan optimal paths. The 
+    integration of OpenCV for image processing, A* algorithm for path planning, and PID control for 
+    motion execution creates a comprehensive autonomous navigation solution.
+  </p>
+
+  <h3 style="margin-bottom:10px;">Technical Highlights</h3>
+  <ul>
+    <li><strong>OpenCV Integration:</strong> Real-time image processing for map rectification and analysis</li>
+    <li><strong>Obstacle Detection:</strong> Computer vision-based obstacle coordinate extraction</li>
+    <li><strong>A* Path Planning:</strong> Optimal path finding algorithm for efficient navigation</li>
+    <li><strong>PID Control System:</strong> Precise speed and steering control for smooth motion</li>
+    <li><strong>Dynamic Obstacle Avoidance:</strong> Real-time adaptation to randomly positioned obstacles</li>
+    <li><strong>Map Processing:</strong> Camera-based environmental understanding and mapping</li>
+  </ul>
+
+  <h3 style="margin-bottom:10px;">Implementation Details</h3>
+  <p>
+    The system begins with camera calibration and map rectification using OpenCV to correct for lens 
+    distortion and perspective effects. Advanced image processing techniques extract obstacle coordinates 
+    and create a digital representation of the environment. The A* search algorithm then computes optimal 
+    paths from the current position to the target while avoiding detected obstacles. The PID controller 
+    ensures precise execution of the planned path by maintaining accurate speed and steering control, 
+    resulting in smooth and efficient navigation through complex environments.
+  </p>
+</section>
+
+<hr>
+</div>
+
+
+</body>
+</html>

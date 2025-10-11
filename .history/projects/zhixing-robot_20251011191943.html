@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Mobile Car Projects - Zihan Wang</title>
+  <meta name="description" content="Mobile Car Projects: Zhi Xing Car I, Zhi Xing Car II, and Auto-tracking Car by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    /* keep the info-section centered (override the container-level justify) */
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../projects.html"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+  <center><h1>Mobile Car Projects</h1></center>
+  <p style="text-align: center; margin-top: 20px; font-size: 1.1em;">
+    A collection of autonomous mobile car projects showcasing different approaches to robotic navigation, 
+    tracking, and mapping technologies.
+  </p>
+</div>
+
+<hr>
+
+<!-- Project 1: Zhi Xing Car I -->
+<section id="zhixing-car-1">
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <img src="../images/mobild_car/zhixing_car1.jpg" alt="Zhi Xing Car I" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car I</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        <strong>TL;DR:</strong> We designed and developed an autonomous navigation robot system based on ROS, 
+        supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning. The robot integrates 
+        multiple sensors and algorithms to achieve robust autonomous navigation in indoor environments.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        <strong>Links:</strong> 
+        [<a href="#" target="_blank">Document</a>] 
+        [<a href="#" target="_blank">Video</a>]
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:10px;">Project Overview</h3>
+  <p>
+    Zhi Xing Car I represents our first venture into autonomous mobile robotics, focusing on fundamental 
+    navigation capabilities. The system was built from the ground up using ROS (Robot Operating System) 
+    as the core framework, enabling modular development and easy integration of different subsystems. 
+    The robot demonstrates essential autonomous navigation features including real-time obstacle detection, 
+    dynamic path planning, and precise localization.
+  </p>
+
+  <h3 style="margin-bottom:10px;">Key Technical Features</h3>
+  <ul>
+    <li><strong>ROS-based Architecture:</strong> Modular design using Robot Operating System for scalable development</li>
+    <li><strong>LiDAR Integration:</strong> Real-time 2D laser scanning for obstacle detection and avoidance</li>
+    <li><strong>SLAM Capabilities:</strong> Simultaneous localization and mapping for unknown environments</li>
+    <li><strong>Path Planning:</strong> Dynamic route calculation and obstacle avoidance algorithms</li>
+    <li><strong>Sensor Fusion:</strong> Integration of multiple sensors for robust navigation</li>
+    <li><strong>Real-time Processing:</strong> Low-latency control loop for responsive navigation</li>
+  </ul>
+
+  <h3 style="margin-bottom:10px;">Technical Implementation</h3>
+  <p>
+    The navigation stack implements both global and local path planning algorithms. The global planner 
+    uses Dijkstra's algorithm to find optimal paths in known environments, while the local planner 
+    employs the Dynamic Window Approach (DWA) for real-time obstacle avoidance. The SLAM system 
+    utilizes gmapping package to build 2D occupancy grid maps, enabling the robot to navigate in 
+    previously unknown environments while simultaneously building a map of the surroundings.
+  </p>
+</section>
+
+<hr>
+</div>
+
+
+</body>
+</html>

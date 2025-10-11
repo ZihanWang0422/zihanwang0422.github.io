@@ -291,18 +291,18 @@
         background-color: #ffffff;
     }
 
-  .section-gray {
-  background-color: #f0f2f5;
-  padding-top: 30px; /* extra space above projects heading (reduced) */
-  }
+    .section-gray {
+    background-color: #f0f2f5;
+    padding-top: 45px; /* extra space above projects heading */
+    }
 
     /* Make section gray full-bleed across the viewport while keeping inner wrapper centered */
     .section.section-gray {
       width: 100vw !important;
       margin-left: calc(50% - 50vw) !important;
       margin-right: calc(50% - 50vw) !important;
-      padding-top: 30px !important;
-      padding-bottom: 20px !important; /* reduced bottom padding to remove large whitespace */
+      padding-top: 45px !important;
+      padding-bottom: 45px !important;
       box-sizing: border-box !important;
     }
 
@@ -1648,7 +1648,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p class="about-email">zihanw600 [at] gmail.com</p>
         
         <p class="about-text">
-          I am a M.S. student in Robotics at the Chinese University of Hong Kong, advised by Prof. <a href="https://zyliatzju.github.io/" target="_blank" rel="noopener noreferrer">Zhongyu Li</a>.
+          I am a M.S. student in Robotics at the Chinese University of Hong Kong. 
         </p>
         <p class="about-text">
           My research interests lie in <strong>Motion Planning</strong>, <strong>Humanoid Robots</strong>, and <strong>Reinforcement Learning</strong>.
@@ -1751,21 +1751,24 @@ applications.
 <div class="section section-white">
 <div id="projects" class="projects">
   <div class="projects-header">
-    <h1 class="md-heading">Projects</h1>
+    <h1 class="md-heading">Projects<a class="projects-link" href="projects.html">All Projects</a></h1>
   </div>
 
   <div class="pub-list">
 
       <div class="pub">
         <div class="pub-left">
-          <div class="dual-image-container">
-            <img src="images/building_pointcloud/pointcloud_vis2.png" alt="3D Point Cloud Building Model 1">
+          <div class="image-hover-container">
+            <img class="intro-img frame static-image" src="images/legged-wheel.jpg">
+            <!-- hover-image removed: keep static image only -->
           </div>
         </div>
         <div class="pub-right">
-          <div class="title"><a href="projects/building-pointcloud.html">Building PointCloud Reconstruction</a></div>
+          <div class="title">
+        <a href="projects/wheel-legged-robot.html">Wheel-legged Robot</a>
+          </div>
           <div class="tldr">
-            We capture building point clouds with handheld LiDAR, apply PointNet++ for semantic segmentation, and refine alignment and detail with point-cloud ICP. A geometry–semantic constrained reconstruction then restores missing structures to produce high-precision 3D building models (walls, roofs, doors, windows).
+            We developed a wheeled-legged balancing robot, designing a custom STM32F103 microcontroller board and embedded software, with LQR and VMC-based control, capable of balancing, load-carrying and differential-drive locomotion.
           </div>
         </div>
       </div>
@@ -1791,17 +1794,14 @@ for real-world deployment.
 
       <div class="pub">
         <div class="pub-left">
-          <div class="image-hover-container">
-            <img class="intro-img frame static-image" src="images/legged-wheel.jpg">
-            <!-- hover-image removed: keep static image only -->
+          <div class="dual-image-container">
+            <img src="images/building_pointcloud/pointcloud_vis2.png" alt="3D Point Cloud Building Model 1">
           </div>
         </div>
         <div class="pub-right">
-          <div class="title">
-        <a href="projects/wheel-legged-robot.html">Wheel-legged Robot</a>
-          </div>
+          <div class="title"><a href="projects/building-pointcloud.html">Building PointCloud Reconstruction</a></div>
           <div class="tldr">
-            We developed a wheeled-legged balancing robot, designing a custom STM32F103 microcontroller board and embedded software, with LQR and VMC-based control, capable of balancing, load-carrying and differential-drive locomotion.
+            We capture building point clouds with handheld LiDAR, apply PointNet++ for semantic segmentation, and refine alignment and detail with point-cloud ICP. A geometry–semantic constrained reconstruction then restores missing structures to produce high-precision 3D building models (walls, roofs, doors, windows).
           </div>
         </div>
       </div>

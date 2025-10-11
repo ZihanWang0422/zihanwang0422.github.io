@@ -350,67 +350,75 @@
 <div class="container">
 <div class="info-section">
   <center><h1>Mobile Car Projects</h1></center>
+  <p style="text-align: center; margin-top: 20px; font-size: 1.1em;">
+    A collection of autonomous mobile car projects showcasing different approaches to robotic navigation, 
+    tracking, and mapping technologies.
+  </p>
 </div>
 
-<br>
-<!-- Project 1: Zhi Xing Car I -->
-<section id="zhixing-car-1">
-  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
-    <img src="../images/zhixing.png" alt="Zhi Xing Car I" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+<hr>
+
+<!-- Project 1: Auto-tracking Car -->
+<section id="auto-tracking-car">
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <img src="../images/yuyuan.jpg" alt="Auto-tracking Car" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
     <div>
-      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car I</h2>
+      <h2 style="margin-bottom: 15px; color: #333;">Auto-tracking Car</h2>
       <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
-         We designed and developed an autonomous navigation robot system based on ROS, 
-        supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning. The robot integrates 
-        multiple sensors and algorithms to achieve robust autonomous navigation in indoor environments.
+        <strong>TL;DR:</strong> We used OpenCV to rectify the camera-captured map and extract obstacle 
+        coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm 
+        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
+        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
       </p>
       <div class="links" style="margin-top: 15px;">
-        <a href="../work/zhixingmini.pdf" target="_blank">Document</a> | <a href="https://youtu.be/74ppMMNvv9I" target="_blank">Video</a>
+        <strong>Links:</strong> 
+        [<a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a>] 
+        [<a href="https://youtube.com/shorts/R3W2jP_Io_M?feature=share" target="_blank">Video</a>]
       </div>
     </div>
   </div>
 
-    <div class="video-container" style="margin: 20px 0;">
-    <h3 style="margin-bottom:10px;">Demonstration Video</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/74ppMMNvv9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media" allowfullscreen></iframe>
-  </div>
-
-  <h3 style="margin-bottom:10px;">Project Overview</h3>
+  <h3 style="margin-bottom:10px;">Computer Vision-Based Navigation</h3>
   <p>
-    Zhi Xing Car I represents our first venture into autonomous mobile robotics, focusing on fundamental 
-    navigation capabilities. The system was built from the ground up using ROS (Robot Operating System) 
-    as the core framework, enabling modular development and easy integration of different subsystems. 
-    The robot demonstrates essential autonomous navigation features including real-time obstacle detection, 
-    dynamic path planning, and precise localization.
+    The Auto-tracking Car project demonstrates a unique approach to autonomous navigation using computer 
+    vision and path planning algorithms. Unlike traditional sensor-based approaches, this system relies 
+    on camera input and image processing to understand the environment and plan optimal paths. The 
+    integration of OpenCV for image processing, A* algorithm for path planning, and PID control for 
+    motion execution creates a comprehensive autonomous navigation solution.
   </p>
 
-  <h3 style="margin-bottom:10px;">Key Technical Features</h3>
+  <h3 style="margin-bottom:10px;">Technical Highlights</h3>
   <ul>
-    <li><strong>Car On-Board Computer:</strong> Dedicated computing platform for autonomous operations</li>
-    <li><strong>ROS Framework:</strong> Robot Operating System for modular and scalable design</li>
-    <li><strong>Navigation Stack:</strong> Comprehensive autonomous navigation capabilities</li>
-    <li><strong>GMapping:</strong> Grid-based SLAM algorithm for real-time mapping</li>
-    <li><strong>LiDAR Integration:</strong> Real-time 2D laser scanning for obstacle detection and avoidance</li>
-    <li><strong>Path Planning:</strong> Dynamic route calculation and obstacle avoidance algorithms</li>
+    <li><strong>Arduino & ESP32:</strong> Embedded microcontroller platform for real-time control</li>
+    <li><strong>PlatformIO:</strong> Development environment for embedded systems</li>
+    <li><strong>OpenCV Integration:</strong> Real-time image processing for map rectification and analysis</li>
+    <li><strong>A* Path Planning:</strong> Optimal path finding algorithm for efficient navigation</li>
+    <li><strong>PID Control System:</strong> Precise speed and steering control for smooth motion</li>
+    <li><strong>Dynamic Obstacle Avoidance:</strong> Real-time adaptation to randomly positioned obstacles</li>
   </ul>
 
-<br>
+  <div class="video-container" style="margin: 20px 0;">
+    <h3 style="margin-bottom:10px;">Demonstration Video</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/R3W2jP_Io_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
 
-<!-- Project 1: Zhi Xing Car II -->
+<hr>
+
+<!-- Project 2: Zhi Xing Car II -->
 <section id="zhixing-car-2">
-  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
     <img src="../images/vla_car.jpg" alt="Zhi Xing Car II" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
     <div>
       <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car II</h2>
       <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
-        We designed and deployed a SLAM system on NVIDIA Jetson®, integrating 2D LiDAR 
+        <strong>TL;DR:</strong> We designed and deployed a SLAM system on NVIDIA Jetson®, integrating 2D LiDAR 
         and Intel® RealSense™ depth camera for robust multi-sensor fusion. Implemented Google Cartographer 
         for high-accuracy 2D localization and mapping, and extended to 3D ESDF-based mapping for precise 
         environmental reconstruction and optimized path planning in real-world navigation tasks.
       </p>
       <div class="links" style="margin-top: 15px;">
-        <strong>Links:</strong>
-        <a href="https://github.com/EmbodiedLLM/roadRunner" target="_blank">Code</a>
+        <strong>Links:</strong> 
+        [<a href="https://github.com/EmbodiedLLM/roadRunner" target="_blank">Code</a>]
       </div>
     </div>
   </div>
@@ -438,53 +446,53 @@
   <img src="../images/NVBlox.png" alt="Zhi Xing Car II SLAM" style="max-width: 70%; margin: 20px auto; display: block;">
 </section>
 
-<br>
-<!-- Project 2: Auto-tracking Car -->
-<section id="auto-tracking-car">
-  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
-    <img src="../images/yuyuan.jpg" alt="Auto-tracking Car" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+<hr>
+
+<!-- Project 3: Zhi Xing Car I -->
+<section id="zhixing-car-1">
+  <div style="display: flex; align-items: center; margin-bottom: 20px;">
+    <img src="../images/zhixing.png" alt="Zhi Xing Car I" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
     <div>
-      <h2 style="margin-bottom: 15px; color: #333;">Auto-tracking Car</h2>
+      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car I</h2>
       <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
-        We used OpenCV to rectify the camera-captured map and extract obstacle 
-        coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm 
-        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
-        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+        <strong>TL;DR:</strong> We designed and developed an autonomous navigation robot system based on ROS, 
+        supporting real-time LiDAR obstacle avoidance, SLAM mapping, and path planning. The robot integrates 
+        multiple sensors and algorithms to achieve robust autonomous navigation in indoor environments.
       </p>
       <div class="links" style="margin-top: 15px;">
-        <strong>Links:</strong>
-        <a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a> | <a href="https://youtube.com/shorts/R3W2jP_Io_M?feature=share" target="_blank">Video</a>
+        <strong>Links:</strong> 
+        [<a href="../work/zhixingmini.pdf" target="_blank">Document</a>] 
+        [<a href="https://youtu.be/74ppMMNvv9I" target="_blank">Video</a>]
       </div>
     </div>
   </div>
 
-    <div class="video-container" style="margin: 20px 0;">
-    <h3 style="margin-bottom:10px;">Demonstration Video</h3>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/R3W2jP_Io_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-  </div>
-
-  <h3 style="margin-bottom:10px;">Computer Vision-Based Navigation</h3>
+  <h3 style="margin-bottom:10px;">Project Overview</h3>
   <p>
-    The Auto-tracking Car project demonstrates a unique approach to autonomous navigation using computer 
-    vision and path planning algorithms. Unlike traditional sensor-based approaches, this system relies 
-    on camera input and image processing to understand the environment and plan optimal paths. The 
-    integration of OpenCV for image processing, A* algorithm for path planning, and PID control for 
-    motion execution creates a comprehensive autonomous navigation solution.
+    Zhi Xing Car I represents our first venture into autonomous mobile robotics, focusing on fundamental 
+    navigation capabilities. The system was built from the ground up using ROS (Robot Operating System) 
+    as the core framework, enabling modular development and easy integration of different subsystems. 
+    The robot demonstrates essential autonomous navigation features including real-time obstacle detection, 
+    dynamic path planning, and precise localization.
   </p>
 
-  <h3 style="margin-bottom:10px;">Technical Highlights</h3>
+  <h3 style="margin-bottom:10px;">Key Technical Features</h3>
   <ul>
-    <li><strong>Arduino & ESP32:</strong> Embedded microcontroller platform for real-time control</li>
-    <li><strong>PlatformIO:</strong> Development environment for embedded systems</li>
-    <li><strong>OpenCV Integration:</strong> Real-time image processing for map rectification and analysis</li>
-    <li><strong>A* Path Planning:</strong> Optimal path finding algorithm for efficient navigation</li>
-    <li><strong>PID Control System:</strong> Precise speed and steering control for smooth motion</li>
-    <li><strong>Dynamic Obstacle Avoidance:</strong> Real-time adaptation to randomly positioned obstacles</li>
+    <li><strong>Car On-Board Computer:</strong> Dedicated computing platform for autonomous operations</li>
+    <li><strong>ROS Framework:</strong> Robot Operating System for modular and scalable design</li>
+    <li><strong>Navigation Stack:</strong> Comprehensive autonomous navigation capabilities</li>
+    <li><strong>GMapping:</strong> Grid-based SLAM algorithm for real-time mapping</li>
+    <li><strong>LiDAR Integration:</strong> Real-time 2D laser scanning for obstacle detection and avoidance</li>
+    <li><strong>Path Planning:</strong> Dynamic route calculation and obstacle avoidance algorithms</li>
   </ul>
 
-
+  <div class="video-container" style="margin: 20px 0;">
+    <h3 style="margin-bottom:10px;">Demonstration Video</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/74ppMMNvv9I" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
 
 <hr>
+
 
 </body>
 </html>

@@ -372,9 +372,9 @@
         A comprehensive autonomous navigation robot system integrating SLAM mapping, path planning, voice control, 
         and face recognition. Built on ROS framework with LiDAR-based localization and multi-sensor fusion, 
         achieving robust autonomous navigation and intelligent interaction in indoor environments.
-      <!-- <div class="links" style="margin-top: 15px;">
+      <div class="links" style="margin-top: 15px;">
         [<a href="../work/zhixingmini.pdf" target="_blank">Document</a>]
-      </div> -->
+      </div>
     </div>
   </div>
 
@@ -678,15 +678,9 @@ Since the map \(m\) can be determined given the trajectory \(x_{1:t}\), the SLAM
     <li><strong>RRT (Rapidly-exploring Random Trees)</strong>: A sampling-based planner that rapidly grows a tree in the configuration space by random sampling. RRT is effective in high-dimensional or complex environments to quickly find a feasible path, though the paths often require post-processing or smoothing.</li>
   </ul>
 
-  <h4 style="margin-top:8px;">Local Planners</h4>
+  <h5 style="margin-top:8px;">Local Planners</h5>
   <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
     <li><strong>DWA (Dynamic Window Approach)</strong>: A local planner that searches in the robot's velocity space for collision-free, dynamically-feasible velocity commands. DWA considers the robot's kinematic and dynamic limits, samples candidate linear/angular velocities, and scores them by progress toward the global path and obstacle clearance.</li>
-    <ol style="margin-left:24px;">
-      <li>Sample the robot's control space (linear and angular velocities) within dynamic constraints (dx, dy, dtheta).</li>
-      <li>For each sampled velocity, forward-simulate the resulting short-duration trajectory from the current state to predict where the robot would be after a small time step.</li>
-      <li>Evaluate each forward-simulated trajectory using objective terms: obstacle proximity (collision checking), closeness to the global path/goal, and dynamic feasibility (respecting velocity/acceleration limits). Discard trajectories that violate constraints or are clearly infeasible.</li>
-      <li>Select the highest-scoring trajectory and publish the corresponding velocity command to the base controller.</li>
-    </ol>
     <li><strong>TEB (Timed Elastic Band)</strong>: An optimization-based local planner that represents the trajectory as a sequence of time-stamped poses (an elastic band). By optimizing both timing and spatial configuration under kinodynamic constraints, TEB produces smooth, feasible local trajectories that can respect obstacle avoidance and dynamic limits.</li>
   </ul>
 

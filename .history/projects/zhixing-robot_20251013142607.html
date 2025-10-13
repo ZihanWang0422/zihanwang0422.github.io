@@ -57,12 +57,6 @@
       font-weight: 600;
     }
 
-    /* Make h4 headings bold but keep their font size unchanged */
-    h4 {
-      font-weight: 700;
-      /* inherit current font-size (do not change) */
-    }
-
     hr {
       border: none;
       border-top: 1px solid #ccc;
@@ -372,9 +366,9 @@
         A comprehensive autonomous navigation robot system integrating SLAM mapping, path planning, voice control, 
         and face recognition. Built on ROS framework with LiDAR-based localization and multi-sensor fusion, 
         achieving robust autonomous navigation and intelligent interaction in indoor environments.
-      <!-- <div class="links" style="margin-top: 15px;">
+      <div class="links" style="margin-top: 15px;">
         [<a href="../work/zhixingmini.pdf" target="_blank">Document</a>]
-      </div> -->
+      </div>
     </div>
   </div>
 
@@ -515,193 +509,70 @@ With this, the derivation of the differential-drive kinematic model is complete.
 
   <h2>2. SLAM Navigation Workflow</h2>
 
-  <h3 style="margin-top:16px;">2.1 System Architecture & Hardware Setup</h3>
-  <ul style="text-align:left; list-style-type:disc; margin-top:8px; margin-left:20px;">
-    <li><strong>Computing Platform:</strong> On-board computer with ROS Melodic on Ubuntu 18.04</li>
-    <li><strong>Sensors:</strong> RPLiDAR A1 (360° laser scanner), ReSpeaker voice array, RGB-D camera</li>
-    <li><strong>Motor Control:</strong> Differential drive system with encoder feedback</li>
-    <li><strong>Communication:</strong> USB serial communication with custom protocol for motor control</li>
+  <h3>2.1 System Architecture & Hardware Setup<h3>
+    <strong>Computing Platform:</strong> On-board computer with ROS Melodic on Ubuntu 18.04
+    <strong>Sensors:</strong> RPLiDAR A1 (360° laser scanner), ReSpeaker voice array, RGB-D camera
+    <strong>Motor Control:</strong> Differential drive system with encoder feedback
+    <strong>Communication:</strong> USB serial communication with custom protocol for motor control
+
+
+  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">2. SLAM Mapping Pipeline</h3>
+  <ul>
+    <li><strong>GMapping Algorithm:</strong> Particle filter-based SLAM for 2D grid map construction</li>
+    <li><strong>LiDAR Processing:</strong> Real-time scan matching and occupancy grid generation</li>
+    <li><strong>Map Saving:</strong> PGM format map files with YAML configuration for map resolution and origin</li>
+    <li><strong>Waypoint Annotation:</strong> Using waterplus_map_tools RViz plugin for marking navigation waypoints</li>
+    <li><strong>Data Format:</strong> Waypoint storage in XML with position (x,y,z) and orientation (quaternion) data</li>
   </ul>
 
-
-  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">2.2 GMapping Algorithm Based on RBPF</h3>
-  <img src="../images/mobile_car/gmapping.png" alt="Car dynamics diagram 3" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
-
-    <p>GMapping is a widely used SLAM (Simultaneous Localization and Mapping) algorithm based on the <strong>Rao-Blackwellized Particle Filter (RBPF)</strong> framework.</p>
-    <p>It factorizes the full SLAM posterior into two parts: the robot trajectory estimation and the map estimation.</p>
-
-    <p style="text-align:center; font-style:italic;">$$
-    p(x_{1:t}, m \mid z_{1:t}, u_{1:t-1}) = p(m \mid x_{1:t}, z_{1:t}) \, p(x_{1:t} \mid z_{1:t}, u_{1:t-1})
-    $$</p>
-
-    <p>where:</p>
-    <ul>
-      <li><span style="white-space:nowrap;">\(x_{1:t}\)</span>: the robot trajectory up to time <span style="white-space:nowrap;">\(t\)</span>;</li>
-      <li><span style="white-space:nowrap;">\(m\)</span>: the map of the environment;</li>
-      <li><span style="white-space:nowrap;">\(z_{1:t}\)</span>: the sequence of sensor measurements (e.g., LiDAR scans);</li>
-      <li><span style="white-space:nowrap;">\(u_{1:t-1}\)</span>: the sequence of control inputs (odometry).</li>
-    </ul>
-
-Since the map \(m\) can be determined given the trajectory \(x_{1:t}\), the SLAM problem reduces to estimating the trajectory posterior using a particle filter.
-
-<!-- GMapping: improved proposal and selective resampling explanation -->
-<h4 style="margin-top:12px;">1. Improved Proposal Distribution</h4>
-<p>In traditional FastSLAM 1.0, the proposal distribution for sampling new particle poses only depends on the motion model:</p>
-<p style="text-align:center; font-style:italic;">$$p(x_t\mid x_{t-1}, u_t)$$</p>
-<p>This approach suffers from high uncertainty due to odometry drift and noise, often causing <strong>particle degeneracy</strong> — only a few particles have significant weights.</p>
-<p>GMapping improves this by incorporating the current observation \(z_t\) into the proposal distribution:</p>
-<p style="text-align:center; font-style:italic;">$$p(x_t\mid x_{t-1}, u_t, z_t)$$</p>
-<p><strong>Key idea:</strong> combining motion and observation information corrects the motion-model prediction using the latest laser scan, reducing uncertainty of sampled particles.</p>
-<p><strong>Implementation steps:</strong></p>
-<ol>
-  <li>For each particle \(i\), predict a set of pose candidates using the motion model.</li>
-  <li>Evaluate each candidate by computing the likelihood \(p(z_t\mid x_t^{(i)}, m_{t-1}^{(i)})\) through scan matching.</li>
-  <li>Approximate this likelihood as a Gaussian distribution around the best-matched pose.</li>
-  <li>Sample the new particle pose from this corrected Gaussian proposal.</li>
-</ol>
-<p>The particle weight update becomes:</p>
-<p style="text-align:center; font-style:italic;">$$w_t^{(i)} \propto w_{t-1}^{(i)} \dfrac{p(z_t\mid x_t^{(i)}, m_{t-1}^{(i)})\, p(x_t^{(i)}\mid x_{t-1}^{(i)}, u_t)}{q(x_t^{(i)}\mid x_{t-1}^{(i)}, u_t, z_t)}$$</p>
-<p><strong>Effect:</strong></p>
-<ul>
-  <li>Reduces particle dispersion and improves localization accuracy.</li>
-  <li>Requires fewer particles (typically tens instead of hundreds).</li>
-  <li>Increases robustness against odometry drift.</li>
-</ul>
-
-<h4 style="margin-top:12px;">2. Selective Resampling</h4>
-<p>In a standard particle filter, resampling is performed at every iteration to prevent weight degeneracy. Frequent resampling can cause <strong>sample impoverishment</strong>, reducing particle diversity and potentially leading to local minima. GMapping uses selective resampling:</p>
-<p style="text-align:center; font-style:italic;">Only perform resampling when the effective sample size \(N_{\text{eff}}\) falls below a threshold.</p>
-<p>The effective sample size is defined as:</p>
-<p style="text-align:center; font-style:italic;">$$N_{\text{eff}} = \dfrac{1}{\sum_{i=1}^{N} (w_t^{(i)})^2}$$</p>
-<p>When \(N_{\text{eff}} < N_{\text{threshold}}\) (typically \(N/2\) or \(N/3\)), resampling is triggered.</p>
-<p><strong>Benefits:</strong></p>
-<ul>
-  <li>Maintains particle diversity.</li>
-  <li>Avoids unnecessary resampling when the weight distribution is stable.</li>
-  <li>Improves convergence speed and map consistency.</li>
-</ul>
-
-<!-- End GMapping section -->
-
-
-
-
- <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">2.3 Navigation</h3>
- <img src="../images/mobile_car/navigation.png" alt="Car dynamics diagram 3" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
- At the core of the navigation system lies the <code>move_base</code> node, which integrates inputs from odometry, robot pose estimation, and map data.
- This node performs both global planning and local planning: the global planner generates an overall path to the target, while the local planner continuously adjusts the trajectory in response to environmental changes, thus achieving autonomous obstacle avoidance during navigation.
-
- <h4 style="margin-top:12px;">1.Localization</h4>
-  <p>Below is the standard MCL (Monte Carlo Localization) algorithm presented as pseudocode. Variables: \(\mathcal{X}_{t-1}\) is the particle set at time \(t-1\), \(u_t\) the control input, \(z_t\) the current observation, and \(m\) the map.</p>
-  <div style="background:#f8f9fb; border:1px solid #e1e4e8; padding:12px; overflow:auto;">
-    <div style="display:flex; gap:12px; font-family:monospace;">
-      <div style="min-width:40px; color:#333; text-align:left;">
-        <div>1:</div>
-        <div>2:</div>
-        <div>3:</div>
-        <div>4:</div>
-        <div>5:</div>
-        <div>6:</div>
-        <div>7:</div>
-        <div>8:</div>
-        <div>9:</div>
-        <div>10:</div>
-        <div>11:</div>
-        <div>12:</div>
-      </div>
-      <div style="flex:1;">
-        <div>function MCL(\(\mathcal{X}_{t-1}\), \(u_t\), \(z_t\), \(m\)):</div>
-        <div>\(\bar{\mathcal{X}}_t := \varnothing\)</div>
-        <div>for \(m = 1\) to \(M\) do</div>
-        <div style="padding-left:22px;">\(x_t^{[m]} = \text{sample\_motion\_model}(u_t, x_{t-1}^{[m]})\)</div>
-        <div style="padding-left:22px;">\(w_t^{[m]} = \text{measurement\_model}(z_t, x_t^{[m]}, m)\)</div>
-        <div style="padding-left:22px;">add \(\langle x_t^{[m]}, w_t^{[m]} \rangle\) to \(\bar{\mathcal{X}}_t\)</div>
-        <div>endfor</div>
-        <div>for \(m = 1\) to \(M\) do</div>
-        <div style="padding-left:22px;">draw index \(i\) with probability \(\propto w_t^{[i]}\)</div>
-        <div style="padding-left:22px;">add \(x_t^{[i]}\) to \(\mathcal{X}_t\)</div>
-        <div>endfor</div>
-        <div>return \(\mathcal{X}_t\)</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- AMCL translation inserted below -->
-  <p>AMCL (Adaptive Monte Carlo Localization) is a particle-filter-based method for robot localization. Its objective is to estimate the robot pose over time from sensor measurements and control inputs. We denote the robot pose at time \(t\) by \(x_t\); the control (odometry) input applied between time \(t-1\) and \(t\) by \(u_t\); and the sensor observation at time \(t\) by \(z_t\). When referring to histories we use the shorthand sequences \(x_{1:t}\), \(u_{1:t}\) and \(z_{1:t}\). Using the Bayes filter formulation, the posterior can be written as:</p>
-  <p style="text-align:center; font-style:italic;">$$
-  p(x_t\mid z_{1:t}, u_{1:t}) = \eta\; p(z_t\mid x_t)\; p(x_t\mid z_{1:t-1}, u_{1:t})
-  $$</p>
-  <p>Here the prediction (motion update) step is given by the Chapman–Kolmogorov equation:</p>
-  <p style="text-align:center; font-style:italic;">$$
-  p(x_t\mid z_{1:t-1}, u_{1:t}) = \int p(x_t\mid x_{t-1}, u_t)\; p(x_{t-1}\mid z_{1:t-1}, u_{1:t-1})\, dx_{t-1}.
-  $$</p>
-  <p>The measurement update then incorporates the current observation \(z_t\) via the likelihood \(p(z_t\mid x_t)\), and \(\eta\) is a normalizing constant.</p>
-
-  <p>AMCL approximates the posterior with a set of weighted particles \(\{x_t^{(i)}, w_t^{(i)}\}_{i=1}^M\). The particle filter loop typically performs:</p>
-  <p>Here, M denotes the number of particles.</p>
-  <ol>
-    <li>Prediction: sample a new pose for each particle from the motion model \(x_t^{(i)} \sim p(x_t\mid x_{t-1}^{(i)}, u_t)\).</li>
-    <li>Update: compute the importance weight using the observation likelihood, e.g. \(w_t^{(i)} \propto w_{t-1}^{(i)}\; p(z_t\mid x_t^{(i)})\), then normalize the weights.</li>
-    <li>Resample: when particle degeneracy is detected, draw a new particle set according to the normalized weights.</li>
-  </ol>
-
-  <p style="text-align:center; font-style:italic;">$$
-  w_t^{(i)} \propto w_{t-1}^{(i)}\; p(z_t\mid x_t^{(i)})
-  $$</p>
-
-  <p>A common metric to decide whether to resample is the Effective Sample Size (ESS):</p>
-  <p style="text-align:center; font-style:italic;">$$
-  N_{\text{eff}} = \dfrac{1}{\sum_{i=1}^{M} (w_t^{(i)})^2}
-  $$</p>
-  <p>When \(N_{\text{eff}}\) falls below a chosen threshold (for example \(M/2\)), resampling is performed. AMCL uses adaptive resampling strategies (and can vary the number of particles) based on ESS to balance computational cost and localization accuracy. This adaptive behavior helps maintain robustness in real-time robot localization.</p>
-  <!-- End AMCL translation -->
-
- <h4 style="margin-top:12px;">2. move_base</h4>
- Global path planning is primarily used to generate an optimal route from the robot’s current position to the target within a known map, while local path planning focuses on real-time motion adjustment along the global path to ensure obstacle avoidance in partially unknown environments. 
-
-  <p style="margin-top:10px;">The <code>move_base</code> stack commonly uses costmaps to represent the environment and perform planning. In ROS, the <code>costmap_2d</code> package generates different costmap layers on top of the base map to support both local and global planners. Typical layers include:</p>
-  <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
-    <li><strong>Static Map Layer</strong>: a largely unchanging layer (usually produced by SLAM) representing the static environment used for global planning.</li>
-    <li><strong>Obstacle Map Layer</strong>: a dynamic layer that records obstacles detected by sensors (e.g., LiDAR); used by local planners to avoid newly observed obstacles.</li>
-    <li><strong>Inflation Layer</strong>: expands occupied cells outward to create a safety margin around obstacles, preventing the robot from planning paths too close to obstacles.</li>
-    <li><strong>Other Layers</strong>: additional layers can be implemented as plugins (for example, Social Costmap Layer, Range Sensor Layer, etc.) to provide specialized behavior.</li>
+  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">3. Localization & Navigation</h3>
+  <ul>
+    <li><strong>AMCL Localization:</strong> Adaptive Monte Carlo Localization for robot pose estimation in known maps</li>
+    <li><strong>Move Base:</strong> ROS navigation stack with global and local planners</li>
+    <li><strong>Path Planning:</strong> Dynamic window approach (DWA) for real-time obstacle avoidance</li>
+    <li><strong>Costmap Generation:</strong> Inflation layers around obstacles for safe navigation</li>
+    <li><strong>Goal Management:</strong> XML-based waypoint system with sequential navigation capabilities</li>
   </ul>
 
-  <!-- Inserted: Translated planner list from image attachment -->
-  <h4 style="margin-top:12px;">3. Common Global and Local Path Planners</h4>
-  <p>The navigation stack typically separates planning into global planners (produce a full path on a known map) and local planners (reactive, operate in velocity space to follow the global path while avoiding obstacles).</p>
-
-  <h4 style="margin-top:8px;">Global Planners</h4>
-  <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
-    <li><strong>A* (A-star)</strong>: A graph-search algorithm that combines cost-to-come and heuristics to find the shortest path from start to goal. A* expands nodes by minimizing the estimated total cost (g + h), and is widely used for grid-based global planning.</li>
-    <li><strong>Dijkstra</strong>: A classic single-source shortest-path algorithm. Dijkstra expands the frontier by always selecting the node with the smallest current cost from the start, guaranteeing an optimal shortest path in graphs with non-negative edge weights.</li>
-    <li><strong>RRT (Rapidly-exploring Random Trees)</strong>: A sampling-based planner that rapidly grows a tree in the configuration space by random sampling. RRT is effective in high-dimensional or complex environments to quickly find a feasible path, though the paths often require post-processing or smoothing.</li>
+  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">4. Voice Control Integration</h3>
+  <ul>
+    <li><strong>Voice Recognition:</strong> Baidu Speech API integration for Chinese command recognition</li>
+    <li><strong>ReSpeaker Interface:</strong> 6-microphone array for far-field voice capture and DOA estimation</li>
+    <li><strong>Command Processing:</strong> Real-time voice command parsing for navigation control (forward, backward, turn)</li>
+    <li><strong>LED Feedback:</strong> Visual indication of voice activity and system status</li>
+    <li><strong>Voice Synthesis:</strong> TTS (Text-to-Speech) for status announcements and user feedback</li>
   </ul>
 
-  <h4 style="margin-top:8px;">Local Planners</h4>
-  <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
-    <li><strong>DWA (Dynamic Window Approach)</strong>: A local planner that searches in the robot's velocity space for collision-free, dynamically-feasible velocity commands. DWA considers the robot's kinematic and dynamic limits, samples candidate linear/angular velocities, and scores them by progress toward the global path and obstacle clearance.</li>
-    <ol style="margin-left:24px;">
-      <li>Sample the robot's control space (linear and angular velocities) within dynamic constraints (dx, dy, dtheta).</li>
-      <li>For each sampled velocity, forward-simulate the resulting short-duration trajectory from the current state to predict where the robot would be after a small time step.</li>
-      <li>Evaluate each forward-simulated trajectory using objective terms: obstacle proximity (collision checking), closeness to the global path/goal, and dynamic feasibility (respecting velocity/acceleration limits). Discard trajectories that violate constraints or are clearly infeasible.</li>
-      <li>Select the highest-scoring trajectory and publish the corresponding velocity command to the base controller.</li>
-    </ol>
-    <li><strong>TEB (Timed Elastic Band)</strong>: An optimization-based local planner that represents the trajectory as a sequence of time-stamped poses (an elastic band). By optimizing both timing and spatial configuration under kinodynamic constraints, TEB produces smooth, feasible local trajectories that can respect obstacle avoidance and dynamic limits.</li>
+  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">5. Vision & Face Recognition</h3>
+  <ul>
+    <li><strong>Face Detection:</strong> OpenCV Haar Cascade classifiers for real-time face detection</li>
+    <li><strong>Face Training:</strong> Local Binary Pattern Histograms (LBPH) for face recognition</li>
+    <li><strong>Target Tracking:</strong> Visual servoing for tracking and following detected persons</li>
+    <li><strong>Multi-person Recognition:</strong> Distinguishing between multiple registered faces</li>
   </ul>
 
+  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">6. Integrated Application Scenario</h3>
+  <ul>
+    <li><strong>Voice-Activated Navigation:</strong> Starting autonomous navigation via voice commands</li>
+    <li><strong>Waypoint Traversal:</strong> Sequential navigation through pre-defined waypoints</li>
+    <li><strong>Status Reporting:</strong> Voice feedback at each waypoint arrival</li>
+    <li><strong>Face Recognition Task:</strong> Identifying and tracking specific persons upon arrival at destination</li>
+    <li><strong>Multi-modal Interaction:</strong> Combining voice, vision, and navigation for complex tasks</li>
+  </ul>
+
+  <h2 style="margin-bottom:10px; margin-top: 30px;">Key Technical Features</h2>
+  <ul>
+    <li><strong>ROS Framework:</strong> Modular architecture with publisher-subscriber pattern for distributed computing</li>
+    <li><strong>Multi-Sensor Fusion:</strong> Integration of LiDAR, camera, encoders, and voice array</li>
+    <li><strong>Real-time Processing:</strong> Low-latency sensor data processing and control loop execution</li>
+    <li><strong>Navigation Stack:</strong> Complete autonomous navigation with move_base action server</li>
+    <li><strong>Custom Protocol:</strong> USB serial communication with structured command format for motor control</li>
+    <li><strong>Python & C++:</strong> Mixed programming for ROS nodes with optimal performance</li>
+    <li><strong>RViz Visualization:</strong> Real-time visualization of map, robot pose, sensor data, and planned paths</li>
+  </ul>
 
 
 </section>
-
-  <!-- References for Project 1 -->
-  <section id="zhixing-car-1-references">
-    <h3 style="margin-top:12px;">References</h3>
-    <ol>
-  <li>G. Grisetti, C. Stachniss, and W. Burgard, "Improving grid-based SLAM with Rao-Blackwellized particle filters by adaptive proposals and selective resampling," in Proc. IEEE Int. Conf. Robotics and Automation (ICRA), 2005, pp. 2432–2437. [<a href="http://www2.informatik.uni-freiburg.de/~stachnis/pdf/grisetti05icra.pdf" target="_blank">PDF</a>]</li>
-  <li>Z. Wang, "GMapping and AMCL summary," CSDN Blog, 2024. [<a href="https://blog.csdn.net/m0_55202222/article/details/131065091" target="_blank">https://blog.csdn.net/m0_55202222/article/details/131065091</a>]</li>
-    </ol>
-  </section>
 
 <br>
 

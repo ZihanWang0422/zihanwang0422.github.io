@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Mobile Car Projects - Zihan Wang</title>
+  <meta name="description" content="Mobile Car Projects: Zhi Xing Car I, Zhi Xing Car II, and Auto-tracking Car by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    /* keep the info-section centered (override the container-level justify) */
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    /* Project section styles */
+    section {
+      margin-bottom: 50px;
+      padding: 20px 0;
+    }
+
+    section h2 {
+      color: #2c3e50;
+      font-size: 1.8em;
+      font-weight: 700;
+      margin-bottom: 15px;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 8px;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      gap: 30px;
+    }
+
+    .project-image {
+      flex-shrink: 0;
+      width: 300px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-info p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .project-header {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .project-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      section h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    /* New project card styles */
+    .project-card {
+      display: flex;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      gap: 24px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .dual-image-container {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dual-image-container img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 0;
+    }
+
+    .project-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .project-description {
+      color: #555;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .tldr-label {
+      font-weight: 700;
+      color: #e74c3c;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.8em;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag.hardware {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .tag.software {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .tag.algorithm {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+
+    .project-link:hover {
+      background: #2980b9;
+      color: white;
+      text-decoration: none;
+    }
+
+    .project-link i {
+      font-size: 0.9em;
+    }
+
+    /* Mobile responsive for project cards */
+    @media (max-width: 768px) {
+      .project-card {
+        flex-direction: column;
+        padding: 20px;
+      }
+      
+      .dual-image-container {
+        flex: none;
+        max-width: 100%;
+      }
+      
+      .dual-image-container img {
+        height: 120px;
+      }
+      
+      .project-title {
+        font-size: 1.3em;
+      }
+      
+      .project-links {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .project-link {
+        justify-content: center;
+      }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../index.html#projects"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+  <center><h1>Mobile Car Projects</h1></center>
+</div>
+
+<br>
+<!-- Project 1: Zhi Xing Car I -->
+<section id="zhixing-car-1">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/zhixing.png" alt="Zhi Xing Car I" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car I - SLAM Navigation Robot</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        A comprehensive autonomous navigation robot system integrating SLAM mapping, path planning, voice control, 
+        and face recognition. Built on ROS framework with LiDAR-based localization and multi-sensor fusion, 
+        achieving robust autonomous navigation and intelligent interaction in indoor environments.
+      <div class="links" style="margin-top: 15px;">
+        [<a href="../work/zhixingmini.pdf" target="_blank">Document</a>]
+      </div>
+    </div>
+  </div>
+
+    <div class="video-container" style="margin: 20px 0;">
+    <h2 style="margin-bottom:10px; border-bottom: none; padding-bottom: 0;">Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/74ppMMNvv9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <h3 style="margin-bottom:10px;">SLAM Navigation Workflow</h3>
+  
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #555;">1. System Architecture & Hardware Setup</h4>
+  <ul>
+    <li><strong>Computing Platform:</strong> On-board computer with ROS Melodic on Ubuntu 18.04</li>
+    <li><strong>Sensors:</strong> RPLiDAR A1 (360° laser scanner), ReSpeaker voice array, RGB-D camera</li>
+    <li><strong>Motor Control:</strong> Differential drive system with encoder feedback</li>
+    <li><strong>Communication:</strong> USB serial communication with custom protocol for motor control</li>
+  </ul>
+
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #555;">2. SLAM Mapping Pipeline</h4>
+  <ul>
+    <li><strong>GMapping Algorithm:</strong> Particle filter-based SLAM for 2D grid map construction</li>
+    <li><strong>LiDAR Processing:</strong> Real-time scan matching and occupancy grid generation</li>
+    <li><strong>Map Saving:</strong> PGM format map files with YAML configuration for map resolution and origin</li>
+    <li><strong>Waypoint Annotation:</strong> Using waterplus_map_tools RViz plugin for marking navigation waypoints</li>
+    <li><strong>Data Format:</strong> Waypoint storage in XML with position (x,y,z) and orientation (quaternion) data</li>
+  </ul>
+
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #555;">3. Localization & Navigation</h4>
+  <ul>
+    <li><strong>AMCL Localization:</strong> Adaptive Monte Carlo Localization for robot pose estimation in known maps</li>
+    <li><strong>Move Base:</strong> ROS navigation stack with global and local planners</li>
+    <li><strong>Path Planning:</strong> Dynamic window approach (DWA) for real-time obstacle avoidance</li>
+    <li><strong>Costmap Generation:</strong> Inflation layers around obstacles for safe navigation</li>
+    <li><strong>Goal Management:</strong> XML-based waypoint system with sequential navigation capabilities</li>
+  </ul>
+
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #555;">4. Voice Control Integration</h4>
+  <ul>
+    <li><strong>Voice Recognition:</strong> Baidu Speech API integration for Chinese command recognition</li>
+    <li><strong>ReSpeaker Interface:</strong> 6-microphone array for far-field voice capture and DOA estimation</li>
+    <li><strong>Command Processing:</strong> Real-time voice command parsing for navigation control (forward, backward, turn)</li>
+    <li><strong>LED Feedback:</strong> Visual indication of voice activity and system status</li>
+    <li><strong>Voice Synthesis:</strong> TTS (Text-to-Speech) for status announcements and user feedback</li>
+  </ul>
+
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #555;">5. Vision & Face Recognition</h4>
+  <ul>
+    <li><strong>Face Detection:</strong> OpenCV Haar Cascade classifiers for real-time face detection</li>
+    <li><strong>Face Training:</strong> Local Binary Pattern Histograms (LBPH) for face recognition</li>
+    <li><strong>Target Tracking:</strong> Visual servoing for tracking and following detected persons</li>
+    <li><strong>Multi-person Recognition:</strong> Distinguishing between multiple registered faces</li>
+  </ul>
+
+  <h4 style="margin-top: 20px; margin-bottom: 10px; color: #555;">6. Integrated Application Scenario</h4>
+  <ul>
+    <li><strong>Voice-Activated Navigation:</strong> Starting autonomous navigation via voice commands</li>
+    <li><strong>Waypoint Traversal:</strong> Sequential navigation through pre-defined waypoints</li>
+    <li><strong>Status Reporting:</strong> Voice feedback at each waypoint arrival</li>
+    <li><strong>Face Recognition Task:</strong> Identifying and tracking specific persons upon arrival at destination</li>
+    <li><strong>Multi-modal Interaction:</strong> Combining voice, vision, and navigation for complex tasks</li>
+  </ul>
+
+  <h3 style="margin-bottom:10px; margin-top: 30px;">Key Technical Features</h3>
+  <ul>
+    <li><strong>ROS Framework:</strong> Modular architecture with publisher-subscriber pattern for distributed computing</li>
+    <li><strong>Multi-Sensor Fusion:</strong> Integration of LiDAR, camera, encoders, and voice array</li>
+    <li><strong>Real-time Processing:</strong> Low-latency sensor data processing and control loop execution</li>
+    <li><strong>Navigation Stack:</strong> Complete autonomous navigation with move_base action server</li>
+    <li><strong>Custom Protocol:</strong> USB serial communication with structured command format for motor control</li>
+    <li><strong>Python & C++:</strong> Mixed programming for ROS nodes with optimal performance</li>
+    <li><strong>RViz Visualization:</strong> Real-time visualization of map, robot pose, sensor data, and planned paths</li>
+  </ul>
+
+
+</section>
+
+<br>
+
+<!-- Project 2: Zhi Xing Car II -->
+<section id="zhixing-car-2">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/vla_car.jpg" alt="Zhi Xing Car II" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car II</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        We designed and deployed a SLAM system on NVIDIA Jetson®, integrating 2D LiDAR 
+        and Intel® RealSense™ depth camera for robust multi-sensor fusion. Implemented Google Cartographer 
+        for high-accuracy 2D localization and mapping, and extended to 3D ESDF-based mapping for precise 
+        environmental reconstruction and optimized path planning in real-world navigation tasks.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        [<a href="https://github.com/EmbodiedLLM/roadRunner" target="_blank">Code</a>]
+      </div>
+    </div>
+  </div>
+
+  <h3 style="margin-bottom:10px;">Key Technical Innovations</h3>
+  <ul>
+    <li><strong>NVIDIA Jetson Nano:</strong> High-performance embedded computing for real-time processing</li>
+    <li><strong>Intel RealSense D435:</strong> Advanced depth camera for 3D perception</li>
+    <li><strong>MID-360 LiDAR:</strong> 360-degree laser scanning for precise mapping</li>
+    <li><strong>ROS2:</strong> Next-generation robotics middleware for distributed systems</li>
+    <li><strong>Navigation2:</strong> Advanced navigation stack for autonomous mobile robots</li>
+    <li><strong>Google Cartographer:</strong> Advanced SLAM algorithm for high-accuracy localization</li>
+    <li><strong>3D ESDF Mapping:</strong> Extended Signed Distance Field for precise environmental modeling</li>
+  </ul>
+
+  <img src="../images/NVBlox.png" alt="Zhi Xing Car II SLAM" style="max-width: 70%; margin: 20px auto; display: block;">
+</section>
+
+<br>
+<!-- Project 2: Auto-tracking Car -->
+<section id="auto-tracking-car">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/yuyuan.jpg" alt="Auto-tracking Car" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Auto-tracking Car</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        We used OpenCV to rectify the camera-captured map and extract obstacle 
+        coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm 
+        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
+        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        [<a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a>]
+      </div>
+    </div>
+  </div>
+
+    <div class="video-container" style="margin: 20px 0;">
+    <h3 style="margin-bottom:10px;">Video</h3>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/R3W2jP_Io_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+
+  <h3 style="margin-bottom:10px;">Technical Highlights</h3>
+  <ul>
+    <li><strong>Arduino & ESP32:</strong> Embedded microcontroller platform for real-time control</li>
+    <li><strong>PlatformIO:</strong> Development environment for embedded systems</li>
+    <li><strong>OpenCV Integration:</strong> Real-time image processing for map rectification and analysis</li>
+    <li><strong>A* Path Planning:</strong> Optimal path finding algorithm for efficient navigation</li>
+    <li><strong>PID Control System:</strong> Precise speed and steering control for smooth motion</li>
+    <li><strong>Dynamic Obstacle Avoidance:</strong> Real-time adaptation to randomly positioned obstacles</li>
+  </ul>
+
+</section>
+
+
+<hr>
+
+</body>
+</html>

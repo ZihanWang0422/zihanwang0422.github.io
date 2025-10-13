@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420">
+  <style>
+    .frame-box { fill: #f7fbff; stroke: #2b6cb0; stroke-width: 2px; rx: 8px; }
+    .frame-label { font-family: Arial, sans-serif; font-size: 16px; fill: #0b3d91; font-weight: 700; }
+    .frame-desc { font-family: Arial, sans-serif; font-size: 12px; fill: #333333; }
+    .arrow { stroke: #2b6cb0; stroke-width: 2px; fill: none; marker-end: url(#arrowhead); }
+    .note { font-family: Arial, sans-serif; font-size: 12px; fill: #444; }
+  </style>
+
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#2b6cb0" />
+    </marker>
+  </defs>
+
+  <!-- map frame -->
+  <rect x="40" y="30" width="220" height="120" class="frame-box" />
+  <text x="150" y="60" text-anchor="middle" class="frame-label">map</text>
+  <text x="150" y="82" text-anchor="middle" class="frame-desc">Global fixed frame</text>
+  <text x="150" y="100" text-anchor="middle" class="frame-desc">(long-term reference)</text>
+
+  <!-- odom frame -->
+  <rect x="340" y="30" width="220" height="120" class="frame-box" />
+  <text x="450" y="60" text-anchor="middle" class="frame-label">odom</text>
+  <text x="450" y="82" text-anchor="middle" class="frame-desc">Local continuous frame</text>
+  <text x="450" y="100" text-anchor="middle" class="frame-desc">(short-term, may drift)</text>
+
+  <!-- base_link frame -->
+  <rect x="640" y="30" width="220" height="120" class="frame-box" />
+  <text x="750" y="60" text-anchor="middle" class="frame-label">base_link</text>
+  <text x="750" y="82" text-anchor="middle" class="frame-desc">Robot body frame</text>
+  <text x="750" y="100" text-anchor="middle" class="frame-desc">(pose expressed here)</text>
+
+  <!-- arrows for transforms -->
+  <path d="M260 90 L340 90" class="arrow" />
+  <text x="300" y="74" text-anchor="middle" class="note"><tspan x="300" dy="0">map → odom</tspan><tspan x="300" dy="16">(tf correction)</tspan></text>
+
+  <path d="M560 90 L640 90" class="arrow" />
+  <text x="600" y="74" text-anchor="middle" class="note"><tspan x="600" dy="0">odom → base_link</tspan><tspan x="600" dy="16">(odom topic)</tspan></text>
+
+  <!-- sensor (laser) -->
+  <rect x="540" y="200" width="220" height="80" class="frame-box" />
+  <text x="650" y="230" text-anchor="middle" class="frame-label">laser</text>
+  <text x="650" y="250" text-anchor="middle" class="frame-desc">LiDAR sensor frame</text>
+  <text x="650" y="268" text-anchor="middle" class="frame-desc">(fixed transform to base_link)</text>
+
+  <!-- connect vertical arrow so it meets the top edge of base_link box (y=30) + height 120 => top at y=30, bottom at y=150; we want arrow to meet top of laser box at y=200 and connect to base_link at y=150 -->
+  <path d="M750 150 L750 200" class="arrow" />
+  <text x="770" y="160" class="note"><tspan x="770" dy="0">fixed</tspan><tspan x="770" dy="16">TF</tspan></text>
+
+  <!-- additional note -->
+  <text x="40" y="360" class="note">Note: map may "jump" when localization updates; odom provides smooth short-term pose but accumulates drift. Use sensor fusion (IMU, AMCL) to compute map→odom corrections.</text>
+</svg>

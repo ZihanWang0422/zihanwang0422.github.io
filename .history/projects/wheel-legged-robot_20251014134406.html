@@ -199,6 +199,7 @@
   <img src="../images/legged-wheel.jpg" alt="Wheel-legged Robot"/>
 </div>
 
+<hr>
 <h2>Abstract</h2>
 We developed a wheeled-legged balancing robot that combines the advantages of wheeled mobility and legged stability. 
 The system features a custom-designed STM32F103 microcontroller board with embedded software implementing Linear 
@@ -219,24 +220,36 @@ in a versatile mobile platform suitable for both research and educational purpos
 
 <br>
 
-<h2>1. Mechanical Structure</h2>
+<h2>1. Dynamic Model</h2>
 
-  <img src="../images/wheel_legged/wire_connection.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+<h2>2. Mechanical Structure</h2>
 
 
-<h2>2. Electrical System</h2>
-<h3>2.1 DC-DC Power Board</h3>
-<img src="../images/wheel_legged/DC-DC Power Board.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
-<img src="../images/wheel_legged/DC-DC Power Board2.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+<h2>3. Electrical System</h2>
 
-<h3>2.2 Microcontroller Board</h3>
-
-<img src="../images/wheel_legged/DM-MC02.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
   <img src="../images/wheel_legged/stm32.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
 
-<h2>3. Control System</h2>
+<h3 style="margin-bottom:10px;">Technical Details</h3>
+<p>
+<strong>Control Architecture:</strong> The robot employs a hierarchical control structure with LQR at the core for optimal state feedback control. 
+The Virtual Model Control (VMC) approach is used to manage the leg dynamics, treating the legs as virtual 
+springs and dampers. This dual-controller architecture ensures stable balancing while allowing for dynamic 
+motion capabilities.
+</p>
+<p>
+<strong>Hardware Components:</strong> The custom STM32F103 board serves as the main computing unit, interfacing with motor drivers, IMU sensors, 
+and encoders. The embedded system runs real-time control loops at high frequencies to maintain balance and 
+execute motion commands. The mechanical design features a compact form factor with efficient power distribution 
+and thermal management.
+</p>
 
-
+<h3 style="margin-bottom:10px;">Applications</h3>
+<p>
+This wheeled-legged robot platform can be applied to various scenarios including indoor delivery systems, 
+mobile manipulation tasks, educational robotics, and as a research platform for control algorithm development. 
+The combination of stability, mobility, and load-carrying capability makes it suitable for environments where 
+traditional wheeled robots may face challenges.
+  </p>
 
 </div>
 

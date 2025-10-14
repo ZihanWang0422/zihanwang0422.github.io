@@ -39,28 +39,10 @@
       font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
     }
 
-    h2 {
-      font-size: 1.5em;
-      font-weight: 700;
-      margin-top: 16px;
-      margin-bottom: 12px;
-      color: #1a1a1a;
-      border-bottom: 2px solid #0066cc;
-      padding-bottom: 5px;
-    }
-
     h3 {
       margin-bottom: 10px;
       margin-top: 30px;
       text-align: left;
-      font-size: 1.2em;
-      font-weight: 600;
-    }
-
-    /* Make h4 headings bold but keep their font size unchanged */
-    h4 {
-      font-weight: 700;
-      /* inherit current font-size (do not change) */
     }
 
     hr {
@@ -147,30 +129,6 @@
     }
 
     /* Navbar styles moved to main.css to ensure consistent site-wide header */
-    /* References numbering style: show numbers as [1], [2], ... for lists with class .ref-list */
-    ol.ref-list {
-      list-style: none;
-      counter-reset: refs;
-      padding-left: 0;
-    }
-    ol.ref-list li {
-      counter-increment: refs;
-      margin: 0.4em 0;
-      text-align: justify;
-    }
-    ol.ref-list li::before {
-      content: "[" counter(refs) "] ";
-      font-weight: normal;
-      margin-right: 6px;
-    }
-    /* Highlighted reference style: subtle background + left accent bar for emphasis */
-    ol.ref-list li.ref-highlight {
-      background-color: #fff9c4; /* light yellow */
-      border-left: 4px solid #ff9800; /* orange accent */
-      padding: 8px 12px;
-      border-radius: 4px;
-      margin: 0.6em 0; /* slightly larger spacing for highlighted items */
-    }
   </style>
 </head>
 
@@ -199,7 +157,8 @@
   <img src="../images/legged-wheel.jpg" alt="Wheel-legged Robot"/>
 </div>
 
-<h2>Abstract</h2>
+<hr>
+<h3 style="margin-bottom:10px;">Abstract</h3>
 We developed a wheeled-legged balancing robot that combines the advantages of wheeled mobility and legged stability. 
 The system features a custom-designed STM32F103 microcontroller board with embedded software implementing Linear 
 Quadratic Regulator (LQR) and Virtual Model Control (VMC) algorithms. The robot is capable of balancing, 
@@ -213,30 +172,43 @@ in a versatile mobile platform suitable for both research and educational purpos
 </div>
 
 <div class="video-container">
-  <h2>Video</h2>
+  <h3 style="margin-bottom:10px;">Video</h3>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/dZCjQW7pA4g" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 </div>
 
 <br>
 
-<h2>1. Mechanical Structure</h2>
+<h3 style="margin-bottom:10px;">Key Features</h3>
+<ul>
+  <li><strong>Custom Hardware Design:</strong> STM32F103 microcontroller board tailored for robot control</li>
+  <li><strong>Advanced Control Algorithms:</strong> Implementation of LQR for optimal control and VMC for dynamic balancing</li>
+  <li><strong>Hybrid Mobility:</strong> Combines wheeled locomotion with legged stability mechanisms</li>
+  <li><strong>Load Carrying Capability:</strong> Designed to carry payloads while maintaining balance</li>
+  <li><strong>Differential Drive:</strong> Enables precise maneuvering and turning capabilities</li>
+  <li><strong>Real-time Control:</strong> Embedded software for responsive and stable operation</li>
+</ul>
 
-  <img src="../images/wheel_legged/wire_connection.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+<h3 style="margin-bottom:10px;">Technical Details</h3>
+<p>
+<strong>Control Architecture:</strong> The robot employs a hierarchical control structure with LQR at the core for optimal state feedback control. 
+The Virtual Model Control (VMC) approach is used to manage the leg dynamics, treating the legs as virtual 
+springs and dampers. This dual-controller architecture ensures stable balancing while allowing for dynamic 
+motion capabilities.
+</p>
+<p>
+<strong>Hardware Components:</strong> The custom STM32F103 board serves as the main computing unit, interfacing with motor drivers, IMU sensors, 
+and encoders. The embedded system runs real-time control loops at high frequencies to maintain balance and 
+execute motion commands. The mechanical design features a compact form factor with efficient power distribution 
+and thermal management.
+</p>
 
-
-<h2>2. Electrical System</h2>
-<h3>2.1 DC-DC Power Board</h3>
-<img src="../images/wheel_legged/DC-DC Power Board.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
-<img src="../images/wheel_legged/DC-DC Power Board2.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
-
-<h3>2.2 Microcontroller Board</h3>
-
-<img src="../images/wheel_legged/DM-MC02.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
-  <img src="../images/wheel_legged/stm32.png" alt="Car dynamics diagram" style="max-width:70%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
-
-<h2>3. Control System</h2>
-
-
+<h3 style="margin-bottom:10px;">Applications</h3>
+<p>
+This wheeled-legged robot platform can be applied to various scenarios including indoor delivery systems, 
+mobile manipulation tasks, educational robotics, and as a research platform for control algorithm development. 
+The combination of stability, mobility, and load-carrying capability makes it suitable for environments where 
+traditional wheeled robots may face challenges.
+  </p>
 
 </div>
 
@@ -246,17 +218,13 @@ in a versatile mobile platform suitable for both research and educational purpos
 <!-- References: added IEEE-style entries for user-provided URLs -->
 <!-- References: added IEEE-style entries for user-provided URLs -->
 <section class="container" style="margin-top:30px;">
-  <h3 style="margin-bottom:10px; font-weight:700;">References</h3>
-  <ol class="ref-list">
-  <li class="ref-highlight">L. Cui et al., "Learning-Based Balance Control of Wheel-Legged Robots," in IEEE Robotics and Automation Letters, vol. 6, no. 4, pp. 7667-7674, Oct. 2021, doi: 10.1109/LRA.2021.3100269. <a href="https://ieeexplore.ieee.org/document/9497675" target="_blank">PDF</a></li>
+  <h3 style="margin-bottom:10px;">References</h3>
+  <ol>
+
     <li>A. Zhang, R. Zhou, T. Zhang, J. Zheng and S. Chen, "Balance Control Method for Bipedal Wheel-Legged Robots Based on Friction Feedforward Linear Quadratic Regulator," Sensors, vol. 25, no. 4, Art. no. 1056, 2025. doi:10.3390/s25041056. <a href="https://www.mdpi.com/1424-8220/25/4/1056/pdf" target="_blank">PDF</a></li>
-  <li class="ref-highlight">X. Feng, S. Liu, Q. Yuan, J. Xiao and D. Zhao, "Research on wheel-legged robot based on LQR and ADRC," Sci. Rep., vol. 13, Art. no. 15122, 2023. doi:10.1038/s41598-023-41462-1. <a href="https://www.nature.com/articles/s41598-023-41462-1" target="_blank">PDF</a></li>
-    <li>Y. Chen, H. Wang and L. Zhang, "Control of Wheel-legged Balancing Robot," INFORMATION AND CONTROL, vol. 52, no. 5, pp. 648-659, 2023. doi:10.13976/j.cnki.xk.2023.2533. <a href="https://doi.org/10.13976/j.cnki.xk.2023.2533" target="_blank">PDF</a></li>
-    <li>S. Wang et al., "Balance Control of a Novel Wheel-legged Robot: Design and Experiments," in Proc. IEEE Int. Conf. Robotics and Automation (ICRA), 2021, pp. 6782-6788. doi:10.1109/ICRA48506.2021.9561579. <a href="https://doi.org/10.1109/ICRA48506.2021.9561579" target="_blank">PDF</a></li>
-    <li class="ref-highlight">V. Klemm et al., "LQR-Assisted Whole-Body Control of a Wheeled Bipedal Robot With Kinematic Loops," IEEE Robot. Autom. Lett., vol. 5, no. 2, pp. 3745-3752, Apr. 2020. <a href="https://doi.org/10.1109/LRA.2020.2979625" target="_blank">PDF</a></li>
-  <li class="ref-highlight">V. Klemm, A. Morra, C. Salzmann, F. Tschopp, K. Bodie, L. Gulich, N. K fcng, D. Mannhart, C. Pfister and M. Vierneisel, "Ascento: A Two-Wheeled Jumping Robot," in Proc. IEEE Int. Conf. Robotics and Automation (ICRA), Montreal, QC, Canada, 2019, pp. 7515-7521. <a href="https://arxiv.org/pdf/2005.11435" target="_blank">PDF</a></li>
-
-    <li>RoboMaster BBS, "轮式腿式机器人讨论帖 (9090)", RoboMaster 技术论坛. <a href="https://bbs.robomaster.com/article/9090" target="_blank">链接</a></li>
-    <li>RoboMaster BBS, "轮式腿式机器人经验分享 (9430)", RoboMaster 技术论坛. <a href="https://bbs.robomaster.com/article/9430" target="_blank">链接</a></li>
-    
-
+        <li>L. Cui et al., "Learning-Based Balance Control of Wheel-Legged Robots," in IEEE Robotics and Automation Letters, vol. 6, no. 4, pp. 7667-7674, Oct. 2021, doi: 10.1109/LRA.2021.3100269. <a href="https://ieeexplore.ieee.org/document/9497675" target="_blank">PDF</a></li>
+      <li>X. Feng, S. Liu, Q. Yuan, J. Xiao and D. Zhao, "Research on wheel-legged robot based on LQR and ADRC," Sci. Rep., vol. 13, Art. no. 15122, 2023. doi:10.1038/s41598-023-41462-1. <a href="https://www.nature.com/articles/s41598-023-41462-1" target="_blank">PDF</a></li>
+    <li>V. Klemm et al., "LQR-Assisted Whole-Body Control of a Wheeled Bipedal Robot With Kinematic Loops," IEEE Robot. Autom. Lett., vol. 5, no. 2, pp. 3745-3752, Apr. 2020. <a href="https://doi.org/10.1109/LRA.2020.2979625" target="_blank">PDF</a></li>
+      <li>V. Klemm, A. Morra, C. Salzmann, F. Tschopp, K. Bodie, L. Gulich, N. K fcng, D. Mannhart, C. Pfister and M. Vierneisel, "Ascento: A Two-Wheeled Jumping Robot," in Proc. IEEE Int. Conf. Robotics and Automation (ICRA), Montreal, QC, Canada, 2019, pp. 7515-7521. <a href="https://arxiv.org/pdf/2005.11435" target="_blank">PDF</a></li>
+  </ol>
+</section>

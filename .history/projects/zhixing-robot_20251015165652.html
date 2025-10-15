@@ -977,8 +977,8 @@ while i &lt; 720:
 
   <h2 style="margin-top:8px;">3. Path Planning</h2>
 
-  <img src="../images/tracking_car/path_finding.png" alt="Path Finding" style="max-width: 100%; height: auto;">
   <div style="margin-bottom:12px;">
+    <h3 style="margin-top:6px; margin-bottom:6px;">Path planning (Part III - Dijkstra)</h3>
     <p style="margin-bottom:8px;">Graph construction logic:</p>
     <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;"># Build graph
 G = nx.Graph()
@@ -1018,18 +1018,21 @@ find_treasure = nx.dijkstra_path(G, source=start, target=treasure)
 find_exit = nx.dijkstra_path(G, source=treasure, target=destination)
     </pre>
 
-    <div style="margin-top:12px;">
-      <h4 style="margin-top:8px;">Using A* (recommended for grid maps)</h4>
-      <p style="margin-bottom:8px;">A* uses a heuristic to guide the search. For a 2D grid, the Manhattan distance is a simple admissible heuristic:</p>
-      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">def manhattan(u, v):
-    ux, uy = divmod(u, 9)
-    vx, vy = divmod(v, 9)
-    return abs(ux - vx) + abs(uy - vy)
+    <p style="margin-bottom:8px;">Notes:</p>
+    <ul style="margin-left:20px;">
+    <li>Boundary checks: ensure <code>up/down</code> indices are within [0,80].</li>
+    <li>Row checks for left/right must use integer division (<code>left // 9 == target // 9</code>), not modulo.</li>
+    <li>Using high weight for obstacles penalizes but does not forbid traversal; adjust as needed.</li>
+    </ul>
+  </div>
 
-# Using networkx's A* (assuming G is built as above and weights represent cost):
-path_to_treasure = nx.astar_path(G, source=start, target=treasure, heuristic=manhattan, weight='weight')
-path_to_exit = nx.astar_path(G, source=treasure, target=destination, heuristic=manhattan, weight='weight')
-      </pre>
+
+
+
+
+
+
+
 
 
 </section>

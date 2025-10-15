@@ -28,15 +28,7 @@
       max-width: 900px;
       margin: 0 auto;
       padding: 20px 20px;
-    }
-
-    /* Adjust container when TOC is visible */
-    @media (min-width: 1201px) {
-      .container {
-        max-width: 750px;
-        margin-left: auto;
-        margin-right: auto;
-      }
+      margin-right: 280px; /* Make room for the TOC */
     }
 
     /* Table of Contents Styles */
@@ -123,25 +115,6 @@
       color: #1a1a1a;
       border-bottom: 2px solid #0066cc;
       padding-bottom: 5px;
-      position: relative;
-      scroll-margin-top: 80px; /* Offset for fixed header */
-    }
-
-    /* Add anchor link icon on hover for main project section headers only */
-    #zhixing-car-1 h2:first-of-type,
-    #zhixing-car-2 h2:first-of-type,
-    #auto-tracking-car h2:first-of-type {
-      cursor: pointer;
-    }
-
-    #zhixing-car-1 h2:first-of-type:hover::before,
-    #zhixing-car-2 h2:first-of-type:hover::before,
-    #auto-tracking-car h2:first-of-type:hover::before {
-      content: "🔗 ";
-      position: absolute;
-      left: -30px;
-      color: #0066cc;
-      font-size: 0.8em;
     }
 
     h3 {
@@ -447,40 +420,8 @@
           const targetElement = document.querySelector(targetId);
           if (targetElement) {
             targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            // Update URL without jumping
-            history.pushState(null, null, targetId);
           }
         });
-      });
-
-      // Make only main project section headers clickable (first h2 in each main project section)
-      const projectSections = ['zhixing-car-1', 'zhixing-car-2', 'auto-tracking-car'];
-      projectSections.forEach(sectionId => {
-        const section = document.getElementById(sectionId);
-        if (section) {
-          const firstH2 = section.querySelector('h2');
-          if (firstH2) {
-            firstH2.style.cursor = 'pointer';
-            firstH2.addEventListener('click', function() {
-              const url = window.location.origin + window.location.pathname + '#' + sectionId;
-              
-              // Copy to clipboard
-              if (navigator.clipboard) {
-                navigator.clipboard.writeText(url).then(() => {
-                  // Show temporary tooltip
-                  const tooltip = document.createElement('span');
-                  tooltip.textContent = '链接已复制!';
-                  tooltip.style.cssText = 'position: absolute; background: #4caf50; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.85em; margin-left: 10px; z-index: 1000;';
-                  this.appendChild(tooltip);
-                  setTimeout(() => tooltip.remove(), 2000);
-                });
-              }
-              
-              // Update URL
-              history.pushState(null, null, '#' + sectionId);
-            });
-          }
-        }
       });
 
       // Highlight active section in TOC on scroll
@@ -503,16 +444,6 @@
           }
         });
       });
-
-      // Handle initial hash on page load
-      if (window.location.hash) {
-        setTimeout(() => {
-          const targetElement = document.querySelector(window.location.hash);
-          if (targetElement) {
-            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }, 100);
-      }
     });
   </script>
 </head>
@@ -541,9 +472,9 @@
 
 <!-- Table of Contents -->
 <div class="toc-wrapper">
-  <div class="toc-title">Content</div>
+  <div class="toc-title">项目目录</div>
   <ul class="toc-list">
-    <li><a href="#zhixing-car-1">Zhi Xing Car I</a></li>
+    <li><a href="#zhixing-car-1">Zhi Xing Car I - SLAM导航机器人</a></li>
     <li><a href="#zhixing-car-2">Zhi Xing Car II</a></li>
     <li><a href="#auto-tracking-car">Auto-tracking Car</a></li>
   </ul>
@@ -934,103 +865,20 @@ Since the map \(m\) can be determined given the trajectory \(x_{1:t}\), the SLAM
     </div>
   </div>
 
-      <div class="video-container" style="margin: 20px 0;">
-    <h2 style="margin-bottom:10px;">Video</h2>
+    <div class="video-container" style="margin: 20px 0;">
+    <h3 style="margin-bottom:10px;">Video</h3>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/R3W2jP_Io_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
   </div>
 
-
-  <h2 style="margin-top:8px;">1. Rectify the Camera-captured Map</h2>
-
-    <ul style="font-size:1.05em; line-height:1.6; margin-left:20px;">
-      <li>image_transformer rectifies the oblique map captured by the camera to obtain a bird's-eye (top-down) view map.</li>
-      <li>Image enhancement: use <code>convertScaleAbs</code> to increase contrast (alpha=1.5) so colors are easier to distinguish.</li>
-      <li>Color space conversion: convert BGR to HSV; HSV is more robust to illumination changes under varying lighting.</li>
-    </ul>
-
-  
-  <h2 style="margin-top:8px;">2. Extract Obstacle Coordinates</h2>
-
-    <div style="margin-bottom:12px;">
-      <p style="margin-bottom:8px;">Sampling strategy (9x9 grid center sampling):</p>
-      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">i = j = 40
-tiles = []
-while i &lt; 720:
-    while j &lt; 720:
-        tiles.append(hsv2color(hsv[i, j]))  # sample every 80 pixels at the center of each grid cell
-        j += 80
-    j = 40
-    i += 80
-
-# Start from (40, 40), step = 80 pixels
-# Cover 720x720 image → 9x9 = 81 tiles
-      </pre>
-
-      <p style="margin-bottom:8px;">Color to state mapping for each sampled grid center:</p>
-      <ul style="margin-left:20px;">
-        <li><strong>0</strong>: black (obstacle)</li>
-        <li><strong>2</strong>: blue (treasure)</li>
-        <li><strong>3</strong>: green (exit)</li>
-        <li><strong>4</strong>: yellow (start)</li>
-      </ul>
-    </div>
-
-  <h2 style="margin-top:8px;">3. Path Planning</h2>
-
-  <img src="../images/tracking_car/path_finding.png" alt="Path Finding" style="max-width: 100%; height: auto;">
-  <div style="margin-bottom:12px;">
-    <p style="margin-bottom:8px;">Graph construction logic:</p>
-    <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;"># Build graph
-G = nx.Graph()
-for target in range(0, 81):
-  up = target - 9
-  down = target + 9
-  left = target - 1
-  right = target + 1
-    
-  # obstacle weight = 1000 (penalize but not forbidden), passable weight = 1
-  if up >= 0:
-    if tiles[up] == 0:
-      G.add_weighted_edges_from([(target, up, 1000)])
-    else:
-      G.add_weighted_edges_from([(target, up, 1)])
-  if down &lt; 81:
-    if tiles[down] == 0:
-      G.add_weighted_edges_from([(target, down, 1000)])
-    else:
-      G.add_weighted_edges_from([(target, down, 1)])
-  # ensure left/right do not cross row boundaries
-  if left // 9 == target // 9:
-    if tiles[left] == 0:
-      G.add_weighted_edges_from([(target, left, 1000)])
-    else:
-      G.add_weighted_edges_from([(target, left, 1)])
-  if right // 9 == target // 9:
-    if tiles[right] == 0:
-      G.add_weighted_edges_from([(target, right, 1000)])
-    else:
-      G.add_weighted_edges_from([(target, right, 1)])
-
-# Node indices: 0-80, row-major from top-left to bottom-right
-# Weight strategy: obstacle=1000 (penalty), normal=1
-# Two-stage routing:
-find_treasure = nx.dijkstra_path(G, source=start, target=treasure)
-find_exit = nx.dijkstra_path(G, source=treasure, target=destination)
-    </pre>
-
-    <div style="margin-top:12px;">
-      <h4 style="margin-top:8px;">Using A* (recommended for grid maps)</h4>
-      <p style="margin-bottom:8px;">A* uses a heuristic to guide the search. For a 2D grid, the Manhattan distance is a simple admissible heuristic:</p>
-      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">def manhattan(u, v):
-    ux, uy = divmod(u, 9)
-    vx, vy = divmod(v, 9)
-    return abs(ux - vx) + abs(uy - vy)
-
-# Using networkx's A* (assuming G is built as above and weights represent cost):
-path_to_treasure = nx.astar_path(G, source=start, target=treasure, heuristic=manhattan, weight='weight')
-path_to_exit = nx.astar_path(G, source=treasure, target=destination, heuristic=manhattan, weight='weight')
-      </pre>
-
+  <h3 style="margin-bottom:10px;">Technical Highlights</h3>
+  <ul>
+    <li><strong>Arduino & ESP32:</strong> Embedded microcontroller platform for real-time control</li>
+    <li><strong>PlatformIO:</strong> Development environment for embedded systems</li>
+    <li><strong>OpenCV Integration:</strong> Real-time image processing for map rectification and analysis</li>
+    <li><strong>A* Path Planning:</strong> Optimal path finding algorithm for efficient navigation</li>
+    <li><strong>PID Control System:</strong> Precise speed and steering control for smooth motion</li>
+    <li><strong>Dynamic Obstacle Avoidance:</strong> Real-time adaptation to randomly positioned obstacles</li>
+  </ul>
 
 </section>
 

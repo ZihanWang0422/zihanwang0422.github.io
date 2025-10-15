@@ -977,8 +977,8 @@ while i &lt; 720:
 
   <h2 style="margin-top:8px;">3. Path Planning</h2>
 
-  <img src="../images/tracking_car/path_finding.png" alt="Path Finding" style="max-width: 100%; height: auto;">
   <div style="margin-bottom:12px;">
+    <h3 style="margin-top:6px; margin-bottom:6px;">Path planning (Part III - Dijkstra)</h3>
     <p style="margin-bottom:8px;">Graph construction logic:</p>
     <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;"># Build graph
 G = nx.Graph()
@@ -1030,6 +1030,30 @@ find_exit = nx.dijkstra_path(G, source=treasure, target=destination)
 path_to_treasure = nx.astar_path(G, source=start, target=treasure, heuristic=manhattan, weight='weight')
 path_to_exit = nx.astar_path(G, source=treasure, target=destination, heuristic=manhattan, weight='weight')
       </pre>
+
+      <p style="margin-bottom:8px;">Notes:</p>
+      <ul style="margin-left:20px;">
+        <li>A* typically finds the same or better path faster than Dijkstra when a good heuristic is used.</li>
+        <li>Ensure heuristic is admissible (never overestimates the true cost). Manhattan distance is admissible for 4-connected grids with uniform cost.</li>
+        <li>If obstacle weights are large but finite, A* remains valid; adjust heuristic if needed.</li>
+      </ul>
+    </div>
+
+    <p style="margin-bottom:8px;">Notes:</p>
+    <ul style="margin-left:20px;">
+    <li>Boundary checks: ensure <code>up/down</code> indices are within [0,80].</li>
+    <li>Row checks for left/right must use integer division (<code>left // 9 == target // 9</code>), not modulo.</li>
+    <li>Using high weight for obstacles penalizes but does not forbid traversal; adjust as needed.</li>
+    </ul>
+  </div>
+
+
+
+
+
+
+
+
 
 
 </section>

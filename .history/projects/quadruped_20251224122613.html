@@ -1,0 +1,1040 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Quadruped Robot Projects - Zihan Wang</title>
+  <meta name="description" content="Quadruped Robot Projects by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 20px;
+    }
+
+    /* Adjust container when TOC is visible */
+    @media (min-width: 1201px) {
+      .container {
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Table of Contents Styles */
+    .toc-wrapper {
+      position: fixed;
+      right: 20px;
+      top: 100px;
+      width: 240px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background: #f8f9fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .toc-title {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0066cc;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li {
+      margin-bottom: 10px;
+    }
+
+    .toc-list a {
+      color: #0066cc;
+      text-decoration: none;
+      font-size: 0.95em;
+      line-height: 1.4;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .toc-list a:hover {
+      background-color: #e3f2fd;
+      text-decoration: none;
+      transform: translateX(4px);
+    }
+
+    .toc-list a.active {
+      background-color: #0066cc;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Hide TOC on small screens */
+    @media (max-width: 1200px) {
+      .container {
+        margin-right: auto;
+      }
+      .toc-wrapper {
+        display: none;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-top: 16px;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 5px;
+      position: relative;
+      scroll-margin-top: 80px; /* Offset for fixed header */
+    }
+
+    /* Add anchor link icon on hover for main project section headers only */
+    #zhixing-car-1 h2:first-of-type,
+    #zhixing-car-2 h2:first-of-type,
+    #auto-tracking-car h2:first-of-type {
+      cursor: pointer;
+    }
+
+    #zhixing-car-1 h2:first-of-type:hover::before,
+    #zhixing-car-2 h2:first-of-type:hover::before,
+    #auto-tracking-car h2:first-of-type:hover::before {
+      content: "🔗 ";
+      position: absolute;
+      left: -30px;
+      color: #0066cc;
+      font-size: 0.8em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    /* Make h4 headings bold but keep their font size unchanged */
+    h4 {
+      font-weight: 700;
+      /* inherit current font-size (do not change) */
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    /* keep the info-section centered (override the container-level justify) */
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    /* Project section styles */
+    section {
+      margin-bottom: 50px;
+      padding: 20px 0;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      gap: 30px;
+    }
+
+    .project-image {
+      flex-shrink: 0;
+      width: 300px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-info p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .project-header {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .project-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      section h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    /* New project card styles */
+    .project-card {
+      display: flex;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      gap: 24px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .dual-image-container {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dual-image-container img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 0;
+    }
+
+    .project-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .project-description {
+      color: #555;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .tldr-label {
+      font-weight: 700;
+      color: #e74c3c;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.8em;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag.hardware {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .tag.software {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .tag.algorithm {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+
+    .project-link:hover {
+      background: #2980b9;
+      color: white;
+      text-decoration: none;
+    }
+
+    .project-link i {
+      font-size: 0.9em;
+    }
+
+    /* Mobile responsive for project cards */
+    @media (max-width: 768px) {
+      .project-card {
+        flex-direction: column;
+        padding: 20px;
+      }
+      
+      .dual-image-container {
+        flex: none;
+        max-width: 100%;
+      }
+      
+      .dual-image-container img {
+        height: 120px;
+      }
+      
+      .project-title {
+        font-size: 1.3em;
+      }
+      
+      .project-links {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .project-link {
+        justify-content: center;
+      }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+  <!-- MathJax for LaTeX rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- Smooth Scroll and TOC Active State Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scroll for TOC links
+      const tocLinks = document.querySelectorAll('.toc-list a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Update URL without jumping
+            history.pushState(null, null, targetId);
+          }
+        });
+      });
+
+      // Make only main project section headers clickable (first h2 in each main project section)
+      const projectSections = ['AMP for go1', 'Locomotion in unstructured outdoor environment'];
+      projectSections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const firstH2 = section.querySelector('h2');
+          if (firstH2) {
+            firstH2.style.cursor = 'pointer';
+            firstH2.addEventListener('click', function() {
+              const url = window.location.origin + window.location.pathname + '#' + sectionId;
+              
+              // Copy to clipboard
+              if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                  // Show temporary tooltip
+                  const tooltip = document.createElement('span');
+                  tooltip.textContent = '链接已复制!';
+                  tooltip.style.cssText = 'position: absolute; background: #4caf50; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.85em; margin-left: 10px; z-index: 1000;';
+                  this.appendChild(tooltip);
+                  setTimeout(() => tooltip.remove(), 2000);
+                });
+              }
+              
+              // Update URL
+              history.pushState(null, null, '#' + sectionId);
+            });
+          }
+        }
+      });
+
+      // Highlight active section in TOC on scroll
+      window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 150;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            tocLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + sectionId) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      });
+
+      // Handle initial hash on page load
+      if (window.location.hash) {
+        setTimeout(() => {
+          const targetElement = document.querySelector(window.location.hash);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../index.html#projects"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+  <center><h1>Mobile Car Projects</h1></center>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-wrapper">
+  <div class="toc-title">Content</div>
+  <ul class="toc-list">
+    <li><a href="#quadruped-1">AMP for Go1</a></li>
+    <li><a href="#quadruped-2">Locomotion in Unstructured Outdoor Environment</a></li>
+  </ul>
+</div>
+
+<!-- Project 1: Zhi Xing Car I -->
+<section id="zhixing-car-1">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 8px;">
+    <img src="../images/zhixing.png" alt="Zhi Xing Car I" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car I - SLAM Navigation Robot</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        A comprehensive autonomous navigation robot system integrating SLAM mapping, path planning, voice control, 
+        and face recognition. Built on ROS framework with LiDAR-based localization and multi-sensor fusion, 
+        achieving robust autonomous navigation and intelligent interaction in indoor environments.
+      <!-- <div class="links" style="margin-top: 15px;">
+        [<a href="../work/zhixingmini.pdf" target="_blank">Document</a>]
+      </div> -->
+    </div>
+  </div>
+
+    <div class="video-container" style="margin: 20px 0;">
+    <h2>Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/74ppMMNvv9I" frameborder="0" allow="accelerometer; autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+
+  <h2>1. Vehicle Kinematics Analysis</h2>
+  <p style="margin-bottom: 12px; font-size: 1.05em;">This section summarizes the differential-drive vehicle kinematics and control models, including forward/inverse kinematics, relationships between wheel speeds and robot linear/angular velocities, and common trajectory tracking algorithms.</p>
+
+  <!-- Inserted: English summaries for Document Chapters 6,7,8 -->
+  <h3 style="margin-top:16px;">1.1 Odometry & Coordinate Transforms</h3>
+  <p style="margin-bottom:10px;">In ROS-based robots the most common frames are <code>map</code>, <code>odom</code> and <code>base_link</code>. The <code>map</code> frame is a fixed, long-term global reference (Z axis up). Because localization may apply discrete corrections when new sensor data arrives, poses expressed in <code>map</code> can occasionally "jump"; this makes <code>map</code> suitable as a global reference but not ideal as a fast local control frame.</p>
+  <p style="margin-bottom:10px;">The <code>odom</code> frame is a locally-continuous reference produced by dead-reckoning sources (wheel encoders, visual odometry, IMU). <code>odom</code> guarantees smooth, continuous pose updates (no sudden jumps) and is useful as a short-term reference for sensors and controllers, but it accumulates drift and therefore cannot serve as a precise long-term global frame. Typically <code>map</code> and <code>odom</code> start aligned; localization modules compute the transform <code>map → odom</code> (via <code>tf</code>) to correct odometry drift.</p>
+  <p style="margin-bottom:10px;">Note the distinction between the <code>odom</code> coordinate frame and an <code>/odom</code> topic: the frame is the coordinate reference, whereas the <code>/odom</code> topic commonly publishes the transform from <code>odom</code> to <code>base_link</code> (i.e., the robot pose in the <code>odom</code> frame).</p>
+  <p style="margin-bottom:10px;">The <code>base_link</code> frame is the robot body frame (usually centered on the platform); the core localization task is estimating <code>base_link</code>'s pose in the <code>map</code> frame. Each sensor has its own fixed sensor frame (for example <code>laser</code> or <code>base_laser</code> for a LiDAR), and the transform between that sensor frame and <code>base_link</code> is constant and should be published via <code>tf</code>.</p>
+ 
+  <!-- frames diagram -->
+  <div style="text-align:center; margin: 18px 0;">
+    <svg xmlns="http://www.w3.org/2000/svg" width="900" height="420" viewBox="0 0 900 420" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;">
+      <style>
+        .frame-box { fill: #f7fbff; stroke: #2b6cb0; stroke-width: 2px; rx: 8px; }
+        .frame-label { font-family: Arial, sans-serif; font-size: 16px; fill: #0b3d91; font-weight: 700; }
+        .frame-desc { font-family: Arial, sans-serif; font-size: 12px; fill: #333333; }
+        .arrow { stroke: #2b6cb0; stroke-width: 2px; fill: none; marker-end: url(#arrowhead); }
+        .note { font-family: Arial, sans-serif; font-size: 12px; fill: #444; }
+      </style>
+
+      <defs>
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+          <polygon points="0 0, 10 3.5, 0 7" fill="#2b6cb0" />
+        </marker>
+      </defs>
+
+      <!-- map frame -->
+      <rect x="40" y="30" width="220" height="120" class="frame-box" />
+      <text x="150" y="60" text-anchor="middle" class="frame-label">map</text>
+      <text x="150" y="82" text-anchor="middle" class="frame-desc">Global fixed frame</text>
+      <text x="150" y="100" text-anchor="middle" class="frame-desc">(long-term reference)</text>
+
+      <!-- odom frame -->
+      <rect x="340" y="30" width="220" height="120" class="frame-box" />
+      <text x="450" y="60" text-anchor="middle" class="frame-label">odom</text>
+      <text x="450" y="82" text-anchor="middle" class="frame-desc">Local continuous frame</text>
+      <text x="450" y="100" text-anchor="middle" class="frame-desc">(short-term, may drift)</text>
+
+      <!-- base_link frame -->
+      <rect x="640" y="30" width="220" height="120" class="frame-box" />
+      <text x="750" y="60" text-anchor="middle" class="frame-label">base_link</text>
+      <text x="750" y="82" text-anchor="middle" class="frame-desc">Robot body frame</text>
+      <text x="750" y="100" text-anchor="middle" class="frame-desc">(pose expressed here)</text>
+
+      <!-- arrows for transforms -->
+      <path d="M260 90 L340 90" class="arrow" />
+      <text x="300" y="86" text-anchor="middle" class="note">map → odom</text>
+      <text x="300" y="108" text-anchor="middle" class="note">(tf correction)</text>
+
+      <path d="M560 90 L640 90" class="arrow" />
+      <text x="600" y="86" text-anchor="middle" class="note">odom → base_link</text>
+      <text x="600" y="108" text-anchor="middle" class="note">(odom topic)</text>
+
+      <!-- sensor (laser) -->
+      <rect x="640" y="200" width="220" height="80" class="frame-box" />
+      <text x="750" y="230" text-anchor="middle" class="frame-label">laser</text>
+      <text x="750" y="250" text-anchor="middle" class="frame-desc">LiDAR sensor frame</text>
+      <text x="750" y="268" text-anchor="middle" class="frame-desc">(fixed transform to base_link)</text>
+
+      <!-- connect vertical arrow so it meets the top edge of base_link box (y=30) + height 120 => top at y=30, bottom at y=150; we want arrow to meet top of laser box at y=200 and connect to base_link at y=150 -->
+      <path d="M750 150 L750 200" class="arrow" />
+      <text x="770" y="176" class="note"><tspan x="770" dy="0">fixed</tspan><tspan x="770" dy="16">TF</tspan></text>
+
+      <!-- additional note -->
+      <text x="40" y="360" class="note">Note: map may "jump" when localization updates; odom provides smooth short-term pose but accumulates drift. Use sensor fusion (IMU, AMCL) to compute map→odom corrections.</text>
+    </svg>
+    <img src="../images/mobile_car/tf.png" alt="Frames diagram (map, odom, base_link, laser)" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+  </div>
+
+  <h3 style="margin-top:16px;">1.2 Kinematic Transformation from Robot Velocity to Motor Speeds</h3>
+  The kinematic model of the differential wheel chassis is established as follows:
+  <div style="text-align:center; margin: 18px 0;"></div>
+    <img src="../images/mobile_car/car_dynamic.png" alt="Car dynamics diagram" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+
+    <!-- Extracted derivation and formulas (English, LaTeX preserved) -->
+    <p style="margin-bottom:10px;">Below are the key points extracted from the image. Let the linear speeds of the two wheels be <code>V_a</code> (wheel A) and <code>V_b</code> (wheel B), and let the track width be <code>2L</code>. When only one wheel is turning, the contact point of the stationary wheel is the instantaneous center of rotation (ICR), which yields special-case kinematic relations.</p>
+      <img src="../images/mobile_car/car_dynamic2.png" alt="Car dynamics diagram" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+    <p style="margin-bottom:8px;">1) Only wheel A rotates (wheel B stationary):</p>
+    <p style="margin-bottom:10px; text-align:center; font-style:italic;">$$V_{ox}=\frac{V_a}{2},\quad V_{oy}=0,\quad \dot{\theta}=-\frac{V_a}{2L}$$</p>
+
+  <p style="margin-bottom:8px;">2) Only wheel B rotates (wheel A stationary):</p>
+  <p style="margin-bottom:10px; text-align:center; font-style:italic;">$$
+  \begin{cases}
+  V_{ox}=\frac{V_b}{2}\\
+  V_{oy}=0\\
+  \dot{\theta}=\frac{V_b}{2L}
+  \end{cases}
+  $$</p>
+
+  <p style="margin-bottom:8px;">Combining the two special cases gives the general form (superposition of wheel speeds):</p>
+  <p style="margin-bottom:10px; text-align:center; font-style:italic;">$$
+  \begin{cases}
+  V_{ox}=\tfrac{1}{2}(V_a+V_b)\\
+  V_{oy}=0\\
+  \dot{\theta}=\tfrac{1}{2L}(V_b-V_a)
+  \end{cases}
+  $$</p>
+  <p>Based on the forward kinematic formulation, the corresponding inverse kinematic equations can be directly obtained, establishing the mapping from the robot’s body-frame velocity to each wheel’s linear velocity:</p>
+  <p style="text-align:center; font-style:italic;">$$
+  \begin{cases}
+  V_a = V_{ox} + L\,\dot{\theta}\\
+  V_b = V_{ox} - L\,\dot{\theta}
+  \end{cases}
+  $$</p>
+
+    <h3 style="margin-top:16px;">1.3 Kinematic Transformation from Motor Speeds to Robot Displacement</h3>
+  <!-- Inserted additional diagram and derived relations from attachment -->
+  <div style="text-align:center; margin: 18px 0;">
+    <img src="../images/mobile_car/car_dynamic3.png" alt="Car dynamics diagram 3" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+  </div>
+
+  <p style="margin-bottom:10px;">The following summarizes the coordinate transform and velocity relationships illustrated in the diagram above. Let the robot body frame be (x',y') rotated by heading \(\theta\) relative to the global frame (x,y). The coordinate transform from body to global is:</p>
+  <p style="margin-bottom:10px; text-align:center; font-style:italic;">$$x = x'\cos\theta - y'\sin\theta\\
+  y = x'\sin\theta + y'\cos\theta$$</p>
+
+  <p style="margin-bottom:10px;">For the two-wheel differential drive with wheel linear speeds \(V_a\) and \(V_b\) (left/right or labeled in the figure), the derived body-frame velocity components are:</p>
+  <p style="margin-bottom:10px; text-align:center; font-style:italic;">$$
+  \begin{cases}
+  V_{ox}=\tfrac{1}{2}(V_a+V_b)\cos\phi\\
+  V_{oy}= -\tfrac{1}{2}(V_a+V_b)\sin\phi\\
+  \dot{\theta}=\tfrac{1}{2L}(V_b-V_a)
+  \end{cases}
+  $$</p>
+
+  This set of equations represents the transformation from the angular velocities of the two motors to the robot’s motion velocity in the global (world) coordinate frame.
+During odometry computation, the robot’s linear and angular velocities are integrated over each time interval, and the accumulated result yields the current displacement, which corresponds to the data published on the <code>/odom</code> topic.
+With this, the derivation of the differential-drive kinematic model is complete.
+ 
+
+  <h2>2. SLAM Navigation Workflow</h2>
+
+  <h3 style="margin-top:16px;">2.1 System Architecture & Hardware Setup</h3>
+  <ul style="text-align:left; list-style-type:disc; margin-top:8px; margin-left:20px;">
+    <li><strong>Computing Platform:</strong> On-board computer with ROS Melodic on Ubuntu 18.04</li>
+    <li><strong>Sensors:</strong> RPLiDAR A1 (360° laser scanner), ReSpeaker voice array, RGB-D camera</li>
+    <li><strong>Motor Control:</strong> Differential drive system with encoder feedback</li>
+    <li><strong>Communication:</strong> USB serial communication with custom protocol for motor control</li>
+  </ul>
+
+
+  <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">2.2 GMapping Algorithm Based on RBPF</h3>
+  <img src="../images/mobile_car/gmapping.png" alt="Car dynamics diagram 3" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+
+    <p>GMapping is a widely used SLAM (Simultaneous Localization and Mapping) algorithm based on the <strong>Rao-Blackwellized Particle Filter (RBPF)</strong> framework.</p>
+    <p>It factorizes the full SLAM posterior into two parts: the robot trajectory estimation and the map estimation.</p>
+
+    <p style="text-align:center; font-style:italic;">$$
+    p(x_{1:t}, m \mid z_{1:t}, u_{1:t-1}) = p(m \mid x_{1:t}, z_{1:t}) \, p(x_{1:t} \mid z_{1:t}, u_{1:t-1})
+    $$</p>
+
+    <p>where:</p>
+    <ul>
+      <li><span style="white-space:nowrap;">\(x_{1:t}\)</span>: the robot trajectory up to time <span style="white-space:nowrap;">\(t\)</span>;</li>
+      <li><span style="white-space:nowrap;">\(m\)</span>: the map of the environment;</li>
+      <li><span style="white-space:nowrap;">\(z_{1:t}\)</span>: the sequence of sensor measurements (e.g., LiDAR scans);</li>
+      <li><span style="white-space:nowrap;">\(u_{1:t-1}\)</span>: the sequence of control inputs (odometry).</li>
+    </ul>
+
+Since the map \(m\) can be determined given the trajectory \(x_{1:t}\), the SLAM problem reduces to estimating the trajectory posterior using a particle filter.
+
+<!-- GMapping: improved proposal and selective resampling explanation -->
+<h4 style="margin-top:12px;">1. Improved Proposal Distribution</h4>
+<p>In traditional FastSLAM 1.0, the proposal distribution for sampling new particle poses only depends on the motion model:</p>
+<p style="text-align:center; font-style:italic;">$$p(x_t\mid x_{t-1}, u_t)$$</p>
+<p>This approach suffers from high uncertainty due to odometry drift and noise, often causing <strong>particle degeneracy</strong> — only a few particles have significant weights.</p>
+<p>GMapping improves this by incorporating the current observation \(z_t\) into the proposal distribution:</p>
+<p style="text-align:center; font-style:italic;">$$p(x_t\mid x_{t-1}, u_t, z_t)$$</p>
+<p><strong>Key idea:</strong> combining motion and observation information corrects the motion-model prediction using the latest laser scan, reducing uncertainty of sampled particles.</p>
+<p><strong>Implementation steps:</strong></p>
+<ol>
+  <li>For each particle \(i\), predict a set of pose candidates using the motion model.</li>
+  <li>Evaluate each candidate by computing the likelihood \(p(z_t\mid x_t^{(i)}, m_{t-1}^{(i)})\) through scan matching.</li>
+  <li>Approximate this likelihood as a Gaussian distribution around the best-matched pose.</li>
+  <li>Sample the new particle pose from this corrected Gaussian proposal.</li>
+</ol>
+<p>The particle weight update becomes:</p>
+<p style="text-align:center; font-style:italic;">$$w_t^{(i)} \propto w_{t-1}^{(i)} \dfrac{p(z_t\mid x_t^{(i)}, m_{t-1}^{(i)})\, p(x_t^{(i)}\mid x_{t-1}^{(i)}, u_t)}{q(x_t^{(i)}\mid x_{t-1}^{(i)}, u_t, z_t)}$$</p>
+<p><strong>Effect:</strong></p>
+<ul>
+  <li>Reduces particle dispersion and improves localization accuracy.</li>
+  <li>Requires fewer particles (typically tens instead of hundreds).</li>
+  <li>Increases robustness against odometry drift.</li>
+</ul>
+
+<h4 style="margin-top:12px;">2. Selective Resampling</h4>
+<p>In a standard particle filter, resampling is performed at every iteration to prevent weight degeneracy. Frequent resampling can cause <strong>sample impoverishment</strong>, reducing particle diversity and potentially leading to local minima. GMapping uses selective resampling:</p>
+<p style="text-align:center; font-style:italic;">Only perform resampling when the effective sample size \(N_{\text{eff}}\) falls below a threshold.</p>
+<p>The effective sample size is defined as:</p>
+<p style="text-align:center; font-style:italic;">$$N_{\text{eff}} = \dfrac{1}{\sum_{i=1}^{N} (w_t^{(i)})^2}$$</p>
+<p>When \(N_{\text{eff}} < N_{\text{threshold}}\) (typically \(N/2\) or \(N/3\)), resampling is triggered.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+  <li>Maintains particle diversity.</li>
+  <li>Avoids unnecessary resampling when the weight distribution is stable.</li>
+  <li>Improves convergence speed and map consistency.</li>
+</ul>
+
+<!-- End GMapping section -->
+
+
+
+
+ <h3 style="margin-top: 20px; margin-bottom: 10px; color: #555;">2.3 Navigation</h3>
+ <img src="../images/mobile_car/navigation.png" alt="Car dynamics diagram 3" style="max-width:100%; height:auto; border:1px solid #e0e0e0; padding:6px; background:#fff;" />
+ At the core of the navigation system lies the <code>move_base</code> node, which integrates inputs from odometry, robot pose estimation, and map data.
+ This node performs both global planning and local planning: the global planner generates an overall path to the target, while the local planner continuously adjusts the trajectory in response to environmental changes, thus achieving autonomous obstacle avoidance during navigation.
+
+ <h4 style="margin-top:12px;">1.Localization</h4>
+  <p>Below is the standard MCL (Monte Carlo Localization) algorithm presented as pseudocode. Variables: \(\mathcal{X}_{t-1}\) is the particle set at time \(t-1\), \(u_t\) the control input, \(z_t\) the current observation, and \(m\) the map.</p>
+  <div style="background:#f8f9fb; border:1px solid #e1e4e8; padding:12px; overflow:auto;">
+    <div style="display:flex; gap:12px; font-family:monospace;">
+      <div style="min-width:40px; color:#333; text-align:left;">
+        <div>1:</div>
+        <div>2:</div>
+        <div>3:</div>
+        <div>4:</div>
+        <div>5:</div>
+        <div>6:</div>
+        <div>7:</div>
+        <div>8:</div>
+        <div>9:</div>
+        <div>10:</div>
+        <div>11:</div>
+        <div>12:</div>
+      </div>
+      <div style="flex:1;">
+        <div>function MCL(\(\mathcal{X}_{t-1}\), \(u_t\), \(z_t\), \(m\)):</div>
+        <div>\(\bar{\mathcal{X}}_t := \varnothing\)</div>
+        <div>for \(m = 1\) to \(M\) do</div>
+        <div style="padding-left:22px;">\(x_t^{[m]} = \text{sample\_motion\_model}(u_t, x_{t-1}^{[m]})\)</div>
+        <div style="padding-left:22px;">\(w_t^{[m]} = \text{measurement\_model}(z_t, x_t^{[m]}, m)\)</div>
+        <div style="padding-left:22px;">add \(\langle x_t^{[m]}, w_t^{[m]} \rangle\) to \(\bar{\mathcal{X}}_t\)</div>
+        <div>endfor</div>
+        <div>for \(m = 1\) to \(M\) do</div>
+        <div style="padding-left:22px;">draw index \(i\) with probability \(\propto w_t^{[i]}\)</div>
+        <div style="padding-left:22px;">add \(x_t^{[i]}\) to \(\mathcal{X}_t\)</div>
+        <div>endfor</div>
+        <div>return \(\mathcal{X}_t\)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMCL translation inserted below -->
+  <p>AMCL (Adaptive Monte Carlo Localization) is a particle-filter-based method for robot localization. Its objective is to estimate the robot pose over time from sensor measurements and control inputs. We denote the robot pose at time \(t\) by \(x_t\); the control (odometry) input applied between time \(t-1\) and \(t\) by \(u_t\); and the sensor observation at time \(t\) by \(z_t\). When referring to histories we use the shorthand sequences \(x_{1:t}\), \(u_{1:t}\) and \(z_{1:t}\). Using the Bayes filter formulation, the posterior can be written as:</p>
+  <p style="text-align:center; font-style:italic;">$$
+  p(x_t\mid z_{1:t}, u_{1:t}) = \eta\; p(z_t\mid x_t)\; p(x_t\mid z_{1:t-1}, u_{1:t})
+  $$</p>
+  <p>Here the prediction (motion update) step is given by the Chapman–Kolmogorov equation:</p>
+  <p style="text-align:center; font-style:italic;">$$
+  p(x_t\mid z_{1:t-1}, u_{1:t}) = \int p(x_t\mid x_{t-1}, u_t)\; p(x_{t-1}\mid z_{1:t-1}, u_{1:t-1})\, dx_{t-1}.
+  $$</p>
+  <p>The measurement update then incorporates the current observation \(z_t\) via the likelihood \(p(z_t\mid x_t)\), and \(\eta\) is a normalizing constant.</p>
+
+  <p>AMCL approximates the posterior with a set of weighted particles \(\{x_t^{(i)}, w_t^{(i)}\}_{i=1}^M\). The particle filter loop typically performs:</p>
+  <p>Here, M denotes the number of particles.</p>
+  <ol>
+    <li>Prediction: sample a new pose for each particle from the motion model \(x_t^{(i)} \sim p(x_t\mid x_{t-1}^{(i)}, u_t)\).</li>
+    <li>Update: compute the importance weight using the observation likelihood, e.g. \(w_t^{(i)} \propto w_{t-1}^{(i)}\; p(z_t\mid x_t^{(i)})\), then normalize the weights.</li>
+    <li>Resample: when particle degeneracy is detected, draw a new particle set according to the normalized weights.</li>
+  </ol>
+
+  <p style="text-align:center; font-style:italic;">$$
+  w_t^{(i)} \propto w_{t-1}^{(i)}\; p(z_t\mid x_t^{(i)})
+  $$</p>
+
+  <p>A common metric to decide whether to resample is the Effective Sample Size (ESS):</p>
+  <p style="text-align:center; font-style:italic;">$$
+  N_{\text{eff}} = \dfrac{1}{\sum_{i=1}^{M} (w_t^{(i)})^2}
+  $$</p>
+  <p>When \(N_{\text{eff}}\) falls below a chosen threshold (for example \(M/2\)), resampling is performed. AMCL uses adaptive resampling strategies (and can vary the number of particles) based on ESS to balance computational cost and localization accuracy. This adaptive behavior helps maintain robustness in real-time robot localization.</p>
+  <!-- End AMCL translation -->
+
+ <h4 style="margin-top:12px;">2. move_base</h4>
+ Global path planning is primarily used to generate an optimal route from the robot’s current position to the target within a known map, while local path planning focuses on real-time motion adjustment along the global path to ensure obstacle avoidance in partially unknown environments. 
+
+  <p style="margin-top:10px;">The <code>move_base</code> stack commonly uses costmaps to represent the environment and perform planning. In ROS, the <code>costmap_2d</code> package generates different costmap layers on top of the base map to support both local and global planners. Typical layers include:</p>
+  <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
+    <li><strong>Static Map Layer</strong>: a largely unchanging layer (usually produced by SLAM) representing the static environment used for global planning.</li>
+    <li><strong>Obstacle Map Layer</strong>: a dynamic layer that records obstacles detected by sensors (e.g., LiDAR); used by local planners to avoid newly observed obstacles.</li>
+    <li><strong>Inflation Layer</strong>: expands occupied cells outward to create a safety margin around obstacles, preventing the robot from planning paths too close to obstacles.</li>
+    <li><strong>Other Layers</strong>: additional layers can be implemented as plugins (for example, Social Costmap Layer, Range Sensor Layer, etc.) to provide specialized behavior.</li>
+  </ul>
+
+  <!-- Inserted: Translated planner list from image attachment -->
+  <h4 style="margin-top:12px;">3. Common Global and Local Path Planners</h4>
+  <p>The navigation stack typically separates planning into global planners (produce a full path on a known map) and local planners (reactive, operate in velocity space to follow the global path while avoiding obstacles).</p>
+
+  <h4 style="margin-top:8px;">Global Planners</h4>
+  <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
+    <li><strong>A* (A-star)</strong>: A graph-search algorithm that combines cost-to-come and heuristics to find the shortest path from start to goal. A* expands nodes by minimizing the estimated total cost (g + h), and is widely used for grid-based global planning.</li>
+    <li><strong>Dijkstra</strong>: A classic single-source shortest-path algorithm. Dijkstra expands the frontier by always selecting the node with the smallest current cost from the start, guaranteeing an optimal shortest path in graphs with non-negative edge weights.</li>
+    <li><strong>RRT (Rapidly-exploring Random Trees)</strong>: A sampling-based planner that rapidly grows a tree in the configuration space by random sampling. RRT is effective in high-dimensional or complex environments to quickly find a feasible path, though the paths often require post-processing or smoothing.</li>
+  </ul>
+
+  <h4 style="margin-top:8px;">Local Planners</h4>
+  <ul style="text-align:left; list-style-type:disc; margin-left:20px;">
+    <li><strong>DWA (Dynamic Window Approach)</strong>: A local planner that searches in the robot's velocity space for collision-free, dynamically-feasible velocity commands. DWA considers the robot's kinematic and dynamic limits, samples candidate linear/angular velocities, and scores them by progress toward the global path and obstacle clearance.</li>
+    <ol style="margin-left:24px;">
+      <li>Sample the robot's control space (linear and angular velocities) within dynamic constraints (dx, dy, dtheta).</li>
+      <li>For each sampled velocity, forward-simulate the resulting short-duration trajectory from the current state to predict where the robot would be after a small time step.</li>
+      <li>Evaluate each forward-simulated trajectory using objective terms: obstacle proximity (collision checking), closeness to the global path/goal, and dynamic feasibility (respecting velocity/acceleration limits). Discard trajectories that violate constraints or are clearly infeasible.</li>
+      <li>Select the highest-scoring trajectory and publish the corresponding velocity command to the base controller.</li>
+    </ol>
+    <li><strong>TEB (Timed Elastic Band)</strong>: An optimization-based local planner that represents the trajectory as a sequence of time-stamped poses (an elastic band). By optimizing both timing and spatial configuration under kinodynamic constraints, TEB produces smooth, feasible local trajectories that can respect obstacle avoidance and dynamic limits.</li>
+  </ul>
+
+
+
+</section>
+
+  <!-- References for Project 1 -->
+  <section id="zhixing-car-1-references">
+    <h3 style="margin-top:12px;">References</h3>
+    <ol>
+  <li>G. Grisetti, C. Stachniss, and W. Burgard, "Improving grid-based SLAM with Rao-Blackwellized particle filters by adaptive proposals and selective resampling," in Proc. IEEE Int. Conf. Robotics and Automation (ICRA), 2005, pp. 2432–2437. [<a href="http://www2.informatik.uni-freiburg.de/~stachnis/pdf/grisetti05icra.pdf" target="_blank">PDF</a>]</li>
+  <li>Z. Wang, "GMapping and AMCL summary," CSDN Blog, 2024. [<a href="https://blog.csdn.net/m0_55202222/article/details/131065091" target="_blank">https://blog.csdn.net/m0_55202222/article/details/131065091</a>]</li>
+    </ol>
+  </section>
+
+<br>
+
+<!-- Project 2: Zhi Xing Car II -->
+<section id="zhixing-car-2">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/vla_car.jpg" alt="Zhi Xing Car II" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Zhi Xing Car II</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        We designed and deployed a SLAM system on NVIDIA Jetson, integrating 2D LiDAR 
+        and RealSense D435 for robust multi-sensor fusion. Implemented Google Cartographer 
+        for high-accuracy 2D localization and mapping, and extended to 3D ESDF-based mapping for precise 
+        environmental reconstruction and optimized path planning in real-world navigation tasks.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        [<a href="https://github.com/EmbodiedLLM/roadRunner" target="_blank">Code</a>]
+      </div>
+    </div>
+  </div>
+
+
+
+  <img src="../images/NVBlox.png" alt="Zhi Xing Car II SLAM" style="max-width: 70%; margin: 20px auto; display: block;">
+</section>
+
+<br>
+<!-- Project 2: Auto-tracking Car -->
+<section id="auto-tracking-car">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/yuyuan.jpg" alt="Auto-tracking Car" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Auto-tracking Car</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        We used OpenCV to rectify the camera-captured map and extract obstacle 
+        coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm 
+        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
+        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        [<a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a>]
+      </div>
+    </div>
+  </div>
+
+      <div class="video-container" style="margin: 20px 0;">
+    <h2 style="margin-bottom:10px;">Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/R3W2jP_Io_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+
+
+  <h2 style="margin-top:8px;">1. Rectify the Camera-captured Map</h2>
+
+    <ul style="font-size:1.05em; line-height:1.6; margin-left:20px;">
+      <li>image_transformer rectifies the oblique map captured by the camera to obtain a bird's-eye (top-down) view map.</li>
+      <li>Image enhancement: use <code>convertScaleAbs</code> to increase contrast (alpha=1.5) so colors are easier to distinguish.</li>
+      <li>Color space conversion: convert BGR to HSV; HSV is more robust to illumination changes under varying lighting.</li>
+    </ul>
+
+  
+  <h2 style="margin-top:8px;">2. Extract Obstacle Coordinates</h2>
+
+    <div style="margin-bottom:12px;">
+      <p style="margin-bottom:8px;">Sampling strategy (9x9 grid center sampling):</p>
+      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">i = j = 40
+tiles = []
+while i &lt; 720:
+    while j &lt; 720:
+        tiles.append(hsv2color(hsv[i, j]))  # sample every 80 pixels at the center of each grid cell
+        j += 80
+    j = 40
+    i += 80
+
+# Start from (40, 40), step = 80 pixels
+# Cover 720x720 image → 9x9 = 81 tiles
+      </pre>
+
+      <p style="margin-bottom:8px;">Color to state mapping for each sampled grid center:</p>
+      <ul style="margin-left:20px;">
+        <li><strong>0</strong>: black (obstacle)</li>
+        <li><strong>2</strong>: blue (treasure)</li>
+        <li><strong>3</strong>: green (exit)</li>
+        <li><strong>4</strong>: yellow (start)</li>
+      </ul>
+    </div>
+
+  <h2 style="margin-top:8px;">3. Path Planning</h2>
+
+  <img src="../images/tracking_car/path_finding.png" alt="Path Finding" style="max-width: 100%; height: auto;">
+  <div style="margin-bottom:12px;">
+    <p style="margin-bottom:8px;">Graph construction logic:</p>
+    <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;"># Build graph
+G = nx.Graph()
+for target in range(0, 81):
+  up = target - 9
+  down = target + 9
+  left = target - 1
+  right = target + 1
+    
+  # obstacle weight = 1000 (penalize but not forbidden), passable weight = 1
+  if up >= 0:
+    if tiles[up] == 0:
+      G.add_weighted_edges_from([(target, up, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, up, 1)])
+  if down &lt; 81:
+    if tiles[down] == 0:
+      G.add_weighted_edges_from([(target, down, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, down, 1)])
+  # ensure left/right do not cross row boundaries
+  if left // 9 == target // 9:
+    if tiles[left] == 0:
+      G.add_weighted_edges_from([(target, left, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, left, 1)])
+  if right // 9 == target // 9:
+    if tiles[right] == 0:
+      G.add_weighted_edges_from([(target, right, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, right, 1)])
+
+# Node indices: 0-80, row-major from top-left to bottom-right
+# Weight strategy: obstacle=1000 (penalty), normal=1
+# Two-stage routing:
+find_treasure = nx.dijkstra_path(G, source=start, target=treasure)
+find_exit = nx.dijkstra_path(G, source=treasure, target=destination)
+    </pre>
+
+    <div style="margin-top:12px;">
+      <h4 style="margin-top:8px;">Using A* (recommended for grid maps)</h4>
+      <p style="margin-bottom:8px;">A* uses a heuristic to guide the search. For a 2D grid, the Manhattan distance is a simple admissible heuristic:</p>
+      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">def manhattan(u, v):
+    ux, uy = divmod(u, 9)
+    vx, vy = divmod(v, 9)
+    return abs(ux - vx) + abs(uy - vy)
+
+# Using networkx's A* (assuming G is built as above and weights represent cost):
+path_to_treasure = nx.astar_path(G, source=start, target=treasure, heuristic=manhattan, weight='weight')
+path_to_exit = nx.astar_path(G, source=treasure, target=destination, heuristic=manhattan, weight='weight')
+      </pre>
+
+
+</section>
+
+
+<hr>
+
+</body>
+</html>

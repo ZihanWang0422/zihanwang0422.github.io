@@ -1,0 +1,2144 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-RFR2GFKT75"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  
+    gtag('config', 'G-RFR2GFKT75');
+  </script> -->
+  <!-- Google Tag Manager -->
+  <!-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  })(window,document,'script','dataLayer','GTM-NC38VTD');</script> -->
+  <!-- End Google Tag Manager -->
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- <meta http-equiv="refresh" content="0; URL=https://cs.stanford.edu/~leoyuan/"> -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+	<!-- <meta name="google-site-verification" content="u_--0s_Uw50r4zCgRrzltkmFhNCduYOJwPGlKVTuNJU" /> -->
+
+  <title>Zihan Wang</title>
+  <meta name="description" lang="en" content="This is an academic website for Zihan Wang">
+  <meta name="keywords" lang="en" content="Zihan Wang" />
+  <!-- Google Scholar citation metadata to help crawlers find the PDF -->
+  <meta name="citation_title" content="PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting">
+  <meta name="citation_author" content="Zihan Wang">
+  <meta name="citation_pdf_url" content="https://zihanwang0422.github.io/work/PUB.pdf">
+  <link rel="alternate" href="https://zihanwang0422.github.io/work/PUB.pdf" type="application/pdf" />
+  
+
+  <link rel="shortcut icon" href="images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="main.css">
+  <link rel="stylesheet" href="css/custom.css">
+  <link rel="stylesheet" href="css/profile-cover.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/academicons.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+
+  <script src="js/jquery-2.1.3.min.js"> </script>
+  <script src="js/theme.js"> </script>
+
+  <!--[if lt IE 9]>
+<script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/r29/html5.min.js">
+</script>
+<![endif]-->
+
+  <script type="text/javascript">
+    function ShowHide(divId, linkDivId) {
+        if(document.getElementById(divId).style.display == 'none') {
+            document.getElementById(divId).style.display='block';
+            document.getElementById(linkDivId).style.display='none'; // Hide the "read more" link
+        }
+        else {
+            document.getElementById(divId).style.display = 'none';
+        }
+    }
+  </script>
+
+  <style>
+    /* 为所有列表项设置样式 */
+    li.indented {
+        position: relative;
+        padding-left: 90px; /* 这是对齐效果的关键，可以根据实际内容调整这个值 */
+    }
+
+    li.indented::before {
+        content: attr(data-date);
+        position: absolute;
+        left: 0;
+        top: 0;
+        white-space: nowrap;
+    }
+
+    /* Theme Toggle Button Styles - 月亮图标样式 */
+    .theme-toggle {
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+        background: rgba(255, 255, 255, 0.9);
+        border: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 1001;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+    }
+
+    .theme-toggle:hover {
+        background: rgba(255, 255, 255, 1);
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-toggle i {
+        font-size: 18px;
+        color: #333;
+        transition: all 0.3s ease;
+    }
+
+    /* Dark Theme Styles */
+    [data-theme="dark"] {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] body {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .page-content {
+        background-color: #1a1a1a !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .wrapper {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .site-header {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+    }
+
+    /* Dynamic navbar styles */
+    .site-header {
+        transition: all 0.3s ease !important;
+        /* Remove blur effects for fully transparent navbar */
+        backdrop-filter: none !important;
+        -webkit-backdrop-filter: none !important;
+        /* Override default background - start transparent */
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+    /* Default page link styles for transparent state */
+    .page-link {
+        color: #333 !important;
+        font-weight: 600 !important;
+        text-shadow: 1px 1px 2px rgba(255,255,255,0.8) !important;
+    }
+
+    .page-link:hover {
+        color: #000 !important;
+    }
+
+    /* Transparent navbar when at top */
+    .site-header.transparent {
+        background-color: transparent !important;
+        border-color: transparent !important;
+        box-shadow: none !important;
+    }
+
+  .site-header.transparent .page-link {
+    color: #ffffff !important; /* White links on transparent navbar */
+    font-weight: 600;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7); /* Match about-title shadow */
+  }
+
+  .site-header.transparent .page-link:hover {
+    color: #f0f0f0 !important; /* Slightly lighter on hover */
+  }
+
+  /* Make focused/active navigation links use a light-blue color for better visibility */
+  .page-link:focus,
+  .page-link:active {
+    color: #66b3ff !important; /* light blue */
+    outline: none !important;
+    text-decoration: underline !important;
+  }
+
+  /* Ensure transparent navbar state also shows the same focus color */
+  .site-header.transparent .page-link:focus,
+  .site-header.transparent .page-link:active {
+    color: #66b3ff !important;
+    text-decoration: underline !important;
+  }
+
+    /* Enable native smooth scrolling for in-page anchors as a baseline */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Solid navbar when scrolled */
+    .site-header.solid {
+        background-color: rgba(249, 249, 249, 0.95) !important;
+        border-color: #ffffff !important; /* Changed from red to white */
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1) !important;
+    }
+
+    .site-header.solid .page-link {
+        color: #002336 !important;
+    }
+
+    .site-header.solid .page-link:hover {
+        color: #9b3022 !important;
+    }
+
+  /* Override red hover/active color with light blue for various nav states */
+  .site-header.solid .page-link:hover,
+  .site-header.solid .page-link:focus,
+  .site-header.solid .page-link:active,
+  .site-header.solid .page-link.current,
+  .site-header.solid .page-link[aria-current="page"] {
+    color: #66b3ff !important; /* light blue */
+    text-decoration: underline !important;
+  }
+
+  .site-header.transparent .page-link:hover,
+  .site-header.transparent .page-link:focus,
+  .site-header.transparent .page-link:active,
+  .site-header.transparent .page-link.current,
+  .site-header.transparent .page-link[aria-current="page"] {
+    color: #66b3ff !important;
+    text-decoration: underline !important;
+  }
+
+    [data-theme="dark"] .page-link {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .page-link:hover {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] #profile-cover {
+        background-image: url('images/background/background2.jpg');
+    }
+
+  [data-theme="dark"] #profile-cover::before {
+    /* overlay disabled per user request */
+    display: none !important;
+  }
+
+    [data-theme="dark"] .about-title {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .about-email {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .about-text {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .about-text strong {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .about-links a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .link-separator {
+        color: #666666 !important;
+    }
+
+    [data-theme="dark"] .md-heading {
+        color: #ffffff !important;
+    }
+
+    /* Section styling with alternating backgrounds */
+  .section {
+    padding: 20px 0 15px 0;
+        margin: 0;
+        width: 100%;
+        position: relative;
+    }
+
+    .section-white {
+        background-color: #ffffff;
+    }
+
+  .section-gray {
+  background-color: #f0f2f5;
+  padding-top: 30px; /* extra space above projects heading (reduced) */
+  }
+
+    /* Make section gray full-bleed across the viewport while keeping inner wrapper centered */
+    .section.section-gray {
+      width: 100vw !important;
+      margin-left: calc(50% - 50vw) !important;
+      margin-right: calc(50% - 50vw) !important;
+      padding-top: 30px !important;
+      padding-bottom: 20px !important; /* reduced bottom padding to remove large whitespace */
+      box-sizing: border-box !important;
+    }
+
+    .page-content {
+        background-color: #ffffff;
+    }
+
+    /* Prevent horizontal scroll caused by full-bleed sections */
+    html, body {
+      overflow-x: hidden !important;
+    }
+
+    /* Ensure body handles all vertical scrolling */
+    body {
+      overflow-y: auto !important;
+      height: auto !important;
+    }
+
+    /* Prevent any containers from creating their own scrollbars */
+    .page-content,
+    .wrapper,
+    .section,
+    .pub-list,
+    #profile-cover,
+    .site-header,
+    .site-footer,
+    .profile-layout,
+    .profile-right,
+    .profile-left {
+      overflow: visible !important;
+      height: auto !important;
+      max-height: none !important;
+    }
+
+    /* Content wrapper within sections */
+  .section .wrapper {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 40px 0 40px;
+        position: relative;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+  .section .research,
+  .section .projects,
+  .section .timeline-brief {
+    max-width: 860px;
+        margin: 0 auto;
+        padding: 0 20px;
+        position: relative;
+        left: 0;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Enhanced heading styles */
+    .md-heading {
+        text-align: center;
+        font-size: 28px;
+        font-weight: 700;
+        color: #1a1a1a;
+        margin: 0 0 15px 0;
+        padding: 0 20px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        line-height: 1.2;
+        font-family: 'Arial', 'Helvetica', sans-serif;
+    }
+
+    .section-gray .md-heading {
+        color: #1a1a1a;
+    }
+
+    .section-white .md-heading {
+        color: #1a1a1a;
+    }
+
+    [data-theme="dark"] .bio-body p,
+    [data-theme="dark"] .bio-body li,
+    [data-theme="dark"] .bio-body h3 {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .bio {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .timeline-brief {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .research {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .projects {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .timeline-item {
+        background-color: #2d2d2d !important;
+        border-left-color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .timeline-title a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .timeline-desc {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .pub {
+        background-color: #2d2d2d !important;
+        border: 1px solid #404040 !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3) !important;
+    }
+
+    [data-theme="dark"] .pub:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.4) !important;
+    }
+
+    [data-theme="dark"] .title {
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .authors {
+        color: #000 !important; /* changed to black */
+    }
+
+    [data-theme="dark"] .tag {
+        background-color: #404040 !important;
+        color: #e0e0e0 !important;
+        border-color: #555555 !important;
+    }
+
+    [data-theme="dark"] .tag:hover {
+        background-color: #4a9eff !important;
+        color: #ffffff !important;
+    }
+
+    [data-theme="dark"] .site-footer {
+        background-color: #2d2d2d !important;
+        border-color: #404040 !important;
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .contact-list a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .theme-toggle {
+        background: rgba(30, 30, 30, 0.9);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    [data-theme="dark"] .theme-toggle:hover {
+        background: rgba(40, 40, 40, 1);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    [data-theme="dark"] .theme-toggle i {
+        color: #fff;
+    }
+
+    [data-theme="dark"] li.indented::before {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .menu-icon svg path {
+        fill: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .site-nav {
+        background-color: transparent !important;
+    }
+
+    [data-theme="dark"] .social-media a {
+        color: #e0e0e0 !important;
+    }
+
+    [data-theme="dark"] .footer-col p {
+        color: #b0b0b0 !important;
+    }
+
+    [data-theme="dark"] .footer-col a {
+        color: #4a9eff !important;
+    }
+
+    /* TL;DR Styles - flat design */
+    .tldr {
+        background-color: transparent;
+        padding: 8px 0;
+        margin: 8px 0;
+        border: none;
+        font-size: 10pt;
+        font-style: italic;
+        border-radius: 0;
+    }
+
+    [data-theme="dark"] .tldr {
+        background-color: transparent !important;
+        border: none !important;
+        color: #d0d0d0 !important;
+    }
+
+  /* Container Style Improvements - clean flat design */
+  .pub {
+        background: transparent !important;
+        border: none !important;
+        border-radius: 0 !important;
+        padding: 12px 0 !important;
+        box-shadow: none !important;
+        margin-bottom: 12px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+  gap: 115px !important;
+    /* allow items to wrap on small viewports so right column doesn't get clipped */
+    flex-wrap: wrap !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+    }
+    
+    /* Clean flexbox layout for pub items */
+    .pub-left {
+    flex: 0 0 255px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        float: none !important;
+        text-align: left !important;
+        box-sizing: border-box !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+    }
+    
+  .pub-right {
+  flex: 1 !important;
+  /* allow flex children to shrink below their content width (prevents overflow/clipping) */
+  min-width: 0 !important;
+    padding-left: calc(20px + 1ch) !important;
+        padding-right: 0 !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+        margin: 0 !important;
+        float: none !important;
+        width: auto !important;
+        box-sizing: border-box !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    }
+
+    .pub:hover {
+        box-shadow: none;
+    }
+
+    /* Publication list container */
+  .pub-list {
+      max-width: 1000px;
+  margin: 0 auto;
+  transform: none;
+  }
+
+    /* Unified image styles for both research and projects */
+    .research .pub-left img,
+    .projects .pub-left img,
+    .pub-left .intro-img,
+    .pub-left .frame {
+        max-width: 100% !important;
+        height: auto !important;
+          text-align: left !important;
+        display: block !important;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        margin: 0 !important;
+          justify-content: flex-start !important;
+        border-radius: 8px !important;
+    }
+
+  /* Fix hover container in projects sections (debug border -> styled) */
+  .projects .image-hover-container {
+    position: relative !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    z-index: 2 !important;
+    background-clip: padding-box !important;
+    /* fixed visual frame so images can cover it without showing container background */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    height: 160px !important;
+    /* 修改图片位置 */
+    transform: none !important;
+  }
+
+  /* Dual image container for projects with two preview images side-by-side */
+  .dual-image-container {
+    display: flex !important;
+    gap: 8px !important;
+    height: 160px !important;
+    align-items: stretch !important;
+  }
+
+  .dual-image-container img {
+    width: 50% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    border-radius: 8px !important;
+  }
+
+  /* Force projects containers to align with research visual frame */
+  .image-hover-container {
+    /* match research container frame so left edges align */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    height: 160px !important;
+    transform: none !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+  }
+
+  .image-hover-container img,
+  .image-hover-container .static-image,
+  .image-hover-container .hover-image {
+    object-fit: cover !important;
+    object-position: 20% center !important;
+    border-radius: 8px !important;
+    width: 100% !important;
+    height: 100% !important;
+  }
+  /* Disable hover GIF playback in Projects section: keep layout but always show static image */
+  #projects .image-hover-container .hover-image {
+    display: none !important;
+  }
+
+  /* Disable hover/GIF playback for Projects section only (keep layout) */
+  #projects .image-hover-container .hover-image {
+    display: none !important;
+  }
+
+  #projects .image-hover-container .static-image {
+    opacity: 1 !important;
+  }
+
+  .pub-right {
+    flex: 1 !important;
+    padding-left: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    z-index: 2 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: space-between !important;
+  }
+
+  .image-hover-container img,
+  .pub-left img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: left center !important;
+    display: block !important;
+    border-radius: 8px !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  /* Ensure hover GIF layers also cover the container */
+  .image-hover-container .static-image,
+  .image-hover-container .hover-image {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+  }
+
+    /* Handle static and hover image transitions for projects */
+    .projects .image-hover-container .static-image {
+        display: block !important;
+        opacity: 1 !important;
+        transition: opacity 0.3s ease !important;
+    }
+
+    .projects .image-hover-container .hover-image {
+        position: absolute !important;
+        top: 0 !important;
+        left: 0 !important;
+        display: block !important;
+        opacity: 0 !important;
+        transition: opacity 0.3s ease !important;
+    }
+
+    .projects .image-hover-container:hover .static-image,
+    .projects .image-hover-container.playing .static-image {
+        opacity: 0 !important;
+    }
+
+    .projects .image-hover-container:hover .hover-image,
+    .projects .image-hover-container.playing .hover-image {
+        opacity: 1 !important;
+        display: block !important;
+    }
+
+    /* Modern flexbox layout - no clearfix needed */
+    .pub::after {
+        display: none;
+    }
+
+    /* Fix social icon distortion in timeline */
+    .timeline-item .social-icon {
+        width: 40px;
+        height: 40px;
+        object-fit: contain; /* Maintain aspect ratio */
+        object-position: center;
+        border-radius: 4px;
+        background: white;
+        padding: 2px;
+    }
+
+    [data-theme="dark"] .timeline-item .social-icon {
+        background: #f0f0f0;
+    }
+
+    /* Dark theme updates for new container styles */
+    [data-theme="dark"] .pub {
+        background-color: #2d2d2d;
+        border-color: #404040;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+
+    [data-theme="dark"] .pub:hover {
+        box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+    }
+
+    /* Back to Top Button Styles */
+    .back-to-top {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #4fc3f7 0%, #29b6f6 100%);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 20px;
+        cursor: pointer;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(20px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+    }
+
+    .back-to-top:hover {
+        background: linear-gradient(135deg, #29b6f6 0%, #03a9f4 100%);
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    [data-theme="dark"] .back-to-top {
+        background: linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%);
+    }
+
+    [data-theme="dark"] .back-to-top:hover {
+        background: linear-gradient(135deg, #1e88e5 0%, #1565c0 100%);
+    }
+
+    /* Profile title styling */
+    #my-title {
+        text-align: center;
+        margin-top: 10px;
+    }
+
+
+
+
+
+    /* Global override to remove all shadows and borders for flat design */
+    .pub, .timeline-item, .intro-img, .frame, img {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+    }
+    
+    .pub {
+        border: none !important;
+        background: transparent !important;
+    }
+    
+    .timeline-item {
+        border: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+    }
+
+    /* Paper title link styles to match tag colors */
+    .title a {
+        color: #2a7ae2 !important;
+        text-decoration: none !important;
+        transition: color 0.3s ease;
+    }
+
+    .title a:hover {
+        color: #1f5fb4 !important;
+        text-decoration: underline !important;
+    }
+
+    /* Dark theme support for paper title links */
+    [data-theme="dark"] .title a {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .title a:hover {
+        color: #66b3ff !important;
+    }
+
+    /* Unified text styles for research and projects */
+    .research .title,
+    .projects .title {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+        line-height: 1.3 !important;
+        margin-bottom: 3px !important;
+        color: #333 !important;
+    }
+
+    /* Inline All Projects link styling inside heading */
+    .projects-header .md-heading .projects-link {
+      font-size: 16px;
+      color: #2a7ae2 !important;
+      font-weight: normal;
+      text-decoration: none !important;
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+
+    .projects-header .md-heading .projects-link:hover {
+      text-decoration: underline !important;
+    }
+
+    .research .authors,
+    .projects .authors {
+        font-size: 16px !important;
+        font-weight: normal !important;
+        color: #000 !important; /* changed to black */
+        margin-bottom: 3px !important;
+        line-height: 1.3 !important;
+    }
+
+    .research .publish,
+    .projects .publish {
+        font-size: 16px !important;
+        color: #000 !important; /* changed to black */
+        margin-bottom: 3px !important;
+        line-height: 1.3 !important;
+    }
+
+  .research .tldr {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.6 !important; /* Increased for better readability */
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    text-align: justify !important;
+    font-style: italic !important; /* Keep abstract italic */
+    font-weight: normal !important; /* Match surrounding text weight */
+  /* limit line length for improved readability and prevent overflow */
+  max-width: 60ch !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+  overflow-wrap: break-word !important;
+  }
+
+  /* Projects tldr (abstract) should match Research styling: justify and max-width */
+  .projects .tldr,
+  .projects .abstract {
+    font-size: 14px !important;
+    color: #555 !important;
+    line-height: 1.6 !important;
+    margin-top: 6px !important;
+    margin-bottom: 6px !important;
+    text-align: justify !important;
+    font-style: italic !important; /* keep same emphasis */
+    font-weight: normal !important;
+    max-width: 60ch !important; /* match research */
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+  }
+
+  .projects-header {
+    display: flex !important;
+    align-items: center !important;
+    max-width: 900px;
+    margin: 0 auto 0 auto;
+    padding: 0 24px;
+  }
+
+  /* Keep the Projects heading visually centered while allowing the link to sit on the right */
+  .projects-header .md-heading {
+    margin: 0 0 12px 0;
+    text-align: center;
+    flex: 1 1 auto;
+    display: flex !important;
+    justify-content: center !important;
+  }
+
+  .projects-link {
+    margin-left: auto !important;
+    white-space: nowrap;
+  }
+  
+  /* Removed duplicate research styles to avoid conflicts - styles defined above */
+
+    /* Abstract toggle and display styles */
+    .abstract-toggle {
+        cursor: pointer !important;
+        color: #2a7ae2 !important;
+        text-decoration: none !important;
+        transition: color 0.3s ease;
+    }
+
+    .abstract-toggle:hover {
+        color: #1f5fb4 !important;
+        text-decoration: underline !important;
+    }
+
+    .abstract {
+        background-color: #f8f9fa;
+        border: 1px solid #e9ecef;
+        border-radius: 6px;
+        padding: 12px 15px;
+        margin-top: 8px;
+        font-size: 13px !important;
+        line-height: 1.4 !important;
+        color: #495057 !important;
+        font-style: normal;
+        transition: all 0.3s ease;
+        overflow: hidden;
+        max-height: 0;
+        opacity: 0;
+    }
+
+  /* Constrain abstract width and ensure it wraps inside flex container */
+  .pub-right .abstract,
+  .research .abstract {
+    max-width: 60ch !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    overflow-wrap: break-word !important;
+  }
+
+    .abstract.show {
+        max-height: 300px;
+        opacity: 1;
+        margin-bottom: 8px;
+    }
+
+    /* Dark theme support for abstract */
+    [data-theme="dark"] .abstract {
+        background-color: #2d3748 !important;
+        border-color: #4a5568 !important;
+        color: #e2e8f0 !important;
+    }
+
+    [data-theme="dark"] .abstract-toggle {
+        color: #4a9eff !important;
+    }
+
+    [data-theme="dark"] .abstract-toggle:hover {
+        color: #66b3ff !important;
+    }
+
+    /* Tags with vertical separator styling */
+    .research .tags,
+    .projects .tags {
+        font-size: 14px !important;
+        margin-bottom: 3px !important;
+        margin-top: 2px !important;
+    line-height: 1.1 !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    margin-left: 0 !important;
+    padding-top: 8px !important;
+    margin-top: auto !important; /* push tags to bottom */
+    }
+
+    .research .tags a,
+    .projects .tags a {
+        color: #2a7ae2 !important;
+        text-decoration: none !important;
+        font-size: 14px !important;
+    }
+
+    .research .tags a:hover,
+    .projects .tags a:hover {
+        text-decoration: underline !important;
+    }
+
+    /* Section divider styles - hidden since using alternating backgrounds */
+    .section-divider {
+        display: none;
+    }
+
+    [data-theme="dark"] .section-divider {
+        display: none;
+    }
+
+    /* Remove profile avatar border */
+    #profile-avatar {
+        border: none !important;
+    }
+
+    /* Enhanced Profile Cover Styles - With Background Image */
+  #profile-cover {
+    position: relative;
+    min-height: 45vh;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 100px 40px 60px 40px;
+    box-sizing: border-box;
+    background-image: url('images/background/background2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    margin-top: 0;
+  }
+
+  /* White overlay */
+  #profile-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    /* Reduced alpha from 0.85 -> 0.6 for a more transparent overlay */
+    background-color: rgba(255, 255, 255, 0.6);
+    z-index: 1;
+  }
+
+  /* Override background image class */
+  #profile-cover.shallow-bg {
+    background-image: url('images/background/background2.jpg') !important;
+  }
+
+    /* Main Layout Container - Left-Right Layout */
+    .profile-layout {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        max-width: 1000px;
+        align-items: stretch;
+        gap: 10px;
+        z-index: 10;
+        position: relative;
+        padding: 0;
+    }
+
+    /* Left Side - Profile Photo */
+    .profile-left {
+        display: flex;
+        flex-shrink: 0;
+        width: 250px;
+        align-items: stretch;
+    }
+
+    .profile-avatar {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 8px !important;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    }
+
+    .profile-name {
+        display: none;
+    }
+
+    .profile-title {
+        display: none;
+    }
+
+    .profile-location {
+        display: none;
+    }
+
+    /* Social Icons */
+    .profile-social {
+        display: none;
+    }
+
+    .social-icon {
+        display: none;
+    }
+
+    .cv-icon {
+        display: none;
+    }
+
+    /* Right Side - About Content */
+    .profile-right {
+        flex: 1;
+        color: #333333;
+        padding: 0;
+        background: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* align top with avatar */
+    }
+
+    .about-title {
+        color: #1a1a1a;
+        font-size: 2.5rem;
+        font-weight: 700;
+        margin: 0 0 8px 0;
+        text-shadow: none;
+        font-family: 'Arial', 'Helvetica', sans-serif;
+        text-align: left;
+    }
+
+    .about-email {
+        color: #555555;
+        font-size: 1rem;
+    margin: 0 0 8px 0;
+        font-weight: 400;
+        text-align: center;
+        font-family: 'Courier New', monospace;
+    }
+
+    .about-text {
+        color: #333333;
+        font-size: 16px;
+        line-height: 1.7;
+        margin-bottom: 15px;
+        text-shadow: none;
+        text-align: justify;
+    }
+
+    .about-text strong {
+        color: #333333;
+        font-weight: 600;
+        text-shadow: none;
+    }
+
+    .scholar-link {
+        color: #0066cc !important;
+        text-decoration: none;
+        font-weight: 400;
+        text-shadow: none;
+    }
+
+    .scholar-link:hover {
+        color: #0052a3 !important;
+        text-decoration: underline;
+    }
+
+  .about-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px; /* reduced gap between social links */
+    margin-top: 6px;
+    font-size: 16px;
+  }
+
+    .about-links a {
+        color: #0066cc;
+        text-decoration: none;
+        font-weight: 400;
+    }
+
+    .about-links a:hover {
+        color: #0052a3;
+        text-decoration: underline;
+    }
+
+    .link-separator {
+        color: #999999;
+        font-weight: 300;
+    }
+
+    .download-btn {
+        display: none;
+    }
+
+    /* Bottom Sections */
+    .bottom-sections {
+        display: none;
+    }
+
+    /* Highlights Section */
+    .highlights-section {
+        max-width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        padding: 0 40px;
+    }
+
+    .highlights-heading {
+        color: #1a1a1a;
+        font-size: 28px;
+        font-weight: 700;
+        margin: 0;
+        padding: 0;
+        font-family: 'Arial', 'Helvetica', sans-serif;
+    }
+
+    [data-theme="dark"] .highlights-heading {
+        color: #ffffff !important;
+    }
+
+    .interests, .education {
+        flex: 1;
+    }
+
+  .interests h3, .education h3 {
+    color: #ffffff;
+    font-size: 20px !important; /* Restore original smaller size */
+    font-weight: 600 !important;
+    margin-bottom: 12px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+    .interests ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+  .interests li {
+    color: #ffffff;
+    padding: 6px 0;
+    font-size: 18px !important; /* Match about-text size */
+    line-height: 1.7 !important;
+    position: relative;
+    padding-left: 18px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.7);
+  }
+
+    .interests li::before {
+        content: '•';
+        color: #ffffff;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+    }
+
+    .edu-item {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+        color: #374151;
+        text-shadow: none;
+    }
+
+    .edu-icon {
+        font-size: 20px;
+        flex-shrink: 0;
+    }
+
+    .edu-item strong {
+        color: #2c3e50;
+        display: block;
+        font-weight: 600;
+    }
+
+  /* Heading CTA (link after heading) - center heading + CTA */
+  .projects .md-heading {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    gap: 10px !important;
+    text-align: center !important;
+  }
+
+  .md-heading-cta {
+    font-size: 16px;
+    font-weight: normal;
+    margin-left: 0 !important;
+    display: inline-block;
+  }
+
+  .md-heading-cta a {
+    color: #0066cc;
+    text-decoration: none;
+  }
+
+  /* Projects header: center title, right-align link */
+  .projects-header {
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto 0 auto;
+    padding: 0 40px;
+  }
+
+  .projects-header .md-heading {
+    margin: 0 0 12px 0;
+    text-align: center;
+  }
+
+  .projects-link {
+    position: absolute;
+    right: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #0066cc;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  @media screen and (max-width: 800px) {
+    .projects-link {
+      position: static;
+      display: block;
+      text-align: center;
+      margin-top: 8px;
+      transform: none;
+    }
+  }
+
+    /* Responsive Design */
+    @media screen and (max-width: 1200px) {
+        .profile-layout {
+            gap: 40px;
+            max-width: 900px;
+        }
+        
+        .profile-left {
+            flex: 0 0 220px;
+        }
+        
+        .about-title {
+            font-size: 32px;
+        }
+        
+        .bottom-sections {
+            gap: 30px;
+        }
+    }
+
+    @media screen and (max-width: 1024px) {
+        #profile-cover {
+            padding: 30px 20px;
+        }
+        
+        .profile-layout {
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .profile-left {
+            flex: none;
+        }
+        
+    .profile-right {
+      padding: 25px;
+      text-align: center;
+      justify-content: center; /* keep centered on narrow screens */
+    }
+    .about-links {
+      margin-top: 20px; /* restore spacing on small screens */
+    }
+        
+        .about-title {
+            font-size: 32px;
+        }
+        
+        .bottom-sections {
+            flex-direction: column;
+            gap: 30px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        #profile-cover {
+            height: auto;
+            min-height: auto;
+            padding: 80px 20px 50px 20px;
+        }
+        
+        .profile-layout {
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .profile-left {
+            width: 200px;
+        }
+        
+        .profile-avatar {
+            width: 100%;
+            height: auto;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        }
+        
+        .profile-name {
+            font-size: 24px;
+        }
+        
+        .profile-title {
+            font-size: 16px;
+        }
+        
+        .profile-location {
+            font-size: 14px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            font-size: 16px;
+        }
+        
+        .profile-right {
+            padding: 0;
+            text-align: center;
+        }
+        
+        .about-title {
+            font-size: 2rem;
+            text-align: center;
+        }
+        
+        .about-email {
+            font-size: 0.95rem;
+            text-align: center;
+        }
+        
+        .about-text {
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        
+        .about-links {
+            justify-content: center;
+        }
+        
+        .interests h3, .education h3 {
+            font-size: 18px;
+        }
+        
+        .interests li {
+            font-size: 14px;
+        }
+
+        .section .research,
+        .section .projects {
+            max-width: 100%;
+            padding: 0 15px;
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .profile-left {
+            width: 160px;
+        }
+        
+        .profile-avatar {
+            width: 100%;
+            height: auto;
+            border-radius: 8px !important;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+        }
+        
+        .profile-name {
+            font-size: 20px;
+        }
+        
+        .profile-social {
+            gap: 12px;
+        }
+        
+        .social-icon {
+            width: 35px;
+            height: 35px;
+            font-size: 14px;
+        }
+        
+        .cv-icon {
+            font-size: 10px;
+        }
+        
+        .profile-right {
+            padding: 0;
+        }
+        
+        .about-title {
+            font-size: 1.75rem;
+        }
+        
+        .about-text {
+            font-size: 0.9rem;
+        }
+    }
+
+    /* Dark theme compatibility - minimal changes since text is already white */
+    [data-theme="dark"] .social-icon {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    [data-theme="dark"] .download-btn {
+        background: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Hide original profile wrapper */
+    .profile-wrapper {
+        display: none !important;
+    }
+  /* Compact footer: make footer height ~1 line */
+  .site-footer {
+    padding: 6px 0 !important;
+  }
+
+  .site-footer .wrapper {
+    padding: 0 40px !important;
+    max-width: 900px;
+  }
+
+  .site-footer .text,
+  .site-footer p {
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.1 !important;
+    font-size: 13px !important;
+  }
+
+  /* Disable pop-up animation for profile social icons */
+    .profile-social .social-icon,
+    .social-icon {
+      transform: none !important;
+      transition: none !important;
+      -webkit-transform: none !important;
+      -webkit-transition: none !important;
+    }
+
+    .profile-social .social-icon:hover,
+    .social-icon:hover {
+      transform: none !important;
+      -webkit-transform: none !important;
+      box-shadow: none !important;
+    }
+
+    /* Dark theme variants */
+    [data-theme="dark"] .profile-social .social-icon,
+    [data-theme="dark"] .social-icon {
+      transform: none !important;
+      transition: none !important;
+      -webkit-transform: none !important;
+      -webkit-transition: none !important;
+    }
+
+    [data-theme="dark"] .profile-social .social-icon:hover,
+    [data-theme="dark"] .social-icon:hover {
+      transform: none !important;
+      -webkit-transform: none !important;
+      box-shadow: none !important;
+    }
+  </style>
+  
+
+  
+</head>
+
+
+<body>
+
+    <!-- Google Tag Manager (noscript) -->
+<!-- <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NC38VTD"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> -->
+<!-- End Google Tag Manager (noscript) -->
+
+    <header class="site-header" style="border: 2px solid lightgrey;">
+
+  <div class="wrapper">
+<nav class="site-nav">
+  <a href="#" class="menu-icon">
+    <svg viewBox="0 0 18 15">
+      <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+      <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+      <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+    </svg>
+  </a>
+
+  <!-- Theme Toggle Button -->
+  <div class="theme-toggle" id="theme-toggle">
+    <i class="fa fa-moon-o" id="theme-icon"></i>
+  </div>
+
+  <div class="trigger">
+    <a class="page-link" href="index.html"><b>Home</b></a>
+    <a class="page-link" href="#research"><b>Research</b></a>
+    <a class="page-link" href="projects.html"><b>Projects</b></a>
+    <a class="page-link" href="blog.html"><b>Blog</b></a>
+    <!-- <a class="page-link" href="#academicservices"><b>Academic Services </b></a> -->
+
+    <!-- Button for Posts -->
+  </div>
+</nav>
+  </div>
+</header>
+
+  <div id="profile-cover" class="cover img-responsive"> 
+    <!-- Left-Right Layout Overlay -->
+    <div class="profile-layout">
+      <!-- Left Side: Profile Photo -->
+      <div class="profile-left">
+        <img src="images/han.jpeg" alt="Zihan Wang" class="profile-avatar" />
+      </div>
+
+      <!-- Right Side: About Content -->
+      <div class="profile-right">
+        <h1 class="about-title">Zihan Wang</h1>
+        <p class="about-email">zihanw600 [at] gmail.com</p>
+        
+        <p class="about-text">
+          I am a M.S. student in Robotics at the Chinese University of Hong Kong, advised by Prof. <a href="https://zyliatzju.github.io/" target="_blank" rel="noopener noreferrer">Zhongyu Li</a>.
+        </p>
+        <p class="about-text">
+          My research interests lie in <strong>Motion Planning</strong>, <strong>Humanoid Robots</strong>, and <strong>Reinforcement Learning</strong>.
+        </p>
+
+        <!-- Social Links -->
+        <div class="about-links">
+          <a href="work/resume.pdf" target="_blank">CV</a>
+          <span class="link-separator">|</span>
+          <a href="https://github.com/ZihanWang0422" target="_blank">Github</a>
+          <span class="link-separator">|</span>
+          <a href="https://scholar.google.cz/citations?user=W6U-U80AAAAJ&hl=en" target="_blank">Google Scholar</a>
+          <span class="link-separator">|</span>
+          <a href="https://www.linkedin.com/in/zihanwang0422/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="page-content">
+<div class="wrapper">
+
+<!-- Research -->
+<div class="section section-white">
+<div id="research" class="research">
+  <h1 class="md-heading">
+    Research
+  </h1>
+
+  <div class="pub-list">
+
+    <!-- <div class="pub" data-selected="true">
+      <div class="pub-left">
+          <img class="intro-img frame" src="images/worldvla.png">
+      </div>
+      <div class="pub-right">
+        <div class="title">
+          WorldVLA: Towards Autoregressive Action World Model
+        </div>
+        <div class="authors">
+          <font style="font-size: 11pt;">
+            <b>Zihan Wang</b>, Chaohui Yu, Hangjie Yuan, Yuming Jiang, Siteng Huang, Jiayan Guo, Xin Li, Yibing Song, Hao Luo, Fan Wang, Deli Zhao, Hao Chen
+          </font>
+        </div>
+        <div class="publish">
+          <span class="place">Arxiv 2025</span>
+          <span class="place"></span>
+        </div>
+        <div class="tags">
+          [<a class="tag" href="https://arxiv.org/pdf/2506.21539" target="_blank">Paper</a>]
+          [<a class="tag" href="https://github.com/alibaba-damo-academy/WorldVLA" target="_blank">Code</a>]
+        </div>
+      </div>
+    </div> -->
+
+    <div class="pub">
+      <div class="pub-left">
+        <img class="intro-img frame" src="images/aircraft.jpg" alt="Plasma-propelled ultra-quiet flying robot">
+      </div>
+      <div class="pub-right">
+        <div class="title">
+        <a href="projects/pub-plasma-blimp.html" style="color: #2a7ae2; text-decoration: none;">
+          PUB: A Plasma-Propelled Ultra-Quiet Blimp with Two-DOF Vector Thrusting
+        </a>
+        </div>
+        <div class="authors">
+        <span style="font-size: 11pt; font-weight: normal;">
+        Yixing Zhang, <b>Zihan Wang</b>, Zhijun Li, Xuanlin Fan, Jiawei Zhang, Shaoping Wang
+        </span>
+        <br>
+        <!-- <span style="font-size: 11pt; font-weight: normal;">
+          arXiv 2025
+        </span> -->
+        </div>
+  <div class="tags">
+  <a class="tag" href="https://arxiv.org/pdf/2508.12395" target="_blank" rel="noopener noreferrer">report</a> |
+  <a class="tag abstract-toggle" href="javascript:void(0)" onclick="toggleAbstract(this)">abstract</a> |
+  <a class="tag" href="https://patents.google.com/patent/CN118220461A/en?oq=+CN118220461A" target="_blank" rel="noopener noreferrer">patent</a> |
+  <a class="tag" href="https://github.com/ZihanWang0422/plasma_propelled_aircraft" target="_blank" rel="noopener noreferrer">code</a>
+  </div>
+  <div class="tldr" style="display: none;">
+        We present the design and control of a Plasma-propelled Ultra-silence Blimp
+(PUB), a novel aerial robot employing plasma vector propulsion for ultra-quiet flight without
+mechanical propellers. The system utilizes a helium-lift platform for extended endurance
+and a four-layer ring asymmetric capacitor to generate ionic wind thrust. The modular
+propulsion units allow flexible configuration to meet mission-specific requirements, while a
+two-degree-of-freedom (DOF) head enables thrust vector control. A closed-loop slip control scheme is implemented for stable maneuvering. Flight experiments demonstrate fullenvelope capability, including take-off, climb, hover, descent, and smooth landing, confirming
+the feasibility of plasma vector propulsion, the effectiveness of DOF vector control, and the
+stability of the control system. Owing to its low acoustic signature, structural simplicity,
+and high maneuverability, PUB is well suited for noise-sensitive, enclosed, and near-space
+applications.
+        </div>
+         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Projects -->
+<div class="section section-white">
+<div id="projects" class="projects">
+  <div class="projects-header">
+    <h1 class="md-heading">Projects</h1>
+  </div>
+
+  <div class="pub-list">
+
+       <div class="pub">
+        <div class="pub-left">
+          <div class="dual-image-container">
+            <img src="images/building_pointcloud/pointcloud_vis2.png" alt="3D Point Cloud Building Model 1">
+          </div>
+        </div>
+        <div class="pub-right">
+          <div class="title"><a href="projects/quadruped.html">Quadruped Robot Projects</a></div>
+          <div class="tldr">
+            
+          </div>
+        </div>
+      </div>
+
+
+      <div class="pub">
+        <div class="pub-left">
+          <div class="dual-image-container">
+            <img src="images/building_pointcloud/pointcloud_vis2.png" alt="3D Point Cloud Building Model 1">
+          </div>
+        </div>
+        <div class="pub-right">
+          <div class="title"><a href="projects/building-pointcloud.html">Building PointCloud Reconstruction</a></div>
+          <div class="tldr">
+            We capture building point clouds with handheld LiDAR, apply PointNet++ for semantic segmentation, and refine alignment and detail with point-cloud ICP. A geometry–semantic constrained reconstruction then restores missing structures to produce high-precision 3D building models (walls, roofs, doors, windows).
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-left">
+          <div class="image-hover-container">
+            <img class="intro-img frame static-image" src="images/zhixing_video.gif">
+            <!-- hover-image removed: keep static image only -->
+          </div>
+        </div>
+        <div class="pub-right">
+          <div class="title">
+            <a href="projects/zhixing-robot.html">Mobile Car Projects
+</a>
+          </div>
+          <div class="tldr">
+            We developed an autonomous mobile car using ROS, integrating mapping, navigation, and voice interaction modules
+for real-world deployment.
+          </div>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="pub-left">
+          <div class="image-hover-container">
+            <img class="intro-img frame static-image" src="images/legged-wheel.jpg">
+            <!-- hover-image removed: keep static image only -->
+          </div>
+        </div>
+        <div class="pub-right">
+          <div class="title">
+        <a href="projects/wheel-legged-robot.html">Wheel-legged Robot</a>
+          </div>
+          <div class="tldr">
+            We developed a wheeled-legged balancing robot, designing a custom STM32F103 microcontroller board and embedded software, with LQR and VMC-based control, capable of balancing, load-carrying and differential-drive locomotion.
+          </div>
+        </div>
+      </div>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+<!-- JavaScript to handle button clicks -->
+<script>
+  // Get the buttons and publications
+  const showSelectedBtn = document.getElementById('show-selected-btn');
+  const showAllBtn = document.getElementById('show-all-btn');
+  const publications = document.querySelectorAll('.pub');
+
+  // Add event listener to 'Show Selected Publication' button
+  showSelectedBtn.addEventListener('click', function() {
+    publications.forEach(pub => {
+      if (pub.getAttribute('data-selected') === 'true') {
+        pub.style.display = 'block';  // Show selected publication
+      } else {
+        pub.style.display = 'none';  // Hide other publications
+      }
+    });
+  });
+
+  // Add event listener to 'Show All' button
+  showAllBtn.addEventListener('click', function() {
+    publications.forEach(pub => {
+      pub.style.display = 'block';  // Show all publications
+    });
+  });
+</script>
+
+<!-- SiteMap -->
+<!-- <div style="display: flex; justify-content: center; align-items: center;">
+  <div style="max-width: 400px; width: 100%;">
+   <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=a&t=tt&d=vMICTqkBceRz7qgXaxmtgA6DfGGmtdIzFmTI9MPT5eI'></script>
+  </div>
+</div> -->
+
+
+<!-- Footer -->
+<footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-col-wrapper" style="display: flex; justify-content: center; align-items: center; width: 100%;">
+  <div class="footer-col footer-col-3" style="text-align: center;">
+    <p class="text">Last updated: <span id="last-updated">Loading...</span></p>
+  </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to Top Button -->
+<button class="back-to-top" id="backToTop">
+  <i class="fa fa-arrow-up"></i>
+</button>
+
+<script type="text/javascript">
+// Back to Top Button Functionality and Dynamic Navbar
+document.addEventListener('DOMContentLoaded', function() {
+    const backToTopButton = document.getElementById('backToTop');
+    const siteHeader = document.querySelector('.site-header');
+    
+    // Initialize navbar as solid (not transparent) for white background
+    siteHeader.classList.add('solid');
+    siteHeader.classList.remove('transparent');
+    
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', function() {
+        const scrollY = window.pageYOffset;
+        
+        // Back to top button logic
+        if (scrollY > 300) {
+            backToTopButton.classList.add('show');
+        } else {
+            backToTopButton.classList.remove('show');
+        }
+        
+        // Keep navbar solid at all times (no transparency)
+        siteHeader.classList.add('solid');
+        siteHeader.classList.remove('transparent');
+    });
+    
+    // Smooth scroll to top when clicked
+    backToTopButton.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+  // Intercept navigation link clicks to provide offset smooth scrolling
+  // This keeps current hrefs (e.g., projects.html) but provides a smoother UX when on the index page.
+  const navLinks = document.querySelectorAll('.page-link');
+  navLinks.forEach(function(link) {
+    link.addEventListener('click', function(ev) {
+      const href = link.getAttribute('href');
+
+      // Only handle same-page anchors or links that point to projects.html when we're on the index page
+      const isAnchor = href && href.startsWith('#');
+      const isProjectsPageLink = href && href.indexOf('projects.html') !== -1;
+      const isHomeLink = href && (href === '#' || href.indexOf('index.html') !== -1);
+      const isIndex = location.pathname.endsWith('index.html') || location.pathname === '/' || location.pathname === '';
+
+      // Handle Home links on the index page: smooth-scroll to top/profile-cover
+      if ((isHomeLink && isIndex) || isAnchor || (isProjectsPageLink && isIndex)) {
+        ev.preventDefault();
+
+        // Determine target id: Home -> profile-cover/top, direct anchor, or map projects.html -> #projects
+        let targetId = null;
+        if (isHomeLink) targetId = 'profile-cover';
+        else if (isAnchor) targetId = href.slice(1);
+        else if (isProjectsPageLink) targetId = 'projects';
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return; // nothing to scroll to
+
+        // Compute offset to account for fixed header height
+        const header = document.querySelector('.site-header');
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+
+        // Compute target position and scroll
+        const targetPos = window.pageYOffset + targetEl.getBoundingClientRect().top - headerHeight - 10; // small padding
+        window.scrollTo({ top: targetPos, behavior: 'smooth' });
+      }
+    });
+  });
+  
+  // Scrollspy: highlight nav link for the section currently in view
+  (function() {
+    const header = document.querySelector('.site-header');
+    
+    // Define sections in order with their IDs and corresponding nav links
+    const sectionConfig = [
+      { id: 'profile-cover', navText: 'Home' },      // Home section
+      { id: 'research', navText: 'Research' },       // Research section  
+      { id: 'projects', navText: 'Projects' }        // Projects section
+    ];
+
+    // Build mapping: section element -> nav link
+    const sectionToLink = new Map();
+    
+    sectionConfig.forEach(config => {
+      const sectionEl = document.getElementById(config.id);
+      if (sectionEl) {
+        // Find nav link by text content or href
+        const navLink = Array.from(navLinks).find(link => {
+          const linkText = link.textContent.trim();
+          const href = link.getAttribute('href') || '';
+          
+          return linkText.includes(config.navText) || 
+                 (config.id === 'research' && href.includes('#research')) ||
+                 (config.id === 'projects' && href.includes('projects.html'));
+        });
+        
+        if (navLink) {
+          sectionToLink.set(sectionEl, navLink);
+        }
+      }
+    });
+
+    function onScrollSpy() {
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      const headerHeight = header ? header.getBoundingClientRect().height : 60;
+      const viewportHeight = window.innerHeight;
+      
+      // Clear all active states and remove focus to prevent clicked links from staying highlighted
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        link.classList.remove('current');
+        link.removeAttribute('aria-current');
+        try { link.blur(); } catch (e) { /* ignore */ }
+      });
+
+      let activeLink = null;
+
+      // Check each section to see which one is most visible
+      sectionToLink.forEach((navLink, sectionEl) => {
+        const rect = sectionEl.getBoundingClientRect();
+        const sectionTop = rect.top;
+        const sectionBottom = rect.bottom;
+        const sectionHeight = rect.height;
+        
+        // Calculate how much of the section is visible
+        const visibleTop = Math.max(0, Math.min(sectionTop + headerHeight, viewportHeight));
+        const visibleBottom = Math.max(0, Math.min(sectionBottom, viewportHeight));
+        const visibleHeight = Math.max(0, visibleBottom - visibleTop);
+        const visibilityRatio = visibleHeight / Math.min(sectionHeight, viewportHeight - headerHeight);
+        
+        // Section is considered active if:
+        // 1. More than 30% is visible, OR
+        // 2. Section top is near the header (within 100px below header)
+        const isActive = visibilityRatio > 0.3 || 
+                        (sectionTop >= -headerHeight && sectionTop <= headerHeight + 100);
+        
+        if (isActive) {
+          activeLink = navLink;
+        }
+      });
+
+      // If no section is clearly active, use fallback logic
+      if (!activeLink) {
+        if (scrollPos < 200) {
+          // Near top of page - highlight Home
+          const homeLink = Array.from(navLinks).find(link => 
+            link.textContent.trim().includes('Home'));
+          activeLink = homeLink;
+        }
+      }
+
+      // Ensure any currently focused nav item doesn't force styling; blur it
+      try {
+        const af = document.activeElement;
+        if (af && af.classList && af.classList.contains('page-link')) af.blur();
+      } catch (e) {}
+
+      // Apply active state
+      if (activeLink) {
+        activeLink.classList.add('active');
+        activeLink.classList.add('current');
+        activeLink.setAttribute('aria-current', 'page');
+        try { activeLink.focus({ preventScroll: true }); } catch (e) {}
+      }
+    }
+
+    // Throttled scroll handler
+    let ticking = false;
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          onScrollSpy();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    // Initialize and bind events
+    setTimeout(onScrollSpy, 100); // Small delay to ensure layout is complete
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  })();
+
+  // Update footer "Last updated" element from document.lastModified or fallback
+  try {
+    (function() {
+      const el = document.getElementById('last-updated');
+      if (!el) return;
+
+      // Helper to pad month/day
+      function pad(n) { return n < 10 ? '0' + n : String(n); }
+
+      // Try to parse document.lastModified, fallback to current date
+      let modDate = null;
+      try {
+        const lm = document.lastModified;
+        if (lm && lm.trim().length > 0 && lm !== '0') {
+          const parsed = new Date(lm);
+          if (!isNaN(parsed.getTime())) modDate = parsed;
+        }
+      } catch (e) { /* ignore */ }
+
+      if (!modDate) modDate = new Date();
+
+      // Format as English month name, e.g. "September 27, 2025"
+      const y = modDate.getFullYear();
+      const day = modDate.getDate();
+      const monthNames = [
+        'January','February','March','April','May','June',
+        'July','August','September','October','November','December'
+      ];
+      const monthName = monthNames[modDate.getMonth()] || (modDate.getMonth() + 1);
+      el.textContent = monthName + ' ' + day + ', ' + y;
+    })();
+  } catch (e) { /* non-fatal */ }
+
+  });
+
+  // Abstract toggle functionality
+  function toggleAbstract(element) {
+    // Find the closest publication container
+    const pubContainer = element.closest('.pub');
+    const tldrDiv = pubContainer.querySelector('.tldr');
+    
+    if (tldrDiv.style.display === 'none' || tldrDiv.style.display === '') {
+      // Show tldr
+      tldrDiv.style.display = 'block';
+      element.textContent = 'abstract';
+    } else {
+      // Hide tldr
+      tldrDiv.style.display = 'none';
+      element.textContent = 'abstract';
+    }
+  }
+
+  // GIF animation control functions
+  function startGifPlayback(container) {
+    // GIF playback disabled for homepage Projects — no-op
+    return;
+  }
+
+  function stopGifPlayback(container) {
+    // GIF playback disabled for homepage Projects — no-op
+    return;
+  }
+</script>
+  </body><!--
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-60071442-1', 'auto');
+  ga('send', 'pageview');
+</script>
+-->
+
+<!--<script src="custom-pub.js"></script>-->
+
+</html>

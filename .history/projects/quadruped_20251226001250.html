@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <title>Quadruped Robot Projects - Zihan Wang</title>
+  <meta name="description" content="Quadruped Robot Projects by Zihan Wang">
+  
+  <link rel="shortcut icon" href="../images/android-chrome-512x512.png">
+  <link rel="stylesheet" href="../main.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: #333;
+      background-color: #ffffff;
+      margin: 0;
+      padding-top: 60px; /* ensure content sits below fixed header */
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px 20px;
+    }
+
+    /* Adjust container when TOC is visible */
+    @media (min-width: 1201px) {
+      .container {
+        max-width: 750px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+    }
+
+    /* Table of Contents Styles */
+    .toc-wrapper {
+      position: fixed;
+      right: 20px;
+      top: 100px;
+      width: 240px;
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+      background: #f8f9fa;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+
+    .toc-title {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin-bottom: 15px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #0066cc;
+    }
+
+    .toc-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .toc-list li {
+      margin-bottom: 10px;
+    }
+
+    .toc-list a {
+      color: #0066cc;
+      text-decoration: none;
+      font-size: 0.95em;
+      line-height: 1.4;
+      display: block;
+      padding: 6px 10px;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .toc-list a:hover {
+      background-color: #e3f2fd;
+      text-decoration: none;
+      transform: translateX(4px);
+    }
+
+    .toc-list a.active {
+      background-color: #0066cc;
+      color: white;
+      font-weight: 600;
+    }
+
+    /* Hide TOC on small screens */
+    @media (max-width: 1200px) {
+      .container {
+        margin-right: auto;
+      }
+      .toc-wrapper {
+        display: none;
+      }
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 2em;
+      margin-bottom: 15px;
+      font-weight: 800;
+      line-height: 1.2;
+      font-family: "SimHei", "Heiti SC", "Microsoft YaHei", "Arial", sans-serif;
+    }
+
+    h2 {
+      font-size: 1.5em;
+      font-weight: 700;
+      margin-top: 16px;
+      margin-bottom: 12px;
+      color: #1a1a1a;
+      border-bottom: 2px solid #0066cc;
+      padding-bottom: 5px;
+      position: relative;
+      scroll-margin-top: 80px; /* Offset for fixed header */
+    }
+
+    /* Add anchor link icon on hover for main project section headers only */
+    #zhixing-car-1 h2:first-of-type,
+    #zhixing-car-2 h2:first-of-type,
+    #auto-tracking-car h2:first-of-type {
+      cursor: pointer;
+    }
+
+    #zhixing-car-1 h2:first-of-type:hover::before,
+    #zhixing-car-2 h2:first-of-type:hover::before,
+    #auto-tracking-car h2:first-of-type:hover::before {
+      content: "🔗 ";
+      position: absolute;
+      left: -30px;
+      color: #0066cc;
+      font-size: 0.8em;
+    }
+
+    h3 {
+      margin-bottom: 10px;
+      margin-top: 30px;
+      text-align: left;
+      font-size: 1.2em;
+      font-weight: 600;
+    }
+
+    /* Make h4 headings bold but keep their font size unchanged */
+    h4 {
+      font-weight: 700;
+      /* inherit current font-size (do not change) */
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
+
+    .info-section {
+      text-align: center;
+      margin-bottom: 30px;
+      line-height: 1.3;
+    }
+
+    .info-section nobr {
+      display: inline-block;
+      margin: 2px 10px;
+    }
+
+    .links {
+      margin: 20px 0;
+    }
+
+    .links a {
+      color: #0066cc;
+      text-decoration: none;
+      margin-right: 0; /* no trailing margin to avoid gap before closing bracket */
+    }
+
+    /* spacing between consecutive links only */
+    .links a + a {
+      margin-left: 15px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Main content justification: apply to paragraphs and lists only, keep headings alignment as-is */
+    .container, .container p, .container .info-section, .container ul, .container ol, .container li {
+      text-align: justify;
+    }
+    /* keep the info-section centered (override the container-level justify) */
+    .container .info-section { text-align: center; }
+
+    img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 15px auto;
+    }
+
+    .video-container {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .video-container h3 {
+      text-align: left;
+    }
+
+    .video-container iframe {
+      max-width: 100%;
+    }
+
+    /* Project section styles */
+    section {
+      margin-bottom: 50px;
+      padding: 20px 0;
+    }
+
+    .project-header {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+      gap: 30px;
+    }
+
+    .project-image {
+      flex-shrink: 0;
+      width: 300px;
+    }
+
+    .project-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      margin: 0;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-info p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    /* Responsive design for mobile */
+    @media (max-width: 768px) {
+      .project-header {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .project-image {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+      
+      section h2 {
+        font-size: 1.5em;
+      }
+    }
+
+    /* New project card styles */
+    .project-card {
+      display: flex;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+      margin-bottom: 40px;
+      padding: 24px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      gap: 24px;
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    }
+
+    .dual-image-container {
+      flex: 0 0 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .dual-image-container img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      margin: 0;
+    }
+
+    .project-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .project-title {
+      font-size: 1.5em;
+      font-weight: 700;
+      color: #2c3e50;
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .project-description {
+      color: #555;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .tldr-label {
+      font-weight: 700;
+      color: #e74c3c;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tag {
+      padding: 4px 10px;
+      border-radius: 16px;
+      font-size: 0.8em;
+      font-weight: 500;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .tag.hardware {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+
+    .tag.software {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    }
+
+    .tag.algorithm {
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    }
+
+    .project-links {
+      display: flex;
+      gap: 12px;
+    }
+
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: #3498db;
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: 500;
+      transition: background 0.2s ease;
+    }
+
+    .project-link:hover {
+      background: #2980b9;
+      color: white;
+      text-decoration: none;
+    }
+
+    .project-link i {
+      font-size: 0.9em;
+    }
+
+    /* Mobile responsive for project cards */
+    @media (max-width: 768px) {
+      .project-card {
+        flex-direction: column;
+        padding: 20px;
+      }
+      
+      .dual-image-container {
+        flex: none;
+        max-width: 100%;
+      }
+      
+      .dual-image-container img {
+        height: 120px;
+      }
+      
+      .project-title {
+        font-size: 1.3em;
+      }
+      
+      .project-links {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .project-link {
+        justify-content: center;
+      }
+    }
+
+    .back-link {
+      display: inline-block;
+      margin: 20px 0;
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Navbar styles moved to main.css to ensure consistent site-wide header */
+  </style>
+  <!-- MathJax for LaTeX rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  
+  <!-- Smooth Scroll and TOC Active State Script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Smooth scroll for TOC links
+      const tocLinks = document.querySelectorAll('.toc-list a');
+      tocLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            // Update URL without jumping
+            history.pushState(null, null, targetId);
+          }
+        });
+      });
+
+      // Make only main project section headers clickable (first h2 in each main project section)
+      const projectSections = ['AMP for go1', 'Locomotion in unstructured outdoor environment'];
+      projectSections.forEach(sectionId => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          const firstH2 = section.querySelector('h2');
+          if (firstH2) {
+            firstH2.style.cursor = 'pointer';
+            firstH2.addEventListener('click', function() {
+              const url = window.location.origin + window.location.pathname + '#' + sectionId;
+              
+              // Copy to clipboard
+              if (navigator.clipboard) {
+                navigator.clipboard.writeText(url).then(() => {
+                  // Show temporary tooltip
+                  const tooltip = document.createElement('span');
+                  tooltip.textContent = '链接已复制!';
+                  tooltip.style.cssText = 'position: absolute; background: #4caf50; color: white; padding: 5px 10px; border-radius: 4px; font-size: 0.85em; margin-left: 10px; z-index: 1000;';
+                  this.appendChild(tooltip);
+                  setTimeout(() => tooltip.remove(), 2000);
+                });
+              }
+              
+              // Update URL
+              history.pushState(null, null, '#' + sectionId);
+            });
+          }
+        }
+      });
+
+      // Highlight active section in TOC on scroll
+      window.addEventListener('scroll', function() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollPosition = window.scrollY + 150;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          const sectionId = section.getAttribute('id');
+
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            tocLinks.forEach(link => {
+              link.classList.remove('active');
+              if (link.getAttribute('href') === '#' + sectionId) {
+                link.classList.add('active');
+              }
+            });
+          }
+        });
+      });
+
+      // Handle initial hash on page load
+      if (window.location.hash) {
+        setTimeout(() => {
+          const targetElement = document.querySelector(window.location.hash);
+          if (targetElement) {
+            targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }, 100);
+      }
+    });
+  </script>
+</head>
+
+<body>
+
+<header class="site-header" style="border: 2px solid lightgrey;">
+  <div class="wrapper">
+    <nav class="site-nav">
+      <div class="trigger">
+        <a class="page-link" href="../index.html"><b>Home</b></a>
+        <a class="page-link" href="../index.html#research"><b>Research</b></a>
+        <a class="page-link" href="../index.html#projects"><b>Projects</b></a>
+        <a class="page-link" href="../blog.html"><b>Blog</b></a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container">
+<div class="info-section">
+  <center><h1>Mobile Car Projects</h1></center>
+</div>
+
+<!-- Table of Contents -->
+<div class="toc-wrapper">
+  <div class="toc-title">Content</div>
+  <ul class="toc-list">
+    <li><a href="#quadruped-1">AMP for Go1</a></li>
+    <li><a href="#quadruped-2">Locomotion in Unstructured Outdoor Environment</a></li>
+  </ul>
+</div>
+
+<!-- Project 1: AMP for Go1 -->
+<section id="locomotion-unstructured-outdoor-environment">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/yuyuan.jpg" alt="Locomotion in Unstructured Outdoor Environment" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Locomotion in Unstructured Outdoor Environment</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        We used OpenCV to rectify the camera-captured map and extract obstacle 
+        coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm 
+        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
+        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        [<a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a>]
+      </div>
+    </div>
+  </div>
+
+  <h2 style="margin-top:8px;">1. Sim2Sim</h2>
+  <p style="margin-bottom: 12px; font-size: 1.05em;">This section summarizes the differential-drive vehicle kinematics and control models, including forward/inverse kinematics, relationships between wheel speeds and robot linear/angular velocities, and common trajectory tracking algorithms.</p>
+
+  <h2 style="margin-top:8px;">2. Sim2Real</h2>
+
+
+
+
+  <!-- <h3 style="margin-top:16px;">1.1 </h3> -->
+  
+<br>
+
+
+<!-- Project 2: Locomotion in Unstructured Outdoor Environment -->
+<section id="locomotion-unstructured-outdoor-environment">
+  <div style="display: flex; align-items: flex-start; margin-bottom: 20px;">
+    <img src="../images/yuyuan.jpg" alt="Locomotion in Unstructured Outdoor Environment" style="width: 300px; height: auto; margin-right: 30px; margin-left: 0; margin-top: 0; margin-bottom: 0;">
+    <div>
+      <h2 style="margin-bottom: 15px; color: #333;">Locomotion in Unstructured Outdoor Environment</h2>
+      <p style="margin-bottom: 10px; font-size: 1.1em; line-height: 1.5;">
+        We used OpenCV to rectify the camera-captured map and extract obstacle 
+        coordinates for path planning. Based on the map, we designed an efficient motion planning algorithm 
+        using A* search algorithm, enabling the car to avoid randomly positioned obstacles. Then we 
+        implemented a PID controller for precise speed and steering control, ensuring smooth navigation.
+      </p>
+      <div class="links" style="margin-top: 15px;">
+        [<a href="https://github.com/ZihanWang0422/Treasure_Hunting_Car" target="_blank">Code</a>]
+      </div>
+    </div>
+  </div>
+
+      <div class="video-container" style="margin: 20px 0;">
+    <h2 style="margin-bottom:10px;">Video</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/R3W2jP_Io_M" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div>
+
+
+  <h2 style="margin-top:8px;">1. Rectify the Camera-captured Map</h2>
+
+    <ul style="font-size:1.05em; line-height:1.6; margin-left:20px;">
+      <li>image_transformer rectifies the oblique map captured by the camera to obtain a bird's-eye (top-down) view map.</li>
+      <li>Image enhancement: use <code>convertScaleAbs</code> to increase contrast (alpha=1.5) so colors are easier to distinguish.</li>
+      <li>Color space conversion: convert BGR to HSV; HSV is more robust to illumination changes under varying lighting.</li>
+    </ul>
+
+  
+  <h2 style="margin-top:8px;">2. Extract Obstacle Coordinates</h2>
+
+    <div style="margin-bottom:12px;">
+      <p style="margin-bottom:8px;">Sampling strategy (9x9 grid center sampling):</p>
+      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">i = j = 40
+tiles = []
+while i &lt; 720:
+    while j &lt; 720:
+        tiles.append(hsv2color(hsv[i, j]))  # sample every 80 pixels at the center of each grid cell
+        j += 80
+    j = 40
+    i += 80
+
+# Start from (40, 40), step = 80 pixels
+# Cover 720x720 image → 9x9 = 81 tiles
+      </pre>
+
+      <p style="margin-bottom:8px;">Color to state mapping for each sampled grid center:</p>
+      <ul style="margin-left:20px;">
+        <li><strong>0</strong>: black (obstacle)</li>
+        <li><strong>2</strong>: blue (treasure)</li>
+        <li><strong>3</strong>: green (exit)</li>
+        <li><strong>4</strong>: yellow (start)</li>
+      </ul>
+    </div>
+
+  <h2 style="margin-top:8px;">3. Path Planning</h2>
+
+  <img src="../images/tracking_car/path_finding.png" alt="Path Finding" style="max-width: 100%; height: auto;">
+  <div style="margin-bottom:12px;">
+    <p style="margin-bottom:8px;">Graph construction logic:</p>
+    <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;"># Build graph
+G = nx.Graph()
+for target in range(0, 81):
+  up = target - 9
+  down = target + 9
+  left = target - 1
+  right = target + 1
+    
+  # obstacle weight = 1000 (penalize but not forbidden), passable weight = 1
+  if up >= 0:
+    if tiles[up] == 0:
+      G.add_weighted_edges_from([(target, up, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, up, 1)])
+  if down &lt; 81:
+    if tiles[down] == 0:
+      G.add_weighted_edges_from([(target, down, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, down, 1)])
+  # ensure left/right do not cross row boundaries
+  if left // 9 == target // 9:
+    if tiles[left] == 0:
+      G.add_weighted_edges_from([(target, left, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, left, 1)])
+  if right // 9 == target // 9:
+    if tiles[right] == 0:
+      G.add_weighted_edges_from([(target, right, 1000)])
+    else:
+      G.add_weighted_edges_from([(target, right, 1)])
+
+# Node indices: 0-80, row-major from top-left to bottom-right
+# Weight strategy: obstacle=1000 (penalty), normal=1
+# Two-stage routing:
+find_treasure = nx.dijkstra_path(G, source=start, target=treasure)
+find_exit = nx.dijkstra_path(G, source=treasure, target=destination)
+    </pre>
+
+    <div style="margin-top:12px;">
+      <h4 style="margin-top:8px;">Using A* (recommended for grid maps)</h4>
+      <p style="margin-bottom:8px;">A* uses a heuristic to guide the search. For a 2D grid, the Manhattan distance is a simple admissible heuristic:</p>
+      <pre style="background:#f8f9fb; border:1px solid #e1e4e8; padding:10px; overflow:auto;">def manhattan(u, v):
+    ux, uy = divmod(u, 9)
+    vx, vy = divmod(v, 9)
+    return abs(ux - vx) + abs(uy - vy)
+
+# Using networkx's A* (assuming G is built as above and weights represent cost):
+path_to_treasure = nx.astar_path(G, source=start, target=treasure, heuristic=manhattan, weight='weight')
+path_to_exit = nx.astar_path(G, source=treasure, target=destination, heuristic=manhattan, weight='weight')
+      </pre>
+
+
+</section>
+
+
+<hr>
+
+</body>
+</html>

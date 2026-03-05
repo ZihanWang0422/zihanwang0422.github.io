@@ -1,0 +1,99 @@
+/* 新的profile-cover样式 */
+#profile-cover {
+    position: relative;
+    min-height: 240px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 30px 0;
+    box-sizing: border-box;
+    background-image: url("../images/background/background_robo.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* 覆盖层，用于增强文字可读性 */
+#profile-cover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255,255,255,0.7);
+    z-index: 1;
+}
+
+/* 确保内容在覆盖层之上 */
+.profile-layout {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    gap: 20px;
+    align-items: stretch;
+    padding: 10px 20px;
+    box-sizing: border-box;
+}
+
+.profile-left, .profile-right {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-left {
+    width: calc(30% - 15px);
+    flex: 0 0 calc(30% - 15px);
+    align-items: center;
+    justify-content: center;
+    margin-left: 85px;
+}
+
+.profile-right {
+    width: calc(70% - 15px);
+    flex: 0 0 calc(70% - 15px);
+    margin-right: 90px;
+}
+
+.profile-avatar {
+    width: 220px;
+    height: auto;
+    border-radius: 8px !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+}
+
+/* 暗色主题适配 */
+[data-theme="dark"] #profile-cover::before {
+    background-color: rgba(26, 26, 26, 0.7);
+}
+
+[data-theme="dark"] .about-title {
+    color: #ffffff;
+}
+
+/* 响应式调整 */
+@media screen and (max-width: 800px) {
+    .profile-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-left, .profile-right {
+        width: 90%;
+        margin: 0 auto;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    #profile-cover {
+        min-height: 360px;
+    }
+    
+    .profile-avatar {
+        width: 168px;
+        height: auto;
+    }
+}
